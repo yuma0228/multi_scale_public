@@ -1,0 +1,10 @@
+---
+:year: 2026
+:lecture: multi_scale
+:source_html: multi_scale_26f.html
+:glob_extensions: d*/*.html
+:server_info:
+  :local_sites: "~/Sites/new_ist/Lectures"
+  :ruby_code_dir: c0_mk_stack_dir/bin
+  :server_ssh_path: nishitani@ist.ksc.kwansei.ac.jp:~/public_html
+  :server_url: https://ist.ksc.kwansei.ac.jp/~nishitani/Lectures
