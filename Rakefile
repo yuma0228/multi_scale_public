@@ -75,6 +75,12 @@ task :default do
   system "rake -T"
 end
 
+desc 'rsync to ../multi_scale_public'
+task :rsync_public do
+  system "rsync -F -auvz --filter \"merge .rsync_filter\" --no-links . ../multi_scale_public/"
+  exit
+end
+
 desc "kick off hyper card"
 task :kick_off do
   puts "Kick off hyper card setups"
