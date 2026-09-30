@@ -1,0 +1,37 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+#+TITLE: mk_stack_dir
+#+AUTHOR: Shigeto R. Nishitani
+#+EMAIL:     (concat "shigeto_nishitani@mac.com")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style_w_link_button.css" />
+#+MACRO: dummy_link @@html:<a href="#">$1</a>@@
+
+# for style.css, never move from here
+[[../d2_cla/readme.html][prev_button]]
+[[../multi_scale_26f.html][up_button]]
+[[../d1_mock/readme.html][next_button]]
+# for a real link rewrite usual [[\url][]]
+
+
+* kick_off
+1. ubuntu on wsl
+   : wsl update
+   : wsl --install
+   なんか失敗したな．rootでしか入れない．
+   1. zoom
+1. ruby, fish (for multi) <2026-09-24 Thu>
+   : sudo apt update
+   : sudo apt install fish
+   : sudo apt install ruby-full
+   : ruby -v
+   rubyのrbenvでgeminiが蹴躓いた，ruby-fullでok
+1. emacs or vscode
+   pass
+1. ssh
+   
+1. github
+
+
+

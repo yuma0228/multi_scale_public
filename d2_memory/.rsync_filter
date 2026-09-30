@@ -1,0 +1,18 @@
+# バックアップ(emacs)や一時ファイルを除外
+- *~
+#- *.tmp
+#- *.bak
+
+# OSの隠しファイルを除外
+- .DS_Store
+#- Thumbs.db
+
+# 特定のディレクトリ（referencesディレクトリ）を除外
+#- drafts/
+#- work/
+- references/
+
+# 特定の拡張子のファイル（key, pdfファイル）を除外
+#- *.org
+- *.key
+- *.pdf

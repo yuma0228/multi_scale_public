@@ -1,0 +1,19 @@
+---
+- :up:
+  - :href: multi_scale_26f.html
+    :title: multi_scale
+- :id: section-0
+  :title: kick off
+  :items:
+  - :href: d1_mock/readme.html
+    :src: d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg
+    :title: Mock
+  - :href: d2_memory/readme.html
+    :src: d2_memory/figs/multi_scale_26f-9.jpg
+    :title: Memoryの形
+- :id: section-1
+  :title: Ruby basics
+  :items:
+  - :href: d99_junior_ruby/readme.html
+    :src: d99_junior_ruby/dummy_icon.png
+    :title: Ruby for junior
