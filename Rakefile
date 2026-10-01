@@ -75,10 +75,22 @@ task :default do
   system "rake -T"
 end
 
-desc 'rsync to ../multi_scale_public'
+desc 'dry-run marker'
+task :dry_run
+
+desc 'rsync to ../multi_scale_public( w w/o dry-run)'
 task :rsync_public do
-  system "rsync -F -auvz --filter \"merge .rsync_filter\" --no-links . ../multi_scale_public/"
-  exit
+  options = %w[-F -avz --delete --itemize-changes]
+  options << '--dry-run' if ARGV.include?('dry_run')
+
+  sh(
+    'rsync',
+    *options,
+    '--filter', 'merge .rsync_filter',
+    '--no-links',
+    '.',
+    '../multi_scale_public/'
+  )
 end
 
 desc "kick off hyper card"
