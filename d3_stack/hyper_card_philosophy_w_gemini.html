@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
 <head>
-<!-- 2026-09-29 Tue 09:45 -->
+<!-- 2026-10-01 Thu 10:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>HyperCard Stack 開発思想・理論的背景ドキュメント</title>
@@ -27,168 +27,170 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5eb9d01">1. abstract <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-28 Mon&gt;</span></span></a></li>
-<li><a href="#org8ae2043">2. きっかけ</a>
+<li><a href="#orgc1688c0">1. abstract <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-28 Mon&gt;</span></span></a></li>
+<li><a href="#org7dd8858">2. きっかけ</a>
 <ul>
-<li><a href="#orge930caa">2.1. user</a></li>
-<li><a href="#orgcfe42e2">2.2. gemini</a>
+<li><a href="#org39fe053">2.1. user</a></li>
+<li><a href="#org1601891">2.2. gemini</a>
 <ul>
-<li><a href="#org95232f0">2.2.1. さらに文脈に馴染む言い換えの選択肢</a></li>
-<li><a href="#org8f34566">2.2.2. 結論</a></li>
+<li><a href="#org099aa83">2.2.1. さらに文脈に馴染む言い換えの選択肢</a></li>
+<li><a href="#org04f91d6">2.2.2. 結論</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgbf3ae46">3. 暗黙知</a>
+<li><a href="#org75a3439">3. 暗黙知</a>
 <ul>
-<li><a href="#orge75bba4">3.1. user</a></li>
-<li><a href="#org557ac31">3.2. gemini</a>
+<li><a href="#org70aaf61">3.1. user</a></li>
+<li><a href="#orgb9a3eb1">3.2. gemini</a>
 <ul>
-<li><a href="#org96ac4e2">3.2.1. 「暗黙知」を意識した表現の工夫</a></li>
+<li><a href="#orgca7f45a">3.2.1. 「暗黙知」を意識した表現の工夫</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org106cd98">4. 卒業論文</a>
+<li><a href="#org5dc7ba4">4. 卒業論文</a>
 <ul>
-<li><a href="#org7eb42c0">4.1. user</a></li>
-<li><a href="#orgc8ab2fd">4.2. gemini</a>
+<li><a href="#orgb0e6629">4.1. user</a></li>
+<li><a href="#orgb396625">4.2. gemini</a>
 <ul>
-<li><a href="#org4d1cc2d">4.2.1. 洗練案（格調高く、説得力を持たせる）</a></li>
-<li><a href="#orgd97b1a9">4.2.2. 親しみやすい案（学生のモチベーションを高める）</a></li>
+<li><a href="#org5c63137">4.2.1. 洗練案（格調高く、説得力を持たせる）</a></li>
+<li><a href="#orga088357">4.2.2. 親しみやすい案（学生のモチベーションを高める）</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org82683a7">5. フンボルト理念</a>
+<li><a href="#org821f8d7">5. フンボルト理念</a>
 <ul>
-<li><a href="#org4482612">5.1. user</a></li>
-<li><a href="#orgdcbad99">5.2. gemini</a>
+<li><a href="#org0f834e3">5.1. user</a></li>
+<li><a href="#org5a5f793">5.2. gemini</a>
 <ul>
-<li><a href="#org8ec29c9">5.2.1. フンボルト理念の成立（1810年頃）</a></li>
-<li><a href="#org2e45e2b">5.2.2. アメリカでの「大学院教育」としての隆盛（19世紀後半）</a>
+<li><a href="#org0f47229">5.2.1. フンボルト理念の成立（1810年頃）</a></li>
+<li><a href="#org3b2c094">5.2.2. アメリカでの「大学院教育」としての隆盛（19世紀後半）</a>
 <ul>
-<li><a href="#org23d6ef4">「大学院（Graduate School）」の発明</a></li>
-<li><a href="#org28424bd">世界標準への昇華</a></li>
+<li><a href="#orge745651">「大学院（Graduate School）」の発明</a></li>
+<li><a href="#org856aa3f">世界標準への昇華</a></li>
 </ul>
 </li>
-<li><a href="#orgfc365d4">5.2.3. イギリス（オックスフォード、ケンブリッジ）の対応と反応</a>
+<li><a href="#orgfd2c53a">5.2.3. イギリス（オックスフォード、ケンブリッジ）の対応と反応</a>
 <ul>
-<li><a href="#org6ed7ed3">「教養と人格形成」の絶対視</a></li>
-<li><a href="#org337c1ec">「博士号（Ph.D.）」への拒絶</a></li>
-<li><a href="#org47ade3c">20世紀の「しぶしぶの追随」</a></li>
+<li><a href="#orgd133ae8">「教養と人格形成」の絶対視</a></li>
+<li><a href="#org765f4b3">「博士号（Ph.D.）」への拒絶</a></li>
+<li><a href="#org9adc992">20世紀の「しぶしぶの追随」</a></li>
 </ul>
 </li>
-<li><a href="#orgf796a3a">5.2.4. 総括</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org66257d2">6. best practice</a>
-<ul>
-<li><a href="#orgd9cd437">6.1. user</a></li>
-<li><a href="#org1638cea">6.2. gemini</a>
-<ul>
-<li><a href="#orgf301295">6.2.1. 思想の源流：プラグマティズムの本質</a></li>
-<li><a href="#orgf674c65">6.2.2. アメリカの「合理主義・産業界」での実用化</a></li>
-<li><a href="#orgafc50b0">6.2.3. コンピュータ・ソフトウェア領域への流入</a></li>
-<li><a href="#org3bb22ee">6.2.4. まとめ</a></li>
+<li><a href="#org20073da">5.2.4. 総括</a></li>
+<li><a href="#orgb6428c4">5.2.5. 文献</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge0453a6">7. Parse</a>
+<li><a href="#org888784a">6. best practice</a>
 <ul>
-<li><a href="#org2bea535">7.1. user</a></li>
-<li><a href="#orgdadcc58">7.2. gemini</a>
+<li><a href="#org7c2350f">6.1. user</a></li>
+<li><a href="#org8d6db2c">6.2. gemini</a>
 <ul>
-<li><a href="#orge5432b7">7.2.1. 3つの思考法と「アブダクション」の違い</a></li>
-<li><a href="#org50823c5">7.2.2. 「研究」と「プラグマティズム」における役割</a></li>
-<li><a href="#orgbe41334">7.2.3. このStack（足場）が果たす役割</a></li>
+<li><a href="#orge4006e6">6.2.1. 思想の源流：プラグマティズムの本質</a></li>
+<li><a href="#org3684923">6.2.2. アメリカの「合理主義・産業界」での実用化</a></li>
+<li><a href="#orgf6f9c0c">6.2.3. コンピュータ・ソフトウェア領域への流入</a></li>
+<li><a href="#org8053c72">6.2.4. まとめ</a></li>
+<li><a href="#org4bb8a53">6.2.5. 文献</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org51313f4">8. am/pm</a>
+<li><a href="#orgca5242b">7. Parse</a>
 <ul>
-<li><a href="#orgf5c30bb">8.1. user</a></li>
-<li><a href="#org52f5518">8.2. gemini</a>
+<li><a href="#org6978ede">7.1. user</a></li>
+<li><a href="#org43dc906">7.2. gemini</a>
 <ul>
-<li><a href="#orgabe41fa">8.2.1. 知識を「道具」とみなすからこそ、PM（参加）が素直に受け入れられる</a></li>
-<li><a href="#orge4454ad">8.2.2. 「AMからPMへの第一歩」としての卒業論文</a></li>
-<li><a href="#orge0d8a3b">8.2.3. Stackが提供する「足場」：PM（参加）を支える道具</a></li>
-<li><a href="#orgb3add68">8.2.4. 結論としてのストーリーの完成</a></li>
+<li><a href="#org892b4eb">7.2.1. 3つの思考法と「アブダクション」の違い</a></li>
+<li><a href="#org2eba327">7.2.2. 「研究」と「プラグマティズム」における役割</a></li>
+<li><a href="#orge302c4b">7.2.3. このStack（足場）が果たす役割</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org5789f60">9. 会社に入って</a>
+<li><a href="#orgd11b82c">8. am/pm</a>
 <ul>
-<li><a href="#org04651c0">9.1. user</a></li>
-<li><a href="#org726023b">9.2. gemini</a>
+<li><a href="#orga5acd88">8.1. user</a></li>
+<li><a href="#org9eaacce">8.2. gemini</a>
 <ul>
-<li><a href="#orgc08d24b">9.2.1. Stack 開発理念（マニフェスト）／紹介文案</a></li>
-<li><a href="#org3520565">9.2.2. この文章のポイント</a></li>
+<li><a href="#org9be6123">8.2.1. 知識を「道具」とみなすからこそ、PM（参加）が素直に受け入れられる</a></li>
+<li><a href="#org64219b4">8.2.2. 「AMからPMへの第一歩」としての卒業論文</a></li>
+<li><a href="#org502d61b">8.2.3. Stackが提供する「足場」：PM（参加）を支える道具</a></li>
+<li><a href="#orgdbbc0c1">8.2.4. 結論としてのストーリーの完成</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org56c37bd">10. まとめ</a>
+<li><a href="#org0816d5f">9. 会社に入って</a>
 <ul>
-<li><a href="#orgca1be25">10.1. user</a></li>
-<li><a href="#org754da5d">10.2. Stack 開発理念（マニフェスト）</a>
+<li><a href="#org5459713">9.1. user</a></li>
+<li><a href="#orgf52ae31">9.2. gemini</a>
 <ul>
-<li><a href="#orgd14b5a0">10.2.1. 研究の社会的・普遍的価値</a></li>
-<li><a href="#org2930f9c">10.2.2. 「個人技」から「明示化された道具」への転換</a></li>
-<li><a href="#org6377d9c">10.2.3. 梅棹流カードシステムと「足場（スキャフォールディング）」</a></li>
-</ul>
-</li>
-<li><a href="#org19ac063">10.3. 理論的・歴史的背景（Background &amp; Philosophy）</a>
-<ul>
-<li><a href="#org4152d4e">10.3.1. 歴史的系譜：ドイツからアメリカ、そして世界標準へ</a></li>
-<li><a href="#org540262c">10.3.2. 哲学：プラグマティズム（実用主義）とベストプラクティス</a></li>
-<li><a href="#org9add05c">10.3.3. 認知科学・教育論：AM/PM（獲得 vs 参加メタファー）</a></li>
-<li><a href="#org775ec2d">10.3.4. 思考法：C.S.パースのアブダクション（仮説形成）</a></li>
+<li><a href="#org24af82e">9.2.1. Stack 開発理念（マニフェスト）／紹介文案</a></li>
+<li><a href="#orgd7940ad">9.2.2. この文章のポイント</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge5a130a">11. Stack 開発理念（マニフェスト）／紹介文案</a>
+<li><a href="#orge50aeb7">10. まとめ</a>
 <ul>
-<li><a href="#orgbae52ff">11.1. Stack 開発理念（マニフェスト）／紹介文案</a></li>
-<li><a href="#org220f2ec">11.2. この文章のポイント</a></li>
+<li><a href="#org426ec3b">10.1. user</a></li>
+<li><a href="#org9e02509">10.2. Stack 開発理念（マニフェスト）</a>
+<ul>
+<li><a href="#org88b658f">10.2.1. 研究の社会的・普遍的価値</a></li>
+<li><a href="#orgf5d1d0e">10.2.2. 「個人技」から「明示化された道具」への転換</a></li>
+<li><a href="#org1082b83">10.2.3. 梅棹流カードシステムと「足場（スキャフォールディング）」</a></li>
+</ul>
+</li>
+<li><a href="#orgddc1bb1">10.3. 理論的・歴史的背景（Background &amp; Philosophy）</a>
+<ul>
+<li><a href="#orgc50872d">10.3.1. 歴史的系譜：ドイツからアメリカ、そして世界標準へ</a></li>
+<li><a href="#orgc35a020">10.3.2. 哲学：プラグマティズム（実用主義）とベストプラクティス</a></li>
+<li><a href="#org2945902">10.3.3. 認知科学・教育論：AM/PM（獲得 vs 参加メタファー）</a></li>
+<li><a href="#org7d08b28">10.3.4. 思考法：C.S.パースのアブダクション（仮説形成）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgd7c253a">11. Stack 開発理念（マニフェスト）／紹介文案</a>
+<ul>
+<li><a href="#org27c8e3c">11.1. Stack 開発理念（マニフェスト）／紹介文案</a></li>
+<li><a href="#orga711d08">11.2. この文章のポイント</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org5eb9d01" class="outline-2">
-<h2 id="org5eb9d01"><span class="section-number-2">1.</span> abstract <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-28 Mon&gt;</span></span></h2>
+<div id="outline-container-orgc1688c0" class="outline-2">
+<h2 id="orgc1688c0"><span class="section-number-2">1.</span> abstract <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-28 Mon&gt;</span></span></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 ここでは，現在のHyperCard stackが提供しようとする
-ベストプラクティスがなぜ必要かを導いています．
+ベストプラクティスがなぜ必要かの哲学を示しています．
 IMRADのintroductionを作ろうとしてgeminiで
-「符合」を調べ始めた．そのまま，
-フンボルト理念から，abduction, am/pmまでの
-流れを再確認．
+「符合」を調べ始めて，
+そのまま，フンボルト理念から，abduction, am/pmまでの
+流れを再確認したところです．
 </p>
 </div>
 </div>
-<div id="outline-container-org8ae2043" class="outline-2">
-<h2 id="org8ae2043"><span class="section-number-2">2.</span> きっかけ</h2>
+<div id="outline-container-org7dd8858" class="outline-2">
+<h2 id="org7dd8858"><span class="section-number-2">2.</span> きっかけ</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orge930caa" class="outline-3">
-<h3 id="orge930caa"><span class="section-number-3">2.1.</span> user</h3>
+<div id="outline-container-org39fe053" class="outline-3">
+<h3 id="org39fe053"><span class="section-number-3">2.1.</span> user</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 「論文を読むときにIMRADで書くことを，理系研究者の前提知識として教えています．これは読む側と書く側の論文構成への期待を符合させるためです．」という文章における「符合」は意図と通りでしょうか？
 </p>
 </div>
 </div>
-<div id="outline-container-orgcfe42e2" class="outline-3">
-<h3 id="orgcfe42e2"><span class="section-number-3">2.2.</span> gemini</h3>
+<div id="outline-container-org1601891" class="outline-3">
+<h3 id="org1601891"><span class="section-number-3">2.2.</span> gemini</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 はい、ご提示いただいた文章における「符合」の使い方は、意図通りでまったく問題ありません。非常に論理的で分かりやすい文章です。
@@ -196,23 +198,19 @@ IMRADのintroductionを作ろうとしてgeminiで
 もし、より自然な表現や、別のニュアンスを検討されたい場合は、以下の言い換えも可能です。
 </p>
 </div>
-<div id="outline-container-org95232f0" class="outline-4">
-<h4 id="org95232f0"><span class="section-number-4">2.2.1.</span> さらに文脈に馴染む言い換えの選択肢</h4>
+<div id="outline-container-org099aa83" class="outline-4">
+<h4 id="org099aa83"><span class="section-number-4">2.2.1.</span> さらに文脈に馴染む言い換えの選択肢</h4>
 <div class="outline-text-4" id="text-2-2-1">
-<ul class="org-ul">
-<li>「一致（いっち）させるためです」</li>
-<li>* 最も自然で一般的な表現です。言葉に引っかかりがなく、誰にでもストレートに伝わります。</li>
-<li>「合致（がっち）させるためです」</li>
-<li>「一致」よりも少し硬い表現で、基準や目的にぴったり合うという意味合いが強くなります。ビジネスや教育の場に適しています。</li>
-<li>「擦り合わせる（すりあわせる）ためです」</li>
-<li>「お互いの認識を近づけて一致させる」という動的なプロセスを強調したい場合に適しています。</li>
-<li>「同期（どうき）させるためです」</li>
-<li>ややモダン（IT・工学寄り）な響きになりますが、「双方の認識をリアルタイムに同じ状態にする」というニュアンスを理系学生に伝えるのには馴染みやすい表現です。</li>
-</ul>
+<dl class="org-dl">
+<dt>「一致（いっち）させるためです」</dt><dd>最も自然で一般的な表現です。言葉に引っかかりがなく、誰にでもストレートに伝わります。</dd>
+<dt>「合致（がっち）させるためです」</dt><dd>「一致」よりも少し硬い表現で、基準や目的にぴったり合うという意味合いが強くなります。ビジネスや教育の場に適しています。</dd>
+<dt>「擦り合わせる（すりあわせる）ためです」</dt><dd>「お互いの認識を近づけて一致させる」という動的なプロセスを強調したい場合に適しています。</dd>
+<dt>「同期（どうき）させるためです」</dt><dd>ややモダン（IT・工学寄り）な響きになりますが、「双方の認識をリアルタイムに同じ状態にする」というニュアンスを理系学生に伝えるのには馴染みやすい表現です。</dd>
+</dl>
 </div>
 </div>
-<div id="outline-container-org8f34566" class="outline-4">
-<h4 id="org8f34566"><span class="section-number-4">2.2.2.</span> 結論</h4>
+<div id="outline-container-org04f91d6" class="outline-4">
+<h4 id="org04f91d6"><span class="section-number-4">2.2.2.</span> 結論</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 現在の「符合させる」のままでも十分に意味は伝わり、知的な印象を与えます。もし講義や説明の対象（学生など）に対して「少し言葉が硬いかな」と感じる場合は、「一致させるため」「合致させるため」に infant（優しく）変更するのがおすすめです。
@@ -223,20 +221,20 @@ IMRADのintroductionを作ろうとしてgeminiで
 </div>
 </div>
 </div>
-<div id="outline-container-orgbf3ae46" class="outline-2">
-<h2 id="orgbf3ae46"><span class="section-number-2">3.</span> 暗黙知</h2>
+<div id="outline-container-org75a3439" class="outline-2">
+<h2 id="org75a3439"><span class="section-number-2">3.</span> 暗黙知</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orge75bba4" class="outline-3">
-<h3 id="orge75bba4"><span class="section-number-3">3.1.</span> user</h3>
+<div id="outline-container-org70aaf61" class="outline-3">
+<h3 id="org70aaf61"><span class="section-number-3">3.1.</span> user</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 理系研究者の暗黙知の一つですね．
 </p>
 </div>
 </div>
-<div id="outline-container-org557ac31" class="outline-3">
-<h3 id="org557ac31"><span class="section-number-3">3.2.</span> gemini</h3>
+<div id="outline-container-orgb9a3eb1" class="outline-3">
+<h3 id="orgb9a3eb1"><span class="section-number-3">3.2.</span> gemini</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 まさにその通りですね。「IMRADという共通の型に沿って思考・記述する」というのは、理系研究者における代表的な「暗黙知（Tact Knowledge）」です。
@@ -244,17 +242,14 @@ IMRADのintroductionを作ろうとしてgeminiで
 論文執筆や指導の文脈において、この「暗黙知」を言語化して伝えるために、以下のような表現を取り入れると、さらに説得力が増すかもしれません。
 </p>
 </div>
-<div id="outline-container-org96ac4e2" class="outline-4">
-<h4 id="org96ac4e2"><span class="section-number-4">3.2.1.</span> 「暗黙知」を意識した表現の工夫</h4>
+<div id="outline-container-orgca7f45a" class="outline-4">
+<h4 id="orgca7f45a"><span class="section-number-4">3.2.1.</span> 「暗黙知」を意識した表現の工夫</h4>
 <div class="outline-text-4" id="text-3-2-1">
-<ul class="org-ul">
-<li>「共通言語（プロトコル）として機能させるため」</li>
-<li>理系において、異なる専門分野同士でも一瞬で構造を理解し合える「通信規格（プロトコル）」のような役割を果たしている、という意味合いです。</li>
-<li>「認知的負荷（読むエネルギー）を減らすため」</li>
-<li>構成が符合していると、読者は「どこに何が書いてあるか」を探す無駄なエネルギーを使わずに済み、研究内容そのものに集中できます。</li>
-<li>「研究コミュニティの暗黙の了解（規範）に最適化するため」</li>
-<li>査読者や他の研究者から「信頼できる論文（プロトコルに則っている）」と一目で認知してもらうための作法である、という視点です。</li>
-</ul>
+<dl class="org-dl">
+<dt>「共通言語（プロトコル）として機能させるため」</dt><dd>理系において、異なる専門分野同士でも一瞬で構造を理解し合える「通信規格（プロトコル）」のような役割を果たしている、という意味合いです。</dd>
+<dt>「認知的負荷（読むエネルギー）を減らすため」</dt><dd>構成が符合していると、読者は「どこに何が書いてあるか」を探す無駄なエネルギーを使わずに済み、研究内容そのものに集中できます。</dd>
+<dt>「研究コミュニティの暗黙の了解（規範）に最適化するため」</dt><dd>査読者や他の研究者から「信頼できる論文（プロトコルに則っている）」と一目で認知してもらうための作法である、という視点です。</dd>
+</dl>
 
 <p>
 「暗黙知」というキーワードが出たことで、文脈がより深まりました。
@@ -265,28 +260,28 @@ IMRADのintroductionを作ろうとしてgeminiで
 </div>
 </div>
 </div>
-<div id="outline-container-org106cd98" class="outline-2">
-<h2 id="org106cd98"><span class="section-number-2">4.</span> 卒業論文</h2>
+<div id="outline-container-org5dc7ba4" class="outline-2">
+<h2 id="org5dc7ba4"><span class="section-number-2">4.</span> 卒業論文</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org7eb42c0" class="outline-3">
-<h3 id="org7eb42c0"><span class="section-number-3">4.1.</span> user</h3>
+<div id="outline-container-orgb0e6629" class="outline-3">
+<h3 id="orgb0e6629"><span class="section-number-3">4.1.</span> user</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 卒業論文を書くという作業(経験)は，（理系)研究者への第一歩として，ドイツの大学で始まって，それ以降全世界の共通知識として醸成されてきたものです．それは，専門知識を理解し，記憶し，使うためのベストプラクティス(最善手)です．その暗黙知の生成を明示的にしようというのがこのStackで提供しようとする足場です．
 </p>
 </div>
 </div>
-<div id="outline-container-orgc8ab2fd" class="outline-3">
-<h3 id="orgc8ab2fd"><span class="section-number-3">4.2.</span> gemini</h3>
+<div id="outline-container-orgb396625" class="outline-3">
+<h3 id="orgb396625"><span class="section-number-3">4.2.</span> gemini</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 非常に本質的で、学生にとっても社会的な意義（なぜ今、自分が卒論を書くのか）が明確になる素晴らしい文章です。「ドイツの大学（フンボルト理念など）が起源である歴史的背景」から「世界共通のベストプラクティス」「暗黙知の明示化」への流れが論理的に美しくつながっています。
 「Stack（ツールやプロダクト）」が提供する価値（足場＝スキャフォールディング）が鮮明に伝わるよう、全体のつながりと語彙をさらに洗練させた2つの推敲案をご提案します。
 </p>
 </div>
-<div id="outline-container-org4d1cc2d" class="outline-4">
-<h4 id="org4d1cc2d"><span class="section-number-4">4.2.1.</span> 洗練案（格調高く、説得力を持たせる）</h4>
+<div id="outline-container-org5c63137" class="outline-4">
+<h4 id="org5c63137"><span class="section-number-4">4.2.1.</span> 洗練案（格調高く、説得力を持たせる）</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <p>
 シラバスや教材の「はじめに」、あるいはプロダクトの公式紹介文などに適した、知的で説得力のあるトーンです。
@@ -303,8 +298,8 @@ IMRADのintroductionを作ろうとしてgeminiで
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd97b1a9" class="outline-4">
-<h4 id="orgd97b1a9"><span class="section-number-4">4.2.2.</span> 親しみやすい案（学生のモチベーションを高める）</h4>
+<div id="outline-container-orga088357" class="outline-4">
+<h4 id="orga088357"><span class="section-number-4">4.2.2.</span> 親しみやすい案（学生のモチベーションを高める）</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <p>
 これから卒論に挑む学生が読んだときに、「よし、やってみよう」と背中を押されるような、少し目線を下げたトーンです。
@@ -323,27 +318,27 @@ IMRADのintroductionを作ろうとしてgeminiで
 </div>
 </div>
 </div>
-<div id="outline-container-org82683a7" class="outline-2">
-<h2 id="org82683a7"><span class="section-number-2">5.</span> フンボルト理念</h2>
+<div id="outline-container-org821f8d7" class="outline-2">
+<h2 id="org821f8d7"><span class="section-number-2">5.</span> フンボルト理念</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org4482612" class="outline-3">
-<h3 id="org4482612"><span class="section-number-3">5.1.</span> user</h3>
+<div id="outline-container-org0f834e3" class="outline-3">
+<h3 id="org0f834e3"><span class="section-number-3">5.1.</span> user</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 フンボルト理念について，東大の先生が批判的なのは知っていますが，一般常識としては確立していると思います．これはいつ頃に成立して，どのようにして大学院教育の実践としてアメリカで隆盛して行ったものですか？　その時のイギリスのオックスフォード，ケンブリッジの対応・反応はどういうものでしたか？
 </p>
 </div>
 </div>
-<div id="outline-container-orgdcbad99" class="outline-3">
-<h3 id="orgdcbad99"><span class="section-number-3">5.2.</span> gemini</h3>
+<div id="outline-container-org5a5f793" class="outline-3">
+<h3 id="org5a5f793"><span class="section-number-3">5.2.</span> gemini</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 フンボルト理念の成立とアメリカへの伝播、そしてイギリスの伝統校（オックスブリッジ）の反応について、歴史的な潮流を整理して解説します。
 </p>
 </div>
-<div id="outline-container-org8ec29c9" class="outline-4">
-<h4 id="org8ec29c9"><span class="section-number-4">5.2.1.</span> フンボルト理念の成立（1810年頃）</h4>
+<div id="outline-container-org0f47229" class="outline-4">
+<h4 id="org0f47229"><span class="section-number-4">5.2.1.</span> フンボルト理念の成立（1810年頃）</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <p>
 フンボルト理念は、1810年、プロイセンの文部官僚であった[ヴィルヘルム・フォン・フンボルト](<a href="https://www.google.com/search?q=%E3%83%B4%E3%82%A3%E3%83%AB%E3%83%98%E3%83%AB%E3%83%A0%E3%83%BB%E3%83%95%E3%82%A9%E3%83%B3%E3%83%BB%E3%83%95%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%88&amp;kgmid=/m/081_6">https://www.google.com/search?q=%E3%83%B4%E3%82%A3%E3%83%AB%E3%83%98%E3%83%AB%E3%83%A0%E3%83%BB%E3%83%95%E3%82%A9%E3%83%B3%E3%83%BB%E3%83%95%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%88&amp;kgmid=/m/081_6</a>)が、ナポレオン戦争に敗れて国家存亡の危機にあったプロイセンの建て直しとして、ベルリン大学を創設したことに始まります。 [1, 2, 3] 
@@ -357,102 +352,106 @@ IMRADのintroductionを作ろうとしてgeminiで
 </ul>
 </div>
 </div>
-<div id="outline-container-org2e45e2b" class="outline-4">
-<h4 id="org2e45e2b"><span class="section-number-4">5.2.2.</span> アメリカでの「大学院教育」としての隆盛（19世紀後半）</h4>
+<div id="outline-container-org3b2c094" class="outline-4">
+<h4 id="org3b2c094"><span class="section-number-4">5.2.2.</span> アメリカでの「大学院教育」としての隆盛（19世紀後半）</h4>
 <div class="outline-text-4" id="text-5-2-2">
 <p>
 19世紀半ば、多くのアメリカ人エリート留学生たちがドイツに渡り、この画期的なシステムに衝撃を受けました。当時のアメリカの大学（ハーバードやイェールなど）は、まだイギリス型の「ジェントルマンの教養（リベラルアーツ）と人格形成の場」に過ぎず、本格的な最先端研究を行う組織を持っていなかったためです。 [6] 
 彼らは帰国後、アメリカにこの仕組みを移植しようと試みます。その結晶として1876年に誕生したのが、ジョンズ・ホプキンス大学です。 [6, 7] 
 </p>
 </div>
-<div id="outline-container-org23d6ef4" class="outline-5">
-<h5 id="org23d6ef4">「大学院（Graduate School）」の発明</h5>
-<div class="outline-text-5" id="text-org23d6ef4">
+<div id="outline-container-orge745651" class="outline-5">
+<h5 id="orge745651">「大学院（Graduate School）」の発明</h5>
+<div class="outline-text-5" id="text-orge745651">
 <p>
 アメリカはドイツのシステムをそのまま真似るのではなく、独自の二階建て構造にアレンジしました。1〜4年生の学部（カレッジ）ではイギリス型の人格・教養教育を行い、その上の「大学院」において、ドイツ型のフンボルト理念（研究を通じた専門教育、ゼミナール、博士号の授与）を実践するというハイブリッド型です。 [7, 8, 9] 
 </p>
 </div>
 </div>
-<div id="outline-container-org28424bd" class="outline-5">
-<h5 id="org28424bd">世界標準への昇華</h5>
-<div class="outline-text-5" id="text-org28424bd">
+<div id="outline-container-org856aa3f" class="outline-5">
+<h5 id="org856aa3f">世界標準への昇華</h5>
+<div class="outline-text-5" id="text-org856aa3f">
 <p>
 このジョンズ・ホプキンス大学の成功を見て、ハーバード大学、シカゴ大学、コロンビア大学なども次々と「大学院」を設置し、19世紀末から20世紀にかけて、アメリカは世界最強の「リサーチ・ユニバーシティ（研究大学）」の地位を確立していきました。 [6, 9, 10] 
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfc365d4" class="outline-4">
-<h4 id="orgfc365d4"><span class="section-number-4">5.2.3.</span> イギリス（オックスフォード、ケンブリッジ）の対応と反応</h4>
+<div id="outline-container-orgfd2c53a" class="outline-4">
+<h4 id="orgfd2c53a"><span class="section-number-4">5.2.3.</span> イギリス（オックスフォード、ケンブリッジ）の対応と反応</h4>
 <div class="outline-text-4" id="text-5-2-3">
 <p>
 一方、オックスフォード大学とケンブリッジ大学（総称：オックスブリッジ）は、ドイツやアメリカの動きに対して当初は非常に冷淡で、強い拒絶反応を示しました。その理由は、両校が重んじていた独自の「チュートリアル（個別指導）制度」とカレッジ制のプライドにありました。 [10] 
 </p>
 </div>
-<div id="outline-container-org6ed7ed3" class="outline-5">
-<h5 id="org6ed7ed3">「教養と人格形成」の絶対視</h5>
-<div class="outline-text-5" id="text-org6ed7ed3">
+<div id="outline-container-orgd133ae8" class="outline-5">
+<h5 id="orgd133ae8">「教養と人格形成」の絶対視</h5>
+<div class="outline-text-5" id="text-orgd133ae8">
 <p>
 オックスブリッジにとって、大学とは「国家や教会を背負って立つエリート（ジェントルマン）の全人格的・リベラルアーツ教育の場」でした。宿舎（カレッジ）で寝食を共にし、教授と一対一で議論を交わすことが至高とされており、ドイツ型の「細分化された専門研究」や「実験室にこもる科学」は、「野蛮で功利的な職業訓練に近いもの」として軽蔑すらされていました。
 </p>
 </div>
 </div>
-<div id="outline-container-org337c1ec" class="outline-5">
-<h5 id="org337c1ec">「博士号（Ph.D.）」への拒絶</h5>
-<div class="outline-text-5" id="text-org337c1ec">
+<div id="outline-container-org765f4b3" class="outline-5">
+<h5 id="org765f4b3">「博士号（Ph.D.）」への拒絶</h5>
+<div class="outline-text-5" id="text-org765f4b3">
 <p>
 ドイツやアメリカが「研究者のパスポート」として博士号（Ph.D.）を量産し、世界標準にしていったのに対し、オックスブリッジは20世紀に入るまでPh.D.の学位を新設することを頑なに拒み続けました。「最高学位は伝統ある修士（MA）や文学博士（D.Litt）であり、新興のPh.D.など不要」というスタンスです。
 </p>
 </div>
 </div>
-<div id="outline-container-org47ade3c" class="outline-5">
-<h5 id="org47ade3c">20世紀の「しぶしぶの追随」</h5>
-<div class="outline-text-5" id="text-org47ade3c">
+<div id="outline-container-org9adc992" class="outline-5">
+<h5 id="org9adc992">20世紀の「しぶしぶの追随」</h5>
+<div class="outline-text-5" id="text-org9adc992">
 <p>
 しかし、20世紀に入ると科学技術の発展においてドイツやアメリカに圧倒的な差をつけられ始め、イギリス国内でも「このままでは国際的な競争力を失う」という危機感が強まります。第一次世界大戦中の1917年〜1918年頃になり、オックスブリッジもようやく重い腰を上げてPh.D.（博士課程）の制度を公式に導入しました。これは、アメリカやドイツに流れていた外国人留学生（特にアメリカ人やイギリス植民地からの留学生）を自国に引き留めるための、多分に政治的・市場的な対応でもありました。
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf796a3a" class="outline-4">
-<h4 id="orgf796a3a"><span class="section-number-4">5.2.4.</span> 総括</h4>
+<div id="outline-container-org20073da" class="outline-4">
+<h4 id="org20073da"><span class="section-number-4">5.2.4.</span> 総括</h4>
 <div class="outline-text-4" id="text-5-2-4">
 <p>
 現在の私たちがイメージする「大学院で論文を書き、暗黙知を共有し、最善手を学ぶ」というスタイルは、ドイツで生まれた理念が、19世紀末のアメリカの合理主義によって「大学院システム」として制度化され、最後まで抵抗していたイギリスの伝統校をも巻き込んで世界標準になったという歴史的グラデーションを持っています。
 まさに、このStackが提供しようとしている「足場（暗黙知の明示化）」は、このアメリカが完成させた近現代の大学院システム（研究を通じた教育）の系譜の、最先端のアップデートと言えます。
 この歴史的背景（ドイツ発、アメリカでのシステム化、オックスブリッジの抵抗）を踏まえて、先ほどの文章にさらに「歴史的な正統性」や「世界標準の作法」といったニュアンスを補強したい部分はありますか？
 </p>
-
-<p>
-[1] [<a href="https://d-nb.info">https://d-nb.info</a>](<a href="https://d-nb.info/1277046514/34">https://d-nb.info/1277046514/34</a>)
-[2] [<a href="https://globalchallenges.ch">https://globalchallenges.ch</a>](<a href="https://globalchallenges.ch/issue/14/figure/the-humboldtian-model-of-higher-education/">https://globalchallenges.ch/issue/14/figure/the-humboldtian-model-of-higher-education/</a>)
-[3] [<a href="https://www.cbc.ca">https://www.cbc.ca</a>](<a href="https://www.cbc.ca/radio/ideas/humboldt-education-system-bildung-1.7172093">https://www.cbc.ca/radio/ideas/humboldt-education-system-bildung-1.7172093</a>)
-[4] [<a href="https://m.kawasaki-m.ac.jp">https://m.kawasaki-m.ac.jp</a>](<a href="https://m.kawasaki-m.ac.jp/immuno-oncol/furikaeru.html">https://m.kawasaki-m.ac.jp/immuno-oncol/furikaeru.html</a>)
-[5] [<a href="https://www.raihankalla.id">https://www.raihankalla.id</a>](<a href="https://www.raihankalla.id/how-university-lost-its-way">https://www.raihankalla.id/how-university-lost-its-way</a>)
-[6] [<a href="https://www.scribd.com">https://www.scribd.com</a>](<a href="https://www.scribd.com/document/544902017/06-03-Muller">https://www.scribd.com/document/544902017/06-03-Muller</a>)
-[7] [<a href="https://en.wikipedia.org">https://en.wikipedia.org</a>](<a href="https://en.wikipedia.org/wiki/Humboldtian_model_of_higher_education">https://en.wikipedia.org/wiki/Humboldtian_model_of_higher_education</a>)
-[8] [<a href="https://www.tate-lab.net">https://www.tate-lab.net</a>](<a href="https://www.tate-lab.net/mt/2012/12/post-263.html">https://www.tate-lab.net/mt/2012/12/post-263.html</a>)
-[9] [<a href="https://www.researchgate.net">https://www.researchgate.net</a>](<a href="https://www.researchgate.net/publication/228315038_Humboldt%27s_Unity_of_Research_and_Teaching_Influence_on_the_Philosophy_and_Development_of_US_Higher_Education">https://www.researchgate.net/publication/228315038_Humboldt%27s_Unity_of_Research_and_Teaching_Influence_on_the_Philosophy_and_Development_of_US_Higher_Education</a>)
-[10] [<a href="https://historyandpolicy.org">https://historyandpolicy.org</a>](<a href="https://historyandpolicy.org/policy-papers/papers/the-idea-of-a-university-today/">https://historyandpolicy.org/policy-papers/papers/the-idea-of-a-university-today/</a>)
-</p>
+</div>
+</div>
+<div id="outline-container-orgb6428c4" class="outline-4">
+<h4 id="orgb6428c4"><span class="section-number-4">5.2.5.</span> 文献</h4>
+<div class="outline-text-4" id="text-5-2-5">
+<ol class="org-ol">
+<li>[<a href="https://d-nb.info">https://d-nb.info</a>](<a href="https://d-nb.info/1277046514/34">https://d-nb.info/1277046514/34</a>)</li>
+<li>[<a href="https://globalchallenges.ch">https://globalchallenges.ch</a>](<a href="https://globalchallenges.ch/issue/14/figure/the-humboldtian-model-of-higher-education/">https://globalchallenges.ch/issue/14/figure/the-humboldtian-model-of-higher-education/</a>)</li>
+<li>[<a href="https://www.cbc.ca">https://www.cbc.ca</a>](<a href="https://www.cbc.ca/radio/ideas/humboldt-education-system-bildung-1.7172093">https://www.cbc.ca/radio/ideas/humboldt-education-system-bildung-1.7172093</a>)</li>
+<li>[<a href="https://m.kawasaki-m.ac.jp">https://m.kawasaki-m.ac.jp</a>](<a href="https://m.kawasaki-m.ac.jp/immuno-oncol/furikaeru.html">https://m.kawasaki-m.ac.jp/immuno-oncol/furikaeru.html</a>)</li>
+<li>[<a href="https://www.raihankalla.id">https://www.raihankalla.id</a>](<a href="https://www.raihankalla.id/how-university-lost-its-way">https://www.raihankalla.id/how-university-lost-its-way</a>)</li>
+<li>[<a href="https://www.scribd.com">https://www.scribd.com</a>](<a href="https://www.scribd.com/document/544902017/06-03-Muller">https://www.scribd.com/document/544902017/06-03-Muller</a>)</li>
+<li>[<a href="https://en.wikipedia.org">https://en.wikipedia.org</a>](<a href="https://en.wikipedia.org/wiki/Humboldtian_model_of_higher_education">https://en.wikipedia.org/wiki/Humboldtian_model_of_higher_education</a>)</li>
+<li>[<a href="https://www.tate-lab.net">https://www.tate-lab.net</a>](<a href="https://www.tate-lab.net/mt/2012/12/post-263.html">https://www.tate-lab.net/mt/2012/12/post-263.html</a>)</li>
+<li>[<a href="https://www.researchgate.net">https://www.researchgate.net</a>](<a href="https://www.researchgate.net/publication/228315038_Humboldt%27s_Unity_of_Research_and_Teaching_Influence_on_the_Philosophy_and_Development_of_US_Higher_Education">https://www.researchgate.net/publication/228315038_Humboldt%27s_Unity_of_Research_and_Teaching_Influence_on_the_Philosophy_and_Development_of_US_Higher_Education</a>)</li>
+<li>[<a href="https://historyandpolicy.org">https://historyandpolicy.org</a>](<a href="https://historyandpolicy.org/policy-papers/papers/the-idea-of-a-university-today/">https://historyandpolicy.org/policy-papers/papers/the-idea-of-a-university-today/</a>)</li>
+</ol>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org66257d2" class="outline-2">
-<h2 id="org66257d2"><span class="section-number-2">6.</span> best practice</h2>
+<div id="outline-container-org888784a" class="outline-2">
+<h2 id="org888784a"><span class="section-number-2">6.</span> best practice</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgd9cd437" class="outline-3">
-<h3 id="orgd9cd437"><span class="section-number-3">6.1.</span> user</h3>
+<div id="outline-container-org7c2350f" class="outline-3">
+<h3 id="org7c2350f"><span class="section-number-3">6.1.</span> user</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 コンピュータ領域でよく使われるベストプラクティスと先ほど出てきたプラグマティズムの間には流れがありますか？　アカデミックなプラグマティズムから，現場で使う知識としてのベストプラクティスと命名されたようなのをどこかで読んだ気がするのですが思い違いでしょうか？
 </p>
 </div>
 </div>
-<div id="outline-container-org1638cea" class="outline-3">
-<h3 id="org1638cea"><span class="section-number-3">6.2.</span> gemini</h3>
+<div id="outline-container-org8d6db2c" class="outline-3">
+<h3 id="org8d6db2c"><span class="section-number-3">6.2.</span> gemini</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 ご記憶の通り、「アカデミックなプラグマティズム」からコンピュータ領域の「ベストプラクティス」への思想的なつながりは明確に存在します。思い違いではありません。 [1, 2] 
@@ -461,8 +460,8 @@ IMRADのintroductionを作ろうとしてgeminiで
 </p>
 <hr />
 </div>
-<div id="outline-container-orgf301295" class="outline-4">
-<h4 id="orgf301295"><span class="section-number-4">6.2.1.</span> 思想の源流：プラグマティズムの本質</h4>
+<div id="outline-container-orge4006e6" class="outline-4">
+<h4 id="orge4006e6"><span class="section-number-4">6.2.1.</span> 思想の源流：プラグマティズムの本質</h4>
 <div class="outline-text-4" id="text-6-2-1">
 <p>
 19世紀末、アメリカでチャールズ・パースやウィリアム・ジェームズ、ジョン・デューイらによって提唱された「プラグマティズム」は、それまでのヨーロッパ中心の「絶対的な真理を追究する哲学」へのアンチテーゼでした。 [3, 4, 5] 
@@ -478,8 +477,8 @@ IMRADのintroductionを作ろうとしてgeminiで
 </p>
 </div>
 </div>
-<div id="outline-container-orgf674c65" class="outline-4">
-<h4 id="orgf674c65"><span class="section-number-4">6.2.2.</span> アメリカの「合理主義・産業界」での実用化</h4>
+<div id="outline-container-org3684923" class="outline-4">
+<h4 id="org3684923"><span class="section-number-4">6.2.2.</span> アメリカの「合理主義・産業界」での実用化</h4>
 <div class="outline-text-4" id="text-6-2-2">
 <p>
 このプラグマティズムの精神（実用主義）は、20世紀前半のアメリカの産業界、特に製造業や経営学と融合します。
@@ -491,8 +490,8 @@ IMRADのintroductionを作ろうとしてgeminiで
 </ul>
 </div>
 </div>
-<div id="outline-container-orgafc50b0" class="outline-4">
-<h4 id="orgafc50b0"><span class="section-number-4">6.2.3.</span> コンピュータ・ソフトウェア領域への流入</h4>
+<div id="outline-container-orgf6f9c0c" class="outline-4">
+<h4 id="orgf6f9c0c"><span class="section-number-4">6.2.3.</span> コンピュータ・ソフトウェア領域への流入</h4>
 <div class="outline-text-4" id="text-6-2-3">
 <p>
 1990年代以降、この流れが最も爆発的に開花したのがコンピュータ（ソフトウェアエンジニアリング）の領域です。
@@ -509,8 +508,8 @@ IMRADのintroductionを作ろうとしてgeminiで
 </p>
 </div>
 </div>
-<div id="outline-container-org3bb22ee" class="outline-4">
-<h4 id="org3bb22ee"><span class="section-number-4">6.2.4.</span> まとめ</h4>
+<div id="outline-container-org8053c72" class="outline-4">
+<h4 id="org8053c72"><span class="section-number-4">6.2.4.</span> まとめ</h4>
 <div class="outline-text-4" id="text-6-2-4">
 <p>
 歴史の文脈が一本の線でつながりましたね。
@@ -525,34 +524,38 @@ IMRADのintroductionを作ろうとしてgeminiで
 <p>
 「プラグマティズム」や「道具としての知識」といったニュアンスを、今回のStackの紹介文にも明示的に盛り込みたいですか？それとも、ご自身の背景知識（前提知識）として整理できれば十分でしょうか？
 </p>
-
-<p>
-[1] [<a href="https://jinjibu.jp">https://jinjibu.jp</a>](<a href="https://jinjibu.jp/keyword/detl/1864/">https://jinjibu.jp/keyword/detl/1864/</a>)
-[2] [<a href="https://kohokyo.or.jp">https://kohokyo.or.jp</a>](<a href="https://kohokyo.or.jp/cms/wp-content/uploads/2026/08/research-report_JPN.pdf">https://kohokyo.or.jp/cms/wp-content/uploads/2026/08/research-report_JPN.pdf</a>)
-[3] [<a href="https://plato.stanford.edu">https://plato.stanford.edu</a>](<a href="https://plato.stanford.edu/entries/pragmatism/">https://plato.stanford.edu/entries/pragmatism/</a>)
-[4] [<a href="https://www.britannica.com">https://www.britannica.com</a>](<a href="https://www.britannica.com/topic/pragmatism-philosophy">https://www.britannica.com/topic/pragmatism-philosophy</a>)
-[5] [<a href="https://note.com">https://note.com</a>](<a href="https://note.com/tsunobuchi/n/n8a38e368c99c">https://note.com/tsunobuchi/n/n8a38e368c99c</a>)
-[6] [<a href="https://www.tempstaff.co.jp">https://www.tempstaff.co.jp</a>](<a href="https://www.tempstaff.co.jp/client/hr-knowledge/1818.html">https://www.tempstaff.co.jp/client/hr-knowledge/1818.html</a>)
-[7] [<a href="https://da.lib.kobe-u.ac.jp">https://da.lib.kobe-u.ac.jp</a>](<a href="https://da.lib.kobe-u.ac.jp/da/kernel/D1007414/D1007414.pdf">https://da.lib.kobe-u.ac.jp/da/kernel/D1007414/D1007414.pdf</a>)
-</p>
+</div>
+</div>
+<div id="outline-container-org4bb8a53" class="outline-4">
+<h4 id="org4bb8a53"><span class="section-number-4">6.2.5.</span> 文献</h4>
+<div class="outline-text-4" id="text-6-2-5">
+<ol class="org-ol">
+<li>[<a href="https://jinjibu.jp">https://jinjibu.jp</a>](<a href="https://jinjibu.jp/keyword/detl/1864/">https://jinjibu.jp/keyword/detl/1864/</a>)</li>
+<li>[<a href="https://kohokyo.or.jp">https://kohokyo.or.jp</a>](<a href="https://kohokyo.or.jp/cms/wp-content/uploads/2026/08/research-report_JPN.pdf">https://kohokyo.or.jp/cms/wp-content/uploads/2026/08/research-report_JPN.pdf</a>)</li>
+<li>[<a href="https://plato.stanford.edu">https://plato.stanford.edu</a>](<a href="https://plato.stanford.edu/entries/pragmatism/">https://plato.stanford.edu/entries/pragmatism/</a>)</li>
+<li>[<a href="https://www.britannica.com">https://www.britannica.com</a>](<a href="https://www.britannica.com/topic/pragmatism-philosophy">https://www.britannica.com/topic/pragmatism-philosophy</a>)</li>
+<li>[<a href="https://note.com">https://note.com</a>](<a href="https://note.com/tsunobuchi/n/n8a38e368c99c">https://note.com/tsunobuchi/n/n8a38e368c99c</a>)</li>
+<li>[<a href="https://www.tempstaff.co.jp">https://www.tempstaff.co.jp</a>](<a href="https://www.tempstaff.co.jp/client/hr-knowledge/1818.html">https://www.tempstaff.co.jp/client/hr-knowledge/1818.html</a>)</li>
+<li>[<a href="https://da.lib.kobe-u.ac.jp">https://da.lib.kobe-u.ac.jp</a>](<a href="https://da.lib.kobe-u.ac.jp/da/kernel/D1007414/D1007414.pdf">https://da.lib.kobe-u.ac.jp/da/kernel/D1007414/D1007414.pdf</a>)</li>
+</ol>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orge0453a6" class="outline-2">
-<h2 id="orge0453a6"><span class="section-number-2">7.</span> Parse</h2>
+<div id="outline-container-orgca5242b" class="outline-2">
+<h2 id="orgca5242b"><span class="section-number-2">7.</span> Parse</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org2bea535" class="outline-3">
-<h3 id="org2bea535"><span class="section-number-3">7.1.</span> user</h3>
+<div id="outline-container-org6978ede" class="outline-3">
+<h3 id="org6978ede"><span class="section-number-3">7.1.</span> user</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 チャールズ・パースは三つの思考法の一つであるabductionwo
 </p>
 </div>
 </div>
-<div id="outline-container-orgdadcc58" class="outline-3">
-<h3 id="orgdadcc58"><span class="section-number-3">7.2.</span> gemini</h3>
+<div id="outline-container-org43dc906" class="outline-3">
+<h3 id="org43dc906"><span class="section-number-3">7.2.</span> gemini</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 チャールズ・パースは、人間の推論（思考法）には「演繹（Deduction）」「帰納（Induction）」、そしてもう一つ、彼が最も重視した「アブダクション（Abduction：仮説形成／発想的推論）」の3つがあると提唱しました。
@@ -560,8 +563,8 @@ IMRADのintroductionを作ろうとしてgeminiで
 パースが定義したアブダクションの本質と、研究やツール（Stack）の文脈における意味を整理します。
 </p>
 </div>
-<div id="outline-container-orge5432b7" class="outline-4">
-<h4 id="orge5432b7"><span class="section-number-4">7.2.1.</span> 3つの思考法と「アブダクション」の違い</h4>
+<div id="outline-container-org892b4eb" class="outline-4">
+<h4 id="org892b4eb"><span class="section-number-4">7.2.1.</span> 3つの思考法と「アブダクション」の違い</h4>
 <div class="outline-text-4" id="text-7-2-1">
 <p>
 パースは、3つの推論を以下のように区別しました。
@@ -578,8 +581,8 @@ IMRADのintroductionを作ろうとしてgeminiで
 </p>
 </div>
 </div>
-<div id="outline-container-org50823c5" class="outline-4">
-<h4 id="org50823c5"><span class="section-number-4">7.2.2.</span> 「研究」と「プラグマティズム」における役割</h4>
+<div id="outline-container-org2eba327" class="outline-4">
+<h4 id="org2eba327"><span class="section-number-4">7.2.2.</span> 「研究」と「プラグマティズム」における役割</h4>
 <div class="outline-text-4" id="text-7-2-2">
 <p>
 研究者が論文（IMRAD）を書くとき、まさにこの3つの思考法が循環しています。
@@ -597,8 +600,8 @@ IMRADのintroductionを作ろうとしてgeminiで
 </p>
 </div>
 </div>
-<div id="outline-container-orgbe41334" class="outline-4">
-<h4 id="orgbe41334"><span class="section-number-4">7.2.3.</span> このStack（足場）が果たす役割</h4>
+<div id="outline-container-orge302c4b" class="outline-4">
+<h4 id="orge302c4b"><span class="section-number-4">7.2.3.</span> このStack（足場）が果たす役割</h4>
 <div class="outline-text-4" id="text-7-2-3">
 <p>
 アブダクション（仮説形成）は、研究において最もクリエイティブで重要なパートですが、同時に最も「暗黙知」化しやすく、初心者が迷子になりやすい部分です。
@@ -621,30 +624,29 @@ IMRADのintroductionを作ろうとしてgeminiで
 </div>
 </div>
 </div>
-<div id="outline-container-org51313f4" class="outline-2">
-<h2 id="org51313f4"><span class="section-number-2">8.</span> am/pm</h2>
+<div id="outline-container-orgd11b82c" class="outline-2">
+<h2 id="orgd11b82c"><span class="section-number-2">8.</span> am/pm</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-orgf5c30bb" class="outline-3">
-<h3 id="orgf5c30bb"><span class="section-number-3">8.1.</span> user</h3>
+<div id="outline-container-orga5acd88" class="outline-3">
+<h3 id="orga5acd88"><span class="section-number-3">8.1.</span> user</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
 ごめんAM/PMはSfardが提唱したaquire metaphor vs participation metaphorです．もう一度上の回答を練り直してください．
 </p>
 </div>
 </div>
-<div id="outline-container-org52f5518" class="outline-3">
-<h3 id="org52f5518"><span class="section-number-3">8.2.</span> gemini</h3>
+<div id="outline-container-org9eaacce" class="outline-3">
+<h3 id="org9eaacce"><span class="section-number-3">8.2.</span> gemini</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 大変失礼いたしました。AM/PMは、アンナ・スファード（Anna Sfard）が提唱した「獲得メタファー（Acquisition Metaphor：AM）」と「参加メタファー（Participation Metaphor：PM）」のことですね。私の早合点で異なる解釈をしてしまい、申し訳ありません。
 スファードの「AMからPMへの転換」という文脈を踏まえると、プラグマティズム（道具主義）とのつながりはさらに強固になり、このStackが提供する「足場」の教育的意義がより鮮明に整理できます。
 この視点に基づいて、改めて全体の文脈を練り直しました。
 </p>
-<hr />
 </div>
-<div id="outline-container-orgabe41fa" class="outline-4">
-<h4 id="orgabe41fa"><span class="section-number-4">8.2.1.</span> 知識を「道具」とみなすからこそ、PM（参加）が素直に受け入れられる</h4>
+<div id="outline-container-org9be6123" class="outline-4">
+<h4 id="org9be6123"><span class="section-number-4">8.2.1.</span> 知識を「道具」とみなすからこそ、PM（参加）が素直に受け入れられる</h4>
 <div class="outline-text-4" id="text-8-2-1">
 <p>
 従来の教育観（AM：獲得メタファー）では、知識は「頭の中のコンテナに蓄積し、所有するもの」と考えられていました。しかし、プラグマティズムは「知識とは環境に適応し、問題を解決するための『道具』である」と定義します。
@@ -653,21 +655,21 @@ IMRADのintroductionを作ろうとしてgeminiで
 </p>
 </div>
 </div>
-<div id="outline-container-orge4454ad" class="outline-4">
-<h4 id="orge4454ad"><span class="section-number-4">8.2.2.</span> 「AMからPMへの第一歩」としての卒業論文</h4>
+<div id="outline-container-org64219b4" class="outline-4">
+<h4 id="org64219b4"><span class="section-number-4">8.2.2.</span> 「AMからPMへの第一歩」としての卒業論文</h4>
 <div class="outline-text-4" id="text-8-2-2">
 <p>
 学生にとって、卒業論文を書くという経験は、まさに「AM（獲得）中心の学習」から「PM（参加）中心の学習」への決定的なパラダイムシフトです。
 </p>
 
-<ul class="org-ul">
-<li>これまでの学部生（AM）：教科書や講義から、既存の専門知識を「獲得」し、記憶することがゴールだった。</li>
-<li>これからの卒論生（PM）：研究者コミュニティという「実践の場」に足を踏み入れ、IMRADという共通言語（道具）を使いながら、新しい知識を生み出すプロセスに「参加」し始める。</li>
-</ul>
+<dl class="org-dl">
+<dt>これまでの学部生（AM）</dt><dd>教科書や講義から、既存の専門知識を「獲得」し、記憶することがゴールだった。</dd>
+<dt>これからの卒論生（PM）</dt><dd>研究者コミュニティという「実践の場」に足を踏み入れ、IMRADという共通言語（道具）を使いながら、新しい知識を生み出すプロセスに「参加」し始める。</dd>
+</dl>
 </div>
 </div>
-<div id="outline-container-orge0d8a3b" class="outline-4">
-<h4 id="orge0d8a3b"><span class="section-number-4">8.2.3.</span> Stackが提供する「足場」：PM（参加）を支える道具</h4>
+<div id="outline-container-org502d61b" class="outline-4">
+<h4 id="org502d61b"><span class="section-number-4">8.2.3.</span> Stackが提供する「足場」：PM（参加）を支える道具</h4>
 <div class="outline-text-4" id="text-8-2-3">
 <p>
 スファードは、教育においてAMとPMのどちらか片方だけが正しいわけではなく、双方が相補的であるべきだとも指摘しています。しかし、AM（座学）に慣れきった学生が、いきなりPM（未開の研究の実践）に放り込まれると、何をどうしていいか分からず立ち尽くしてしまいます（暗黙知の壁）。
@@ -681,8 +683,8 @@ IMRADのintroductionを作ろうとしてgeminiで
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb3add68" class="outline-4">
-<h4 id="orgb3add68"><span class="section-number-4">8.2.4.</span> 結論としてのストーリーの完成</h4>
+<div id="outline-container-orgdbbc0c1" class="outline-4">
+<h4 id="orgdbbc0c1"><span class="section-number-4">8.2.4.</span> 結論としてのストーリーの完成</h4>
 <div class="outline-text-4" id="text-8-2-4">
 <ol class="org-ol">
 <li>歴史：ドイツで始まった「研究を通じた教育」が、アメリカで大学院システム（世界標準のベストプラクティス）へと昇華した。</li>
@@ -700,20 +702,20 @@ IMRADのintroductionを作ろうとしてgeminiで
 </div>
 </div>
 </div>
-<div id="outline-container-org5789f60" class="outline-2">
-<h2 id="org5789f60"><span class="section-number-2">9.</span> 会社に入って</h2>
+<div id="outline-container-org0816d5f" class="outline-2">
+<h2 id="org0816d5f"><span class="section-number-2">9.</span> 会社に入って</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org04651c0" class="outline-3">
-<h3 id="org04651c0"><span class="section-number-3">9.1.</span> user</h3>
+<div id="outline-container-org5459713" class="outline-3">
+<h3 id="org5459713"><span class="section-number-3">9.1.</span> user</h3>
 <div class="outline-text-3" id="text-9-1">
 <p>
 最後のまとめはいいですね．更に一歩進んで，「研究というのが会社への参加，あるいは知的活動全体で必要とされており，さらにその手法の第一歩が卒業論文であるという意図をもう少し明確にしたいですね．結局は，論文作成って個人技で盗めというものだったのを，梅棹流にカードに落とし込むというのがstackの基本的発想で，それを整理する道具を提供するのがここで紹介するアプリです」というニュアンスを入れ込めますか？
 </p>
 </div>
 </div>
-<div id="outline-container-org726023b" class="outline-3">
-<h3 id="org726023b"><span class="section-number-3">9.2.</span> gemini</h3>
+<div id="outline-container-orgf52ae31" class="outline-3">
+<h3 id="orgf52ae31"><span class="section-number-3">9.2.</span> gemini</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
 これまでの深い思想的背景（ドイツの大学、プラグマティズム、AM/PMの転換）から、「企業への参加や知的活動全般における研究の必要性」、そして「背中を見て盗む個人技だった論文作成を、梅棹忠夫流のカードシステムに落とし込んで明示化する」というStackのコアとなる開発思想へ、見事に一本の線でつながりました。
@@ -721,8 +723,8 @@ IMRADのintroductionを作ろうとしてgeminiで
 </p>
 <hr />
 </div>
-<div id="outline-container-orgc08d24b" class="outline-4">
-<h4 id="orgc08d24b"><span class="section-number-4">9.2.1.</span> Stack 開発理念（マニフェスト）／紹介文案</h4>
+<div id="outline-container-org24af82e" class="outline-4">
+<h4 id="org24af82e"><span class="section-number-4">9.2.1.</span> Stack 開発理念（マニフェスト）／紹介文案</h4>
 <div class="outline-text-4" id="text-9-2-1">
 <p>
 研究とは、大学の中だけで完結する営みではありません。
@@ -736,8 +738,8 @@ Stackは、かつて梅棹忠夫が提唱した「カードによる情報整理
 <hr />
 </div>
 </div>
-<div id="outline-container-org3520565" class="outline-4">
-<h4 id="org3520565"><span class="section-number-4">9.2.2.</span> この文章のポイント</h4>
+<div id="outline-container-orgd7940ad" class="outline-4">
+<h4 id="orgd7940ad"><span class="section-number-4">9.2.2.</span> この文章のポイント</h4>
 <div class="outline-text-4" id="text-9-2-2">
 <ol class="org-ol">
 <li>「研究」の社会的価値を最大化：卒業論文を単なる「大学の卒業要件」ではなく、「会社や社会で活躍するための、知的活動のベストプラクティス」と位置づけました。</li>
@@ -752,24 +754,24 @@ Stackは、かつて梅棹忠夫が提唱した「カードによる情報整理
 </div>
 </div>
 </div>
-<div id="outline-container-org56c37bd" class="outline-2">
-<h2 id="org56c37bd"><span class="section-number-2">10.</span> まとめ</h2>
+<div id="outline-container-orge50aeb7" class="outline-2">
+<h2 id="orge50aeb7"><span class="section-number-2">10.</span> まとめ</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-orgca1be25" class="outline-3">
-<h3 id="orgca1be25"><span class="section-number-3">10.1.</span> user</h3>
+<div id="outline-container-org426ec3b" class="outline-3">
+<h3 id="org426ec3b"><span class="section-number-3">10.1.</span> user</h3>
 <div class="outline-text-3" id="text-10-1">
 <p>
 ここでのやり取りをorgとして保存することは可能ですか？
 </p>
 </div>
 </div>
-<div id="outline-container-org754da5d" class="outline-3">
-<h3 id="org754da5d"><span class="section-number-3">10.2.</span> Stack 開発理念（マニフェスト）</h3>
+<div id="outline-container-org9e02509" class="outline-3">
+<h3 id="org9e02509"><span class="section-number-3">10.2.</span> Stack 開発理念（マニフェスト）</h3>
 <div class="outline-text-3" id="text-10-2">
 </div>
-<div id="outline-container-orgd14b5a0" class="outline-4">
-<h4 id="orgd14b5a0"><span class="section-number-4">10.2.1.</span> 研究の社会的・普遍的価値</h4>
+<div id="outline-container-org88b658f" class="outline-4">
+<h4 id="org88b658f"><span class="section-number-4">10.2.1.</span> 研究の社会的・普遍的価値</h4>
 <div class="outline-text-4" id="text-10-2-1">
 <ul class="org-ul">
 <li>研究とは、大学の中だけで完結する営みではない。</li>
@@ -778,8 +780,8 @@ Stackは、かつて梅棹忠夫が提唱した「カードによる情報整理
 </ul>
 </div>
 </div>
-<div id="outline-container-org2930f9c" class="outline-4">
-<h4 id="org2930f9c"><span class="section-number-4">10.2.2.</span> 「個人技」から「明示化された道具」への転換</h4>
+<div id="outline-container-orgf5d1d0e" class="outline-4">
+<h4 id="orgf5d1d0e"><span class="section-number-4">10.2.2.</span> 「個人技」から「明示化された道具」への転換</h4>
 <div class="outline-text-4" id="text-10-2-2">
 <ul class="org-ul">
 <li>従来の論文作成（リサーチプロセス）は、指導教官や先輩の背中を見て「個人技として盗むもの（暗黙知）」とされてきた。</li>
@@ -788,8 +790,8 @@ Stackは、かつて梅棹忠夫が提唱した「カードによる情報整理
 </ul>
 </div>
 </div>
-<div id="outline-container-org6377d9c" class="outline-4">
-<h4 id="org6377d9c"><span class="section-number-4">10.2.3.</span> 梅棹流カードシステムと「足場（スキャフォールディング）」</h4>
+<div id="outline-container-org1082b83" class="outline-4">
+<h4 id="org1082b83"><span class="section-number-4">10.2.3.</span> 梅棹流カードシステムと「足場（スキャフォールディング）」</h4>
 <div class="outline-text-4" id="text-10-2-3">
 <ul class="org-ul">
 <li>かつて梅棹忠夫が提唱した「カードによる情報整理法」の思想を現代のデジタル環境にバイパス。</li>
@@ -799,12 +801,12 @@ Stackは、かつて梅棹忠夫が提唱した「カードによる情報整理
 </div>
 </div>
 </div>
-<div id="outline-container-org19ac063" class="outline-3">
-<h3 id="org19ac063"><span class="section-number-3">10.3.</span> 理論的・歴史的背景（Background &amp; Philosophy）</h3>
+<div id="outline-container-orgddc1bb1" class="outline-3">
+<h3 id="orgddc1bb1"><span class="section-number-3">10.3.</span> 理論的・歴史的背景（Background &amp; Philosophy）</h3>
 <div class="outline-text-3" id="text-10-3">
 </div>
-<div id="outline-container-org4152d4e" class="outline-4">
-<h4 id="org4152d4e"><span class="section-number-4">10.3.1.</span> 歴史的系譜：ドイツからアメリカ、そして世界標準へ</h4>
+<div id="outline-container-orgc50872d" class="outline-4">
+<h4 id="orgc50872d"><span class="section-number-4">10.3.1.</span> 歴史的系譜：ドイツからアメリカ、そして世界標準へ</h4>
 <div class="outline-text-4" id="text-10-3-1">
 <ul class="org-ul">
 <li><b>1810年頃（フンボルト理念の成立）</b>
@@ -827,8 +829,8 @@ Stackは、かつて梅棹忠夫が提唱した「カードによる情報整理
 </ul>
 </div>
 </div>
-<div id="outline-container-org540262c" class="outline-4">
-<h4 id="org540262c"><span class="section-number-4">10.3.2.</span> 哲学：プラグマティズム（実用主義）とベストプラクティス</h4>
+<div id="outline-container-orgc35a020" class="outline-4">
+<h4 id="orgc35a020"><span class="section-number-4">10.3.2.</span> 哲学：プラグマティズム（実用主義）とベストプラクティス</h4>
 <div class="outline-text-4" id="text-10-3-2">
 <ul class="org-ul">
 <li><b>プラグマティズムの本質</b>
@@ -844,8 +846,8 @@ Stackは、かつて梅棹忠夫が提唱した「カードによる情報整理
 </ul>
 </div>
 </div>
-<div id="outline-container-org9add05c" class="outline-4">
-<h4 id="org9add05c"><span class="section-number-4">10.3.3.</span> 認知科学・教育論：AM/PM（獲得 vs 参加メタファー）</h4>
+<div id="outline-container-org2945902" class="outline-4">
+<h4 id="org2945902"><span class="section-number-4">10.3.3.</span> 認知科学・教育論：AM/PM（獲得 vs 参加メタファー）</h4>
 <div class="outline-text-4" id="text-10-3-3">
 <ul class="org-ul">
 <li><b>アンナ・スファード（Anna Sfard）の提唱</b>
@@ -861,8 +863,8 @@ Stackは、かつて梅棹忠夫が提唱した「カードによる情報整理
 </ul>
 </div>
 </div>
-<div id="outline-container-org775ec2d" class="outline-4">
-<h4 id="org775ec2d"><span class="section-number-4">10.3.4.</span> 思考法：C.S.パースのアブダクション（仮説形成）</h4>
+<div id="outline-container-org7d08b28" class="outline-4">
+<h4 id="org7d08b28"><span class="section-number-4">10.3.4.</span> 思考法：C.S.パースのアブダクション（仮説形成）</h4>
 <div class="outline-text-4" id="text-10-3-4">
 <ul class="org-ul">
 <li><b>3つの推論</b>
@@ -881,16 +883,16 @@ Stackは、かつて梅棹忠夫が提唱した「カードによる情報整理
 </div>
 </div>
 </div>
-<div id="outline-container-orge5a130a" class="outline-2">
-<h2 id="orge5a130a"><span class="section-number-2">11.</span> Stack 開発理念（マニフェスト）／紹介文案</h2>
+<div id="outline-container-orgd7c253a" class="outline-2">
+<h2 id="orgd7c253a"><span class="section-number-2">11.</span> Stack 開発理念（マニフェスト）／紹介文案</h2>
 <div class="outline-text-2" id="text-11">
 <p>
 これまでの深い思想的背景（ドイツの大学、プラグマティズム、AM/PMの転換）から、「企業への参加や知的活動全般における研究の必要性」、そして「背中を見て盗む個人技だった論文作成を、梅棹忠夫流のカードシステムに落とし込んで明示化する」というStackのコアとなる開発思想へ、見事に一本の線でつながりました。
 「研究というスキルの社会的・普遍的価値」と「Stackという道具の具体的なアプローチ」を明確に打ち出した、公式ステートメントの決定版（紹介文案）を作成しました。
 </p>
 </div>
-<div id="outline-container-orgbae52ff" class="outline-3">
-<h3 id="orgbae52ff"><span class="section-number-3">11.1.</span> Stack 開発理念（マニフェスト）／紹介文案</h3>
+<div id="outline-container-org27c8e3c" class="outline-3">
+<h3 id="org27c8e3c"><span class="section-number-3">11.1.</span> Stack 開発理念（マニフェスト）／紹介文案</h3>
 <div class="outline-text-3" id="text-11-1">
 <p>
 <b>研究とは、大学の中だけで完結する営みではありません。</b>
@@ -924,8 +926,8 @@ Stackは、かつて梅棹忠夫が提唱した「カードによる情報整理
 </p>
 </div>
 </div>
-<div id="outline-container-org220f2ec" class="outline-3">
-<h3 id="org220f2ec"><span class="section-number-3">11.2.</span> この文章のポイント</h3>
+<div id="outline-container-orga711d08" class="outline-3">
+<h3 id="orga711d08"><span class="section-number-3">11.2.</span> この文章のポイント</h3>
 <div class="outline-text-3" id="text-11-2">
 <ol class="org-ol">
 <li>「研究」の社会的価値を最大化：卒業論文を単なる「大学の卒業要件」ではなく、「会社や社会で活躍するための、知的活動のベストプラクティス」と位置づけました。</li>
@@ -947,7 +949,7 @@ Stackは、かつて梅棹忠夫が提唱した「カードによる情報整理
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Shigeto R. Nishitani</p>
-<p class="date">Created: 2026-09-29 Tue 09:45</p>
+<p class="date">Created: 2026-10-01 Thu 10:46</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

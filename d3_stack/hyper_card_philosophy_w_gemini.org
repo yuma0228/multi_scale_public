@@ -9,11 +9,11 @@
 
 * abstract <2026-09-28 Mon>
 ここでは，現在のHyperCard stackが提供しようとする
-ベストプラクティスがなぜ必要かを導いています．
+ベストプラクティスがなぜ必要かの哲学を示しています．
 IMRADのintroductionを作ろうとしてgeminiで
-「符合」を調べ始めた．そのまま，
-フンボルト理念から，abduction, am/pmまでの
-流れを再確認．
+「符合」を調べ始めて，
+そのまま，フンボルト理念から，abduction, am/pmまでの
+流れを再確認したところです．
 
 
 * きっかけ
@@ -25,14 +25,14 @@ IMRADのintroductionを作ろうとしてgeminiで
 「書く側が用意した型（IMRAD）」と「読む側が持っている想定」がぴったり一致するという文脈に、「符合（互いの事柄がぴったり一致する）」という言葉はとても美しく馴染みます。
 もし、より自然な表現や、別のニュアンスを検討されたい場合は、以下の言い換えも可能です。
 *** さらに文脈に馴染む言い換えの選択肢
-- 「一致（いっち）させるためです」
-- * 最も自然で一般的な表現です。言葉に引っかかりがなく、誰にでもストレートに伝わります。
-- 「合致（がっち）させるためです」
-- 「一致」よりも少し硬い表現で、基準や目的にぴったり合うという意味合いが強くなります。ビジネスや教育の場に適しています。
-- 「擦り合わせる（すりあわせる）ためです」
-- 「お互いの認識を近づけて一致させる」という動的なプロセスを強調したい場合に適しています。
-- 「同期（どうき）させるためです」
-- ややモダン（IT・工学寄り）な響きになりますが、「双方の認識をリアルタイムに同じ状態にする」というニュアンスを理系学生に伝えるのには馴染みやすい表現です。
+- 「一致（いっち）させるためです」 :: 
+   最も自然で一般的な表現です。言葉に引っかかりがなく、誰にでもストレートに伝わります。
+- 「合致（がっち）させるためです」 ::
+   「一致」よりも少し硬い表現で、基準や目的にぴったり合うという意味合いが強くなります。ビジネスや教育の場に適しています。
+- 「擦り合わせる（すりあわせる）ためです」 :: 
+   「お互いの認識を近づけて一致させる」という動的なプロセスを強調したい場合に適しています。
+- 「同期（どうき）させるためです」 ::
+   ややモダン（IT・工学寄り）な響きになりますが、「双方の認識をリアルタイムに同じ状態にする」というニュアンスを理系学生に伝えるのには馴染みやすい表現です。
 
 *** 結論
 現在の「符合させる」のままでも十分に意味は伝わり、知的な印象を与えます。もし講義や説明の対象（学生など）に対して「少し言葉が硬いかな」と感じる場合は、「一致させるため」「合致させるため」に infant（優しく）変更するのがおすすめです。
@@ -47,12 +47,12 @@ IMRADのintroductionを作ろうとしてgeminiで
 わざわざ「ここにこういう意図で書きました」と言葉にしなくても、お互いが「このセクションにはこの情報があるはずだ」と理解し合えている状態（＝符合している状態）こそ、暗黙知が機能している証拠と言えます。
 論文執筆や指導の文脈において、この「暗黙知」を言語化して伝えるために、以下のような表現を取り入れると、さらに説得力が増すかもしれません。
 *** 「暗黙知」を意識した表現の工夫
-- 「共通言語（プロトコル）として機能させるため」
-- 理系において、異なる専門分野同士でも一瞬で構造を理解し合える「通信規格（プロトコル）」のような役割を果たしている、という意味合いです。
-- 「認知的負荷（読むエネルギー）を減らすため」
-- 構成が符合していると、読者は「どこに何が書いてあるか」を探す無駄なエネルギーを使わずに済み、研究内容そのものに集中できます。
-- 「研究コミュニティの暗黙の了解（規範）に最適化するため」
-- 査読者や他の研究者から「信頼できる論文（プロトコルに則っている）」と一目で認知してもらうための作法である、という視点です。
+- 「共通言語（プロトコル）として機能させるため」 :: 
+   理系において、異なる専門分野同士でも一瞬で構造を理解し合える「通信規格（プロトコル）」のような役割を果たしている、という意味合いです。
+- 「認知的負荷（読むエネルギー）を減らすため」 ::
+   構成が符合していると、読者は「どこに何が書いてあるか」を探す無駄なエネルギーを使わずに済み、研究内容そのものに集中できます。
+- 「研究コミュニティの暗黙の了解（規範）に最適化するため」 ::
+   査読者や他の研究者から「信頼できる論文（プロトコルに則っている）」と一目で認知してもらうための作法である、という視点です。
 
 「暗黙知」というキーワードが出たことで、文脈がより深まりました。
 このお話は、学生向けの講義のシラバス（講義概要）や教材の導入部分で使われる文章でしょうか？
@@ -120,16 +120,17 @@ IMRADのintroductionを作ろうとしてgeminiで
 まさに、このStackが提供しようとしている「足場（暗黙知の明示化）」は、このアメリカが完成させた近現代の大学院システム（研究を通じた教育）の系譜の、最先端のアップデートと言えます。
 この歴史的背景（ドイツ発、アメリカでのシステム化、オックスブリッジの抵抗）を踏まえて、先ほどの文章にさらに「歴史的な正統性」や「世界標準の作法」といったニュアンスを補強したい部分はありますか？
 
-[1] [https://d-nb.info](https://d-nb.info/1277046514/34)
-[2] [https://globalchallenges.ch](https://globalchallenges.ch/issue/14/figure/the-humboldtian-model-of-higher-education/)
-[3] [https://www.cbc.ca](https://www.cbc.ca/radio/ideas/humboldt-education-system-bildung-1.7172093)
-[4] [https://m.kawasaki-m.ac.jp](https://m.kawasaki-m.ac.jp/immuno-oncol/furikaeru.html)
-[5] [https://www.raihankalla.id](https://www.raihankalla.id/how-university-lost-its-way)
-[6] [https://www.scribd.com](https://www.scribd.com/document/544902017/06-03-Muller)
-[7] [https://en.wikipedia.org](https://en.wikipedia.org/wiki/Humboldtian_model_of_higher_education)
-[8] [https://www.tate-lab.net](https://www.tate-lab.net/mt/2012/12/post-263.html)
-[9] [https://www.researchgate.net](https://www.researchgate.net/publication/228315038_Humboldt%27s_Unity_of_Research_and_Teaching_Influence_on_the_Philosophy_and_Development_of_US_Higher_Education)
-[10] [https://historyandpolicy.org](https://historyandpolicy.org/policy-papers/papers/the-idea-of-a-university-today/)
+*** 文献
+1. [https://d-nb.info](https://d-nb.info/1277046514/34)
+1. [https://globalchallenges.ch](https://globalchallenges.ch/issue/14/figure/the-humboldtian-model-of-higher-education/)
+1. [https://www.cbc.ca](https://www.cbc.ca/radio/ideas/humboldt-education-system-bildung-1.7172093)
+1. [https://m.kawasaki-m.ac.jp](https://m.kawasaki-m.ac.jp/immuno-oncol/furikaeru.html)
+1. [https://www.raihankalla.id](https://www.raihankalla.id/how-university-lost-its-way)
+1. [https://www.scribd.com](https://www.scribd.com/document/544902017/06-03-Muller)
+1. [https://en.wikipedia.org](https://en.wikipedia.org/wiki/Humboldtian_model_of_higher_education)
+1. [https://www.tate-lab.net](https://www.tate-lab.net/mt/2012/12/post-263.html)
+1. [https://www.researchgate.net](https://www.researchgate.net/publication/228315038_Humboldt%27s_Unity_of_Research_and_Teaching_Influence_on_the_Philosophy_and_Development_of_US_Higher_Education)
+1. [https://historyandpolicy.org](https://historyandpolicy.org/policy-papers/papers/the-idea-of-a-university-today/)
 
 * best practice
 ** user
@@ -168,13 +169,14 @@ IMRADのintroductionを作ろうとしてgeminiで
 #+end_quote
 「プラグマティズム」や「道具としての知識」といったニュアンスを、今回のStackの紹介文にも明示的に盛り込みたいですか？それとも、ご自身の背景知識（前提知識）として整理できれば十分でしょうか？
 
-[1] [https://jinjibu.jp](https://jinjibu.jp/keyword/detl/1864/)
-[2] [https://kohokyo.or.jp](https://kohokyo.or.jp/cms/wp-content/uploads/2026/08/research-report_JPN.pdf)
-[3] [https://plato.stanford.edu](https://plato.stanford.edu/entries/pragmatism/)
-[4] [https://www.britannica.com](https://www.britannica.com/topic/pragmatism-philosophy)
-[5] [https://note.com](https://note.com/tsunobuchi/n/n8a38e368c99c)
-[6] [https://www.tempstaff.co.jp](https://www.tempstaff.co.jp/client/hr-knowledge/1818.html)
-[7] [https://da.lib.kobe-u.ac.jp](https://da.lib.kobe-u.ac.jp/da/kernel/D1007414/D1007414.pdf)
+*** 文献
+1. [https://jinjibu.jp](https://jinjibu.jp/keyword/detl/1864/)
+1. [https://kohokyo.or.jp](https://kohokyo.or.jp/cms/wp-content/uploads/2026/08/research-report_JPN.pdf)
+1. [https://plato.stanford.edu](https://plato.stanford.edu/entries/pragmatism/)
+1. [https://www.britannica.com](https://www.britannica.com/topic/pragmatism-philosophy)
+1. [https://note.com](https://note.com/tsunobuchi/n/n8a38e368c99c)
+1. [https://www.tempstaff.co.jp](https://www.tempstaff.co.jp/client/hr-knowledge/1818.html)
+1. [https://da.lib.kobe-u.ac.jp](https://da.lib.kobe-u.ac.jp/da/kernel/D1007414/D1007414.pdf)
 
 * Parse
 ** user
@@ -218,7 +220,7 @@ IMRADのintroductionを作ろうとしてgeminiで
 大変失礼いたしました。AM/PMは、アンナ・スファード（Anna Sfard）が提唱した「獲得メタファー（Acquisition Metaphor：AM）」と「参加メタファー（Participation Metaphor：PM）」のことですね。私の早合点で異なる解釈をしてしまい、申し訳ありません。
 スファードの「AMからPMへの転換」という文脈を踏まえると、プラグマティズム（道具主義）とのつながりはさらに強固になり、このStackが提供する「足場」の教育的意義がより鮮明に整理できます。
 この視点に基づいて、改めて全体の文脈を練り直しました。
-------------------------------
+
 *** 知識を「道具」とみなすからこそ、PM（参加）が素直に受け入れられる
 従来の教育観（AM：獲得メタファー）では、知識は「頭の中のコンテナに蓄積し、所有するもの」と考えられていました。しかし、プラグマティズムは「知識とは環境に適応し、問題を解決するための『道具』である」と定義します。
 道具である以上、それをただ頭にコレクションすること（AM）には意味がありません。実際に道具が使われているコミュニティに「参加」し、他者や環境との相互作用の中で使いこなしていくプロセス（PM：参加メタファー）こそが学習の本質であるという結論に、きわめて自然に行き着きます。
@@ -226,8 +228,8 @@ IMRADのintroductionを作ろうとしてgeminiで
 *** 「AMからPMへの第一歩」としての卒業論文
 学生にとって、卒業論文を書くという経験は、まさに「AM（獲得）中心の学習」から「PM（参加）中心の学習」への決定的なパラダイムシフトです。
 
-- これまでの学部生（AM）：教科書や講義から、既存の専門知識を「獲得」し、記憶することがゴールだった。
-- これからの卒論生（PM）：研究者コミュニティという「実践の場」に足を踏み入れ、IMRADという共通言語（道具）を使いながら、新しい知識を生み出すプロセスに「参加」し始める。
+- これまでの学部生（AM） :: 教科書や講義から、既存の専門知識を「獲得」し、記憶することがゴールだった。
+- これからの卒論生（PM） :: 研究者コミュニティという「実践の場」に足を踏み入れ、IMRADという共通言語（道具）を使いながら、新しい知識を生み出すプロセスに「参加」し始める。
 
 *** Stackが提供する「足場」：PM（参加）を支える道具
 スファードは、教育においてAMとPMのどちらか片方だけが正しいわけではなく、双方が相補的であるべきだとも指摘しています。しかし、AM（座学）に慣れきった学生が、いきなりPM（未開の研究の実践）に放り込まれると、何をどうしていいか分からず立ち尽くしてしまいます（暗黙知の壁）。
