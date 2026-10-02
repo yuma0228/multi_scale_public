@@ -7,22 +7,16 @@
   :items:
   - :href: d1_mock/readme.html
     :src: d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg
-    :title: Multi Scale Simulations
+    :title: 'Introduction : Mock-Up (==Prototype)'
   - :href: d2_divide_chunk/readme.html
     :src: d2_divide_chunk/figs/multi_scale_26f-10.jpg
-    :title: mk_stack_dir
-  - :href: d3_ppt_pdf/hyper_card_philosophy_w_gemini.html
-    :src:
-    :title: HyperCard Stack 開発思想・理論的背景ドキュメント
-- :id: section-1
-  :title: セクション 1
-  :items:
+    :title: 'Method : chunking, deja vu'
   - :href: d3_ppt_pdf/readme.html
-    :src: d3_ppt_pdf/figs/multi_scale_26f-11.jpg
-    :title: semi lattice, IMRAD, make thesis
-  - :href: d4_rake/readme.html
-    :src: d4_rake/dummy_icon.png
-    :title: mk_stack_dir
+    :src: d3_ppt_pdf/figs/multi_scale_26f-14.jpg
+    :title: 'Results and Discussions : ppt and pdf'
+- :id: section-1
+  :title: Ruby
+  :items:
   - :href: d99_junior_ruby/readme.html
     :src:
     :title: mk_stack_dir

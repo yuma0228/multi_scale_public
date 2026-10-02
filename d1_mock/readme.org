@@ -1,6 +1,6 @@
 #+OPTIONS: ^:{}
 #+STARTUP: indent nolineimages overview num
-#+TITLE: Multi Scale Simulations
+#+TITLE: Introduction : Mock-Up (==Prototype)
 #+AUTHOR: Shigeto R. Nishitani
 #+EMAIL:     (concat "shigeto_nishitani@mac.com")
 #+LANGUAGE:  jp
@@ -11,15 +11,35 @@
 # for style.css, never move from here
 [[../d99_junior_ruby/readme.html][prev_button]]
 [[../multi_scale_26f.html][up_button]]
-[[../d2_memory/readme.html][next_button]]
+[[../d2_divide_chunk/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
-* introduction
+* Introduction
+HyperCardっていう面白いソフトが初期のMacには無料でついてました．
+これは，GUI的なアプリの基本となってものです．
+でも，みんなが使えるアプリにするために，
+多くのいいところが削がれていきました．
+皆さんに提供しようとするHyperCardアプリは
+それを
+"an essential software construction kit 
+that belonged in the hands of everday users."
+とすることを目的としています．
+
+HyperCardではカードをまとめた"Stack"で
+Diskに入れて交換されていました．
+この授業では，院生，卒研生に利用してもらえる
+Mock-Upと作りながら"HyperCard"のコンセプトを
+理解してもらう予定です．
+
 | [[file:./figs/on_line_jpgs/multi_scale_26f-1.jpg]] | [[file:./figs/on_line_jpgs/multi_scale_26f-2.jpg]]
 | [[file:./figs/on_line_jpgs/multi_scale_26f-3.jpg]] | [[file:./figs/on_line_jpgs/multi_scale_26f-4.jpg]]
 
 * An example : jps_26f
 | [[file:figs/prepare_jpgs/hyper_card_system-94.jpg]]
+
+これは，9月に物理学会での発表のcardです．
+これを作成するためのMock-Upを
+みていきましょう．
 
 * Preparation notes
 | [[file:./figs/prepare_jpgs/hyper_card_system-89.jpg]] | [[file:./figs/prepare_jpgs/hyper_card_system-90.jpg]] | [[file:./figs/prepare_jpgs/hyper_card_system-91.jpg]]
