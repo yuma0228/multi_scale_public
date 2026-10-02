@@ -11,15 +11,13 @@
 # for style.css, never move from here
 [[../d1_mock/readme.html][prev_button]]
 [[../multi_scale_26f.html][up_button]]
-[[../d99_junior_ruby/readme.html][next_button]]
+[[../d3_stack/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
-* chunking
-| [[file:./figs/memory.002.png]]
-* dejavu
-| [[file:./figs/memory.005.png]]
-* Hyper Card
-| [[file:./figs/multi_scale_26f-9.jpg]]
+* chunking, dejavu, HyperCard
+| [[file:./figs/memory.004.png]] | [[file:./figs/memory.005.png]] | [[file:./figs/multi_scale_26f-10.jpg]]
 
-- [[./hyper_card_philosophy_w_gemini.org]]
+- [[../d3_stack/hyper_card_philosophy_w_gemini.org]]
 
+* preparation notes
+| [[file:./figs/multi_scale_26f-8.jpg]]  | [[file:./figs/multi_scale_26f-9.jpg]]  | [[file:./figs/multi_scale_26f-10.jpg]]

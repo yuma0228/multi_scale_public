@@ -1,0 +1,123 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+require 'optparse'
+require 'colorize'
+require 'shellwords'
+
+# 現在のgitブランチ名を取得
+def current_git_branch
+  `git rev-parse --abbrev-ref HEAD`.strip
+end
+
+# .gitディレクトリを探す
+def find_git_dir(start_dir = Dir.pwd)
+  dir = start_dir
+  loop do
+    return dir if Dir.exist?(File.join(dir, '.git'))
+    parent = File.expand_path('..', dir)
+    break if parent == dir
+    dir = parent
+  end
+  nil
+end
+
+# .gitignoreのパターンを取得
+def load_ignore_patterns
+  return [] unless File.exist?('.gitignore')
+  File.readlines('.gitignore').map(&:strip).reject { |l| l.empty? || l.start_with?('#') }
+end
+
+# findコマンドの除外パターンを作成
+def build_find_exclude_args(ignore_patterns)
+  exclude_args = ['-path "./.git/*"']
+  ignore_patterns.each do |pat|
+    next if pat.empty?
+    
+    case pat
+    when /^\/(.+)\/$/  # /path/ 形式
+      exclude_args << %Q(-path "./#{$1}/*")
+    when /^\/(.+)$/    # /path 形式
+      exclude_args << %Q(-path "./#{$1}")
+    when /(.+)\/$/     # path/ 形式
+      exclude_args << %Q(-path "*/#{$1}/*")
+    when /.*\/.*/      # path/file 形式
+      exclude_args << %Q(-path "./#{pat}")
+    else               # filename のみ
+      exclude_args << %Q(-name "#{pat}")
+    end
+  end
+  exclude_args
+end
+
+# ファイルサイズチェック（.git以下と.gitignore除外）
+def check_large_files(size_limit)
+  puts "Checking for files larger than #{size_limit}MB...".green
+  ignore_patterns = load_ignore_patterns
+  exclude_args = build_find_exclude_args(ignore_patterns)
+  exclude_str = exclude_args.map { |e| %Q(\\( #{e} \\) -prune -o) }.join(' ')
+#  p exclude_str
+  find_cmd = %Q(find . #{exclude_str} -type f -size +#{size_limit}M -print)
+  large_files = `#{find_cmd}`.split("\n")
+  if large_files.any?
+    puts "Large files (greater than #{size_limit}MB) detected:".red
+    show_and_abort_large_files(large_files)
+  end
+end
+
+# ファイル情報表示＆中断
+def show_and_abort_large_files(files)
+  files.each do |file|
+    puts `ls -lat #{Shellwords.escape(file)}`
+  end
+  puts "Aborting due to large files.".red
+  exit 1
+end
+
+# gitコマンド実行
+def run_git_commands(commit_command, branch, dryrun: false)
+  ["git add -A",
+   commit_command,
+   "git pull origin #{branch}",
+   "git push origin #{branch}"].each do |command|
+    puts command.green
+    puts ''
+    next if dryrun
+    system command
+  end
+end
+
+# オプション解析
+def parse_options
+  opts = {}
+  OptionParser.new do |parser|
+    parser.banner = "Usage: auto_git [options]"
+    parser.on('-b BRANCH', '--branch BRANCH', 'Git branch to use') { |branch| opts[:branch] = branch }
+    parser.on('-d', '--dryrun', 'Dry run (do not execute git commands)') { opts[:dryrun] = true }
+    parser.on('-m MESSAGE', '--message MESSAGE', 'Commit message') { |msg| opts[:message] = msg }
+    parser.on('-s SIZE', '--size SIZE', 'File size limit in [MB]') { |size| opts[:size] = size }
+  end.parse!
+  opts
+end
+
+# メイン処理
+def main
+  opts = parse_options
+  commit_command = opts[:message] ? "git commit -m '#{opts[:message]}'" : "git commit"
+  git_dir = find_git_dir
+  unless git_dir
+    puts "No .git directory found.".red
+    exit 1
+  end
+  Dir.chdir(git_dir) do
+    branch = current_git_branch
+    if opts[:branch]!=branch
+      puts "Switching branch from #{branch} to #{opts[:branch]}".yellow
+    end
+    puts "Using git directory: #{git_dir}".green
+    size_limit = opts[:size] ? opts[:size].to_i : 40
+    check_large_files(size_limit)
+    run_git_commands(commit_command, branch, dryrun: opts[:dryrun])
+  end
+end
+
+main

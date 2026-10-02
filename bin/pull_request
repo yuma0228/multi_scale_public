@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+require 'open3'
+
+out, err, status = Open3.capture3("git remote -v")
+url = "https://"
+github_url =''
+out.split("\n").each do |line|
+  if line =~ /git@github\.com:(.+?)\.git/
+    github_url = "https://github.com/#{$1}"
+  end
+end
+
+if ENV["WSL_DISTRO_NAME"]
+  system "explorer.exe #{github_url}"
+else
+  system "open #{github_url}"
+end

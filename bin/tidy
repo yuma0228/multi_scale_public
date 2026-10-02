@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+puts "Usage:  tidy -r(ecursive)"
+dirs = ( ARGV[0]=='-r' ) ? ['./**/*','./**/.*'] : ['./*','./.*']
+count = 0
+Dir.glob(dirs).each do |file|
+  # ~ *\# .*~ .*\# core *.log *.dvi *.aux pout.dat *.bak *.synctex.gz"
+  regexp = /(.+~$)|(.+\#$)|(.+\.#.+)|(~\$.+)|
+  (.+\.log$)|(.+\.aux$)|(.+\.bak$)|(.+\.dvi$)|
+  (.+\.synctex.gz$)|(.+\.out$)|(.+-jvsc-.+.ipynb)/
+  if file =~ regexp
+    #FileUtils.rm(file, noop: true, verbose: true)
+    FileUtils.rm(file, verbose: true)
+    count += 1
+  end
+end
+
+puts "rm #{count} junk files."
+

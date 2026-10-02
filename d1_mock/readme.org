@@ -11,7 +11,7 @@
 # for style.css, never move from here
 [[../d99_junior_ruby/readme.html][prev_button]]
 [[../multi_scale_26f.html][up_button]]
-[[../d2_cla/readme.html][next_button]]
+[[../d2_memory/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
 * introduction
