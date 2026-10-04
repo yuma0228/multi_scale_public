@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas Links</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href=".theme.css">
+</head>
+<body style="background-color: var(--background);">
+
+<canvas id="myCanvas" width="1200" height="800" style="border:1px solid var(--border); cursor:pointer;"></canvas>
+
+<script>
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+const computedStyle = getComputedStyle(document.documentElement);
+
+// --- 高DPI対応 ---
+const dpr = window.devicePixelRatio || 1;
+const rect = canvas.getBoundingClientRect();
+canvas.width = rect.width * dpr;
+canvas.height = rect.height * dpr;
+ctx.scale(dpr, dpr);
+canvas.style.width = rect.width + 'px';
+canvas.style.height = rect.height + 'px';
+// --- ここまで ---
+
+ctx.imageSmoothingQuality = 'high'; // 画像の描画品質を最高に設定
+
+// 1. データ定義（Rubyで生成）
+const nodes = [
+  {
+    "id": 5,
+    "name": "mk_stack_dir",
+    "type": "icon",
+    "file_path": "d99_junior_ruby/readme.html",
+    "icon_path": null,
+    "x": 120,
+    "y": 378,
+    "color": "green",
+    "fixed": true
+  },
+  {
+    "id": 4,
+    "name": "Results and Discussions : ppt and pdf",
+    "type": "icon",
+    "file_path": "d3_ppt_pdf/readme.html",
+    "icon_path": "d3_ppt_pdf/figs/mk_canvas.002.png",
+    "x": 481,
+    "y": 331,
+    "color": "green",
+    "fixed": true
+  },
+  {
+    "id": 3,
+    "name": "Method : chunking, deja vu",
+    "type": "icon",
+    "file_path": "d2_divide_chunk/readme.html",
+    "icon_path": "d2_divide_chunk/figs/multi_scale_26f-10.jpg",
+    "x": 484,
+    "y": 202,
+    "color": "green",
+    "fixed": true
+  },
+  {
+    "id": 2,
+    "name": "Introduction : Mock-Up (==Prototype)",
+    "type": "icon",
+    "file_path": "d1_mock/readme.html",
+    "icon_path": "d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg",
+    "x": 388,
+    "y": 77,
+    "color": "green",
+    "fixed": true
+  },
+  {
+    "id": 1,
+    "name": "hyper_card/",
+    "type": "dir",
+    "file_path": ".",
+    "icon_path": ".semi_lattice/icons/folder.png",
+    "x": 191,
+    "y": 227,
+    "color": "green",
+    "fixed": true
+  }
+];
+const edges = [
+  {
+    "from": 1,
+    "to": 2
+  },
+  {
+    "from": 1,
+    "to": 3
+  },
+  {
+    "from": 1,
+    "to": 4
+  },
+  {
+    "from": 1,
+    "to": 5
+  }
+];
+
+// ノードIDをキーにしたノード情報のマップを作成
+const nodeMap = new Map(nodes.map(node => [node.id, node]));
+
+const nodesWithIcons = nodes.filter(node => node.icon_path);
+const defaultIconWidth = 120;
+const defaultIconHeight = 90;
+
+// 画像を読み込めない場合にもラベルとクリック領域を残す
+nodes.forEach(node => {
+  node.width = defaultIconWidth;
+  node.height = defaultIconHeight;
+  node.img = null;
+  node.imageLoadError = false;
+});
+
+// 描画関数
+function drawAll() {
+  // Canvasをクリア
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // 背景色を設定
+  ctx.fillStyle = computedStyle.getPropertyValue('--background').trim();
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // 2. エッジ（線）を描画
+  ctx.strokeStyle = computedStyle.getPropertyValue('--foreground').trim();
+  ctx.lineWidth = 1;
+  edges.forEach(edge => {
+    const fromNode = nodeMap.get(edge.from);
+    const toNode = nodeMap.get(edge.to);
+    if (fromNode && toNode) {
+      ctx.beginPath();
+      ctx.moveTo(fromNode.x, fromNode.y);
+      ctx.lineTo(toNode.x, toNode.y);
+      ctx.stroke();
+    }
+  });
+
+  // 3. ノード（アイコンとテキスト）を描画
+  nodes.forEach(node => {
+    // 描画位置を画像の中心に補正
+    const drawX = node.x - node.width / 2;
+    const drawY = node.y - node.height / 2;
+
+    if (node.img && node.img.naturalWidth > 0) {
+      ctx.drawImage(node.img, drawX, drawY, node.width, node.height);
+    } else {
+      // 画像がない場合や読み込みに失敗した場合はプレースホルダーを表示
+      ctx.fillStyle = computedStyle.getPropertyValue('--muted').trim() || '#cccccc';
+      ctx.strokeStyle = computedStyle.getPropertyValue('--muted-foreground').trim() || '#666666';
+      ctx.fillRect(drawX, drawY, node.width, node.height);
+      ctx.strokeRect(drawX, drawY, node.width, node.height);
+
+      ctx.fillStyle = computedStyle.getPropertyValue('--muted-foreground').trim() || '#666666';
+      ctx.font = '12px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('image not found', node.x, node.y);
+    }
+    
+    // 画像の読み込み結果にかかわらずタイトルを表示
+    ctx.fillStyle = computedStyle.getPropertyValue('--muted-foreground').trim();
+    ctx.font = `12px ${computedStyle.getPropertyValue('--font-family-base').trim()}`;
+    ctx.textAlign = 'center';
+    ctx.fillText(node.name, node.x, drawY + node.height + 15);
+  });
+}
+
+// 画像の読み込み処理
+function loadNodeImage(node) {
+  return new Promise(resolve => {
+    const img = new Image();
+
+    img.onload = () => {
+      // 元画像の縦横比を維持して高さを計算
+      const aspectRatio = img.naturalHeight / img.naturalWidth;
+      node.width = defaultIconWidth;
+      node.height = defaultIconWidth * aspectRatio;
+      node.img = img;
+      resolve();
+    };
+
+    img.onerror = () => {
+      node.img = null;
+      node.imageLoadError = true;
+      console.warn(`Icon image could not be loaded: ${node.icon_path}`, node);
+      resolve();
+    };
+
+    // ハンドラを登録してから読み込みを開始する
+    img.src = node.icon_path;
+  });
+}
+
+// 一部の画像が読み込めなくても，全ノードの描画を継続する
+Promise.all(nodesWithIcons.map(loadNodeImage)).then(drawAll);
+
+// 4. クリックイベントの設定
+canvas.addEventListener('click', (event) => {
+  const rect = canvas.getBoundingClientRect();
+  const clickX = event.clientX - rect.left;
+  const clickY = event.clientY - rect.top;
+
+  // クリックされたノードを逆順で探す（上に描画されたものが優先される）
+  const clickedNode = nodes.slice().reverse().find(node => {
+    if (!node.height || !node.file_path) return false;
+    const drawX = node.x - node.width / 2;
+    const drawY = node.y - node.height / 2;
+    return (
+      clickX >= drawX &&
+      clickX <= drawX + node.width &&
+      clickY >= drawY &&
+      clickY <= drawY + node.height
+    );
+  });
+
+  if (clickedNode) {
+    window.open(clickedNode.file_path, '_blank');
+  }
+});
+</script>
+
+</body>
+</html>

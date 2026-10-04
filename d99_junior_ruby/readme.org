@@ -10,7 +10,7 @@
 
 # for style.css, never move from here
 [[../d3_ppt_pdf/readme.html][prev_button]]
-[[../multi_scale_26f.html][up_button]]
+[[../canvas.html][up_button]]
 [[../d1_mock/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 

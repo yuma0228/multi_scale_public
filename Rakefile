@@ -5,7 +5,10 @@ require 'command_line/global'
 require 'fileutils'
 
 RSYNC_OPTIONS = %w[
+  -F
   -av
+  --delete
+  --itemize-changes
   --no-links
 ].freeze
 
@@ -14,23 +17,41 @@ RSYNC_EXCLUDES = %w[
   venv/
   env/
   .env/
-  __**pycache__**/
+  __pycache__/
   .git/
 ].freeze
 
-def sync_directory(source_dir, destination_root)
-  destination = File.join(destination_root, source_dir)
-  FileUtils.mkdir_p(destination)
+def dry_run?
+  ARGV.include?('dry_run')
+end
 
-  args = ['rsync', *RSYNC_OPTIONS]
+def directory_path(path)
+  "#{path.to_s.sub(%r{/+\z}, '')}/"
+end
 
-  Dir.chdir(source_dir) do
-    args << '--filter=merge .rsync_filter' if File.file?('.rsync_filter')
-    args.concat(RSYNC_EXCLUDES.map { |pattern| "--exclude=#{pattern}" })
-    args << './'
-    args << "#{destination}/"
+def rsync_options(source_dir:, remote:)
+  options = RSYNC_OPTIONS.dup
+  options << '--dry-run' if dry_run?
+  options << '--filter=merge .rsync_filter' if File.file?(File.join(source_dir, '.rsync_filter'))
+  options.concat(RSYNC_EXCLUDES.map { |pattern| "--exclude=#{pattern}" })
+  options.concat(%w[-z --rsh=ssh]) if remote
+  options
+end
 
-    sh(*args)
+def rsync_directory(source_dir:, target_dir:, remote: false)
+  source = File.expand_path(source_dir, Rake.application.original_dir)
+  raise "Source directory does not exist: #{source}" unless File.directory?(source)
+
+  target = remote ? target_dir : File.expand_path(target_dir, Rake.application.original_dir)
+  FileUtils.mkdir_p(target) unless remote || dry_run?
+
+  Dir.chdir(source) do
+    sh(
+      'rsync',
+      *rsync_options(source_dir: source, remote: remote),
+      './',
+      directory_path(target)
+    )
   end
 end
 
@@ -42,9 +63,9 @@ rescue Errno::ENOENT
  lecture: "intro_info",
  source_html: "intro_info_26s.html",
  glob_extensions: "c*/*.html",
+ public_repository_dir: "../intro_info_public",
  server_info:
-  {local_sites: "~/Sites/new_ist/Lectures",
-   ruby_code_dir: "c0_mk_stack_dir",
+  {ruby_code_dir: "c0_mk_stack_dir",
    server_ssh_path: "nishitani@ist.ksc.kwansei.ac.jp:~/public_html",
    server_url: "https://ist.ksc.kwansei.ac.jp/~nishitani/Lectures"}}
 
@@ -58,38 +79,35 @@ $lecture = config[:lecture] ||'intro_info'
 $source_html = config[:source_html]
 
 server_info = config[:server_info] || {}
-$local_sites = server_info[:local_sites] || "~/Sites/new_ist/Lectures"
-$lecture_or_research = File.basename($local_sites)
 $ruby_code_dir = server_info[:ruby_code_dir] || "c0_mk_stack_dir"
 #$ruby_code_dir = File.join($ruby_code_dir, 'bin')
 $server_ssh_path = server_info[:server_ssh_path] || "nishitani@ist.ksc.kwansei.ac.jp:~/public_html"
 $server_url = server_info[:server_url] || "https://ist.ksc.kwansei.ac.jp/~nishitani/Lectures"
 
-$local_dir = File.join($local_sites, $year)
-$lec_dir = File.expand_path(File.join($local_dir,$lecture))
-$glob_extensions = config[:glob_extensions] || "c*/*.html"
+$public_repository_dir = File.expand_path(
+  config.fetch(:public_repository_dir),
+  Rake.application.original_dir
+)
+
+def remote_lecture_dir
+  website_root = File.basename($server_url.sub(%r{/+\z}, ''))
+  File.join($server_ssh_path, website_root, $year, $lecture)
+end
 
 task :default do
   puts "\nRakefile for c0_mk_stack_dir.".cyan
-  p ['$lec_dir', $lec_dir]
+  p ['$public_repository_dir', $public_repository_dir]
   system "rake -T"
 end
 
 desc 'dry-run marker'
 task :dry_run
 
-desc 'rsync to ../multi_scale_public( w w/o dry-run)'
+desc 'rsync to public repository (first try: rake rsync_public dry_run)'
 task :rsync_public do
-  options = %w[-F -avz --delete --itemize-changes]
-  options << '--dry-run' if ARGV.include?('dry_run')
-
-  sh(
-    'rsync',
-    *options,
-    '--filter', 'merge .rsync_filter',
-    '--no-links',
-    '.',
-    '../multi_scale_public/'
+  rsync_directory(
+    source_dir: Rake.application.original_dir,
+    target_dir: $public_repository_dir
   )
 end
 
@@ -180,49 +198,23 @@ end
 desc "show dirs for display light table DIR public." #desc -> description
 task :show_dirs do # any name on task_name
   puts "Setup following dirs:".blue
-  puts "#{$lec_dir}".blue
-  puts "#{$ist_dir}".blue
+  puts "source:            #{Rake.application.original_dir}".blue
+  puts "public repository: #{$public_repository_dir}".blue
+  puts "IST website:       #{remote_lecture_dir}".blue
   puts ""
 end
 
-desc "commit local dir"
-task commit: :show_dirs do
-  FileUtils.mkdir_p($lec_dir)
-
-  source_directories =
-    (Dir.glob($glob_extensions.split('/').first) + ['.semi_lattice']).uniq
-
-  source_directories
-    .select { |path| File.directory?(path) }
-    .each { |path| sync_directory(path, $lec_dir) }
-
-  [
-    $source_html,
-    'style.css',
-    'theme.css',
-    'canvas.html',
-    'folder.png'
-  ].each do |source|
-    if File.file?(source)
-      FileUtils.cp(source, $lec_dir)
-    else
-      warn "Skip missing file: #{source}"
-    end
-  end
-
-  sh 'chmod', '-R', 'a+r', $lec_dir
-end
-
-desc "push light tables to web server"
+desc "push public repository to web server (first try: rake push dry_run)"
 task :push => :show_dirs do
-  https_dir = File.join($server_url,
+  https_path = File.join($server_url,
                          $year, $lecture, $source_html)
-  local_base_dir = File.join($local_sites, $year)
-  ["rsync -F -auvz --no-links -e ssh #{local_base_dir} #{File.join($server_ssh_path, $lecture_or_research)}",
-   "open #{https_dir}"].each do |comm|
-    puts comm.blue
-    system comm
-  end
+  puts "rsync from #{$public_repository_dir}\n to #{remote_lecture_dir}\n".blue
+  rsync_directory(
+    source_dir: $public_repository_dir,
+    target_dir: remote_lecture_dir,
+    remote: true
+  )
+  sh 'open', https_path unless dry_run?
 end
 
 desc "create symlink and record it. usage: rake ln_s [source_dir]"

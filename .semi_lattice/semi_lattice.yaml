@@ -1,0 +1,60 @@
+---
+:nodes:
+- :id: 1
+  :name: hyper_card/
+  :type: dir
+  :file_path: "."
+  :icon_path:
+  :x: 191
+  :y: 227
+  :color: green
+  :fixed: true
+- :id: 2
+  :name: 'Introduction : Mock-Up (==Prototype)'
+  :type: icon
+  :file_path: d1_mock/readme.html
+  :icon_path: d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg
+  :x: 388
+  :y: 77
+  :color: green
+  :fixed: true
+- :id: 3
+  :name: 'Method : chunking, deja vu'
+  :type: icon
+  :file_path: d2_divide_chunk/readme.html
+  :icon_path: d2_divide_chunk/figs/multi_scale_26f-10.jpg
+  :x: 484
+  :y: 202
+  :color: green
+  :fixed: true
+- :id: 4
+  :name: 'Results and Discussions : ppt and pdf'
+  :type: icon
+  :file_path: d3_ppt_pdf/readme.html
+  :icon_path: d3_ppt_pdf/figs/mk_canvas.002.png
+  :x: 481
+  :y: 331
+  :color: green
+  :fixed: true
+- :id: 5
+  :name: mk_stack_dir
+  :type: icon
+  :file_path: d99_junior_ruby/readme.html
+  :icon_path:
+  :x: 120
+  :y: 378
+  :color: green
+  :fixed: true
+:edges:
+- :from: 1
+  # from: hyper_card/, to: Introduction : Mock-Up (==Prototype)
+  :to: 2
+- :from: 1
+  # from: hyper_card/, to: Method : chunking, deja vu
+  :to: 3
+- :from: 1
+  # from: hyper_card/, to: Results and Discussions : ppt and pdf
+  :to: 4
+- :from: 1
+  # from: hyper_card/, to: mk_stack_dir
+  :to: 5

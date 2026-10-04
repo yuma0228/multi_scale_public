@@ -1,0 +1,141 @@
+* Introduction
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+#+TITLE: Introduction : Mock-Up (==Prototype)
+#+AUTHOR: Shigeto R. Nishitani
+#+EMAIL:     (concat "shigeto_nishitani@mac.com")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+#+MACRO: dummy_link @@html:<a href="#">$1</a>@@
+
+# for style.css, never move from here
+[[file:../d99_junior_ruby/readme.html][prev_button]]
+[[file:../canvas.html][up_button]]
+[[file:../d2_divide_chunk/readme.html][next_button]]
+# for a real link rewrite usual [[\url][]]
+
+** Introduction
+HyperCardっていう面白いソフトが初期のMacには無料でついてました．
+これは，GUI的なアプリの基本となってものです．
+でも，みんなが使えるアプリにするために，
+多くのいいところが削がれていきました．
+皆さんに提供しようとするHyperCardアプリは
+それを
+"an essential software construction kit 
+that belonged in the hands of everday users."
+とすることを目的としています．
+
+HyperCardではカードをまとめた"Stack"で
+Diskに入れて交換されていました．
+この授業では，院生，卒研生に利用してもらえる
+Mock-Upと作りながら"HyperCard"のコンセプトを
+理解してもらう予定です．
+
+| [[file:../d1_mock/figs/on_line_jpgs/multi_scale_26f-1.jpg]] | [[file:../d1_mock/figs/on_line_jpgs/multi_scale_26f-2.jpg]]
+| [[file:../d1_mock/figs/on_line_jpgs/multi_scale_26f-3.jpg]] | [[file:../d1_mock/figs/on_line_jpgs/multi_scale_26f-4.jpg]]
+
+** An example : jps_26f
+| [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-94.jpg]]
+
+これは，9月に物理学会での発表のcardです．
+これを作成するためのMock-Upを
+みていきましょう．
+
+** Preparation notes
+| [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-89.jpg]] | [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-90.jpg]] | [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-91.jpg]]
+| [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-92.jpg]] | [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-93.jpg]] | [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg]]
+
+
+* Method
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+#+TITLE: Method : chunking, deja vu
+#+AUTHOR: Shigeto R. Nishitani
+#+EMAIL:     (concat "shigeto_nishitani@mac.com")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+#+MACRO: dummy_link @@html:<a href="#">$1</a>@@
+
+# for style.css, never move from here
+[[file:../d1_mock/readme.html][prev_button]]
+[[file:../canvas.html][up_button]]
+[[file:../d3_ppt_pdf/readme.html][next_button]]
+# for a real link rewrite usual [[\url][]]
+
+** chunking, dejavu, HyperCard
+| [[file:../d2_divide_chunk/figs/memory.004.png]] | [[file:../d2_divide_chunk/figs/memory.005.png]] | [[file:../d2_divide_chunk/figs/multi_scale_26f-10.jpg]]
+
+Mock-Upの基本になる考え方が
+chunkingとdeja vuです．
+chunkingはまとまった知識を覚える人間の
+癖を心理学者が解き明かした知恵です．
+それをまとめる時にはコトバでもって
+概念としてまとめます．
+
+これは卒業研究の本質に深く根ざしています．
+それらの知識をまとめたのが次の文章です．
+- [[file:../d3_stack/hyper_card_philosophy_w_gemini.org]]
+
+** preparation notes
+| [[file:../d2_divide_chunk/figs/multi_scale_26f-8.jpg]]  | [[file:../d2_divide_chunk/figs/multi_scale_26f-9.jpg]]  | [[file:../d2_divide_chunk/figs/multi_scale_26f-10.jpg]]
+
+* Results
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+#+TITLE: Results and Discussions : ppt and pdf
+#+AUTHOR: Shigeto R. Nishitani
+#+EMAIL:     (concat "shigeto_nishitani@mac.com")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+#+MACRO: dummy_link @@html:<a href="#">$1</a>@@
+
+# for style.css, never move from here
+[[file:../d2_divide_chunk/readme.html][prev_button]]
+[[file:../canvas.html][up_button]]
+[[file:../d99_junior_ruby/readme.html][next_button]]
+# for a real link rewrite usual [[\url][]]
+
+** ppts
+
+HyperCardのMockが今見ていただいている
+httpになります．
+
+IconとかNaviとか，Actionが
+GUIとCUIでどのように実現されているか
+あるいはmockされているかを観察してください．
+
+| [[file:../d3_ppt_pdf/figs/mk_canvas.002.png]]
+
+** Pragmatic programmar (v2)
+なぜCUIがGUIよりプログラマに良いのかは，
+次のテキストを参照ください．
+
+- basic tool
+  - p3_basic_tools.pd
+  - c16_plain_text.pdf
+  - c17_shell.pdf
+  - c18_editor.pdf
+  - c19_version_github.pdf
+  - c22_note_my_help.pdf
+
+** Why ruby?
+さて，では，これらがどうやって実現されているか？
+そしてeverday usersの手によってどのように
+構築されるかを示すのが次の目的になります．
+
+以下のテキストにはその必要性が書かれています．
+
+- c21_ruby.pdf
+- c51_starter_kit_complete_auto.pdf
+
+** 下書き(preparation notes)
+| [[file:../d3_ppt_pdf/figs/multi_scale_26f-11.jpg]] | [[file:../d3_ppt_pdf/figs/multi_scale_26f-12.jpg]]
+| [[file:../d3_ppt_pdf/figs/multi_scale_26f-13.jpg]] | [[file:../d3_ppt_pdf/figs/multi_scale_26f-14.jpg]]
+
+
+
+
+

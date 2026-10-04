@@ -1,0 +1,35 @@
+---
+:nodes:
+- :id: 1
+  :name: hyper_card/
+  :type: dir
+  :file_path: "."
+- :id: 2
+  :name: 'Introduction : Mock-Up (==Prototype)'
+  :type: icon
+  :file_path: d1_mock/readme.html
+  :icon_path: d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg
+- :id: 3
+  :name: 'Method : chunking, deja vu'
+  :type: icon
+  :file_path: d2_divide_chunk/readme.html
+  :icon_path: d2_divide_chunk/figs/multi_scale_26f-10.jpg
+- :id: 4
+  :name: 'Results and Discussions : ppt and pdf'
+  :type: icon
+  :file_path: d3_ppt_pdf/readme.html
+  :icon_path: d3_ppt_pdf/figs/multi_scale_26f-14.jpg
+- :id: 5
+  :name: mk_stack_dir
+  :type: icon
+  :file_path: d99_junior_ruby/readme.html
+  :icon_path:
+:edges:
+- :from: 1
+  :to: 2
+- :from: 1
+  :to: 3
+- :from: 1
+  :to: 4
+- :from: 1
+  :to: 5

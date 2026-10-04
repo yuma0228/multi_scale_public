@@ -10,7 +10,7 @@
 
 # for style.css, never move from here
 [[../d2_divide_chunk/readme.html][prev_button]]
-[[../multi_scale_26f.html][up_button]]
+[[../canvas.html][up_button]]
 [[../d99_junior_ruby/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
@@ -23,8 +23,7 @@ IconとかNaviとか，Actionが
 GUIとCUIでどのように実現されているか
 あるいはmockされているかを観察してください．
 
-| [[file:./figs/multi_scale_26f-11.jpg]] | [[file:./figs/multi_scale_26f-12.jpg]]
-| [[file:./figs/multi_scale_26f-13.jpg]] | [[file:./figs/multi_scale_26f-14.jpg]]
+| [[file:./figs/mk_canvas.002.png]]
 
 * Pragmatic programmar (v2)
 なぜCUIがGUIよりプログラマに良いのかは，
@@ -47,6 +46,10 @@ GUIとCUIでどのように実現されているか
 
 - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCNOEYWPwBfQ5WdA_NASPPNAcO6ll2wSw7NOUbvHLTuriE?e=xCL24t][file:./hidden_files/c21_ruby.pdf]]
 - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQAMCCml1Dw3RaWHRBuoTMQkAfSe9WOFwtXf5Ss3LrpJpzM?e=eojWsT][file:./hidden_files/c51_starter_kit_complete_auto.pdf]]
+
+* 下書き(preparation notes)
+| [[file:./figs/multi_scale_26f-11.jpg]] | [[file:./figs/multi_scale_26f-12.jpg]]
+| [[file:./figs/multi_scale_26f-13.jpg]] | [[file:./figs/multi_scale_26f-14.jpg]]
 
 
 

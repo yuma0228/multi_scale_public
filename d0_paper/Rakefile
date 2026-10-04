@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+require "colorize"
+require 'command_line/global'
+
+task :default do
+  system "rake -T"
+end
+
+desc "make full report" #desc -> description
+task :mk_full_report do # any name on task_name
+  # your code goes
+  system 'ruby auto_merge.rb -s dir_tree_full.yaml'
+  system 'cp readme.pdf ..'
+  system 'open ../readme.pdf'
+end
+
