@@ -24,6 +24,8 @@ ActionがGUIとCUIでどのように実現されているか
 あるいはMockされているかを観察してください．
 
 | [[file:./figs/mk_canvas.002.png]]
+この時，こういったポンチ絵が役に立ちます．
+
 
 * Pragmatic programmar (v2)
 なぜCUIがGUIよりプログラマに良いのかは，

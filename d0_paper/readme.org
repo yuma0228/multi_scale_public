@@ -76,7 +76,7 @@ deja vuで示したようにコトバで概念をまとめます．
 
 これは卒業研究の本質に深く根ざしています．
 それらの知識をまとめたのが次の文章です．
-- [[file:../d3_ppt_pdf/hyper_card_philosophy_w_gemini.org]]
+- [[file:../d2_divide_chunk/hyper_card_philosophy_w_gemini.org]]
 
 ** preparation notes
 | [[file:../d2_divide_chunk/figs/multi_scale_26f-8.jpg]]  | [[file:../d2_divide_chunk/figs/multi_scale_26f-9.jpg]]  | [[file:../d2_divide_chunk/figs/multi_scale_26f-10.jpg]]
@@ -108,6 +108,8 @@ ActionがGUIとCUIでどのように実現されているか
 あるいはMockされているかを観察してください．
 
 | [[file:../d3_ppt_pdf/figs/mk_canvas.002.png]]
+この時，こういったポンチ絵が役に立ちます．
+
 
 ** Pragmatic programmar (v2)
 なぜCUIがGUIよりプログラマに良いのかは，
