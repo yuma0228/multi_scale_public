@@ -14,14 +14,14 @@
 [[../d99_junior_ruby/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
-* ppts
+* mk ppt
 
-HyperCardのMockが今見ていただいている
-httpになります．
+HyperCardのMockが，
+今見ていただいているcanva.htmlになります．
 
-IconとかNaviとか，Actionが
-GUIとCUIでどのように実現されているか
-あるいはmockされているかを観察してください．
+IconとかNaviとか，
+ActionがGUIとCUIでどのように実現されているか
+あるいはMockされているかを観察してください．
 
 | [[file:./figs/mk_canvas.002.png]]
 
@@ -30,14 +30,14 @@ GUIとCUIでどのように実現されているか
 次のテキストを参照ください．
 
 - basic tool
-  - p3_basic_tools.pd
+  - p3_basic_tools.pdf
   - c16_plain_text.pdf
   - c17_shell.pdf
   - c18_editor.pdf
   - c19_version_github.pdf
   - c22_note_my_help.pdf
 
-* Why ruby?
+* Why Ruby?
 さて，では，これらがどうやって実現されているか？
 そしてeverday usersの手によってどのように
 構築されるかを示すのが次の目的になります．
@@ -47,10 +47,9 @@ GUIとCUIでどのように実現されているか
 - c21_ruby.pdf
 - c51_starter_kit_complete_auto.pdf
 
-* 下書き(preparation notes)
+* 準備メモ(preparation notes)
 | [[file:./figs/multi_scale_26f-11.jpg]] | [[file:./figs/multi_scale_26f-12.jpg]]
 | [[file:./figs/multi_scale_26f-13.jpg]] | [[file:./figs/multi_scale_26f-14.jpg]]
-
 
 
 

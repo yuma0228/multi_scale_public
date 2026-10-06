@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.02-251130-2.6 (utf8.euc) (TeX Live 2026) (preloaded format=platex 2026.8.28)  4 OCT 2026 13:20
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.02-251130-2.6 (utf8.euc) (TeX Live 2026) (preloaded format=platex 2026.8.28)  5 OCT 2026 09:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -505,15 +505,15 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `readme.out' has not changed.
-(rerunfilecheck)             Checksum: 35F9F9CA76D1C93A4ED21F12AC86C7EE;1589.
+(rerunfilecheck)             Checksum: 00515D772076059EB9E14C7FDD64D42E;1609.
  ) 
 Here is how much of TeX's memory you used:
  10261 strings out of 468171
  157364 string characters out of 5434472
- 567512 words of memory out of 5000000
+ 567533 words of memory out of 5000000
  39014 multiletter control sequences out of 15000+600000
  647353 words of font info for 113 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  72i,9n,79p,355b,514s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on readme.dvi (6 pages, 17028 bytes).
+Output written on readme.dvi (6 pages, 17156 bytes).

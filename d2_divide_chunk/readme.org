@@ -17,16 +17,16 @@
 * chunking, dejavu, HyperCard
 | [[file:./figs/memory.004.png]] | [[file:./figs/memory.005.png]] | [[file:./figs/multi_scale_26f-10.jpg]]
 
-Mock-Upの基本になる考え方が
+知識構造の基本になる考え方が
 chunkingとdeja vuです．
-chunkingはまとまった知識を覚える人間の
-癖を心理学者が解き明かした知恵です．
-それをまとめる時にはコトバでもって
-概念としてまとめます．
+chunkingはまとまった知識を覚える人間の癖を
+心理学者が解き明かした知恵です．
+それをまとめる時には
+deja vuで示したようにコトバで概念をまとめます．
 
 これは卒業研究の本質に深く根ざしています．
 それらの知識をまとめたのが次の文章です．
-- [[../d3_stack/hyper_card_philosophy_w_gemini.org]]
+- [[./hyper_card_philosophy_w_gemini.org]]
 
 * preparation notes
 | [[file:./figs/multi_scale_26f-8.jpg]]  | [[file:./figs/multi_scale_26f-9.jpg]]  | [[file:./figs/multi_scale_26f-10.jpg]]

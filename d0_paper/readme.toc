@@ -6,7 +6,7 @@
 \contentsline {subsection}{\numberline {2.1}chunking, dejavu, HyperCard}{4}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}preparation notes}{4}{subsection.2.2}%
 \contentsline {section}{\numberline {3}Results}{4}{section.3}%
-\contentsline {subsection}{\numberline {3.1}ppts}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.1}mk ppt}{4}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Pragmatic programmar (v2)}{5}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Why ruby?}{5}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}下書き(preparation notes)}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.3}Why Ruby?}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}準備メモ(preparation notes)}{6}{subsection.3.4}%

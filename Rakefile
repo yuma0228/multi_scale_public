@@ -4,6 +4,8 @@ require "colorize"
 require 'command_line/global'
 require 'fileutils'
 
+PROJECT_ROOT = File.expand_path(__dir__).freeze
+
 RSYNC_OPTIONS = %w[
   -F
   -av
@@ -56,7 +58,8 @@ def rsync_directory(source_dir:, target_dir:, remote: false)
 end
 
 begin
-  config = YAML.load(File.read(".hc_config.yaml"))
+  config_path = File.join(PROJECT_ROOT, '.hc_config.yaml')
+  config = YAML.load(File.read(config_path))
   p ['config', config]
 rescue Errno::ENOENT
   config = {year: 2026,
@@ -69,8 +72,8 @@ rescue Errno::ENOENT
    server_ssh_path: "nishitani@ist.ksc.kwansei.ac.jp:~/public_html",
    server_url: "https://ist.ksc.kwansei.ac.jp/~nishitani/Lectures"}}
 
-  File.write(".hc_config.yaml",YAML.dump(config))
-  puts "edit .hc_config.yaml"
+  File.write(config_path,YAML.dump(config))
+  puts "edit #{config_path}"
   exit
 end
 
@@ -86,7 +89,7 @@ $server_url = server_info[:server_url] || "https://ist.ksc.kwansei.ac.jp/~nishit
 
 $public_repository_dir = File.expand_path(
   config.fetch(:public_repository_dir),
-  Rake.application.original_dir
+  PROJECT_ROOT
 )
 
 def remote_lecture_dir
@@ -106,7 +109,7 @@ task :dry_run
 desc 'rsync to public repository (first try: rake rsync_public dry_run)'
 task :rsync_public do
   rsync_directory(
-    source_dir: Rake.application.original_dir,
+    source_dir: PROJECT_ROOT,
     target_dir: $public_repository_dir
   )
 end
@@ -198,7 +201,7 @@ end
 desc "show dirs for display light table DIR public." #desc -> description
 task :show_dirs do # any name on task_name
   puts "Setup following dirs:".blue
-  puts "source:            #{Rake.application.original_dir}".blue
+  puts "source:            #{PROJECT_ROOT}".blue
   puts "public repository: #{$public_repository_dir}".blue
   puts "IST website:       #{remote_lecture_dir}".blue
   puts ""

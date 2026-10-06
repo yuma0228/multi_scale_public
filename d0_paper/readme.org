@@ -17,19 +17,19 @@
 
 ** Introduction
 HyperCardっていう面白いソフトが初期のMacには無料でついてました．
-これは，GUI的なアプリの基本となってものです．
+これは，GUI的なアプリの基本となったものです．
 でも，みんなが使えるアプリにするために，
 多くのいいところが削がれていきました．
-皆さんに提供しようとするHyperCardアプリは
-それを
+HyperCardアプリはそれを
 "an essential software construction kit 
-that belonged in the hands of everday users."
+that belonged in the hands of everday users"
 とすることを目的としています．
 
-HyperCardではカードをまとめた"Stack"で
-Diskに入れて交換されていました．
+HyperCardはカードをまとめた"Stack"を
+Floppy Diskに入れて交換(販売)してました．
+まだInternetがなかったんですよ．
 この授業では，院生，卒研生に利用してもらえる
-Mock-Upと作りながら"HyperCard"のコンセプトを
+Mock-Upを作りながら"HyperCard"のコンセプトを
 理解してもらう予定です．
 
 | [[file:../d1_mock/figs/on_line_jpgs/multi_scale_26f-1.jpg]] | [[file:../d1_mock/figs/on_line_jpgs/multi_scale_26f-2.jpg]]
@@ -67,16 +67,16 @@ Mock-Upと作りながら"HyperCard"のコンセプトを
 ** chunking, dejavu, HyperCard
 | [[file:../d2_divide_chunk/figs/memory.004.png]] | [[file:../d2_divide_chunk/figs/memory.005.png]] | [[file:../d2_divide_chunk/figs/multi_scale_26f-10.jpg]]
 
-Mock-Upの基本になる考え方が
+知識構造の基本になる考え方が
 chunkingとdeja vuです．
-chunkingはまとまった知識を覚える人間の
-癖を心理学者が解き明かした知恵です．
-それをまとめる時にはコトバでもって
-概念としてまとめます．
+chunkingはまとまった知識を覚える人間の癖を
+心理学者が解き明かした知恵です．
+それをまとめる時には
+deja vuで示したようにコトバで概念をまとめます．
 
 これは卒業研究の本質に深く根ざしています．
 それらの知識をまとめたのが次の文章です．
-- [[file:../d3_stack/hyper_card_philosophy_w_gemini.org]]
+- [[file:../d3_ppt_pdf/hyper_card_philosophy_w_gemini.org]]
 
 ** preparation notes
 | [[file:../d2_divide_chunk/figs/multi_scale_26f-8.jpg]]  | [[file:../d2_divide_chunk/figs/multi_scale_26f-9.jpg]]  | [[file:../d2_divide_chunk/figs/multi_scale_26f-10.jpg]]
@@ -98,14 +98,14 @@ chunkingはまとまった知識を覚える人間の
 [[file:../d99_junior_ruby/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
-** ppts
+** mk ppt
 
-HyperCardのMockが今見ていただいている
-httpになります．
+HyperCardのMockが，
+今見ていただいているcanva.htmlになります．
 
-IconとかNaviとか，Actionが
-GUIとCUIでどのように実現されているか
-あるいはmockされているかを観察してください．
+IconとかNaviとか，
+ActionがGUIとCUIでどのように実現されているか
+あるいはMockされているかを観察してください．
 
 | [[file:../d3_ppt_pdf/figs/mk_canvas.002.png]]
 
@@ -114,14 +114,14 @@ GUIとCUIでどのように実現されているか
 次のテキストを参照ください．
 
 - basic tool
-  - p3_basic_tools.pd
+  - p3_basic_tools.pdf
   - c16_plain_text.pdf
   - c17_shell.pdf
   - c18_editor.pdf
   - c19_version_github.pdf
   - c22_note_my_help.pdf
 
-** Why ruby?
+** Why Ruby?
 さて，では，これらがどうやって実現されているか？
 そしてeverday usersの手によってどのように
 構築されるかを示すのが次の目的になります．
@@ -131,10 +131,9 @@ GUIとCUIでどのように実現されているか
 - c21_ruby.pdf
 - c51_starter_kit_complete_auto.pdf
 
-** 下書き(preparation notes)
+** 準備メモ(preparation notes)
 | [[file:../d3_ppt_pdf/figs/multi_scale_26f-11.jpg]] | [[file:../d3_ppt_pdf/figs/multi_scale_26f-12.jpg]]
 | [[file:../d3_ppt_pdf/figs/multi_scale_26f-13.jpg]] | [[file:../d3_ppt_pdf/figs/multi_scale_26f-14.jpg]]
-
 
 
 

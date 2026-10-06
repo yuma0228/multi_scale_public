@@ -14,14 +14,14 @@
 [[../d99_junior_ruby/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
-* ppts
+* mk ppt
 
-HyperCardのMockが今見ていただいている
-httpになります．
+HyperCardのMockが，
+今見ていただいているcanva.htmlになります．
 
-IconとかNaviとか，Actionが
-GUIとCUIでどのように実現されているか
-あるいはmockされているかを観察してください．
+IconとかNaviとか，
+ActionがGUIとCUIでどのように実現されているか
+あるいはMockされているかを観察してください．
 
 | [[file:./figs/mk_canvas.002.png]]
 
@@ -37,7 +37,7 @@ GUIとCUIでどのように実現されているか
   - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQDy2QskmGY1Qbwy9Vz_dSs5AXMtTTUTUZ2QA_VdLcp7KTU?e=4UtY6z][file:./hidden_files/c19_version_github.pdf]]
   - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBmykqRCwoDQbOUjmz55PtkAYMGFzyg4iyi-WlQemPWysA?e=CfnPOl][file:./hidden_files/c22_note_my_help.pdf]]
 
-* Why ruby?
+* Why Ruby?
 さて，では，これらがどうやって実現されているか？
 そしてeverday usersの手によってどのように
 構築されるかを示すのが次の目的になります．
@@ -47,7 +47,7 @@ GUIとCUIでどのように実現されているか
 - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCNOEYWPwBfQ5WdA_NASPPNAcO6ll2wSw7NOUbvHLTuriE?e=xCL24t][file:./hidden_files/c21_ruby.pdf]]
 - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQAMCCml1Dw3RaWHRBuoTMQkAfSe9WOFwtXf5Ss3LrpJpzM?e=eojWsT][file:./hidden_files/c51_starter_kit_complete_auto.pdf]]
 
-* 下書き(preparation notes)
+* 準備メモ(preparation notes)
 | [[file:./figs/multi_scale_26f-11.jpg]] | [[file:./figs/multi_scale_26f-12.jpg]]
 | [[file:./figs/multi_scale_26f-13.jpg]] | [[file:./figs/multi_scale_26f-14.jpg]]
 
