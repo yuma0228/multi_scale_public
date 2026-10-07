@@ -5,8 +5,8 @@
   :type: dir
   :file_path: "."
   :icon_path:
-  :x: 191
-  :y: 227
+  :x: 355
+  :y: 274
   :color: green
   :fixed: true
 - :id: 2
@@ -14,8 +14,8 @@
   :type: icon
   :file_path: d1_mock/readme.html
   :icon_path: d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg
-  :x: 388
-  :y: 77
+  :x: 301
+  :y: 128
   :color: green
   :fixed: true
 - :id: 3
@@ -23,17 +23,17 @@
   :type: icon
   :file_path: d2_divide_chunk/readme.html
   :icon_path: d2_divide_chunk/figs/multi_scale_26f-10.jpg
-  :x: 484
-  :y: 202
+  :x: 517
+  :y: 136
   :color: green
   :fixed: true
 - :id: 4
   :name: 'Results and Discussions : ppt and pdf'
   :type: icon
   :file_path: d3_ppt_pdf/readme.html
-  :icon_path: d3_ppt_pdf/figs/mk_canvas.002.png
-  :x: 481
-  :y: 331
+  :icon_path: d3_ppt_pdf/figs/multi_scale_26f-14.jpg
+  :x: 655
+  :y: 190
   :color: green
   :fixed: true
 - :id: 5
@@ -41,8 +41,8 @@
   :type: icon
   :file_path: d99_junior_ruby/readme.html
   :icon_path:
-  :x: 120
-  :y: 378
+  :x: 163
+  :y: 422
   :color: green
   :fixed: true
 :edges:
