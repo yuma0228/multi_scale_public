@@ -3,7 +3,7 @@
   - :href: multi_scale_26f.html
     :title: multi_scale
 - :id: section-0
-  :title: セクション 0
+  :title: d1-3_stack
   :items:
   - :href: d1-3_stack/d1_mock/readme.html
     :src: d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg
@@ -15,7 +15,7 @@
     :src: d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png
     :title: 'Results and Discussions : ppt and pdf'
 - :id: section-1
-  :title: Ruby
+  :title: d4_6_Ruby, Rakefile
   :items:
   - :href: d4-6_ruby/readme.html
     :src: d4-6_ruby/ruby_title.png
