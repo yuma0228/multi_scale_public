@@ -32,12 +32,12 @@ ActionがGUIとCUIでどのように実現されているか
 次のテキストを参照ください．
 
 - basic tool
-  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQDjA5A55qKHR7k3ZFNjArzBAaHyx_EZhRW8-JSfW7i6vpA?e=BaQaLo][file:./hidden_files/p3_basic_tools.pdf]]
-  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBDklNB41u8Qr_jZQ8WyFf_AYO_aCEre7NEfkW6531WEgw?e=8vseFE][file:./hidden_files/c16_plain_text.pdf]]
-  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBgEsdsbyHLTr4LQO5Lj8hdAZYhjRbPyWF4iz_X2Q33B6o?e=aa8elg][file:./hidden_files/c17_shell.pdf]]
-  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCbGkDz_NtGRaeVc9SYaseCAYhqCi_wpWNORQvAXp7CruU?e=rQF1tP][file:./hidden_files/c18_editor.pdf]]
-  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQDy2QskmGY1Qbwy9Vz_dSs5AXMtTTUTUZ2QA_VdLcp7KTU?e=4UtY6z][file:./hidden_files/c19_version_github.pdf]]
-  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBmykqRCwoDQbOUjmz55PtkAYMGFzyg4iyi-WlQemPWysA?e=CfnPOl][file:./hidden_files/c22_note_my_help.pdf]]
+  - p3_basic_tools.pdf
+  - c16_plain_text.pdf
+  - c17_shell.pdf
+  - c18_editor.pdf
+  - c19_version_github.pdf
+  - c22_note_my_help.pdf
 
 * Why Ruby?
 さて，では，これらがどうやって実現されているか？
@@ -46,8 +46,8 @@ ActionがGUIとCUIでどのように実現されているか
 
 以下のテキストにはその必要性が書かれています．
 
-- [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCNOEYWPwBfQ5WdA_NASPPNAcO6ll2wSw7NOUbvHLTuriE?e=xCL24t][file:./hidden_files/c21_ruby.pdf]]
-- [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQAMCCml1Dw3RaWHRBuoTMQkAfSe9WOFwtXf5Ss3LrpJpzM?e=eojWsT][file:./hidden_files/c51_starter_kit_complete_auto.pdf]]
+- c21_ruby.pdf
+- c51_starter_kit_complete_auto.pdf
 
 
 * Ghost?

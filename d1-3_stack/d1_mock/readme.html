@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
 <head>
-<!-- 2026-10-04 Sun 12:47 -->
+<!-- 2026-10-07 Wed 11:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>mk_stack_dir</title>
+<title>Introduction : Mock-Up (==Prototype)</title>
 <meta name="author" content="Shigeto R. Nishitani" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -194,90 +194,127 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link rel="stylesheet" type="text/css" href="style_w_link_button.css" />
+<link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">mk_stack_dir</h1>
+<h1 class="title">Introduction : Mock-Up (==Prototype)</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb4c078c">1. d3 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-07 Wed&gt;</span></span> hello</a></li>
-<li><a href="#orga39d176">2. d2 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-30 Wed&gt;</span></span> print</a></li>
-<li><a href="#org5582e3f">3. d1 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-23 Wed&gt;</span></span> kick_off</a></li>
+<li><a href="#org708227f">1. Introduction</a></li>
+<li><a href="#org9883117">2. An example : jps_26f</a></li>
+<li><a href="#orga889caf">3. Preparation notes</a></li>
 </ul>
 </div>
 </div>
 <p>
-<a href="../d3_ppt_pdf/readme.html">prev_button</a>
-<a href="../canvas.html">up_button</a>
-<a href="../d1_mock/readme.html">next_button</a>
+<a href="../../d99_junior_ruby/readme.html">prev_button</a>
+<a href="../../canvas.html">up_button</a>
+<a href="../../d1-3_stack/d2_divide_chunk/readme.html">next_button</a>
 </p>
-<div id="outline-container-orgb4c078c" class="outline-2">
-<h2 id="orgb4c078c"><span class="section-number-2">1.</span> d3 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-07 Wed&gt;</span></span> hello</h2>
+<div id="outline-container-org708227f" class="outline-2">
+<h2 id="org708227f"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-ARGV, shebang, permission, 
+HyperCardっていう面白いソフトが初期のMacには無料でついてました．
+これは，GUI的なアプリの基本となったものです．
+でも，みんなが使えるアプリにするために，
+多くのいいところが削がれていきました．
+HyperCardアプリはそれを
+"an essential software construction kit 
+that belonged in the hands of everday users"
+とすることを目的としています．
 </p>
-</div>
-</div>
-<div id="outline-container-orga39d176" class="outline-2">
-<h2 id="orga39d176"><span class="section-number-2">2.</span> d2 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-30 Wed&gt;</span></span> print</h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li>linux commands
-<ul class="org-ul">
-<li>pwd, ls, ls -lat,</li>
-<li>mkdir hoge, cd hoge,</li>
-<li>mv hoge1 hoge2</li>
-<li>cat print.rb</li>
-<li>ruby print.rb</li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org5582e3f" class="outline-2">
-<h2 id="org5582e3f"><span class="section-number-2">3.</span> d1 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-23 Wed&gt;</span></span> kick_off</h2>
-<div class="outline-text-2" id="text-3">
-<ol class="org-ol">
-<li><p>
-ubuntu on wsl
-</p>
-<pre class="example">
-wsl update
-wsl --install
-</pre>
-<p>
-なんか失敗したな．rootでしか入れない．
-</p>
-<ol class="org-ol">
-<li>zoom</li>
-</ol></li>
-<li><p>
-ruby, fish (for multi) <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-24 Thu&gt;</span></span>
-</p>
-<pre class="example">
-sudo apt update
-sudo apt install fish
-sudo apt install ruby-full
-ruby -v
-</pre>
-<p>
-rubyのrbenvでgeminiが蹴躓いた，ruby-fullでok
-</p></li>
-<li>emacs or vscode
-pass</li>
-<li>ssh</li>
 
-<li>github</li>
-</ol>
+<p>
+HyperCardはカードをまとめた"Stack"を
+Floppy Diskに入れて交換(販売)してました．
+まだInternetがなかったんですよ．
+この授業では，院生，卒研生に利用してもらえる
+Mock-Upを作りながら"HyperCard"のコンセプトを
+理解してもらう予定です．
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="./figs/on_line_jpgs/multi_scale_26f-1.jpg" alt="multi_scale_26f-1.jpg" /></td>
+<td class="org-left"><img src="./figs/on_line_jpgs/multi_scale_26f-2.jpg" alt="multi_scale_26f-2.jpg" /></td>
+</tr>
+
+<tr>
+<td class="org-left"><img src="./figs/on_line_jpgs/multi_scale_26f-3.jpg" alt="multi_scale_26f-3.jpg" /></td>
+<td class="org-left"><img src="./figs/on_line_jpgs/multi_scale_26f-4.jpg" alt="multi_scale_26f-4.jpg" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org9883117" class="outline-2">
+<h2 id="org9883117"><span class="section-number-2">2.</span> An example : jps_26f</h2>
+<div class="outline-text-2" id="text-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="figs/prepare_jpgs/hyper_card_system-94.jpg" alt="hyper_card_system-94.jpg" /></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+これは，9月に物理学会での発表のcardです．
+これを作成するためのMock-Upを
+みていきましょう．
+</p>
+</div>
+</div>
+<div id="outline-container-orga889caf" class="outline-2">
+<h2 id="orga889caf"><span class="section-number-2">3.</span> Preparation notes</h2>
+<div class="outline-text-2" id="text-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="./figs/prepare_jpgs/hyper_card_system-89.jpg" alt="hyper_card_system-89.jpg" /></td>
+<td class="org-left"><img src="./figs/prepare_jpgs/hyper_card_system-90.jpg" alt="hyper_card_system-90.jpg" /></td>
+<td class="org-left"><img src="./figs/prepare_jpgs/hyper_card_system-91.jpg" alt="hyper_card_system-91.jpg" /></td>
+</tr>
+
+<tr>
+<td class="org-left"><img src="./figs/prepare_jpgs/hyper_card_system-92.jpg" alt="hyper_card_system-92.jpg" /></td>
+<td class="org-left"><img src="./figs/prepare_jpgs/hyper_card_system-93.jpg" alt="hyper_card_system-93.jpg" /></td>
+<td class="org-left"><img src="./figs/prepare_jpgs/hyper_card_system-95.jpg" alt="hyper_card_system-95.jpg" /></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Shigeto R. Nishitani</p>
-<p class="date">Created: 2026-10-04 Sun 12:47</p>
+<p class="date">Created: 2026-10-07 Wed 11:57</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

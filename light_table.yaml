@@ -5,18 +5,18 @@
 - :id: section-0
   :title: セクション 0
   :items:
-  - :href: d1_mock/readme.html
-    :src: d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg
+  - :href: d1-3_stack/d1_mock/readme.html
+    :src: d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg
     :title: 'Introduction : Mock-Up (==Prototype)'
-  - :href: d2_divide_chunk/readme.html
-    :src: d2_divide_chunk/figs/multi_scale_26f-10.jpg
+  - :href: d1-3_stack/d2_divide_chunk/readme.html
+    :src: d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg
     :title: 'Method : chunking, deja vu'
-  - :href: d3_ppt_pdf/readme.html
-    :src: d3_ppt_pdf/figs/mk_canvas.002.png
+  - :href: d1-3_stack/d3_ppt_pdf/readme.html
+    :src: d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png
     :title: 'Results and Discussions : ppt and pdf'
 - :id: section-1
   :title: Ruby
   :items:
-  - :href: d99_junior_ruby/readme.html
-    :src:
-    :title: mk_stack_dir
+  - :href: d4-6_ruby/readme.html
+    :src: d4-6_ruby/ruby_title.png
+    :title: 'Ruby basics'

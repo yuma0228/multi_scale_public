@@ -6,11 +6,11 @@
 #  :Abstract:
 #    - "../../s0_abstract/readme.org"
   :Introduction:
-    - ../d1_mock/readme.org
+    - ../d1-3_stack/d1_mock/readme.org
   :Method:
-    - ../d2_divide_chunk/readme.org
+    - ../d1-3_stack/d2_divide_chunk/readme.org
   :Results:
-    - ../d3_ppt_pdf/readme_short.org
+    - ../d1-3_stack/d3_ppt_pdf/readme_short.org
 #  :Conclusion:
 #    - "./reference.org"
 

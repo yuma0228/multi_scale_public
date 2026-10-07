@@ -12,7 +12,7 @@
 # for style.css, never move from here
 [[file:../d99_junior_ruby/readme.html][prev_button]]
 [[file:../canvas.html][up_button]]
-[[file:../d2_divide_chunk/readme.html][next_button]]
+[[file:../d1-3_stack/d2_divide_chunk/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
 ** Introduction
@@ -32,19 +32,19 @@ Floppy Diskに入れて交換(販売)してました．
 Mock-Upを作りながら"HyperCard"のコンセプトを
 理解してもらう予定です．
 
-| [[file:../d1_mock/figs/on_line_jpgs/multi_scale_26f-1.jpg]] | [[file:../d1_mock/figs/on_line_jpgs/multi_scale_26f-2.jpg]]
-| [[file:../d1_mock/figs/on_line_jpgs/multi_scale_26f-3.jpg]] | [[file:../d1_mock/figs/on_line_jpgs/multi_scale_26f-4.jpg]]
+| [[file:../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-1.jpg]] | [[file:../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-2.jpg]]
+| [[file:../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-3.jpg]] | [[file:../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-4.jpg]]
 
 ** An example : jps_26f
-| [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-94.jpg]]
+| [[file:../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-94.jpg]]
 
 これは，9月に物理学会での発表のcardです．
 これを作成するためのMock-Upを
 みていきましょう．
 
 ** Preparation notes
-| [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-89.jpg]] | [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-90.jpg]] | [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-91.jpg]]
-| [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-92.jpg]] | [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-93.jpg]] | [[file:../d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg]]
+| [[file:../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-89.jpg]] | [[file:../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-90.jpg]] | [[file:../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-91.jpg]]
+| [[file:../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-92.jpg]] | [[file:../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-93.jpg]] | [[file:../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg]]
 
 
 * Method
@@ -59,13 +59,13 @@ Mock-Upを作りながら"HyperCard"のコンセプトを
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
 # for style.css, never move from here
-[[file:../d1_mock/readme.html][prev_button]]
+[[file:../d1-3_stack/d1_mock/readme.html][prev_button]]
 [[file:../canvas.html][up_button]]
-[[file:../d3_ppt_pdf/readme.html][next_button]]
+[[file:../d1-3_stack/d3_ppt_pdf/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
 ** chunking, dejavu, HyperCard
-| [[file:../d2_divide_chunk/figs/memory.004.png]] | [[file:../d2_divide_chunk/figs/memory.005.png]] | [[file:../d2_divide_chunk/figs/multi_scale_26f-10.jpg]]
+| [[file:../d1-3_stack/d2_divide_chunk/figs/memory.004.png]] | [[file:../d1-3_stack/d2_divide_chunk/figs/memory.005.png]] | [[file:../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg]]
 
 知識構造の基本になる考え方が
 chunkingとdeja vuです．
@@ -76,10 +76,10 @@ deja vuで示したようにコトバで概念をまとめます．
 
 これは卒業研究の本質に深く根ざしています．
 それらの知識をまとめたのが次の文章です．
-- [[file:../d2_divide_chunk/hyper_card_philosophy_w_gemini.org]]
+- [[file:../d1-3_stack/d2_divide_chunk/hyper_card_philosophy_w_gemini.org]]
 
 ** preparation notes
-| [[file:../d2_divide_chunk/figs/multi_scale_26f-8.jpg]]  | [[file:../d2_divide_chunk/figs/multi_scale_26f-9.jpg]]  | [[file:../d2_divide_chunk/figs/multi_scale_26f-10.jpg]]
+| [[file:../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-8.jpg]]  | [[file:../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-9.jpg]]  | [[file:../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg]]
 
 * Results
 #+OPTIONS: ^:{}
@@ -93,9 +93,9 @@ deja vuで示したようにコトバで概念をまとめます．
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
 # for style.css, never move from here
-[[file:../d2_divide_chunk/readme.html][prev_button]]
-[[file:../canvas.html][up_button]]
-[[file:../d99_junior_ruby/readme.html][next_button]]
+[[file:../d1-3_stack/d2_divide_chunk/readme.html][prev_button]]
+[[file:../d1-3_stack/canvas.html][up_button]]
+[[file:../d1-3_stack/d99_junior_ruby/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
 ** mk ppt
@@ -107,7 +107,7 @@ IconとかNaviとか，
 ActionがGUIとCUIでどのように実現されているか
 あるいはMockされているかを観察してください．
 
-| [[file:../d3_ppt_pdf/figs/mk_canvas.002.png]]
+| [[file:../d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png]]
 この時，こういったポンチ絵が役に立ちます．
 
 
@@ -133,9 +133,19 @@ ActionがGUIとCUIでどのように実現されているか
 - c21_ruby.pdf
 - c51_starter_kit_complete_auto.pdf
 
+
+** Ghost?
+- [[file:../d1-3_stack/d3_ppt_pdf/rnn_vs_transform_ghost_gemini.html]]
+
 ** 準備メモ(preparation notes)
-| [[file:../d3_ppt_pdf/figs/multi_scale_26f-11.jpg]] | [[file:../d3_ppt_pdf/figs/multi_scale_26f-12.jpg]]
-| [[file:../d3_ppt_pdf/figs/multi_scale_26f-13.jpg]] | [[file:../d3_ppt_pdf/figs/multi_scale_26f-14.jpg]]
+
+| [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-15.jpg]] | [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-16.jpg]] |
+| [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-17.jpg]] | [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-18.jpg]] |
+| [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-19.jpg]] |                                    |
+
+
+| [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-11.jpg]] | [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-12.jpg]]
+| [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-13.jpg]] | [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-14.jpg]]
 
 
 

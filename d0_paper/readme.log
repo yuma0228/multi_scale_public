@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.02-251130-2.6 (utf8.euc) (TeX Live 2026) (preloaded format=platex 2026.8.28)  6 OCT 2026 21:58
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.02-251130-2.6 (utf8.euc) (TeX Live 2026) (preloaded format=platex 2026.8.28)  7 OCT 2026 12:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -431,55 +431,61 @@ LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 [1
 
 ]
-File: ../d1_mock/figs/on_line_jpgs/multi_scale_26f-1.jpg Graphic file (type bmp
-)
-<../d1_mock/figs/on_line_jpgs/multi_scale_26f-1.jpg>
-File: ../d1_mock/figs/on_line_jpgs/multi_scale_26f-2.jpg Graphic file (type bmp
-)
-<../d1_mock/figs/on_line_jpgs/multi_scale_26f-2.jpg>
-File: ../d1_mock/figs/on_line_jpgs/multi_scale_26f-3.jpg Graphic file (type bmp
-)
-<../d1_mock/figs/on_line_jpgs/multi_scale_26f-3.jpg>
-File: ../d1_mock/figs/on_line_jpgs/multi_scale_26f-4.jpg Graphic file (type bmp
-)
-<../d1_mock/figs/on_line_jpgs/multi_scale_26f-4.jpg>
-File: ../d1_mock/figs/prepare_jpgs/hyper_card_system-94.jpg Graphic file (type 
-bmp)
-<../d1_mock/figs/prepare_jpgs/hyper_card_system-94.jpg>
+File: ../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-1.jpg Graphic fil
+e (type bmp)
+<../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-1.jpg>
+File: ../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-2.jpg Graphic fil
+e (type bmp)
+<../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-2.jpg>
+File: ../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-3.jpg Graphic fil
+e (type bmp)
+<../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-3.jpg>
+File: ../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-4.jpg Graphic fil
+e (type bmp)
+<../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-4.jpg>
+File: ../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-94.jpg Graphic 
+file (type bmp)
+<../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-94.jpg>
  [2]
-File: ../d1_mock/figs/prepare_jpgs/hyper_card_system-89.jpg Graphic file (type 
-bmp)
-<../d1_mock/figs/prepare_jpgs/hyper_card_system-89.jpg>
-File: ../d1_mock/figs/prepare_jpgs/hyper_card_system-90.jpg Graphic file (type 
-bmp)
-<../d1_mock/figs/prepare_jpgs/hyper_card_system-90.jpg>
-File: ../d1_mock/figs/prepare_jpgs/hyper_card_system-91.jpg Graphic file (type 
-bmp)
-<../d1_mock/figs/prepare_jpgs/hyper_card_system-91.jpg>
-File: ../d1_mock/figs/prepare_jpgs/hyper_card_system-92.jpg Graphic file (type 
-bmp)
-<../d1_mock/figs/prepare_jpgs/hyper_card_system-92.jpg>
-File: ../d1_mock/figs/prepare_jpgs/hyper_card_system-93.jpg Graphic file (type 
-bmp)
-<../d1_mock/figs/prepare_jpgs/hyper_card_system-93.jpg>
-File: ../d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg Graphic file (type 
-bmp)
-<../d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg>
-File: ../d2_divide_chunk/figs/memory.004.png Graphic file (type bmp)
-<../d2_divide_chunk/figs/memory.004.png>
-File: ../d2_divide_chunk/figs/memory.005.png Graphic file (type bmp)
-<../d2_divide_chunk/figs/memory.005.png>
-File: ../d2_divide_chunk/figs/multi_scale_26f-10.jpg Graphic file (type bmp)
-<../d2_divide_chunk/figs/multi_scale_26f-10.jpg>
+File: ../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-89.jpg Graphic 
+file (type bmp)
+<../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-89.jpg>
+File: ../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-90.jpg Graphic 
+file (type bmp)
+<../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-90.jpg>
+File: ../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-91.jpg Graphic 
+file (type bmp)
+<../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-91.jpg>
+File: ../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-92.jpg Graphic 
+file (type bmp)
+<../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-92.jpg>
+File: ../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-93.jpg Graphic 
+file (type bmp)
+<../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-93.jpg>
+File: ../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg Graphic 
+file (type bmp)
+<../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg>
+File: ../d1-3_stack/d2_divide_chunk/figs/memory.004.png Graphic file (type bmp)
+
+<../d1-3_stack/d2_divide_chunk/figs/memory.004.png>
+File: ../d1-3_stack/d2_divide_chunk/figs/memory.005.png Graphic file (type bmp)
+
+<../d1-3_stack/d2_divide_chunk/figs/memory.005.png>
+File: ../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg Graphic file (t
+ype bmp)
+<../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg>
  [3]
-File: ../d2_divide_chunk/figs/multi_scale_26f-8.jpg Graphic file (type bmp)
-<../d2_divide_chunk/figs/multi_scale_26f-8.jpg>
-File: ../d2_divide_chunk/figs/multi_scale_26f-9.jpg Graphic file (type bmp)
-<../d2_divide_chunk/figs/multi_scale_26f-9.jpg>
-File: ../d2_divide_chunk/figs/multi_scale_26f-10.jpg Graphic file (type bmp)
-<../d2_divide_chunk/figs/multi_scale_26f-10.jpg>
-File: ../d3_ppt_pdf/figs/mk_canvas.002.png Graphic file (type bmp)
-<../d3_ppt_pdf/figs/mk_canvas.002.png>
+File: ../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-8.jpg Graphic file (ty
+pe bmp)
+<../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-8.jpg>
+File: ../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-9.jpg Graphic file (ty
+pe bmp)
+<../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-9.jpg>
+File: ../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg Graphic file (t
+ype bmp)
+<../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg>
+File: ../d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png Graphic file (type bmp)
+<../d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png>
  [4]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 141.
@@ -490,30 +496,49 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 9.60999pt on input line 141.
  [5]
-File: ../d3_ppt_pdf/figs/multi_scale_26f-11.jpg Graphic file (type bmp)
-<../d3_ppt_pdf/figs/multi_scale_26f-11.jpg>
-File: ../d3_ppt_pdf/figs/multi_scale_26f-12.jpg Graphic file (type bmp)
-<../d3_ppt_pdf/figs/multi_scale_26f-12.jpg>
-File: ../d3_ppt_pdf/figs/multi_scale_26f-13.jpg Graphic file (type bmp)
-<../d3_ppt_pdf/figs/multi_scale_26f-13.jpg>
-File: ../d3_ppt_pdf/figs/multi_scale_26f-14.jpg Graphic file (type bmp)
-<../d3_ppt_pdf/figs/multi_scale_26f-14.jpg>
- [6] (./readme.aux)
+File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-15.jpg Graphic file (type b
+mp)
+<../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-15.jpg>
+File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-16.jpg Graphic file (type b
+mp)
+<../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-16.jpg>
+File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-17.jpg Graphic file (type b
+mp)
+<../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-17.jpg>
+File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-18.jpg Graphic file (type b
+mp)
+<../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-18.jpg>
+File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-19.jpg Graphic file (type b
+mp)
+<../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-19.jpg>
+File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-11.jpg Graphic file (type b
+mp)
+<../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-11.jpg>
+File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-12.jpg Graphic file (type b
+mp)
+<../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-12.jpg>
+File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-13.jpg Graphic file (type b
+mp)
+<../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-13.jpg>
+File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-14.jpg Graphic file (type b
+mp)
+<../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-14.jpg>
+ [6] [7] (./readme.aux)
  ***********
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `readme.out' has not changed.
-(rerunfilecheck)             Checksum: 00515D772076059EB9E14C7FDD64D42E;1609.
+(rerunfilecheck)             Checksum: D31DA20BC0F04DDE970527F193BE2BC9;1697.
  ) 
 Here is how much of TeX's memory you used:
- 10261 strings out of 468171
- 157364 string characters out of 5434472
- 567533 words of memory out of 5000000
- 39014 multiletter control sequences out of 15000+600000
+ 10292 strings out of 468171
+ 160223 string characters out of 5434472
+ 568664 words of memory out of 5000000
+ 39040 multiletter control sequences out of 15000+600000
  647353 words of font info for 113 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
- 72i,9n,79p,355b,514s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,9n,79p,399b,514s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on readme.dvi (6 pages, 17248 bytes).
+Output written on readme.dvi (7 pages, 19312 bytes).

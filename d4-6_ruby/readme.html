@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
 <head>
-<!-- 2026-10-05 Mon 16:38 -->
+<!-- 2026-10-07 Wed 18:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Method : chunking, deja vu</title>
+<title>Ruby basics</title>
 <meta name="author" content="Shigeto R. Nishitani" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -194,92 +194,125 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+<link rel="stylesheet" type="text/css" href="style_w_link_button.css" />
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Method : chunking, deja vu</h1>
+<h1 class="title">Ruby basics</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge25d51e">1. chunking, dejavu, HyperCard</a></li>
-<li><a href="#orgc50b0a6">2. preparation notes</a></li>
+<li><a href="#org6a54ad0">1. for 領域実習</a></li>
+<li><a href="#orgcd2e210">2. d4 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-14 Wed&gt;</span></span> Array Hash</a></li>
+<li><a href="#org28f2cc6">3. d3 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-07 Wed&gt;</span></span> hello</a></li>
+<li><a href="#orgd2c573b">4. d2 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-30 Wed&gt;</span></span> print</a></li>
+<li><a href="#orgfa8292c">5. d1 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-23 Wed&gt;</span></span> kick_off</a></li>
 </ul>
 </div>
 </div>
 <p>
-<a href="../d1_mock/readme.html">prev_button</a>
+<a href="../d1-3_stack/d3_ppt_pdf/readme.html">prev_button</a>
 <a href="../canvas.html">up_button</a>
-<a href="../d3_ppt_pdf/readme.html">next_button</a>
+<a href="../d1-3_stack/d1_mock/readme.html">next_button</a>
 </p>
-<div id="outline-container-orge25d51e" class="outline-2">
-<h2 id="orge25d51e"><span class="section-number-2">1.</span> chunking, dejavu, HyperCard</h2>
-<div class="outline-text-2" id="text-1">
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
 <col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
 </colgroup>
 <tbody>
 <tr>
-<td class="org-left"><img src="./figs/memory.004.png" alt="memory.004.png" /></td>
-<td class="org-left"><img src="./figs/memory.005.png" alt="memory.005.png" /></td>
-<td class="org-left"><img src="./figs/multi_scale_26f-10.jpg" alt="multi_scale_26f-10.jpg" /></td>
+<td class="org-left"><img src="./ruby_title.png" alt="ruby_title.png" /></td>
 </tr>
 </tbody>
 </table>
-
-<p>
-知識構造の基本になる考え方が
-chunkingとdeja vuです．
-chunkingはまとまった知識を覚える人間の癖を
-心理学者が解き明かした知恵です．
-それをまとめる時には
-deja vuで示したようにコトバで概念をまとめます．
-</p>
-
-<p>
-これは卒業研究の本質に深く根ざしています．
-それらの知識をまとめたのが次の文章です．
-</p>
+<div id="outline-container-org6a54ad0" class="outline-2">
+<h2 id="org6a54ad0"><span class="section-number-2">1.</span> for 領域実習</h2>
+<div class="outline-text-2" id="text-1">
 <ul class="org-ul">
-<li><a href="./hyper_card_philosophy_w_gemini.html">./hyper_card_philosophy_w_gemini.html</a></li>
+<li><a href="https://kwanseio365-my.sharepoint.com/:f:/g/personal/cru32369_kwansei_ac_jp/IgDDsVu4tF6xT4bChileGjFcARGm6bKoAjdfoFp_3C3urcs?e=hwaL32">資料，動画置き場</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc50b0a6" class="outline-2">
-<h2 id="orgc50b0a6"><span class="section-number-2">2.</span> preparation notes</h2>
+<div id="outline-container-orgcd2e210" class="outline-2">
+<h2 id="orgcd2e210"><span class="section-number-2">2.</span> d4 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-14 Wed&gt;</span></span> Array Hash</h2>
 <div class="outline-text-2" id="text-2">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left"><img src="./figs/multi_scale_26f-8.jpg" alt="multi_scale_26f-8.jpg" /></td>
-<td class="org-left"><img src="./figs/multi_scale_26f-9.jpg" alt="multi_scale_26f-9.jpg" /></td>
-<td class="org-left"><img src="./figs/multi_scale_26f-10.jpg" alt="multi_scale_26f-10.jpg" /></td>
-</tr>
-</tbody>
-</table>
+<dl class="org-dl">
+<dt>command</dt><dd>ssh, github</dd>
+<dt>Ruby</dt><dd>Array, Hash</dd>
+<dt>references</dt><dd><ul class="org-ul">
+<li><a href="https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCCwCZq45rcTb4x2s0UW_GVAWf6TTj6jwKrKoPoXbi5ABw?e=92E0W4">c1_はじめてのRuby.pdf</a></li>
+<li><a href="https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQC7L0rc33TEQZyzkjiCHWJMAQg9N_X3dixkptBq-__RFxk?e=G44QYp">c2_便利なオブジェクト.pdf</a></li>
+<li><a href="https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQDi3DLsb-0MTL1KxhRNyzkYASuZ_Vl_V3jwNeEZhTTF4Wk?e=Wt0WAk">c3_コマンドを作ろう.pdf</a></li>
+</ul></dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-org28f2cc6" class="outline-2">
+<h2 id="org28f2cc6"><span class="section-number-2">3.</span> d3 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-07 Wed&gt;</span></span> hello</h2>
+<div class="outline-text-2" id="text-3">
+<dl class="org-dl">
+<dt>Ruby</dt><dd>ARGV, shebang, a+x,</dd>
+<dt>CLA</dt><dd>batcat, theme="GitHub", alias on fish</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgd2c573b" class="outline-2">
+<h2 id="orgd2c573b"><span class="section-number-2">4.</span> d2 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-30 Wed&gt;</span></span> print</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>linux commands
+<ul class="org-ul">
+<li>pwd, ls, ls -lat,</li>
+<li>mkdir hoge, cd hoge,</li>
+<li>mv hoge1 hoge2</li>
+<li>cat print.rb</li>
+<li>ruby print.rb</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfa8292c" class="outline-2">
+<h2 id="orgfa8292c"><span class="section-number-2">5.</span> d1 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-23 Wed&gt;</span></span> kick_off</h2>
+<div class="outline-text-2" id="text-5">
+<ol class="org-ol">
+<li><p>
+ubuntu on wsl
+</p>
+<pre class="example">
+wsl update
+wsl --install
+</pre>
+<p>
+なんか失敗したな．rootでしか入れない．
+</p>
+<ol class="org-ol">
+<li>zoom</li>
+</ol></li>
+<li><p>
+ruby, fish (for multi) <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-09-24 Thu&gt;</span></span>
+</p>
+<pre class="example">
+sudo apt update
+sudo apt install fish
+sudo apt install ruby-full
+ruby -v
+</pre>
+<p>
+rubyのrbenvでgeminiが蹴躓いた，ruby-fullでok
+</p></li>
+<li>emacs or vscode
+pass</li>
+</ol>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Shigeto R. Nishitani</p>
-<p class="date">Created: 2026-10-05 Mon 16:38</p>
+<p class="date">Created: 2026-10-07 Wed 18:05</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

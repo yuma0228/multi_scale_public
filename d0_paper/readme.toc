@@ -9,4 +9,5 @@
 \contentsline {subsection}{\numberline {3.1}mk ppt}{4}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Pragmatic programmar (v2)}{5}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Why Ruby?}{5}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}準備メモ(preparation notes)}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.4}Ghost?}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}準備メモ(preparation notes)}{6}{subsection.3.5}%
