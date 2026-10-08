@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.02-251130-2.6 (utf8.euc) (TeX Live 2026) (preloaded format=platex 2026.8.28)  7 OCT 2026 12:13
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.02-251130-2.6 (utf8.euc) (TeX Live 2026) (preloaded format=platex 2026.8.28)  8 OCT 2026 07:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -488,13 +488,13 @@ File: ../d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png Graphic file (type bmp)
 <../d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png>
  [4]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 141.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 145.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 141.
+(Font)              scaled to size 9.60999pt on input line 145.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 141.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 145.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 141.
+(Font)              scaled to size 9.60999pt on input line 145.
  [5]
 File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-15.jpg Graphic file (type b
 mp)
@@ -541,4 +541,4 @@ Here is how much of TeX's memory you used:
  934 hyphenation exceptions out of 8191
  72i,9n,79p,399b,514s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on readme.dvi (7 pages, 19312 bytes).
+Output written on readme.dvi (7 pages, 19648 bytes).

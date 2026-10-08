@@ -1,20 +1,19 @@
 #+OPTIONS: ^:{}
 #+STARTUP: indent nolineimages overview num
-#+TITLE: HyperCard Stack 開発思想・理論的背景ドキュメント
+#+TITLE: HyperCard Stack 開発思想・理論的背景のGemini問答
 #+AUTHOR: Shigeto R. Nishitani
 #+EMAIL:     (concat "shigeto_nishitani@mac.com")
 #+LANGUAGE:  jp
 #+OPTIONS:   H:4 toc:t num:3
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/setup/html-theme-readtheorg.setup
 
-* abstract <2026-09-28 Mon>
+* Abstract <2026-09-28 Mon>
 ここでは，現在のHyperCard stackが提供しようとする
 ベストプラクティスがなぜ必要かの哲学を示しています．
-IMRADのintroductionを作ろうとしてgeminiで
+IMRADのintroductionを作ろうとしてGeminiで
 「符合」を調べ始めて，
 そのまま，フンボルト理念から，abduction, am/pmまでの
-流れを再確認したところです．
-
+発想の流れを再確認した様子です．
 
 * きっかけ
 ** user

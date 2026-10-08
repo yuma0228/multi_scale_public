@@ -18,12 +18,12 @@
 ** Introduction
 HyperCardっていう面白いソフトが初期のMacには無料でついてました．
 これは，GUI的なアプリの基本となったものです．
-でも，みんなが使えるアプリにするために，
-多くのいいところが削がれていきました．
-HyperCardアプリはそれを
+HyperCardアプリは
 "an essential software construction kit 
 that belonged in the hands of everday users"
-とすることを目的としています．
+とすることを目的としていました．
+でも，その発展の課程で万人が使えるアプリにするために，
+多くのいいところが削がれていきました．
 
 HyperCardはカードをまとめた"Stack"を
 Floppy Diskに入れて交換(販売)してました．
@@ -38,9 +38,9 @@ Mock-Upを作りながら"HyperCard"のコンセプトを
 ** An example : jps_26f
 | [[file:../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-94.jpg]]
 
-これは，9月に物理学会での発表のcardです．
-これを作成するためのMock-Upを
-みていきましょう．
+これは，9月に開かれた物理の学会発表のcardです．
+このような最前線の研究でも使っている
+Mock-Upを授業の後半で紹介するつもりです．
 
 ** Preparation notes
 | [[file:../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-89.jpg]] | [[file:../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-90.jpg]] | [[file:../d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-91.jpg]]
@@ -67,15 +67,19 @@ Mock-Upを作りながら"HyperCard"のコンセプトを
 ** chunking, dejavu, HyperCard
 | [[file:../d1-3_stack/d2_divide_chunk/figs/memory.004.png]] | [[file:../d1-3_stack/d2_divide_chunk/figs/memory.005.png]] | [[file:../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg]]
 
-知識構造の基本になる考え方が
-chunkingとdeja vuです．
+最小単位の知識を獲るには，divide and conquer
+(分割統治とも訳されますが，各個撃破がしっくりきます)
+が基本戦略です．
+でもちっちゃいのが積み重なってくると整理が必要になります．
+整理のコツを言葉で表すとchunkingとdeja vuです．
 chunkingはまとまった知識を覚える人間の癖を
 心理学者が解き明かした知恵です．
 それをまとめる時には
 deja vuで示したようにコトバで概念をまとめます．
 
 これは卒業研究の本質に深く根ざしています．
-それらの知識をまとめたのが次の文章です．
+それらの歴史的な知識をまとめたのが次の
+Geminiとの問答です．
 - [[file:../d1-3_stack/d2_divide_chunk/hyper_card_philosophy_w_gemini.org]]
 
 ** preparation notes

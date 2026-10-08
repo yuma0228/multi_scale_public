@@ -17,15 +17,19 @@
 * chunking, dejavu, HyperCard
 | [[file:./figs/memory.004.png]] | [[file:./figs/memory.005.png]] | [[file:./figs/multi_scale_26f-10.jpg]]
 
-知識構造の基本になる考え方が
-chunkingとdeja vuです．
+最小単位の知識を獲るには，divide and conquer
+(分割統治とも訳されますが，各個撃破がしっくりきます)
+が基本戦略です．
+でもちっちゃいのが積み重なってくると整理が必要になります．
+整理のコツを言葉で表すとchunkingとdeja vuです．
 chunkingはまとまった知識を覚える人間の癖を
 心理学者が解き明かした知恵です．
 それをまとめる時には
 deja vuで示したようにコトバで概念をまとめます．
 
 これは卒業研究の本質に深く根ざしています．
-それらの知識をまとめたのが次の文章です．
+それらの歴史的な知識をまとめたのが次の
+Geminiとの問答です．
 - [[./hyper_card_philosophy_w_gemini.org]]
 
 * preparation notes

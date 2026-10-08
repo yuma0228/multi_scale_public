@@ -17,12 +17,12 @@
 * Introduction
 HyperCardっていう面白いソフトが初期のMacには無料でついてました．
 これは，GUI的なアプリの基本となったものです．
-でも，みんなが使えるアプリにするために，
-多くのいいところが削がれていきました．
-HyperCardアプリはそれを
+HyperCardアプリは
 "an essential software construction kit 
 that belonged in the hands of everday users"
-とすることを目的としています．
+とすることを目的としていました．
+でも，その発展の課程で万人が使えるアプリにするために，
+多くのいいところが削がれていきました．
 
 HyperCardはカードをまとめた"Stack"を
 Floppy Diskに入れて交換(販売)してました．
@@ -37,9 +37,9 @@ Mock-Upを作りながら"HyperCard"のコンセプトを
 * An example : jps_26f
 | [[file:figs/prepare_jpgs/hyper_card_system-94.jpg]]
 
-これは，9月に物理学会での発表のcardです．
-これを作成するためのMock-Upを
-みていきましょう．
+これは，9月に開かれた物理の学会発表のcardです．
+このような最前線の研究でも使っている
+Mock-Upを授業の後半で紹介するつもりです．
 
 * Preparation notes
 | [[file:./figs/prepare_jpgs/hyper_card_system-89.jpg]] | [[file:./figs/prepare_jpgs/hyper_card_system-90.jpg]] | [[file:./figs/prepare_jpgs/hyper_card_system-91.jpg]]

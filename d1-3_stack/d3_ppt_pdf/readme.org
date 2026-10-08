@@ -47,11 +47,18 @@ ActionがGUIとCUIでどのように実現されているか
 以下のテキストにはその必要性が書かれています．
 
 - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCNOEYWPwBfQ5WdA_NASPPNAcO6ll2wSw7NOUbvHLTuriE?e=xCL24t][file:./hidden_files/c21_ruby.pdf]]
-- [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQAMCCml1Dw3RaWHRBuoTMQkAfSe9WOFwtXf5Ss3LrpJpzM?e=eojWsT][file:./hidden_files/c51_starter_kit_complete_auto.pdf]]
-
+- [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBcMWbkjmW6TZZ2iu9Xt6DkAQs5l9uy9QHNIr3aTyg3bRQ?e=DmULfg][file:./hidden_files/c43_v1_ubiquitous_automation.pdf]]
+# - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQAMCCml1Dw3RaWHRBuoTMQkAfSe9WOFwtXf5Ss3LrpJpzM?e=eojWsT][file:./hidden_files/c51_starter_kit_complete_auto.pdf]]
 
 * Ghost?
-- [[file:./rnn_vs_transform_ghost_gemini.html]]
+以下は攻殻機動隊とAIの知能についてのGeminiとのchatです．
+これから紹介しようとするSemi Latticeに誘導しようとはじめました．
+そこまで辿り着けなかったのですが，
+Agentic codingの現状がまとまっているので残しておきます．
+次はここからはじめましょう．
+こんなのも知識を留めておくコツです．
+
+- [[file:./rnn_vs_transform_ghost_gemini.org]]
 
 * 準備メモ(preparation notes)
 
