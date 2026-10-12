@@ -5,6 +5,7 @@
 #+EMAIL:     (concat "shigeto_nishitani@mac.com")
 #+LANGUAGE:  jp
 #+OPTIONS:   H:4 toc:t num:2
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/setup/html-theme-readtheorg.setup
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
@@ -14,30 +15,42 @@
 [[../../d99_junior_ruby/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
-* mk ppt
+* canvasあるいはMindMap的なHyperCard
 
 HyperCardのMockが，
-今見ていただいているcanva.htmlになります．
+今見ていただいているcanvas.htmlになります．
 
 IconとかNaviとか，
 ActionがGUIとCUIでどのように実現されているか
 あるいはMockされているかを観察してください．
+| [[file:figs/multi_scale_26f-20.jpg]] | [[file:figs/multi_scale_26f-21.jpg]] |
 
-| [[file:./figs/mk_canvas.002.png]]
-この時，こういったポンチ絵が役に立ちます．
+- 視覚化，manual, 整理による知識の構造化
+- 暗黙知の明示化
+- 自動化
+
+* ppt and Rakefile
+まだ，自動化されていません(^^;．
+上のcanvas.htmlを作成するには
+いくつかの操作が必要になります．
+そんな時，手順をmanualにするんですが
+それを速攻で作ってくれるのがppt，
+そしてRakefileです．
+| [[file:./figs/mk_canvas.002.png]] | | 
 
 
-* Pragmatic programmar (v2)
+* CUIとplain.txt
 なぜCUIがGUIよりプログラマに良いのかは，
+Pragmatic programmar (v2)にある
 次のテキストを参照ください．
 
 - basic tool
-  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQDjA5A55qKHR7k3ZFNjArzBAaHyx_EZhRW8-JSfW7i6vpA?e=BaQaLo][file:./hidden_files/p3_basic_tools.pdf]]
-  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBDklNB41u8Qr_jZQ8WyFf_AYO_aCEre7NEfkW6531WEgw?e=8vseFE][file:./hidden_files/c16_plain_text.pdf]]
-  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBgEsdsbyHLTr4LQO5Lj8hdAZYhjRbPyWF4iz_X2Q33B6o?e=aa8elg][file:./hidden_files/c17_shell.pdf]]
-  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCbGkDz_NtGRaeVc9SYaseCAYhqCi_wpWNORQvAXp7CruU?e=rQF1tP][file:./hidden_files/c18_editor.pdf]]
-  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQDy2QskmGY1Qbwy9Vz_dSs5AXMtTTUTUZ2QA_VdLcp7KTU?e=4UtY6z][file:./hidden_files/c19_version_github.pdf]]
-  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBmykqRCwoDQbOUjmz55PtkAYMGFzyg4iyi-WlQemPWysA?e=CfnPOl][file:./hidden_files/c22_note_my_help.pdf]]
+  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQDjA5A55qKHR7k3ZFNjArzBAaHyx_EZhRW8-JSfW7i6vpA?e=BaQaLo][p3_basic_tools.pdf]]
+  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBDklNB41u8Qr_jZQ8WyFf_AYO_aCEre7NEfkW6531WEgw?e=8vseFE][c16_plain_text.pdf]]
+  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBgEsdsbyHLTr4LQO5Lj8hdAZYhjRbPyWF4iz_X2Q33B6o?e=aa8elg][c17_shell.pdf]]
+  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCbGkDz_NtGRaeVc9SYaseCAYhqCi_wpWNORQvAXp7CruU?e=rQF1tP][c18_editor.pdf]]
+  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQDy2QskmGY1Qbwy9Vz_dSs5AXMtTTUTUZ2QA_VdLcp7KTU?e=4UtY6z][c19_version_github.pdf]]
+  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBmykqRCwoDQbOUjmz55PtkAYMGFzyg4iyi-WlQemPWysA?e=CfnPOl][c22_note_my_help.pdf]]
 
 * Why Ruby?
 さて，では，これらがどうやって実現されているか？
@@ -46,17 +59,19 @@ ActionがGUIとCUIでどのように実現されているか
 
 以下のテキストにはその必要性が書かれています．
 
-- [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCNOEYWPwBfQ5WdA_NASPPNAcO6ll2wSw7NOUbvHLTuriE?e=xCL24t][file:./hidden_files/c21_ruby.pdf]]
-- [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBcMWbkjmW6TZZ2iu9Xt6DkAQs5l9uy9QHNIr3aTyg3bRQ?e=DmULfg][file:./hidden_files/c43_v1_ubiquitous_automation.pdf]]
-# - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQAMCCml1Dw3RaWHRBuoTMQkAfSe9WOFwtXf5Ss3LrpJpzM?e=eojWsT][file:./hidden_files/c51_starter_kit_complete_auto.pdf]]
+- [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCNOEYWPwBfQ5WdA_NASPPNAcO6ll2wSw7NOUbvHLTuriE?e=xCL24t][c21_ruby.pdf]]
+- [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBn3TVnInC7QLEFKytjDVYeAYHT1j_sq0qj12CMyI8u1wI?e=QLVUA3][c43_v1_ubiquitous_automation.pdf]]
+# - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQAMCCml1Dw3RaWHRBuoTMQkAfSe9WOFwtXf5Ss3LrpJpzM?e=eojWsT][c51_starter_kit_complete_auto.pdf]]
+# 
 
 * Ghost?
-以下は攻殻機動隊とAIの知能についてのGeminiとのchatです．
-これから紹介しようとするSemi Latticeに誘導しようとはじめました．
+以下は「攻殻機動隊とAIの知能」についてのGeminiとのchatです．
+後の講義で紹介しようとするSemi Latticeを議論しようとはじめました．
 そこまで辿り着けなかったのですが，
-Agentic codingの現状がまとまっているので残しておきます．
-次はここからはじめましょう．
-こんなのも知識を留めておくコツです．
+Agentic Engineeringの現状がまとまっているので残しておきます．
+あとで考える時はここからはじめられるのが，
+知識を留めておくコツです．
+どうせ忘れるから，目に着くとこに置いておくという．
 
 - [[file:./rnn_vs_transform_ghost_gemini.org]]
 
@@ -69,6 +84,5 @@ Agentic codingの現状がまとまっているので残しておきます．
 
 | [[file:./figs/multi_scale_26f-11.jpg]] | [[file:./figs/multi_scale_26f-12.jpg]]
 | [[file:./figs/multi_scale_26f-13.jpg]] | [[file:./figs/multi_scale_26f-14.jpg]]
-
 
 

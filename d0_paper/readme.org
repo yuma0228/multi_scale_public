@@ -1,7 +1,7 @@
 * Introduction
 #+OPTIONS: ^:{}
 #+STARTUP: indent nolineimages overview num
-#+TITLE: Introduction : Mock-Up (==Prototype)
+#+TITLE: d1 26/09/23 : Mock-Up (==Prototype)
 #+AUTHOR: Shigeto R. Nishitani
 #+EMAIL:     (concat "shigeto_nishitani@mac.com")
 #+LANGUAGE:  jp
@@ -15,22 +15,27 @@
 [[file:../d1-3_stack/d2_divide_chunk/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
-** Introduction
+** とっかかりはHyperCard
 HyperCardっていう面白いソフトが初期のMacには無料でついてました．
-これは，GUI的なアプリの基本となったものです．
-HyperCardアプリは
-"an essential software construction kit 
-that belonged in the hands of everday users"
-とすることを目的としていました．
-でも，その発展の課程で万人が使えるアプリにするために，
+これは，
+#+begin_quote
+an essential software construction kit 
+that belonged in the hands of everday users
+#+end_quote
+とすることを目的としてBill Atkinsonによって1987年ごろに開発されました．
+GUIアプリの基本は全て入っていたのですが，
+その派生として登場するいくつものアプリ
+(web browser, wiki, explorer, ppt, idea processor)
+が，万人が使える仕様へ変貌する課程で，
 多くのいいところが削がれていきました．
+この授業では，院生，卒研生に利用してもらえる
+Mock-Upを作りながら"HyperCard"のコンセプトを
+理解してもらう予定です．
 
 HyperCardはカードをまとめた"Stack"を
 Floppy Diskに入れて交換(販売)してました．
 まだInternetがなかったんですよ．
-この授業では，院生，卒研生に利用してもらえる
-Mock-Upを作りながら"HyperCard"のコンセプトを
-理解してもらう予定です．
+皆さんにはGithubを通してStackにアクセスしてもらいます．
 
 | [[file:../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-1.jpg]] | [[file:../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-2.jpg]]
 | [[file:../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-3.jpg]] | [[file:../d1-3_stack/d1_mock/figs/on_line_jpgs/multi_scale_26f-4.jpg]]
@@ -77,10 +82,11 @@ chunkingはまとまった知識を覚える人間の癖を
 それをまとめる時には
 deja vuで示したようにコトバで概念をまとめます．
 
+** 卒業論文って何？
 これは卒業研究の本質に深く根ざしています．
 それらの歴史的な知識をまとめたのが次の
 Geminiとの問答です．
-- [[file:../d1-3_stack/d2_divide_chunk/hyper_card_philosophy_w_gemini.org]]
+- [[https://ist.ksc.kwansei.ac.jp/~nishitani/Lectures/2026/multi_scale/d1-3_stack/d2_divide_chunk/hyper_card_philosophy_w_gemini.html][hyper_card_philosophy_w_gemini.html]]
 
 ** preparation notes
 | [[file:../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-8.jpg]]  | [[file:../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-9.jpg]]  | [[file:../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg]]
@@ -98,11 +104,11 @@ Geminiとの問答です．
 
 # for style.css, never move from here
 [[file:../d1-3_stack/d2_divide_chunk/readme.html][prev_button]]
-[[file:../d1-3_stack/canvas.html][up_button]]
-[[file:../d1-3_stack/d99_junior_ruby/readme.html][next_button]]
+[[file:../canvas.html][up_button]]
+[[file:../d99_junior_ruby/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
-** mk ppt
+** canvasあるいはMindMap的なHyperCard
 
 HyperCardのMockが，
 今見ていただいているcanva.htmlになります．
@@ -110,22 +116,34 @@ HyperCardのMockが，
 IconとかNaviとか，
 ActionがGUIとCUIでどのように実現されているか
 あるいはMockされているかを観察してください．
+| [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-20.jpg]] | [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-21.jpg]] |
 
-| [[file:../d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png]]
-この時，こういったポンチ絵が役に立ちます．
+- 視覚化，manual, 整理による知識の構造化
+- 暗黙知の明示化
+- 自動化
+
+** ppt and Rakefile
+まだ，自動化されていません(^^;．
+上のcanvas.htmlを作成するには
+いくつかの操作が必要になります．
+そんな時，手順をmanualにするんですが
+それを速攻で作ってくれるのがppt，
+そしてRakefileです．
+| [[file:../d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png]] | | 
 
 
-** Pragmatic programmar (v2)
+** CUIとplain.txt
 なぜCUIがGUIよりプログラマに良いのかは，
+Pragmatic programmar (v2)にある
 次のテキストを参照ください．
 
 - basic tool
-  - p3_basic_tools.pdf
-  - c16_plain_text.pdf
-  - c17_shell.pdf
-  - c18_editor.pdf
-  - c19_version_github.pdf
-  - c22_note_my_help.pdf
+  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQDjA5A55qKHR7k3ZFNjArzBAaHyx_EZhRW8-JSfW7i6vpA?e=BaQaLo][p3_basic_tools.pdf]]
+  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBDklNB41u8Qr_jZQ8WyFf_AYO_aCEre7NEfkW6531WEgw?e=8vseFE][c16_plain_text.pdf]]
+  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBgEsdsbyHLTr4LQO5Lj8hdAZYhjRbPyWF4iz_X2Q33B6o?e=aa8elg][c17_shell.pdf]]
+  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCbGkDz_NtGRaeVc9SYaseCAYhqCi_wpWNORQvAXp7CruU?e=rQF1tP][c18_editor.pdf]]
+  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQDy2QskmGY1Qbwy9Vz_dSs5AXMtTTUTUZ2QA_VdLcp7KTU?e=4UtY6z][c19_version_github.pdf]]
+  - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBmykqRCwoDQbOUjmz55PtkAYMGFzyg4iyi-WlQemPWysA?e=CfnPOl][c22_note_my_help.pdf]]
 
 ** Why Ruby?
 さて，では，これらがどうやって実現されているか？
@@ -134,12 +152,19 @@ ActionがGUIとCUIでどのように実現されているか
 
 以下のテキストにはその必要性が書かれています．
 
-- c21_ruby.pdf
-- c51_starter_kit_complete_auto.pdf
-
+- [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCNOEYWPwBfQ5WdA_NASPPNAcO6ll2wSw7NOUbvHLTuriE?e=xCL24t][c21_ruby.pdf]]
+- [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBcMWbkjmW6TZZ2iu9Xt6DkAQs5l9uy9QHNIr3aTyg3bRQ?e=DmULfg][c43_v1_ubiquitous_automation.pdf]]
+# - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQAMCCml1Dw3RaWHRBuoTMQkAfSe9WOFwtXf5Ss3LrpJpzM?e=eojWsT][c51_starter_kit_complete_auto.pdf]]
 
 ** Ghost?
-- [[file:../d1-3_stack/d3_ppt_pdf/rnn_vs_transform_ghost_gemini.html]]
+以下は攻殻機動隊とAIの知能についてのGeminiとのchatです．
+後の講義で紹介しようとするSemi Latticeを議論しようとはじめました．
+そこまで辿り着けなかったのですが，
+Agentic codingの現状がまとまっているので残しておきます．
+次の機会の議論はここからはじめましょう．
+こんなのも知識を留めておくコツです．
+
+- [[https://ist.ksc.kwansei.ac.jp/~nishitani/Lectures/2026/multi_scale/d1-3_stack/d3_ppt_pdf/rnn_vs_transform_ghost_gemini.html][rnn_vs_transform_ghost_gemini.html]]
 
 ** 準備メモ(preparation notes)
 
@@ -150,7 +175,6 @@ ActionがGUIとCUIでどのように実現されているか
 
 | [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-11.jpg]] | [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-12.jpg]]
 | [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-13.jpg]] | [[file:../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-14.jpg]]
-
 
 
 

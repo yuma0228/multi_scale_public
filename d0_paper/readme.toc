@@ -1,13 +1,15 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Introduction}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.1}とっかかりはHyperCard}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}An example : jps\_26f}{3}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Preparation notes}{3}{subsection.1.3}%
 \contentsline {section}{\numberline {2}Method}{3}{section.2}%
 \contentsline {subsection}{\numberline {2.1}chunking, dejavu, HyperCard}{4}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}preparation notes}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.2}卒業論文って何？}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}preparation notes}{4}{subsection.2.3}%
 \contentsline {section}{\numberline {3}Results}{4}{section.3}%
-\contentsline {subsection}{\numberline {3.1}mk ppt}{4}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Pragmatic programmar (v2)}{5}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Why Ruby?}{5}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Ghost?}{6}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}準備メモ(preparation notes)}{6}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.1}canvasあるいはMindMap的なHyperCard}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}ppt and Rakefile}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}CUIとplain.txt}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Why Ruby?}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Ghost?}{6}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}準備メモ(preparation notes)}{7}{subsection.3.6}%

@@ -1,167 +1,71 @@
 # -*- coding: utf-8 -*-
-require "command_line/global"
-require "colorize"
+# frozen_string_literal: true
+
+require "optparse"
 require "pathname"
+require "yaml"
 
-$file = "readme"
-$fig_dir = "./figs"
+require_relative "lib/latex_builder"
+require_relative "lib/org_assembler"
+require_relative "lib/publication_config"
 
-def init
-  ["revtex4-2-head.tex", "#{$file}.org"].each do |file|
-    file = File.join("~/bin/Rakefiles", file)
-    system "cp #{file} ."
-  end
-end
+PAPER_DIR = Pathname.new(__dir__).expand_path.freeze
+PROJECT_ROOT = PAPER_DIR.parent.freeze
 
-def put_gather(hash)
-  file = $file + ".org"
-  main_text = []
-  hash.each do |section, file_list|
-    main_text << "* #{section}\n"
-    next if file_list == nil or file_list.empty?
-    file_list.each do |file|
-      lines = File.readlines(file)
-      conts = add_dir_head(lines, file)
-      main_text += conts
-    end
-    main_text << "\n"
-  end
-  File.write(file, main_text.join)
-end
+options = {
+  structure: "dir_tree_full.yaml",
+  output: "readme",
+  format: "standard",
+  assemble_only: false
+}
 
-def rewrite_file_links(line, source_file)
-  source_dir = File.dirname(File.expand_path(source_file))
-  output_dir = Pathname.new(Dir.pwd)
-
-  line.gsub(/\[\[(file:)?([^\]]+)\]/) do
-    original = Regexp.last_match(0)
-    explicit_file_link = !Regexp.last_match(1).nil?
-    target = Regexp.last_match(2)
-    next original unless explicit_file_link || target.start_with?('./', '../')
-
-    path, separator, search = target.partition('::')
-    next original if Pathname.new(path).absolute?
-
-    resolved = Pathname.new(File.expand_path(path, source_dir))
-    relative = resolved.relative_path_from(output_dir).to_s
-    relative = "./#{relative}" unless relative.start_with?('.')
-    "[[file:#{relative}#{separator}#{search}]"
-  end
-end
-
-def add_dir_head(lines, file)
-  add_dir=file.split('/')[0..-2].join('/')
-
-  lines.map do |line|
-    line = rewrite_file_links(line, file)
-#    p line
-    # ヘッダー行なら*を1つ追加してlevel 2に
-    if line =~ /^\*+ /
-      line.sub(/^(\*+)/) { |stars| stars + "*" }
-    # batch exportで確認できないremote SETUPFILEは除外
-    elsif line =~ /^\s*#\+SETUPFILE:\s+https?:\/\//i
-      nil
-    elsif line =~ /^#\+include: "(.+)"/
-      p include_file = "#{add_dir}/#{$1}"
-      lines = File.readlines(include_file)
-      add_dir_head(lines, file)
-    else
-      line
-    end
-  end.compact
-end
-
-def resize_table_images(tex_file)
-  contents = File.read(tex_file)
-  resized = contents.gsub(/\\begin\{tabular\}\{([^}]*)\}.*?\\end\{tabular\}/m) do |table|
-    column_spec = Regexp.last_match(1)
-    column_count = column_spec.scan(/[lcr]/).length
-    next table if column_count < 1 || !table.include?('\\includegraphics')
-    next table unless column_spec.match?(/\A[lcr]+\z/)
-
-    column_width = format('%.3g', 0.88 / column_count)
-    paragraph_columns = Array.new(column_count, "p{#{column_width}\\linewidth}").join
-    table = table.sub("\\begin{tabular}{#{column_spec}}", "\\begin{tabular}{#{paragraph_columns}}")
-    table.gsub(/(\\includegraphics\[[^\]]*?\bwidth=)[^,\]]+/) do
-      "#{Regexp.last_match(1)}\\linewidth"
-    end
-  end
-  File.write(tex_file, resized) if resized != contents
-end
-
-def org_2_latex
-  file = $file
-  comm = "emacs #{file}.org --batch --eval '(setq org-latex-images-centered nil)' -f org-latex-export-to-latex --kill"
-  puts comm
-  system comm
-  resize_table_images("#{file}.tex")
-end
-
-def revtex(opts={})
-  p opts
-  file = $file
-  if opts[:revtex]
-    puts "install as following [[https://qiita.com/ryokbys/items/206e5a9bdfa5f174edb9]]"
-    change_head_tail(file)
-    file = file + "2"
-  else
-    title = opts[:title]
-    author = opts[:author]
-    change_readme_head(file, title, author)
-  end
-  commands = ["platex #{file}.tex",
-              # "pbibtex #{file}",
-              "platex #{file}.tex",
-              "dvipdfmx #{file}",
-             # "open #{file}.pdf"
-             ]
-  commands.each do |com|
-    puts com
-    system com
-  end
-end
-
-def change_head_tail(file)
-  file = $file
-  contents = $contents_main
-  lines_head = File.read("revtex4-2-head.tex")
-  lines = File.readlines("#{file}.tex")
-  main = lines[30..-1].join
-  main.sub!('\documentclass[11pt]{article}', '\documentclass[dvipdfmx, a4paper, 12pt]{jsarticle}')
-  main.sub!('\usepackage{graphicx}', '\usepackage[dvipdfmx]{graphicx}')
-  main.sub!('\usepackage{hyperref}', '\usepackage[dvipdfmx]{hyperref}')
-  File.open("#{file}2.tex", "w") do |f|
-    f.print lines_head
-    f.print main
-  end
-end
-
-def change_readme_head(file, title=nil, author=nil)
-  main = File.read("#{file}.tex")
-
-  main.sub!(/\\title{.+}/,"\\title{#{title}}")
-  main.sub!(/pdftitle={.+}/,"pdftitle={#{title}}")
-  main.sub!(/\\author{.+}/,"\\author{#{author}}")
-  main.sub!(/pdfauthor={.+}/,"pdfauthor={#{author}}")
-  main.sub!('\documentclass[11pt]{article}', '\documentclass[dvipdfmx, a4paper, 12pt]{jsarticle}')
-  main.sub!('\usepackage{graphicx}', '\usepackage[dvipdfmx]{graphicx}')
-  main.sub!('\usepackage{hyperref}', '\usepackage[dvipdfmx]{hyperref}')
-  File.open("#{file}.tex", "w") do |f|
-    f.print main
-  end
-end
-
-require 'yaml'
-puts "\nrunning auto_merge.rb\n".green
-file = ARGV[1] || 'dir_tree.yaml'
-header_and_toc = YAML.load(File.read(file))
-pp header_and_toc
-
-put_gather(header_and_toc[:toc])
-org_2_latex()
-
-if ARGV[0]=='-s'
-  revtex({revtex: false}.merge(header_and_toc[:header]))
+# Backward compatibility with the former invocation:
+# ruby auto_merge.rb -s dir_tree_full.yaml
+if ARGV.delete("-s")
+  options[:structure] = ARGV.shift || options[:structure]
 else
-  revtex(revtex: true)
+  OptionParser.new do |parser|
+    parser.banner = "Usage: ruby auto_merge.rb [options]"
+    parser.on("--structure FILE", "YAML file describing the report structure") do |file|
+      options[:structure] = file
+    end
+    parser.on("--output NAME", "Output basename (default: readme)") do |name|
+      options[:output] = name
+    end
+    parser.on("--format NAME", %w[standard revtex], "LaTeX format") do |format|
+      options[:format] = format
+    end
+    parser.on("--assemble-only", "Generate the assembled Org file only") do
+      options[:assemble_only] = true
+    end
+  end.parse!
 end
+
+structure_path = Pathname.new(options[:structure]).expand_path(PAPER_DIR)
+output_base = Pathname.new(options[:output]).basename.to_s
+output_org = PAPER_DIR.join("#{output_base}.org")
+
+structure = YAML.load_file(structure_path)
+publication = PublicationConfig.load(PROJECT_ROOT.join(".hc_config.yaml"))
+
+assembler = OrgAssembler.new(
+  project_root: PROJECT_ROOT,
+  output_dir: PAPER_DIR,
+  public_base_url: publication.public_base_url
+)
+assembler.assemble(
+  structure: structure,
+  structure_dir: structure_path.dirname,
+  output_path: output_org
+)
+
+puts "assembled #{output_org}"
+exit if options[:assemble_only]
+
+builder = LatexBuilder.new(work_dir: PAPER_DIR)
+pdf_path = builder.build(
+  basename: output_base,
+  header: structure.fetch(:header, {}),
+  format: options[:format]
+)
+puts "built #{pdf_path}"

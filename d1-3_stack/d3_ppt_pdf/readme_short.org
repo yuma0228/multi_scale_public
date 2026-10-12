@@ -9,9 +9,9 @@
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
 # for style.css, never move from here
-[[../d2_divide_chunk/readme.html][prev_button]]
-[[../canvas.html][up_button]]
-[[../d99_junior_ruby/readme.html][next_button]]
+[[../../d1-3_stack/d2_divide_chunk/readme.html][prev_button]]
+[[../../canvas.html][up_button]]
+[[../../d99_junior_ruby/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
 * mk ppt
@@ -22,9 +22,16 @@ HyperCardのMockが，
 IconとかNaviとか，
 ActionがGUIとCUIでどのように実現されているか
 あるいはMockされているかを観察してください．
+| [[file:figs/multi_scale_26f-20.jpg]] | [[file:figs/multi_scale_26f-21.jpg]] |
 
-| [[file:./figs/mk_canvas.002.png]]
-この時，こういったポンチ絵が役に立ちます．
+- 視覚化，manual, 整理による知識の構造化
+- 暗黙知の明示化
+- 自動化
+
+| [[file:./figs/mk_canvas.002.png]] | | 
+
+manualには単なるコマンドの羅列ではなく，
+ポンチ絵的な視覚化が役に立ちます．
 
 
 * Pragmatic programmar (v2)
@@ -47,11 +54,18 @@ ActionがGUIとCUIでどのように実現されているか
 以下のテキストにはその必要性が書かれています．
 
 - c21_ruby.pdf
-- c51_starter_kit_complete_auto.pdf
-
+- c43_v1_ubiquitous_automation.pdf
+# - c51_starter_kit_complete_auto.pdf
 
 * Ghost?
-- [[file:./rnn_vs_transform_ghost_gemini.html]]
+以下は攻殻機動隊とAIの知能についてのGeminiとのchatです．
+後の講義で紹介しようとするSemi Latticeを議論しようとはじめました．
+そこまで辿り着けなかったのですが，
+Agentic codingの現状がまとまっているので残しておきます．
+次の機会の議論はここからはじめましょう．
+こんなのも知識を留めておくコツです．
+
+- [[file:./rnn_vs_transform_ghost_gemini.org]]
 
 * 準備メモ(preparation notes)
 

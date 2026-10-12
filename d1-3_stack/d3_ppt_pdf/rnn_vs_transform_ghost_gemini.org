@@ -7,6 +7,9 @@
 #+LANGUAGE:  jp
 #+OPTIONS:   H:4 toc:t num:3
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/setup/html-theme-readtheorg.setup
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+#+MACRO: dummy_link @@html:<a href="#">$1</a>@@
+
 
 * Abstract<2026-10-05 Mon>
 以下は攻殻機動隊とAIの知能についてのGeminiとのchatです．

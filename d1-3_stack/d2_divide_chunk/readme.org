@@ -5,6 +5,7 @@
 #+EMAIL:     (concat "shigeto_nishitani@mac.com")
 #+LANGUAGE:  jp
 #+OPTIONS:   H:4 toc:t num:2
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/setup/html-theme-readtheorg.setup
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
@@ -17,16 +18,19 @@
 * chunking, dejavu, HyperCard
 | [[file:./figs/memory.004.png]] | [[file:./figs/memory.005.png]] | [[file:./figs/multi_scale_26f-10.jpg]]
 
-最小単位の知識を獲るには，divide and conquer
+知識を獲るには，divide and conquer
 (分割統治とも訳されますが，各個撃破がしっくりきます)
 が基本戦略です．
-でもちっちゃいのが積み重なってくると整理が必要になります．
+でもちっちゃいのが積み重なってくると，
+知識が干渉し始めて混乱します．
+整理が必要になります．
 整理のコツを言葉で表すとchunkingとdeja vuです．
 chunkingはまとまった知識を覚える人間の癖を
 心理学者が解き明かした知恵です．
 それをまとめる時には
 deja vuで示したようにコトバで概念をまとめます．
 
+* 卒業論文って何？
 これは卒業研究の本質に深く根ざしています．
 それらの歴史的な知識をまとめたのが次の
 Geminiとの問答です．

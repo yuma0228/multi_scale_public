@@ -1,10 +1,11 @@
 #+OPTIONS: ^:{}
 #+STARTUP: indent nolineimages overview num
-#+TITLE: Introduction : Mock-Up (==Prototype)
+#+TITLE: d1 26/09/23 : Mock-Up (==Prototype)
 #+AUTHOR: Shigeto R. Nishitani
 #+EMAIL:     (concat "shigeto_nishitani@mac.com")
 #+LANGUAGE:  jp
 #+OPTIONS:   H:4 toc:t num:2
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/setup/html-theme-readtheorg.setup
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
@@ -14,22 +15,27 @@
 [[../../d1-3_stack/d2_divide_chunk/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
-* Introduction
+* とっかかりはHyperCard
 HyperCardっていう面白いソフトが初期のMacには無料でついてました．
-これは，GUI的なアプリの基本となったものです．
-HyperCardアプリは
-"an essential software construction kit 
-that belonged in the hands of everday users"
-とすることを目的としていました．
-でも，その発展の課程で万人が使えるアプリにするために，
+これは，
+#+begin_quote
+an essential software construction kit 
+that belonged in the hands of everday users
+#+end_quote
+とすることを目的としてBill Atkinsonによって1987年ごろに開発されました．
+GUIアプリの基本は全て入っていたのですが，
+その派生として登場するいくつものアプリ
+(web browser, wiki, explorer, ppt, idea processor)
+が，万人が使える仕様へ変貌する課程で，
 多くのいいところが削がれていきました．
+この授業では，院生，卒研生に利用してもらえる
+Mock-Upを作りながら"HyperCard"のコンセプトを
+理解してもらう予定です．
 
 HyperCardはカードをまとめた"Stack"を
 Floppy Diskに入れて交換(販売)してました．
 まだInternetがなかったんですよ．
-この授業では，院生，卒研生に利用してもらえる
-Mock-Upを作りながら"HyperCard"のコンセプトを
-理解してもらう予定です．
+皆さんにはGithubを通してStackにアクセスしてもらいます．
 
 | [[file:./figs/on_line_jpgs/multi_scale_26f-1.jpg]] | [[file:./figs/on_line_jpgs/multi_scale_26f-2.jpg]]
 | [[file:./figs/on_line_jpgs/multi_scale_26f-3.jpg]] | [[file:./figs/on_line_jpgs/multi_scale_26f-4.jpg]]

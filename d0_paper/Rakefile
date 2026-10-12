@@ -1,15 +1,74 @@
 # -*- coding: utf-8 -*-
-require "colorize"
-require 'command_line/global'
+# frozen_string_literal: true
 
+require "rbconfig"
+
+REPORTS = {
+  full_report: {
+    structure: "dir_tree_full.yaml",
+    output: "readme",
+    format: "standard"
+  },
+  short_report: {
+    structure: "dir_tree_short.yaml",
+    output: "short_report",
+    format: "standard"
+  },
+  formatted_paper: {
+    structure: "dir_tree_formatted.yaml",
+    output: "formatted_paper",
+    format: "standard"
+  }
+}.freeze
+
+def report_config(name)
+  config = REPORTS.fetch(name.to_sym) do
+    abort "unknown report: #{name}; choose from #{REPORTS.keys.join(', ')}"
+  end
+
+  structure = File.expand_path(config.fetch(:structure), __dir__)
+  abort "missing structure YAML: #{structure}" unless File.file?(structure)
+
+  config
+end
+
+def run_report(name, assemble_only: false)
+  config = report_config(name)
+  command = [
+    RbConfig.ruby,
+    File.join(__dir__, "auto_merge.rb"),
+    "--structure", config.fetch(:structure),
+    "--output", config.fetch(:output),
+    "--format", config.fetch(:format)
+  ]
+  command << "--assemble-only" if assemble_only
+  sh(*command)
+end
+
+desc "List available report targets"
 task :default do
-  system "rake -T"
+  puts "Report targets: #{REPORTS.keys.join(', ')}"
+  puts "Use `rake report:build[full_report]` or a named target such as `rake full_report`."
 end
 
-desc "make full report" #desc -> description
-task :mk_full_report do # any name on task_name
-  # your code goes
-  system 'ruby auto_merge.rb -s dir_tree_full.yaml'
-  system 'open ./readme.pdf'
+namespace :report do
+  desc "Assemble Org only: rake report:assemble[full_report]"
+  task :assemble, [:name] do |_task, args|
+    run_report(args[:name] || :full_report, assemble_only: true)
+  end
+
+  desc "Assemble and build PDF: rake report:build[full_report]"
+  task :build, [:name] do |_task, args|
+    run_report(args[:name] || :full_report)
+  end
 end
 
+REPORTS.each_key do |name|
+  desc "Assemble and build #{name}"
+  task name do
+    run_report(name)
+  end
+end
+
+desc "Backward-compatible alias for full_report"
+task mk_full_report: :full_report

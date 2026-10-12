@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.141592653-p4.1.2-u2.02-251130-2.6 (utf8.euc) (TeX Live 2026) (preloaded format=platex 2026.8.28)  8 OCT 2026 07:39
+This is e-upTeX, Version 3.141592653-p4.1.2-u2.02-251130-2.6 (utf8.euc) (TeX Live 2026) (preloaded format=platex 2026.8.28)  8 OCT 2026 19:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -484,18 +484,24 @@ pe bmp)
 File: ../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg Graphic file (t
 ype bmp)
 <../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg>
+ [4]
+File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-20.jpg Graphic file (type b
+mp)
+<../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-20.jpg>
+File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-21.jpg Graphic file (type b
+mp)
+<../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-21.jpg>
 File: ../d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png Graphic file (type bmp)
 <../d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png>
- [4]
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 145.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 145.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 145.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 145.
  [5]
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 169.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 169.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 169.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 169.
 File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-15.jpg Graphic file (type b
 mp)
 <../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-15.jpg>
@@ -511,6 +517,7 @@ mp)
 File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-19.jpg Graphic file (type b
 mp)
 <../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-19.jpg>
+ [6]
 File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-11.jpg Graphic file (type b
 mp)
 <../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-11.jpg>
@@ -523,22 +530,22 @@ mp)
 File: ../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-14.jpg Graphic file (type b
 mp)
 <../d1-3_stack/d3_ppt_pdf/figs/multi_scale_26f-14.jpg>
- [6] [7] (./readme.aux)
+ [7] [8] (./readme.aux)
  ***********
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `readme.out' has not changed.
-(rerunfilecheck)             Checksum: D31DA20BC0F04DDE970527F193BE2BC9;1697.
+(rerunfilecheck)             Checksum: 718597424B9603A7BA9DBE260FA08CE9;2031.
  ) 
 Here is how much of TeX's memory you used:
- 10292 strings out of 468171
- 160223 string characters out of 5434472
- 568664 words of memory out of 5000000
- 39040 multiletter control sequences out of 15000+600000
- 647353 words of font info for 113 fonts, out of 8000000 for 9000
+ 10307 strings out of 468171
+ 160940 string characters out of 5434472
+ 570067 words of memory out of 5000000
+ 39054 multiletter control sequences out of 15000+600000
+ 647040 words of font info for 112 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  72i,9n,79p,399b,514s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on readme.dvi (7 pages, 19648 bytes).
+Output written on readme.dvi (8 pages, 24736 bytes).
