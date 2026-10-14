@@ -10,7 +10,7 @@
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
 # for style.css, never move from here
-[[../../d99_junior_ruby/readme.html][prev_button]]
+[[../../d4-6_ruby/readme_junior.html][prev_button]]
 [[../../canvas.html][up_button]]
 [[../../d1-3_stack/d2_divide_chunk/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]

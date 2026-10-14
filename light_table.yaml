@@ -17,6 +17,12 @@
 - :id: section-1
   :title: d4_6_Ruby, Rakefile
   :items:
-  - :href: d4-6_ruby/readme.html
+  - :href: d4-6_ruby/readme_multi.html
     :src: d4-6_ruby/ruby_title.png
-    :title: 'Ruby basics'
+    :title: 'Ruby basics for MultiScale'
+  - :href: d4-6_ruby/readme_junior.html
+    :src: d4-6_ruby/ruby_title.png
+    :title: 'Ruby basics for JuniorSemi'
+
+    
+

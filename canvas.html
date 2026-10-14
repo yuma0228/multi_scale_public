@@ -29,13 +29,24 @@ ctx.imageSmoothingQuality = 'high'; // 画像の描画品質を最高に設定
 // 1. データ定義（Rubyで生成）
 const nodes = [
   {
-    "id": 5,
-    "name": "Ruby basics",
+    "id": 6,
+    "name": "Ruby basics for JuniorSemi",
     "type": "icon",
-    "file_path": "d4-6_ruby/readme.html",
+    "file_path": "d4-6_ruby/readme_junior.html",
     "icon_path": "d4-6_ruby/ruby_title.png",
-    "x": 206,
-    "y": 374,
+    "x": 229,
+    "y": 544,
+    "color": "green",
+    "fixed": true
+  },
+  {
+    "id": 5,
+    "name": "Ruby basics for MultiScale",
+    "type": "icon",
+    "file_path": "d4-6_ruby/readme_multi.html",
+    "icon_path": "d4-6_ruby/ruby_title.png",
+    "x": 226,
+    "y": 388,
     "color": "green",
     "fixed": true
   },
@@ -45,8 +56,8 @@ const nodes = [
     "type": "icon",
     "file_path": "d1-3_stack/d3_ppt_pdf/readme.html",
     "icon_path": "d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png",
-    "x": 621,
-    "y": 158,
+    "x": 642,
+    "y": 95,
     "color": "green",
     "fixed": true
   },
@@ -56,8 +67,8 @@ const nodes = [
     "type": "icon",
     "file_path": "d1-3_stack/d2_divide_chunk/readme.html",
     "icon_path": "d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg",
-    "x": 449,
-    "y": 121,
+    "x": 430,
+    "y": 95,
     "color": "green",
     "fixed": true
   },
@@ -67,8 +78,8 @@ const nodes = [
     "type": "icon",
     "file_path": "d1-3_stack/d1_mock/readme.html",
     "icon_path": "d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg",
-    "x": 263,
-    "y": 96,
+    "x": 218,
+    "y": 94,
     "color": "green",
     "fixed": true
   },
@@ -78,8 +89,8 @@ const nodes = [
     "type": "dir",
     "file_path": ".",
     "icon_path": ".semi_lattice/icons/folder.png",
-    "x": 352,
-    "y": 231,
+    "x": 275,
+    "y": 269,
     "color": "green",
     "fixed": true
   }
@@ -90,16 +101,20 @@ const edges = [
     "to": 2
   },
   {
-    "from": 1,
+    "from": 2,
     "to": 3
   },
   {
-    "from": 1,
+    "from": 3,
     "to": 4
   },
   {
     "from": 1,
     "to": 5
+  },
+  {
+    "from": 5,
+    "to": 6
   }
 ];
 
