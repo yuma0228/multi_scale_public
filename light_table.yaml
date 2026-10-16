@@ -15,13 +15,13 @@
     :src: d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png
     :title: 'Results and Discussions : ppt and pdf'
 - :id: section-1
-  :title: d4_6_Ruby, Rakefile
+  :title: d4-6_Ruby, CLA, Rakefile
   :items:
-  - :href: d4-6_ruby/readme_multi.html
-    :src: d4-6_ruby/ruby_title.png
+  - :href: d4-6_ruby/graduated_school/readme_multi.html
+    :src: d4-6_ruby/graduated_school/dummy_icon.png
     :title: 'Ruby basics for MultiScale'
-  - :href: d4-6_ruby/readme_junior.html
-    :src: d4-6_ruby/ruby_title.png
+  - :href: d4-6_ruby/junior_seminar/readme_junior.html
+    :src: d4-6_ruby/junior_seminar/ruby_title.png
     :title: 'Ruby basics for JuniorSemi'
 
     

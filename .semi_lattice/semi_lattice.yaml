@@ -5,8 +5,8 @@
   :type: dir
   :file_path: "."
   :icon_path:
-  :x: 275
-  :y: 269
+  :x: 279
+  :y: 282
   :color: green
   :fixed: true
 - :id: 2
@@ -14,8 +14,8 @@
   :type: icon
   :file_path: d1-3_stack/d1_mock/readme.html
   :icon_path: d1-3_stack/d1_mock/figs/prepare_jpgs/hyper_card_system-95.jpg
-  :x: 218
-  :y: 94
+  :x: 241
+  :y: 107
   :color: green
   :fixed: true
 - :id: 3
@@ -23,8 +23,8 @@
   :type: icon
   :file_path: d1-3_stack/d2_divide_chunk/readme.html
   :icon_path: d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg
-  :x: 430
-  :y: 95
+  :x: 391
+  :y: 131
   :color: green
   :fixed: true
 - :id: 4
@@ -32,41 +32,41 @@
   :type: icon
   :file_path: d1-3_stack/d3_ppt_pdf/readme.html
   :icon_path: d1-3_stack/d3_ppt_pdf/figs/mk_canvas.002.png
-  :x: 642
-  :y: 95
+  :x: 545
+  :y: 158
   :color: green
   :fixed: true
 - :id: 5
   :name: Ruby basics for MultiScale
   :type: icon
-  :file_path: d4-6_ruby/readme_multi.html
-  :icon_path: d4-6_ruby/ruby_title.png
-  :x: 226
-  :y: 388
+  :file_path: d4-6_ruby/graduated_school/readme_multi.html
+  :icon_path: d4-6_ruby/graduated_school/dummy_icon.png
+  :x: 321
+  :y: 412
   :color: green
   :fixed: true
 - :id: 6
   :name: Ruby basics for JuniorSemi
   :type: icon
-  :file_path: d4-6_ruby/readme_junior.html
-  :icon_path: d4-6_ruby/ruby_title.png
-  :x: 229
-  :y: 544
+  :file_path: d4-6_ruby/junior_seminar/readme_junior.html
+  :icon_path: d4-6_ruby/junior_seminar/ruby_title.png
+  :x: 191
+  :y: 518
   :color: green
   :fixed: true
 :edges:
 - :from: 1
   # from: hyper_card/, to: Introduction : Mock-Up (==Prototype)
   :to: 2
-- :from: 2
-  # from: Introduction : Mock-Up (==Prototype), to: Method : chunking, deja vu
+- :from: 1
+  # from: hyper_card/, to: Method : chunking, deja vu
   :to: 3
-- :from: 3
-  # from: Method : chunking, deja vu, to: Results and Discussions : ppt and pdf
+- :from: 1
+  # from: hyper_card/, to: Results and Discussions : ppt and pdf
   :to: 4
 - :from: 1
   # from: hyper_card/, to: Ruby basics for MultiScale
   :to: 5
-- :from: 5
-  # from: Ruby basics for MultiScale, to: Ruby basics for JuniorSemi
+- :from: 1
+  # from: hyper_card/, to: Ruby basics for JuniorSemi
   :to: 6

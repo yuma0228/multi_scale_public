@@ -22,13 +22,13 @@
 - :id: 5
   :name: Ruby basics for MultiScale
   :type: icon
-  :file_path: d4-6_ruby/readme_multi.html
-  :icon_path: d4-6_ruby/ruby_title.png
+  :file_path: d4-6_ruby/graduated_school/readme_multi.html
+  :icon_path: d4-6_ruby/graduated_school/dummy_icon.png
 - :id: 6
   :name: Ruby basics for JuniorSemi
   :type: icon
-  :file_path: d4-6_ruby/readme_junior.html
-  :icon_path: d4-6_ruby/ruby_title.png
+  :file_path: d4-6_ruby/junior_seminar/readme_junior.html
+  :icon_path: d4-6_ruby/junior_seminar/ruby_title.png
 :edges:
 - :from: 1
   :to: 2

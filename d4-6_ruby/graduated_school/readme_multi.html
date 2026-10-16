@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
+<head>
+<!-- 2026-10-16 Fri 15:10 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ruby basics</title>
+<meta name="author" content="Shigeto R. Nishitani" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/code-copy.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/vendor/stickytableheaders/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/code-copy.js"></script>
+<link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Ruby basics</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org84c5d79">1. d5 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-21 Wed&gt;</span></span> command and direnv</a>
+<ul>
+<li><a href="#orgefe06ff">1.1. command line application</a></li>
+<li><a href="#orgb5b1348">1.2. misc cla on wsl</a>
+<ul>
+<li><a href="#orgf0bbd5a">1.2.1. copy-as-org on fish on wsl</a>
+<ul>
+<li><a href="#1wslへpandocをインストール">WSLへPandocをインストール</a></li>
+<li><a href="#2fish関数を作成">Fish関数を作成</a></li>
+<li><a href="#3登録確認">登録確認</a></li>
+<li><a href="#4使用方法">使用方法</a></li>
+<li><a href="#日本語が文字化けする場合">日本語が文字化けする場合</a></li>
+</ul>
+</li>
+<li><a href="#orgd2ab2b9">1.2.2. direnv install</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org50e1079">2. d6 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-28 Wed&gt;</span></span> Rakefile</a></li>
+<li><a href="#orge435f68">3. d4 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-14 Wed&gt;</span></span> Array Hash</a>
+<ul>
+<li><a href="#orgf6cbef5">3.1. path</a></li>
+<li><a href="#orgaa8d85e">3.2. Ruby code</a></li>
+<li><a href="#orge10c369">3.3. references</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../../d1-3_stack/d3_ppt_pdf/readme.html">prev_button</a>
+<a href="../../canvas.html">up_button</a>
+<a href="../../d4-6_ruby/junior_seminar/readme_junior.html">next_button</a>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="./ruby_title.png" alt="ruby_title.png" /></td>
+</tr>
+</tbody>
+</table>
+<div id="outline-container-org84c5d79" class="outline-2">
+<h2 id="org84c5d79"><span class="section-number-2">1.</span> d5 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-21 Wed&gt;</span></span> command and direnv</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgefe06ff" class="outline-3">
+<h3 id="orgefe06ff"><span class="section-number-3">1.1.</span> command line application</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>TDD == 現場合わせ =&gt; 一般化，切り分け</li>
+<li>現場合わせ
+<ul class="org-ul">
+<li><a href="https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBmND61Ja45Q5mZsixYOVoAARY9aZCV3kDKYFhkA3V5R0M?e=QI2kbV">KentBeck Test Driven Development</a></li>
+<li>object思考開発に設計はいらんという教え</li>
+</ul></li>
+<li>実行コードの置き場(切り分け)</li>
+</ul>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>path, '.', '~/bin', echo $PATH</code></td>
+<td class="org-left">for user whole</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>direnv</code></td>
+<td class="org-left">for object directory</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Rakefile(next week?)</code></td>
+<td class="org-left">for dirs</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>'.'</code></td>
+<td class="org-left">for current dir</td>
+</tr>
+</tbody>
+</table>
+<ul class="org-ul">
+<li>memoの置き場
+<ul class="org-ul">
+<li>c1_ruby.rb =&gt; keynote =&gt; my_help</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb5b1348" class="outline-3">
+<h3 id="orgb5b1348"><span class="section-number-3">1.2.</span> misc cla on wsl</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-orgf0bbd5a" class="outline-4">
+<h4 id="orgf0bbd5a"><span class="section-number-4">1.2.1.</span> copy-as-org on fish on wsl</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+はい．Windows上のCodexアプリと，WSL内のFishを組み合わせても作れます．WindowsのクリップボードをWSLから読み取り，PandocでOrgへ変換し，再びWindowsのクリップボードへ戻します．
+</p>
+</div>
+<div id="outline-container-1wslへpandocをインストール" class="outline-5">
+<h5 id="1wslへpandocをインストール">WSLへPandocをインストール</h5>
+<div class="outline-text-5" id="text-1wslへpandocをインストール">
+<p>
+WSLのFishで実行します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>sudo apt update
+sudo apt install -y pandoc
+</code></pre>
+</div>
+
+<p>
+確認します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>pandoc --version
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-2fish関数を作成" class="outline-5">
+<h5 id="2fish関数を作成">Fish関数を作成</h5>
+<div class="outline-text-5" id="text-2fish関数を作成">
+<p>
+WSLのFishで次を実行します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>function copy-as-org
+    powershell.exe -NoProfile -Command 'Get-Clipboard -Raw' |
+        pandoc -f gfm -t org |
+        clip.exe
+end
+</code></pre>
+</div>
+
+<p>
+続けて保存します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>funcsave copy-as-org
+</code></pre>
+</div>
+
+<p>
+保存先はWSL内の次の場所です．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>~/.config/fish/functions/copy-as-org.fish
+</code></pre>
+</div>
+
+<p>
+一般的には次のようなパスになります．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>/home/&#12518;&#12540;&#12470;&#12540;&#21517;/.config/fish/functions/copy-as-org.fish
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-3登録確認" class="outline-5">
+<h5 id="3登録確認">登録確認</h5>
+<div class="outline-text-5" id="text-3登録確認">
+<div class="org-src-container">
+<pre class="src src-fish"><code>type copy-as-org
+functions --details copy-as-org
+</code></pre>
+</div>
+
+<p>
+関数ファイルも確認できます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>cat ~/.config/fish/functions/copy-as-org.fish
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-4使用方法" class="outline-5">
+<h5 id="4使用方法">使用方法</h5>
+<div class="outline-text-5" id="text-4使用方法">
+<ol class="org-ol">
+<li>Windows版Codexで返信のコピーアイコンを押す．</li>
+<li>Windows TerminalのWSL／Fishへ切り替える．</li>
+<li>次を実行する．</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>copy-as-org
+</code></pre>
+</div>
+
+<ol class="org-ol">
+<li value="4">WindowsまたはWSL上のEmacsへ貼り付ける．</li>
+</ol>
+
+<p>
+WindowsのクリップボードがOrg形式へ置き換わっているため，Windows側のアプリにも貼り付けられます．
+</p>
+
+<p>
+Microsoft公式ドキュメントでも，WSLから <code>powershell.exe</code>
+を実行でき，Linux側の出力を <code>clip.exe</code>
+へ渡せることが説明されています．<a href="https://learn.microsoft.com/en-us/windows/dev-environment/wsl-interop">WSL相互運用</a>．また，=Get-Clipboard -Raw=
+は複数行のクリップボード内容を一つの文字列として取得します．<a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-clipboard?view=powershell-5.1">Get-Clipboard</a>．
+</p>
+</div>
+</div>
+<div id="outline-container-日本語が文字化けする場合" class="outline-5">
+<h5 id="日本語が文字化けする場合">日本語が文字化けする場合</h5>
+<div class="outline-text-5" id="text-日本語が文字化けする場合">
+<p>
+環境によってWindows
+PowerShellの文字コードに差が出る可能性があります．その場合，PowerShell
+7が入っていれば <code>powershell.exe</code> を <code>pwsh.exe</code> に変更します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>function copy-as-org
+    pwsh.exe -NoProfile -Command 'Get-Clipboard -Raw' |
+        pandoc -f gfm -t org |
+        clip.exe
+end
+
+funcsave copy-as-org
+</code></pre>
+</div>
+
+<p>
+まずは <code>powershell.exe</code> 版を試し，日本語が崩れる場合だけ <code>pwsh.exe</code>
+版へ切り替えるのがよいです．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd2ab2b9" class="outline-4">
+<h4 id="orgd2ab2b9"><span class="section-number-4">1.2.2.</span> direnv install</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+Fishなら，WSL内で次のように設定します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>sudo apt update
+sudo apt install -y direnv
+
+mkdir -p ~/.config/fish
+echo 'direnv hook fish | source' &gt;&gt; ~/.config/fish/config.fish
+
+exec fish
+</code></pre>
+</div>
+
+<p>
+確認します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>direnv version
+
+mkdir -p ~/direnv-test
+cd ~/direnv-test
+echo 'set -gx DIRENV_TEST ok' &gt; .envrc
+direnv allow
+echo $DIRENV_TEST
+</code></pre>
+</div>
+
+<p>
+<code>ok</code> と表示されれば成功です．
+Fish用のフックは，<a href="https://direnv.net/docs/hook.html">direnv公式設定手順</a>でも
+<code>direnv hook fish | source</code> と指定されています．
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org50e1079" class="outline-2">
+<h2 id="org50e1079"><span class="section-number-2">2.</span> d6 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-28 Wed&gt;</span></span> Rakefile</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>rake</li>
+<li>gems</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge435f68" class="outline-2">
+<h2 id="orge435f68"><span class="section-number-2">3.</span> d4 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-14 Wed&gt;</span></span> Array Hash</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgf6cbef5" class="outline-3">
+<h3 id="orgf6cbef5"><span class="section-number-3">3.1.</span> path</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+<pre class="src src-bash"><code>
+&gt; echo $<span style="color: #005e8b;">PATH</span>
+&gt; mkdir ~/bin
+&gt; cp multi_scale_public/bin/* ~/bin
+&gt; code ~/.config/fish/config.fish
+&gt; set PATH . ~/bin $<span style="color: #005e8b;">PATH</span>
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaa8d85e" class="outline-3">
+<h3 id="orgaa8d85e"><span class="section-number-3">3.2.</span> Ruby code</h3>
+<div class="outline-text-3" id="text-3-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="./c1_ruby/c1_ruby.002.png" alt="c1_ruby.002.png" /></td>
+<td class="org-left"><img src="./c1_ruby/c1_ruby.003.png" alt="c1_ruby.003.png" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orge10c369" class="outline-3">
+<h3 id="orge10c369"><span class="section-number-3">3.3.</span> references</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li><a href="https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCCwCZq45rcTb4x2s0UW_GVAWf6TTj6jwKrKoPoXbi5ABw?e=92E0W4">c1_はじめてのRuby.pdf</a></li>
+<li><a href="https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQC7L0rc33TEQZyzkjiCHWJMAQg9N_X3dixkptBq-__RFxk?e=G44QYp">c2_便利なオブジェクト.pdf</a></li>
+<li><a href="https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQDi3DLsb-0MTL1KxhRNyzkYASuZ_Vl_V3jwNeEZhTTF4Wk?e=Wt0WAk">c3_コマンドを作ろう.pdf</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Shigeto R. Nishitani</p>
+<p class="date">Created: 2026-10-16 Fri 15:10</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
