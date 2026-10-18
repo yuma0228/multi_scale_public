@@ -1,7 +1,7 @@
 require 'colorize'
 
 puts "c1 String/print, puts".green
-p name = '西谷' # String
+p name = '池田' # String
 =begin
 printf "Hello #{name}.\n"
 puts "Hello #{name}."
@@ -9,15 +9,15 @@ puts "Hello #{name}."
 puts "Hello "+name+"."
 
 puts "c2 Array".green
-p name_year = [name, "滋人", 65]
+p name_year = [name, "悠真", 65]
 name_year.each do |item| # method(arg)
   puts item
 end
 puts "c2 Hash".green
-p name_year_hash = {family: name, first: "滋人", year: 65}
+p name_year_hash = {family: name, first: "悠真", year: 65}
 # def COMMENT 'hoge hoge'
 name_year_hash = {:family => name, # symbol 
-                  :first => "滋人",
+                  :first => "悠真",
                   :year => 65}
 name_year_hash.each do |key, val|
   p [key, val]
