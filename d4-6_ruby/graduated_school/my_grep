@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+require 'colorize'
+
+file_name = ARGV[0] || "readme_multi.org"
+string = ".+ruby.+" 
+pattern = Regexp.new(string)
+print [file_name, pattern]
+
+lines = File.readlines(file_name)
+
+lines.each do |line|
+  if pattern =~ line
+    p line
+  end
+end

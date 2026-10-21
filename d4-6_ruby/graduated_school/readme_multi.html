@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
 <head>
-<!-- 2026-10-16 Fri 15:10 -->
+<!-- 2026-10-21 Wed 12:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ruby basics</title>
@@ -28,12 +28,13 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org84c5d79">1. d5 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-21 Wed&gt;</span></span> command and direnv</a>
+<li><a href="#orge9f0b6b">1. hoge</a></li>
+<li><a href="#orgae8b9a2">2. d5 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-21 Wed&gt;</span></span> command and direnv</a>
 <ul>
-<li><a href="#orgefe06ff">1.1. command line application</a></li>
-<li><a href="#orgb5b1348">1.2. misc cla on wsl</a>
+<li><a href="#org8b3a737">2.1. command line application</a></li>
+<li><a href="#orge4bffaa">2.2. misc cla on wsl</a>
 <ul>
-<li><a href="#orgf0bbd5a">1.2.1. copy-as-org on fish on wsl</a>
+<li><a href="#orgf93bb5a">2.2.1. copy-as-org on fish on wsl</a>
 <ul>
 <li><a href="#1wslへpandocをインストール">WSLへPandocをインストール</a></li>
 <li><a href="#2fish関数を作成">Fish関数を作成</a></li>
@@ -42,17 +43,17 @@
 <li><a href="#日本語が文字化けする場合">日本語が文字化けする場合</a></li>
 </ul>
 </li>
-<li><a href="#orgd2ab2b9">1.2.2. direnv install</a></li>
+<li><a href="#org47cadb9">2.2.2. direnv install</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org50e1079">2. d6 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-28 Wed&gt;</span></span> Rakefile</a></li>
-<li><a href="#orge435f68">3. d4 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-14 Wed&gt;</span></span> Array Hash</a>
+<li><a href="#org9d1eb75">3. d6 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-28 Wed&gt;</span></span> Rakefile</a></li>
+<li><a href="#orgdcb880c">4. d4 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-14 Wed&gt;</span></span> Array Hash</a>
 <ul>
-<li><a href="#orgf6cbef5">3.1. path</a></li>
-<li><a href="#orgaa8d85e">3.2. Ruby code</a></li>
-<li><a href="#orge10c369">3.3. references</a></li>
+<li><a href="#orga8f474f">4.1. path</a></li>
+<li><a href="#orge39ca90">4.2. Ruby code</a></li>
+<li><a href="#orgb29b8bb">4.3. references</a></li>
 </ul>
 </li>
 </ul>
@@ -76,13 +77,29 @@
 </tr>
 </tbody>
 </table>
-<div id="outline-container-org84c5d79" class="outline-2">
-<h2 id="org84c5d79"><span class="section-number-2">1.</span> d5 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-21 Wed&gt;</span></span> command and direnv</h2>
+<div id="outline-container-orge9f0b6b" class="outline-2">
+<h2 id="orge9f0b6b"><span class="section-number-2">1.</span> hoge</h2>
 <div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-markdown"><code><span style="color: #595959;">-</span> <span style="color: #595959;">**</span><span style="font-weight: bold;">reduction&#65306;&#38598;&#32004;&#65292;&#12414;&#12383;&#12399;&#38598;&#32004;&#28436;&#31639;</span><span style="color: #595959;">**</span><span style="color: #a60000; text-decoration: underline;">  </span>
+  &#35079;&#25968;&#12398;&#20516;&#12434;&#21644;&#12539;&#26368;&#22823;&#20516;&#12539;&#24179;&#22343;&#12394;&#12393;&#12398;&#23569;&#25968;&#12398;&#20516;&#12408;&#12414;&#12392;&#12417;&#12427;&#25805;&#20316;&#12391;&#12377;&#65294;
+
+<span style="color: #595959;">-</span> <span style="color: #595959;">**</span><span style="font-weight: bold;">broadcasting&#65306;&#12502;&#12525;&#12540;&#12489;&#12461;&#12515;&#12473;&#12488;</span><span style="color: #595959;">**</span><span style="color: #a60000; text-decoration: underline;">  </span>
+  &#26085;&#26412;&#35486;&#12408;&#28961;&#29702;&#12395;&#35379;&#12373;&#12378;&#65292;&#12459;&#12479;&#12459;&#12490;&#34920;&#35352;&#12364;&#19968;&#33324;&#30340;&#12391;&#12377;&#65294;&#24418;&#12398;&#30064;&#12394;&#12427;&#37197;&#21015;&#12434;&#65292;&#33258;&#21205;&#30340;&#12395;&#24418;&#12434;&#21512;&#12431;&#12379;&#12390;&#28436;&#31639;&#12377;&#12427;&#20181;&#32068;&#12415;&#12391;&#12377;&#65294;
+
+<span style="color: #595959;">-</span> <span style="color: #595959;">**</span><span style="font-weight: bold;">vectorization&#65306;&#12505;&#12463;&#12488;&#12523;&#21270;</span><span style="color: #595959;">**</span><span style="color: #a60000; text-decoration: underline;">  </span>
+  &#35201;&#32032;&#12372;&#12392;&#12398;&#20966;&#29702;&#12434;&#26126;&#31034;&#30340;&#12394;<span style="color: #595959;">`</span><span style="color: #005f5f;">for</span><span style="color: #595959;">`</span>&#25991;&#12391;&#26360;&#12363;&#12378;&#65292;&#37197;&#21015;&#20840;&#20307;&#12408;&#12398;&#28436;&#31639;&#12392;&#12375;&#12390;&#35352;&#36848;&#12377;&#12427;&#12371;&#12392;&#12391;&#12377;&#65294;
+</code></pre>
 </div>
-<div id="outline-container-orgefe06ff" class="outline-3">
-<h3 id="orgefe06ff"><span class="section-number-3">1.1.</span> command line application</h3>
-<div class="outline-text-3" id="text-1-1">
+</div>
+</div>
+<div id="outline-container-orgae8b9a2" class="outline-2">
+<h2 id="orgae8b9a2"><span class="section-number-2">2.</span> d5 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-21 Wed&gt;</span></span> command and direnv</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org8b3a737" class="outline-3">
+<h3 id="org8b3a737"><span class="section-number-3">2.1.</span> command line application</h3>
+<div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>TDD == 現場合わせ =&gt; 一般化，切り分け</li>
 <li>現場合わせ
@@ -130,13 +147,13 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb5b1348" class="outline-3">
-<h3 id="orgb5b1348"><span class="section-number-3">1.2.</span> misc cla on wsl</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orge4bffaa" class="outline-3">
+<h3 id="orge4bffaa"><span class="section-number-3">2.2.</span> misc cla on wsl</h3>
+<div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-orgf0bbd5a" class="outline-4">
-<h4 id="orgf0bbd5a"><span class="section-number-4">1.2.1.</span> copy-as-org on fish on wsl</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-orgf93bb5a" class="outline-4">
+<h4 id="orgf93bb5a"><span class="section-number-4">2.2.1.</span> copy-as-org on fish on wsl</h4>
+<div class="outline-text-4" id="text-2-2-1">
 <p>
 はい．Windows上のCodexアプリと，WSL内のFishを組み合わせても作れます．WindowsのクリップボードをWSLから読み取り，PandocでOrgへ変換し，再びWindowsのクリップボードへ戻します．
 </p>
@@ -284,9 +301,9 @@ funcsave copy-as-org
 </div>
 </div>
 </div>
-<div id="outline-container-orgd2ab2b9" class="outline-4">
-<h4 id="orgd2ab2b9"><span class="section-number-4">1.2.2.</span> direnv install</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-org47cadb9" class="outline-4">
+<h4 id="org47cadb9"><span class="section-number-4">2.2.2.</span> direnv install</h4>
+<div class="outline-text-4" id="text-2-2-2">
 <p>
 Fishなら，WSL内で次のように設定します．
 </p>
@@ -326,22 +343,22 @@ Fish用のフックは，<a href="https://direnv.net/docs/hook.html">direnv公�
 </div>
 </div>
 </div>
-<div id="outline-container-org50e1079" class="outline-2">
-<h2 id="org50e1079"><span class="section-number-2">2.</span> d6 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-28 Wed&gt;</span></span> Rakefile</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org9d1eb75" class="outline-2">
+<h2 id="org9d1eb75"><span class="section-number-2">3.</span> d6 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-28 Wed&gt;</span></span> Rakefile</h2>
+<div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>rake</li>
 <li>gems</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge435f68" class="outline-2">
-<h2 id="orge435f68"><span class="section-number-2">3.</span> d4 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-14 Wed&gt;</span></span> Array Hash</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgdcb880c" class="outline-2">
+<h2 id="orgdcb880c"><span class="section-number-2">4.</span> d4 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-14 Wed&gt;</span></span> Array Hash</h2>
+<div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgf6cbef5" class="outline-3">
-<h3 id="orgf6cbef5"><span class="section-number-3">3.1.</span> path</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-orga8f474f" class="outline-3">
+<h3 id="orga8f474f"><span class="section-number-3">4.1.</span> path</h3>
+<div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 <pre class="src src-bash"><code>
 &gt; echo $<span style="color: #005e8b;">PATH</span>
@@ -353,9 +370,9 @@ Fish用のフックは，<a href="https://direnv.net/docs/hook.html">direnv公�
 </div>
 </div>
 </div>
-<div id="outline-container-orgaa8d85e" class="outline-3">
-<h3 id="orgaa8d85e"><span class="section-number-3">3.2.</span> Ruby code</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-orge39ca90" class="outline-3">
+<h3 id="orge39ca90"><span class="section-number-3">4.2.</span> Ruby code</h3>
+<div class="outline-text-3" id="text-4-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -373,9 +390,9 @@ Fish用のフックは，<a href="https://direnv.net/docs/hook.html">direnv公�
 </table>
 </div>
 </div>
-<div id="outline-container-orge10c369" class="outline-3">
-<h3 id="orge10c369"><span class="section-number-3">3.3.</span> references</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-orgb29b8bb" class="outline-3">
+<h3 id="orgb29b8bb"><span class="section-number-3">4.3.</span> references</h3>
+<div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
 <li><a href="https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCCwCZq45rcTb4x2s0UW_GVAWf6TTj6jwKrKoPoXbi5ABw?e=92E0W4">c1_はじめてのRuby.pdf</a></li>
 <li><a href="https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQC7L0rc33TEQZyzkjiCHWJMAQg9N_X3dixkptBq-__RFxk?e=G44QYp">c2_便利なオブジェクト.pdf</a></li>
@@ -387,7 +404,7 @@ Fish用のフックは，<a href="https://direnv.net/docs/hook.html">direnv公�
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Shigeto R. Nishitani</p>
-<p class="date">Created: 2026-10-16 Fri 15:10</p>
+<p class="date">Created: 2026-10-21 Wed 12:00</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
