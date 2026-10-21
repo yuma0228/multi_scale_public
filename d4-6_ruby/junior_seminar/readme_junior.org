@@ -19,8 +19,17 @@
 * for 領域実習
 - [[https://kwanseio365-my.sharepoint.com/:f:/g/personal/cru32369_kwansei_ac_jp/IgDDsVu4tF6xT4bChileGjFcARGm6bKoAjdfoFp_3C3urcs?e=hwaL32][資料，動画置き場]]
 
+
+* d6 <2026-10-28 Wed>
+- command :: ssh, github # for open?
+- Rakefie
+
 * d5 <2026-10-21 Wed> RE
-- command :: ssh, github
+- file, readlines
+- sname(file_name), camel(FileName)
+- Regular Expression , 正規表現
+- if m = line.match(/\b[a-z0-9]+(?:_[a-z0-9]+)+\b/)
+    p m[0] # snake_case
 
 * d4 <2026-10-14 Wed> Array Hash
 - She sells sea shells by the sea shore.

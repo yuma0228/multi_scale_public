@@ -17,17 +17,19 @@
 
 | [[file:./ruby_title.png]]
 
-* hoge
-#+begin_src markdown
-- **reduction：集約，または集約演算**  
-  複数の値を和・最大値・平均などの少数の値へまとめる操作です．
-
-- **broadcasting：ブロードキャスト**  
-  日本語へ無理に訳さず，カタカナ表記が一般的です．形の異なる配列を，自動的に形を合わせて演算する仕組みです．
-
-- **vectorization：ベクトル化**  
-  要素ごとの処理を明示的な`for`文で書かず，配列全体への演算として記述することです．
-#+end_src
+* d6 <2026-10-28 Wed>
+- read Pragmatic -> ruby and Rakefile
+- yaml ?
+- mk grad research templates from scratch with Rakefile
+  - automation...
+* d5 for senior
+- object指向
+  - capsulation (隠蔽) 
+  - inheritance(継承)
+  - polymorphism(多態性)
+- 階層構造，一般化
+- システムで入力？
+- プログラマはlazy
 
 * d5 <2026-10-21 Wed> command and direnv
 ** command line application

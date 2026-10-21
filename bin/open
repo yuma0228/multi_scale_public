@@ -3,6 +3,8 @@ require 'open3'
 
 targets = ARGV.empty? ? ['.'] : ARGV
 
+exec('/usr/bin/open', *targets) if RUBY_PLATFORM.include?('darwin')
+
 targets.each do |target|
   # Expand special directories
   path =

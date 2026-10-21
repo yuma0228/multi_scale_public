@@ -10,7 +10,7 @@
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
 # for style.css, never move from here
-[[file:../d99_junior_ruby/readme.html][prev_button]]
+[[file:../d4-6_ruby/junior_seminar/readme_junior.html][prev_button]]
 [[file:../canvas.html][up_button]]
 [[file:../d1-3_stack/d2_divide_chunk/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
@@ -72,10 +72,12 @@ Mock-Upを授業の後半で紹介するつもりです．
 ** chunking, dejavu, HyperCard
 | [[file:../d1-3_stack/d2_divide_chunk/figs/memory.004.png]] | [[file:../d1-3_stack/d2_divide_chunk/figs/memory.005.png]] | [[file:../d1-3_stack/d2_divide_chunk/figs/multi_scale_26f-10.jpg]]
 
-最小単位の知識を獲るには，divide and conquer
+知識を獲るには，divide and conquer
 (分割統治とも訳されますが，各個撃破がしっくりきます)
 が基本戦略です．
-でもちっちゃいのが積み重なってくると整理が必要になります．
+でもちっちゃいのが積み重なってくると，
+知識が干渉し始めて混乱します．
+整理が必要になります．
 整理のコツを言葉で表すとchunkingとdeja vuです．
 chunkingはまとまった知識を覚える人間の癖を
 心理学者が解き明かした知恵です．
@@ -105,13 +107,13 @@ Geminiとの問答です．
 # for style.css, never move from here
 [[file:../d1-3_stack/d2_divide_chunk/readme.html][prev_button]]
 [[file:../canvas.html][up_button]]
-[[file:../d99_junior_ruby/readme.html][next_button]]
+[[file:../d4-6_ruby/graduated_school/readme_multi.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
 ** canvasあるいはMindMap的なHyperCard
 
 HyperCardのMockが，
-今見ていただいているcanva.htmlになります．
+今見ていただいているcanvas.htmlになります．
 
 IconとかNaviとか，
 ActionがGUIとCUIでどのように実現されているか
@@ -153,16 +155,18 @@ Pragmatic programmar (v2)にある
 以下のテキストにはその必要性が書かれています．
 
 - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCNOEYWPwBfQ5WdA_NASPPNAcO6ll2wSw7NOUbvHLTuriE?e=xCL24t][c21_ruby.pdf]]
-- [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBcMWbkjmW6TZZ2iu9Xt6DkAQs5l9uy9QHNIr3aTyg3bRQ?e=DmULfg][c43_v1_ubiquitous_automation.pdf]]
+- [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQBn3TVnInC7QLEFKytjDVYeAYHT1j_sq0qj12CMyI8u1wI?e=QLVUA3][c43_v1_ubiquitous_automation.pdf]]
 # - [[https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQAMCCml1Dw3RaWHRBuoTMQkAfSe9WOFwtXf5Ss3LrpJpzM?e=eojWsT][c51_starter_kit_complete_auto.pdf]]
+# 
 
 ** Ghost?
-以下は攻殻機動隊とAIの知能についてのGeminiとのchatです．
+以下は「攻殻機動隊とAIの知能」についてのGeminiとのchatです．
 後の講義で紹介しようとするSemi Latticeを議論しようとはじめました．
 そこまで辿り着けなかったのですが，
-Agentic codingの現状がまとまっているので残しておきます．
-次の機会の議論はここからはじめましょう．
-こんなのも知識を留めておくコツです．
+Agentic Engineeringの現状がまとまっているので残しておきます．
+あとで考える時はここからはじめられるのが，
+知識を留めておくコツです．
+どうせ忘れるから，目に着くとこに置いておくという．
 
 - [[https://ist.ksc.kwansei.ac.jp/~nishitani/Lectures/2026/multi_scale/d1-3_stack/d3_ppt_pdf/rnn_vs_transform_ghost_gemini.html][rnn_vs_transform_ghost_gemini.html]]
 
