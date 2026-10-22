@@ -80,6 +80,12 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--foreground);
 }
 
+/* ReadTheOrg の固定された日付色を，dark mode でも読めるテーマ色へ置き換える */
+#postamble p.date,
+.timestamp {
+    color: var(--muted-foreground);
+}
+
 pre {
     background-color: var(--muted) !important;
     color: var(--muted-foreground) !important;
