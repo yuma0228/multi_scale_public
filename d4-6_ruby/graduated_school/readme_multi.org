@@ -17,11 +17,62 @@
 
 | [[file:./ruby_title.png]]
 
-* d6 <2026-10-28 Wed>
-- read Pragmatic -> ruby and Rakefile
 - yaml ?
 - mk grad research templates from scratch with Rakefile
   - automation...
+
+* d6 <2026-10-28 Wed> Rakefile
+- rake, <- make, DSL(domain specific language, ドメイン特化言語), flavor
+- thor(github) ~= rake, Linus Torvalds, Linus + UNIX
+- gems
+- read Pragmatic -> ruby and Rakefile
+** rake with argument
+
+#+begin_src
+ cat Rakefile
+# -*- coding: utf-8 -*-
+require "colorize"
+require 'command_line/global'
+
+task :default do
+  system "rake -T"
+end
+
+desc "引数を表示する"
+task :hello, [:name] do |_task, args|
+  puts "Hello, #{args[:name]}"
+  exit
+end
+
+# on phase_diagram_26f
+desc "automatic mk dir for canvas.html" #desc -> description
+task :auto_mk_dir, [:dir_name] do |_task, args| # any name on task_name
+  t_name = 'tmp'
+  Rake::Task[:mkdir].invoke(t_name)
+  # your code goes
+  dir_name = args[:dir_name] || 'hoge'
+  system "mv #{dir_name} #{t_name}"
+  system "mv #{t_name} #{dir_name}"
+end
+#+end_src
+** CodexによるStackの解説
+*** user
+そのdirectory構成最悪ですね．ちょっと前にお話ししましたが，人間はtight bindingが基本で，code, data, analysisなどに分けては理解できません．縦割りと言った方がいいでしょうか？　その方向でdirectoryを作っていきますので，観察して，覚えてください．この考え方が全てのdirectoryに適用されますから．現在存在するstack構造は，Desktop/lecture_26f/symbolic_mathあるいはmulti_scaleです．その分析と適用はこちらで指示するまでやらなくていいです．このdirectoryで作っていきましょう．
+*** codex
+了解しました．先ほどの提案は撤回します．
+
+ここでいう基本原則は，次のように理解しました．
+
+- =code/=，=data/=，=analysis/=のような機能別の横断分割はしない．
+- 人間が理解する研究上のまとまりを単位として，関連する説明，計算コード，入力，結果，図を近接配置する．
+- 各まとまりが自己完結した縦割りのstackとなり，それらを=canvas.html=から一覧・接続する．
+- このtight-binding型の構成原理を，今後の全directoryに適用する．
+- =Desktop/lecture_26f/symbolic_math=および=multi_scale=は参照例だが，指示があるまで分析・適用しない．
+
+** pipe and redirection
+'|', '>', '>>' append
+
+
 * d5 for senior
 - object指向
   - capsulation (隠蔽) 
@@ -183,9 +234,6 @@ echo $DIRENV_TEST
 Fish用のフックは，[[https://direnv.net/docs/hook.html][direnv公式設定手順]]でも
 ~direnv hook fish | source~ と指定されています．
 
-* d6 <2026-10-28 Wed> Rakefile
-- rake
-- gems
 * d4 <2026-10-14 Wed> Array Hash
 ** path
 #+begin_src bash

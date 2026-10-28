@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
+<head>
+<!-- 2026-10-28 Wed 14:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>mk_stack_dir</title>
+<meta name="author" content="Shigeto R. Nishitani" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/code-copy.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/vendor/stickytableheaders/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/code-copy.js"></script>
+<link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">mk_stack_dir</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org4d58fd3">1. copy-as-orgのコマンド変換改善</a>
+<ul>
+<li><a href="#org1558ebe">1.1. 実行結果</a></li>
+<li><a href="#orgf08b68a">1.2. bob</a></li>
+<li><a href="#org2eee3e3">1.3. codex</a></li>
+<li><a href="#1luaフィルタを作る">1.4. 1．Luaフィルタを作る</a></li>
+<li><a href="#2mac版の関数を更新する">1.5. 2．Mac版の関数を更新する</a></li>
+<li><a href="#3wsl版の関数を更新する">1.6. 3．WSL版の関数を更新する</a></li>
+<li><a href="#4動作確認">1.7. 4．動作確認</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../c3_linear_algebra_core/readme.html">prev_button</a>
+<a href="../intro_info_26s.html">up_button</a>
+<a href="../c1_outline/readme.html">next_button</a>
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="./dummy_icon.png" alt="dummy_icon.png" /></td>
+</tr>
+</tbody>
+</table>
+<div id="outline-container-org4d58fd3" class="outline-2">
+<h2 id="org4d58fd3"><span class="section-number-2">1.</span> copy-as-orgのコマンド変換改善</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org1558ebe" class="outline-3">
+<h3 id="org1558ebe"><span class="section-number-3">1.1.</span> 実行結果</h3>
+<div class="outline-text-3" id="text-1-1">
+<dl class="org-dl">
+<dt>before</dt><dd>日本語の途中で=direnv allow=を実行します．</dd>
+<dt>after</dt><dd>日本語の途中で​<code>direnv allow</code>​を実行します．</dd>
+</dl>
+
+<p>
+日本語の途中で​<code>direnv allow</code>​を実行します．
+</p>
+</div>
+</div>
+<div id="outline-container-orgf08b68a" class="outline-3">
+<h3 id="orgf08b68a"><span class="section-number-3">1.2.</span> bob</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+先にpandocで作ったcopy-as-orgですが，「コマンド」を意図する'\=..\='の前後が日本語文字の場合にemacsのexportでうまくhtmlに変換されません．どのように解決すればいいか考えてください．
+</p>
+</div>
+</div>
+<div id="outline-container-org2eee3e3" class="outline-3">
+<h3 id="org2eee3e3"><span class="section-number-3">1.3.</span> codex</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+原因は，Org-modeのインラインコード記法に「前後の文字」に関する条件があるためです．
+</p>
+
+<p>
+PandocはMarkdownの
+</p>
+
+<div class="org-src-container">
+<pre class="src src-markdown"><code>&#26085;&#26412;&#35486;<span style="color: #595959;">`</span><span style="color: #005f5f;">command</span><span style="color: #595959;">`</span>&#12391;&#12377;
+</code></pre>
+</div>
+
+<p>
+を次のように変換します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><code>&#26085;&#26412;&#35486;=command=&#12391;&#12377;
+</code></pre>
+</div>
+
+<p>
+しかし，Org-modeは日本語文字と直接隣接した ​<code>=command=</code>​
+をインラインコードとして認識しません．​<code>~command~</code>​
+に変更しても同じ問題が起きます．
+</p>
+
+<p>
+最も単純な解決方法は空白を入れることです．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><code>&#26085;&#26412;&#35486; <span style="color: #8f0075;">=command=</span> &#12391;&#12377;
+</code></pre>
+</div>
+
+<p>
+ただし，日本語として余分な空白が見えてしまいます．そこで，PandocのLuaフィルタを使い，見えないゼロ幅スペースをインラインコードの前後へ挿入する方法が適しています．実際にEmacsのHTML
+exporterで検証し，正しく ​<code>&lt;code&gt;command&lt;/code&gt;</code>​
+へ変換されることを確認しました．
+</p>
+</div>
+</div>
+<div id="outline-container-1luaフィルタを作る" class="outline-3">
+<h3 id="1luaフィルタを作る"><span class="section-number-3">1.4.</span> 1．Luaフィルタを作る</h3>
+<div class="outline-text-3" id="text-1luaフィルタを作る">
+<p>
+Fishで保存用ディレクトリを作ります．MacでもWSLでも同じです．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>mkdir -p ~/.config/pandoc/filters
+</code></pre>
+</div>
+
+<p>
+Emacsで次のファイルを開きます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>emacs ~/.config/pandoc/filters/org-inline-code.lua
+</code></pre>
+</div>
+
+<p>
+次の内容を保存してください．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lua"><code><span style="color: #531ab6;">local</span> <span style="color: #005e8b;">zwsp</span> = <span style="color: #8f0075;">utf8</span>.<span style="color: #8f0075;">char</span>(0x200B)
+
+<span style="color: #531ab6;">function</span> <span style="color: #721045;">Code</span>(<span style="color: #005e8b;">element</span>)
+  <span style="color: #531ab6;">if</span> FORMAT:match(<span style="color: #3548cf;">"org"</span>) <span style="color: #531ab6;">then</span>
+    <span style="color: #531ab6;">return</span> pandoc.RawInline(
+      <span style="color: #3548cf;">"org"</span>,
+      zwsp .. <span style="color: #3548cf;">"="</span> .. element.text .. <span style="color: #3548cf;">"="</span> .. zwsp
+    )
+  <span style="color: #531ab6;">end</span>
+<span style="color: #531ab6;">end</span>
+</code></pre>
+</div>
+
+<p>
+このフィルタは，Markdownとして解析されたインラインコードだけを対象にします．ソースコードブロック内の
+​<code>=</code>​ や通常の文章には触れません．
+</p>
+</div>
+</div>
+<div id="outline-container-2mac版の関数を更新する" class="outline-3">
+<h3 id="2mac版の関数を更新する"><span class="section-number-3">1.5.</span> 2．Mac版の関数を更新する</h3>
+<div class="outline-text-3" id="text-2mac版の関数を更新する">
+<p>
+Fishで関数を再定義します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>function copy-as-org
+    pbpaste |
+        pandoc -f gfm -t org \
+            --lua-filter="$HOME/.config/pandoc/filters/org-inline-code.lua" |
+        pbcopy
+end
+</code></pre>
+</div>
+
+<p>
+保存します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>funcsave copy-as-org
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-3wsl版の関数を更新する" class="outline-3">
+<h3 id="3wsl版の関数を更新する"><span class="section-number-3">1.6.</span> 3．WSL版の関数を更新する</h3>
+<div class="outline-text-3" id="text-3wsl版の関数を更新する">
+<p>
+WindowsのクリップボードをWSLから扱う場合はこちらです．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>function copy-as-org
+    powershell.exe -NoProfile -Command 'Get-Clipboard -Raw' |
+        pandoc -f gfm -t org \
+            --lua-filter="$HOME/.config/pandoc/filters/org-inline-code.lua" |
+        clip.exe
+end
+</code></pre>
+</div>
+
+<p>
+保存します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>funcsave copy-as-org
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-4動作確認" class="outline-3">
+<h3 id="4動作確認"><span class="section-number-3">1.7.</span> 4．動作確認</h3>
+<div class="outline-text-3" id="text-4動作確認">
+<p>
+Codexから，例えば次のような文章をコピーします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-markdown"><code>&#26085;&#26412;&#35486;&#12398;&#36884;&#20013;&#12391;<span style="color: #595959;">`</span><span style="color: #005f5f;">direnv allow</span><span style="color: #595959;">`</span>&#12434;&#23455;&#34892;&#12375;&#12414;&#12377;&#65294;
+</code></pre>
+</div>
+
+<p>
+コピー後に実行します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-fish"><code>copy-as-org
+</code></pre>
+</div>
+
+<p>
+Orgバッファへ貼り付けると，見た目は概ね次のようになります．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-org"><code>&#26085;&#26412;&#35486;&#12398;&#36884;&#20013;&#12391;&#8203;<span style="color: #8f0075;">=direnv allow=</span>&#8203;&#12434;&#23455;&#34892;&#12375;&#12414;&#12377;&#65294;
+</code></pre>
+</div>
+
+<p>
+​<code>=</code>​
+の外側にはU+200Bのゼロ幅スペースが入っていますが，画面上やHTML上では空白として見えません．OrgからHTMLへexportすると，
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html"><code>&#26085;&#26412;&#35486;&#12398;&#36884;&#20013;&#12391;&#8203;&lt;<span style="color: #721045;">code</span>&gt;direnv allow&lt;/<span style="color: #721045;">code</span>&gt;&#8203;&#12434;&#23455;&#34892;&#12375;&#12414;&#12377;&#65294;
+</code></pre>
+</div>
+
+<p>
+となります．
+</p>
+
+<p>
+この方式なら，Org側の設定を変更する必要がなく，生成したOrgファイルを別のEmacs環境へ移しても正しくexportできます．また，単純な正規表現置換と異なり，ソースコードブロックを誤って書き換える危険もありません．
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Shigeto R. Nishitani</p>
+<p class="date">Created: 2026-10-28 Wed 14:35</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
