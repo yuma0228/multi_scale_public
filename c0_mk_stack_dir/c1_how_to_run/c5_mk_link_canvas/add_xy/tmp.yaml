@@ -1,0 +1,204 @@
+---
+:nodes:
+- :id: 1
+  :name: hyper_card/
+  :type: dir
+  :file_path: "."
+  :icon_path:
+  :x: 274
+  :y: 278
+  :color: green
+  :fixed: true
+- :id: 2
+  :name: 7/6 最終課題と相互評価
+  :type: icon
+  :file_path: d13_python_codes/readme.html
+  :icon_path: readme_26s/readme_26s.001.png
+  :x: 108
+  :y: 172
+  :color: green
+  :fixed: true
+- :id: 3
+  :name: 4/6 OS
+  :type: icon
+  :file_path: d01_install/c1_program/c1_program.html
+  :icon_path: readme_26s/readme_26s.001.png
+  :x: 292
+  :y: 80
+  :color: green
+  :fixed: true
+- :id: 4
+  :name: SQ3R
+  :type: icon
+  :file_path: d01_install/c0_sq3r/readme.html
+  :icon_path: d01_install/c0_sq3r/sq3r/sq3r.002.png
+  :x: 406
+  :y: 103
+  :color: green
+  :fixed: true
+- :id: 5
+  :name: layers, divide & conquer, chunk
+  :type: icon
+  :file_path: d01_install/c2_install/c2_install.html
+  :icon_path: readme_26s/readme_26s.004.png
+  :x: 410
+  :y: 193
+  :color: green
+  :fixed: true
+- :id: 6
+  :name: 4/13 vscode, fish
+  :type: icon
+  :file_path: d02_vscode_fish/d2_vscode_ssh.html
+  :icon_path: d02_vscode_fish/comp_A_26s-29.jpg
+  :x: 522 #689
+  :y: 160 #123
+  :color: green
+  :fixed: true
+- :id: 7
+  :name: 4/20 ariyantype
+  :type: icon
+  :file_path: d03_ariyantype/_stack_d3_260420.html
+  :icon_path: d03_ariyantype/ariyantype.005.png
+  :x: 713
+  :y: 263
+  :color: green
+  :fixed: true
+- :id: 8
+  :name: 4/27 chunking, first python
+  :type: icon
+  :file_path: d04_260427/d4_260427.html
+  :icon_path: d04_260427/d4_260427.002.png
+  :x: 615
+  :y: 336
+  :color: green
+  :fixed: true
+- :id: 9
+  :name: 5/11 chunking, tree
+  :type: icon
+  :file_path: d05_260511/d05_260511.html
+  :icon_path: d05_260511/d05_260511.002.png
+  :x: 607
+  :y: 430
+  :color: green
+  :fixed: true
+- :id: 10
+  :name: 5/18 記憶の形(ppt)
+  :type: icon
+  :file_path: d06_260518/readme.html
+  :icon_path: d06_260518/memory_building.004.png
+  :x: 462
+  :y: 344
+  :color: green
+  :fixed: true
+- :id: 11
+  :name: 5/25 hit and blow
+  :type: icon
+  :file_path: d07_260525/d07_260525.html
+  :icon_path: d07_260525/d07_260525/d07_260525.004.png
+  :x: 582
+  :y: 538
+  :color: green
+  :fixed: true
+- :id: 12
+  :name: 6/1 tkinter
+  :type: icon
+  :file_path: d08_tkinter/readme.html
+  :icon_path: d08_tkinter/tkinter_install/tkinter_install.002.png
+  :x: 475
+  :y: 557
+  :color: green
+  :fixed: true
+- :id: 13
+  :name: 6/8 bouncing balls
+  :type: icon
+  :file_path: d09_method_class/readme.html
+  :icon_path: d09_method_class/bouncing_balls/bouncing_balls_256.png
+  :x: 348
+  :y: 569
+  :color: green
+  :fixed: true
+- :id: 14
+  :name: 6/15 markup, markdown
+  :type: icon
+  :file_path: d10_markdown/readme.html
+  :icon_path: d10_markdown/md_docx.png
+  :x: 117
+  :y: 525
+  :color: green
+  :fixed: true
+- :id: 15
+  :name: 6/22 image
+  :type: icon
+  :file_path: d11_image/readme.html
+  :icon_path: d11_image/semi_lattice.003.png
+  :x: 241
+  :y: 394
+  :color: green
+  :fixed: true
+- :id: 16
+  :name: 6/29 Ariyantype (or 双曲割引)
+  :type: icon
+  :file_path: d12_ariyan_fukumori/readme.html
+  :icon_path: d12_ariyan_fukumori/hyperbolic_discount.png
+  :x: 123
+  :y: 292
+  :color: green
+  :fixed: true
+- :id: 17
+  :name: 7/13 HyperCard
+  :type: icon
+  :file_path: d14_oss/readme.html
+  :icon_path: d14_oss/oss_vs_nih/oss_vs_nih.002.png
+  :x: 108
+  :y: 70
+  :color: green
+  :fixed: true
+:edges:
+- :from: 1
+  # from: hyper_card/, to: 最終課題と相互評価
+  :to: 2
+- :from: 5
+  # from: layers, divide & conquer, chunk, to: 4/6 OS
+  :to: 3
+- :from: 5
+  # from: layers, divide & conquer, chunk, to: SQ3R
+  :to: 4
+- :from: 1
+  # from: hyper_card/, to: layers, divide & conquer, chunk
+  :to: 5
+- :from: 5
+  # from: layers, divide & conquer, chunk, to: 4/13 vscode, fish
+  :to: 6
+- :from: 1
+  # from: hyper_card/, to: 4/20 ariyantype
+  :to: 7
+- :from: 10
+  # from: 5/18 記憶の形(ppt), to: 4/27 chunking, first python
+  :to: 8
+- :from: 10
+  # from: 5/18 記憶の形(ppt), to: 5/11 chunking, tree
+  :to: 9
+- :from: 1
+  # from: hyper_card/, to: 5/18 記憶の形(ppt)
+  :to: 10
+- :from: 10
+  # from: 5/18 記憶の形(ppt), to: 5/25 hit and blow
+  :to: 11
+- :from: 10
+  # from: 5/18 記憶の形(ppt), to: 6/1 tkinter
+  :to: 12
+- :from: 10
+  # from: 5/18 記憶の形(ppt), to: 6/8 bouncing balls
+  :to: 13
+- :from: 1
+  # from: hyper_card/, to: 6/22 image
+  :to: 15
+- :from: 15
+  # from: 6/22 image, to: 6/15 markup, markdown
+  :to: 14
+- :from: 1
+  # from: hyper_card/, to: 6/29 Ariyantype (or 双曲割引)
+  :to: 16
+- :from: 1
+  # from: hyper_card/, to: 6/29 Ariyantype (or 双曲割引)
+  :to: 17

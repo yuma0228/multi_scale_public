@@ -1,0 +1,40 @@
+---
+- :up:
+  - :href: pattern_language_26s.html
+    :title: pattern_language
+- :id: section-0
+  :title: concept
+  :items:
+  - :href: c0_concept/c1_sq3r/readme.html
+    :src: c0_concept/c1_sq3r/sq3r/sq3r.002.png
+    :title: SQ3R
+  - :href: c0_concept/c2_semi_lattice/readme.html
+    :src: c0_concept/c2_semi_lattice/semi_lattice/semi_lattice.004.png
+    :title: セミラティス
+  - :href: c0_concept/c3_chunk/readme.html
+    :src: c0_concept/c3_chunk/chunking/chunking.003.png
+    :title: chunking
+  - :href: c0_concept/c4_Umesao/readme.html
+    :src: c0_concept/c4_Umesao/hyper_card_system-81.jpg
+    :title: mk_stack_dir
+  - :href: c0_concept/readme.html
+    :src: c0_concept/dummy_icon.png
+    :title: mk_stack_dir
+- :id: section-1
+  :title: how to run
+  :items:
+  - :href: c1_how_to_run/c0_github/readme.html
+    :src: c1_how_to_run/c0_github/hyper_card_system.png
+    :title: github 手順
+  - :href: c1_how_to_run/c0_github/readme_by_emacs.html
+    :src: c1_how_to_run/c0_github/hyper_card_system.png
+    :title: github 手順
+  - :href: c1_how_to_run/c4_how_to/readme.html
+    :src: c1_how_to_run/c4_how_to/mk_stack_dir/mk_stack_dir.005.png
+    :title: mk_stack_dir
+  - :href: c1_how_to_run/c5_mk_link_canvas/readme.html
+    :src: c1_how_to_run/c5_mk_link_canvas/mk_canvas/mk_canvas.004.png
+    :title: mk canvas.html
+  - :href: c1_how_to_run/readme.html
+    :src: c1_how_to_run/dummy_icon.png
+    :title: mk_stack_dir

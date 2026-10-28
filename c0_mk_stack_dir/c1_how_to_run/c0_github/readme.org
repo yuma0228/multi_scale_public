@@ -1,0 +1,22 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+#+TITLE: github 手順
+#+AUTHOR: Shigeto R. Nishitani
+#+EMAIL:     (concat "shigeto_nishitani@mac.com")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style_w_link_button.css" />
+#+MACRO: dummy_link @@html:<a href="#">$1</a>@@
+
+# for style.css, never move from here
+[[../c3_linear_algebra_core/readme.html][prev_button]]
+[[../intro_info_26s.html][up_button]]
+[[../c1_outline/readme.html][next_button]]
+# for a real link rewrite usual [[\url][]]
+
+* memo
+- 赤はupstreamとのやり取り
+- 緑は１から作り直す手順
+
+| [[file:./hyper_card_system.png]]
+

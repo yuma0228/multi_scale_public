@@ -1,0 +1,4 @@
+[submodule "c0_mk_stack_dir"]
+	path = c0_mk_stack_dir
+	url = git@github.com:TeamNishitani/c0_mk_stack_dir.git
+	branch = main

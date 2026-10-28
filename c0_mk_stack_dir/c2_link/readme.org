@@ -1,0 +1,654 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+#+TITLE: hardlink with git repositories
+#+AUTHOR: Shigeto R. Nishitani
+#+EMAIL:     (concat "shigeto_nishitani@mac.com")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:3
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/setup/html-theme-readtheorg.setup
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+#+MACRO: dummy_link @@html:<a href="#">$1</a>@@
+
+# for style.css, never move from here
+[[../c3_linear_algebra_core/readme.html][prev_button]]
+[[../intro_info_26s.html][up_button]]
+[[../c1_outline/readme.html][next_button]]
+# for a real link rewrite usual [[\url][]]
+
+
+| [[file:./dummy_icon.png]]
+
+* 日常手順<2026-10-24 Sat>
+** 西谷の手順
+*** pattern_language or multi_scale
+=c0_mk_stack_dir= を更新するときは，submodule内でcommit／pushした後，親repositoryでも参照commitをcommitします．
+
+#+begin_src sh
+cd c0_mk_stack_dir
+git switch main
+git pull --ff-only
+#編集作業
+git add .
+git commit -m "Update c0_mk_stack_dir"
+git push
+
+cd ..
+git add c0_mk_stack_dir
+git commit -m "Update c0_mk_stack_dir revision"
+git push
+#+end_src
+
+*** その他のdirにて
+#+begin_src sh
+cd /path/to/other-parent-repository
+
+git submodule update --remote --merge c0_mk_stack_dir
+git add c0_mk_stack_dir
+git commit -m "Update c0_mk_stack_dir revision"
+git push
+#+end_src
+
+- localでしか使ってないdirectoryのsubmodule化は必要ない
+
+** 共有者が新規clone
+
+#+begin_src sh
+git clone --recurse-submodules \
+    git@github.com:TeamNishitani/pattern_language.git
+#+end_src
+
+** 既存のcloneを更新
+
+#+begin_src sh
+git pull --ff-only
+git submodule update --init --recursive
+#+end_src
+
+* 実施手順<2026-10-24 Sat>
+** user
+今は，
+まさに「正本repository＋symbolic link」で行っています．
+しかし，これだと他の共有者がちゃんと理解して
+symoblic linkを張る保証がないですね．
+「専用repository＋submodule」の運用に
+切り替えようと思います．
+
+このc0_mk_stack_dirだけを切り出して，
+submoduleとして管理しようと思います．
+こうすればいいということですね．
+その手順を教えてください．
+
+** reply
+はい，その用途なら「=c0_mk_stack_dir=専用repository＋各親repositoryからsubmoduleとして参照」が適しています．ただし，submoduleもclone後の初期化が必要なので，完全に利用者操作を不要にはできません．一方，リンク先の場所を各自に理解してもらう必要はなくなり，参照先とversionがGitに明示されます．
+
+以下では，専用repositoryを
+
+#+begin_src text
+git@github.com:TeamNishitani/c0_mk_stack_dir.git
+#+end_src
+
+とし，default branchを=main=と仮定します．
+
+*** 事前確認
+:PROPERTIES:
+:CUSTOM_ID: 1事前確認
+:END:
+まず =pattern_language= を最新かつcleanな状態にします．
+
+#+begin_src sh
+cd /Users/bob/git_hub/hyper_cards/pattern_language
+
+git status
+git pull --ff-only
+#+end_src
+
+=c0_mk_stack_dir= 内にrepository外を指すsymbolic
+linkがないことも確認します．
+
+#+begin_src sh
+find c0_mk_stack_dir -type l -print -exec readlink {} \;
+#+end_src
+
+外部を指すlinkがあれば，
+それはsubmodule化しても自動的には解決されません．
+
+念のため，移行作業用branchを作ります．
+
+#+begin_src sh
+git switch -c codex/extract-c0-mk-stack-dir
+#+end_src
+
+*** 履歴を保ったまま専用repositoryを作る
+:PROPERTIES:
+:CUSTOM_ID: 2履歴を保ったまま専用repositoryを作る
+:END:
+GitHub上で=TeamNishitani/c0_mk_stack_dir=という空のrepositoryを作成します．README，LICENSE，=.gitignore=などは追加せず，完全に空で作成してください．公開範囲は，既存repositoryと同等にするのが安全です．
+
+次に，=pattern_language=の履歴から=c0_mk_stack_dir=に関係する履歴を切り出します．
+
+#+begin_src sh
+git subtree split \
+    --prefix=c0_mk_stack_dir \
+    -b split-c0-mk-stack-dir
+#+end_src
+
+切り出したbranchを新repositoryの=main=としてpushします．
+
+#+begin_src sh
+git push \
+    git@github.com:TeamNishitani/c0_mk_stack_dir.git \
+    split-c0-mk-stack-dir:main
+#+end_src
+
+内容を一度確認します．
+
+#+begin_src sh
+tmp_dir="$(mktemp -d)"
+git clone \
+    git@github.com:TeamNishitani/c0_mk_stack_dir.git \
+    "$tmp_dir/c0_mk_stack_dir"
+
+tree -L 2 "$tmp_dir/c0_mk_stack_dir"
+git -C "$tmp_dir/c0_mk_stack_dir" log --oneline -10
+#+end_src
+
+新repositoryのroot直下が次のようになっていれば正解です．
+
+#+begin_src text
+c0_mk_stack_dir/
+├── bin
+├── c0_concept
+├── c1_how_to_run
+└── c2_link
+#+end_src
+
+ここでいう=c0_mk_stack_dir/=はclone先の名前であり，その中にさらに同名directoryが重複していないことを確認してください．
+
+*** 元の=pattern_language= をsubmoduleへ置き換える
+:PROPERTIES:
+:CUSTOM_ID: 3元のpattern_languageをsubmoduleへ置き換える
+:END:
+=pattern_language=の作業branchへ戻ります．
+
+#+begin_src sh
+cd /Users/bob/git_hub/hyper_cards/pattern_language
+git switch codex/extract-c0-mk-stack-dir
+#+end_src
+
+既存directoryをGitの管理対象から削除します．実体はすでに専用repositoryへpush済みですが，=git status=を確認しながら進めてください．
+
+#+begin_src sh
+git rm -r c0_mk_stack_dir
+#+end_src
+
+同じパスへsubmoduleを追加します．
+
+#+begin_src sh
+git submodule add \
+    -b main \
+    git@github.com:TeamNishitani/c0_mk_stack_dir.git \
+    c0_mk_stack_dir
+#+end_src
+
+状態を確認します．
+
+#+begin_src sh
+git status
+git diff --cached --submodule
+cat .gitmodules
+#+end_src
+
+=.gitmodules=は概ね次の内容になります．
+
+#+begin_src ini
+[submodule "c0_mk_stack_dir"]
+    path = c0_mk_stack_dir
+    url = git@github.com:TeamNishitani/c0_mk_stack_dir.git
+    branch = main
+#+end_src
+
+問題なければcommitしてpushします．
+
+#+begin_src sh
+git add .gitmodules c0_mk_stack_dir
+git commit -m "Extract c0_mk_stack_dir into a submodule"
+git push -u origin codex/extract-c0-mk-stack-dir
+#+end_src
+
+その後，GitHub上で確認してからPRをmergeします．直接=main=へ反映する運用なら，通常の手順でmergeしてください．
+
+*** =multi_scale= のsymbolic linkをsubmoduleへ置き換える
+:PROPERTIES:
+:CUSTOM_ID: 4multi_scaleのsymbolic-linkをsubmoduleへ置き換える
+:END:
+まず，現在のsymbolic linkがGitに登録されているか確認します．
+
+#+begin_src sh
+cd /path/to/multi_scale
+
+git status
+git ls-files --stage c0_mk_stack_dir
+#+end_src
+
+出力があり，先頭が=120000=なら，Git管理されたsymbolic linkです．
+
+#+begin_src text
+120000 ... c0_mk_stack_dir
+#+end_src
+
+この場合は次で削除します．
+
+#+begin_src sh
+git rm c0_mk_stack_dir
+#+end_src
+
+=git ls-files=に出力がなく，単なるローカルsymbolic
+linkなら，リンクだけを削除します．リンク先のdirectoryは削除されません．
+
+#+begin_src sh
+unlink c0_mk_stack_dir
+#+end_src
+
+続いて，同じパスへsubmoduleを追加します．
+
+#+begin_src sh
+git submodule add \
+    -b main \
+    git@github.com:TeamNishitani/c0_mk_stack_dir.git \
+    c0_mk_stack_dir
+#+end_src
+
+確認してcommitします．
+
+#+begin_src sh
+git status
+git diff --cached --submodule
+
+git add .gitmodules c0_mk_stack_dir
+git commit -m "Replace c0_mk_stack_dir symlink with submodule"
+git push
+#+end_src
+
+これで両方のrepositoryは，専用repositoryの特定commitを指すようになります．
+
+*** 共有者のclone方法
+:PROPERTIES:
+:CUSTOM_ID: 5共有者のclone方法
+:END:
+新しくcloneする場合は，次のようにしてもらいます．
+
+#+begin_src sh
+git clone --recurse-submodules \
+    git@github.com:TeamNishitani/multi_scale_26f.git
+#+end_src
+
+すでにclone済みのrepositoryでsubmodule化された変更をpullした場合は，次を実行します．
+
+#+begin_src sh
+git pull
+git submodule update --init --recursive
+#+end_src
+
+日常的にsubmoduleを使う人には，次の設定も便利です．
+
+#+begin_src sh
+git config --global submodule.recurse true
+git config --global status.submoduleSummary true
+git config --global diff.submodule log
+#+end_src
+
+ただし，共有者全員のglobal設定を前提にはしない方が安全です．READMEに次の2行を明記しておくのがよいでしょう．
+
+#+begin_src sh
+git clone --recurse-submodules <repository-url>
+git submodule update --init --recursive
+#+end_src
+
+*** 共有ファイルを更新する手順
+:PROPERTIES:
+:CUSTOM_ID: 6共有ファイルを更新する手順
+:END:
+submoduleの内容を編集したときは，まず専用repository側でcommit／pushします．
+
+#+begin_src sh
+cd c0_mk_stack_dir
+
+git switch main
+git pull --ff-only
+# ファイルを編集
+git add .
+git commit -m "Update stack directory tools"
+git push
+#+end_src
+
+その後，親repositoryへ戻ると，submoduleが指すcommitの変更として表示されます．
+
+#+begin_src sh
+cd ..
+git status
+git diff --submodule
+#+end_src
+
+親repositoryでも参照commitを記録してpushします．
+
+#+begin_src sh
+git add c0_mk_stack_dir
+git commit -m "Update c0_mk_stack_dir submodule"
+git push
+#+end_src
+
+これは=pattern_language=と=multi_scale=のそれぞれで必要です．つまり，専用repositoryを更新しただけでは，親repositoryが参照するcommitは自動更新されません．この固定性がsubmoduleの長所でもあります．
+
+別の親repositoryを最新版へ進める場合は，次のようにします．
+
+#+begin_src sh
+git submodule update --remote --merge c0_mk_stack_dir
+git add c0_mk_stack_dir
+git commit -m "Update c0_mk_stack_dir submodule"
+git push
+#+end_src
+
+要点は，次の二段階です．
+
+#+begin_src text
+専用repository：
+    ファイル内容のcommitを管理
+
+各親repository：
+    専用repositoryのどのcommitを使うかを管理
+#+end_src
+
+これにより，=pattern_language=と=multi_scale=で同時に常に最新版を使うことも，必要に応じて異なる安定版を使うこともできます．
+
+
+
+* 予備調査
+** turn 1
+*** user
+symbolic linkでfile system全般に渡って同期させたいfilesがあります．これをgitでpush, pullするとsymbolic linkが切れてしまうことはないですか？　もしそうならそれを回避する方法はありますか？
+
+*** codex
+Gitはsymbolic
+link自体を扱えます．ただし，Gitが保存するのはリンク先のファイル内容ではなく，*リンク先を示すパス文字列*です．したがって，=push=／=pull=だけでリンクが壊れるわけではありませんが，別環境でリンク先が存在しなければリンク切れになります．
+
+例えば，次のような絶対パスのリンクは壊れやすいです．
+
+#+begin_src text
+project/config.yaml -> /Users/bob/shared/config.yaml
+#+end_src
+
+別PCではユーザー名や配置が異なるためです．可能ならリポジトリ内への相対リンクにします．
+
+#+begin_src text
+project/config.yaml -> ../shared/config.yaml
+#+end_src
+
+ただし，=../shared/config.yaml=がリポジトリ外なら，そのファイルはGitでは同期されません．各環境で同じ相対位置に別途配置する必要があります．
+
+安全な方法は目的によって変わります．
+
+- リンク先もGitで管理できる場合\\
+  リンク先の実体を同じリポジトリに置き，相対symbolic
+  linkを使うのが最も簡単です．
+
+- 複数リポジトリから共通ファイルを使う場合\\
+  共通ファイル専用リポジトリを作り，各環境の一定の場所へcloneします．必要ならGit
+  submoduleやsubtreeも使えます．
+
+- ホームディレクトリなど，filesystem全般へリンクを配置する場合\\
+  リポジトリには実体とセットアップスクリプトを保存し，clone後にリンクを生成する方法が堅牢です．
+
+#+begin_src sh
+#!/bin/sh
+repo_dir="$(cd "$(dirname "$0")" && pwd)"
+ln -sfn "$repo_dir/config/app.conf" "$HOME/.config/app.conf"
+#+end_src
+
+この方式なら，各PCでスクリプトを一度実行するだけで，環境に合った絶対リンクを作れます．GNU
+Stow，chezmoi，yadmなどのdotfiles管理ツールもこの用途に向いています．
+
+注意点もあります．
+
+- Linux／macOSでは通常，Gitはsymbolic linkをそのまま復元します．
+- WindowsではDeveloper
+  Modeや権限，Gitの=core.symlinks=設定によって，リンクではなく通常ファイルとしてcheckoutされる場合があります．
+- リンク先がリポジトリ外なら，Gitはその内容をpushしません．
+- symbolic link内に =$HOME= や =~=
+  を書いても展開されません．リンク先には文字どおり保存されます．
+- filesystemをまたぐsymbolic
+  link自体は問題ありませんが，マウント先や外付けディスクがないとリンク切れになります．
+- 機密情報をリンク先からリポジトリへ取り込まないよう注意が必要です．
+
+結論としては，*リポジトリ内では相対リンクを使い，リポジトリ外へのリンクはセットアップスクリプトで各環境に生成する*構成が最も扱いやすいです．Gitによる同期対象はリンクではなく，リンク先の実体を置いたリポジトリにするのが基本です．
+
+** turn 2
+*** user
+では，同期させたいfilesをhard linkした時はどうですか？
+*** reply
+hard linkは，Gitでの同期には向きません．Gitはhard
+linkの関係を記録せず，各パスを独立したファイルとして管理します．
+
+同じfilesystem上で次のように作ると，
+
+#+begin_src sh
+ln original.conf linked.conf
+#+end_src
+
+両者は同じinodeを共有するため，ローカルで一方を編集すると他方も即座に変わります．しかしGitでは，次のような問題があります．
+
+- =clone=やcheckout後は，通常それぞれ独立したファイルになり，hard
+  link関係は復元されません．
+- =pull=，checkout，rebaseなどでGitがファイルを一時ファイルから置換すると，hard
+  link関係が切れることがあります．
+- hard linkは異なるfilesystemやボリュームをまたげません．
+- ディレクトリには原則として作成できません．
+- 同じinodeを指す複数のパスを追跡すると，Gitには別々のファイルとして見えます．
+
+特に，リポジトリ内のファイルとリポジトリ外のファイルをhard
+linkした場合，
+
+#+begin_src text
+repository/config.conf ──同じinode── ~/.config/app/config.conf
+#+end_src
+
+ローカル編集は反映されますが，=git pull=がリポジトリ側を新しいファイルへ置換すると，次の状態になり得ます．
+
+#+begin_src text
+repository/config.conf ── 新しいinode
+~/.config/app/config.conf ── 古いinode
+#+end_src
+
+この時点で同期は止まります．明確なエラーが出ないまま関係が切れる可能性があるため，運用上かなり危険です．
+
+したがって，おすすめは次の構成です．
+
+#+begin_src text
+Gitリポジトリ内の実体ファイル
+          ↑
+          │ symbolic link
+          │
+~/.configなどで使用する場所
+#+end_src
+
+そして，symbolic linkはclone後にセットアップスクリプトで作成します．
+
+#+begin_src sh
+#!/bin/sh
+repo_dir="$(cd "$(dirname "$0")" && pwd)"
+
+mkdir -p "$HOME/.config/app"
+ln -sfn "$repo_dir/config/app.conf" \
+    "$HOME/.config/app/config.conf"
+#+end_src
+
+まとめると，hard
+linkは「同じマシン内で一時的に同じ内容を共有する」用途には使えますが，Gitを介して複数環境で関係を維持する用途には不適切です．Gitで管理するなら，*実体をリポジトリに置き，利用箇所からsymbolic
+linkを張る方式*が最も安定します．
+
+** turn 3
+*** user
+hard link先のfilesが他のgit repositoryとして管理されている場合，current directoryが属するgit repositoryからその変更を反映させるにはどうすればいいでしょう？
+*** reply
+hard
+linkが維持されている間は，ファイル内容の変更は両方のrepositoryのworking
+treeへ即座に現れます．しかし，Gitの履歴・index・commitはrepositoryごとに独立しているため，*片方でcommitしても，もう片方にはcommitされません*．
+
+例えば，
+
+#+begin_src text
+repo-a/config.conf ── hard link ── repo-b/config.conf
+#+end_src
+
+=repo-a/config.conf=を編集すると，=repo-b/config.conf=も変更済みになります．=repo-b=へ反映するには，別途そのrepositoryでcommitします．
+
+#+begin_src sh
+git -C /path/to/repo-b status
+git -C /path/to/repo-b add config.conf
+git -C /path/to/repo-b commit -m "Update shared configuration"
+git -C /path/to/repo-b push
+#+end_src
+
+=repo-a=側にも同じ内容を履歴として残すなら，こちらでも独立してcommitします．
+
+#+begin_src sh
+git add config.conf
+git commit -m "Update shared configuration"
+git push
+#+end_src
+
+つまり，ファイル内容はhard
+linkによって共有されても，Git上では次のようになります．
+
+#+begin_src text
+共有されるもの：ファイル内容とinode
+共有されないもの：index，commit，branch，履歴，remote
+#+end_src
+
+ただし，この構成には大きな問題があります．どちらかのrepositoryで次を実行すると，Gitによるファイル置換でhard
+linkが切れる可能性があります．
+
+#+begin_src sh
+git pull
+git checkout other-branch
+git switch other-branch
+git restore config.conf
+git rebase
+#+end_src
+
+そのため，2つのrepository間でhard linkを長期維持するのは推奨しません．
+
+より安全な構成
+
+最も安定するのは，共有ファイルの「正本」を一方だけに決める方法です．
+
+#+begin_src text
+repo-b/config.conf       ← 正本としてGit管理
+repo-a/config.conf       ← repo-bへのsymbolic link
+#+end_src
+
+=repo-a=ではsymbolic
+linkだけをGit管理するか，clone後のセットアップスクリプトでリンクを作成します．
+
+両repositoryに実体ファイルが必要なら，同期スクリプトでコピーし，それぞれcommitします．
+
+#+begin_src sh
+#!/bin/sh
+set -eu
+
+source_file="/path/to/repo-b/config.conf"
+destination_file="/path/to/repo-a/config.conf"
+
+cp "$source_file" "$destination_file"
+git -C /path/to/repo-a add config.conf
+git -C /path/to/repo-a diff --cached --exit-code ||
+    git -C /path/to/repo-a commit -m "Sync shared configuration"
+#+end_src
+
+共有ファイル群そのものに独立した履歴が必要なら，専用repositoryを作り，各repositoryからGit
+submoduleとして参照する構成も適しています．
+
+結論として，現在のhard
+linkを使い続ける場合は，変更後に対象repositoryごとに=git add=と=git commit=が必要です．ただし=pull=などでリンクが静かに切れる可能性があるため，長期運用では「正本repository＋symbolic
+link」または「専用repository＋submodule」が安全です．
+
+** turn 4
+*** user
+この運用では，symbolic linkするのはtarget_fileでないとダメですね．[symbolic linked dir]/target_fileではtarget_fileに行った編集は他のところに反映されないでしょうから．
+*** reply
+いいえ，*directory自体がsymbolic
+linkなら，=[symbolic linked dir]/target_file=への編集もリンク先の実体ファイルへ反映されます*．
+
+例えば，
+
+#+begin_src text
+repo-a/shared -> ../repo-b/shared
+repo-b/shared/target_file
+#+end_src
+
+というdirectory symbolic linkがある場合，
+
+#+begin_src sh
+vim repo-a/shared/target_file
+#+end_src
+
+で編集している実体は，
+
+#+begin_src text
+repo-b/shared/target_file
+#+end_src
+
+です．したがって，=repo-b=側にも変更が現れます．個々のファイルをsymbolic
+linkにする必要はありません．
+
+ただし，Git上の見え方には重要な違いがあります．
+
+- =repo-a=は=shared=というsymbolic linkだけを管理する
+- =repo-a=は=shared/target_file=を追跡しない
+- =target_file=の変更は=repo-b=のworking tree上の変更になる
+- =repo-b=で=git add=／=commit=する必要がある
+
+#+begin_src sh
+git -C /path/to/repo-b status
+git -C /path/to/repo-b add shared/target_file
+git -C /path/to/repo-b commit -m "Update target file"
+#+end_src
+
+確認するなら，次のコマンドが分かりやすいです．
+
+#+begin_src sh
+readlink repo-a/shared
+realpath repo-a/shared/target_file
+realpath repo-b/shared/target_file
+#+end_src
+
+後ろ2つが同じ実体パスを示せば，どちらの経路から編集しても同じファイルが更新されます．
+
+注意すべきなのは，directory symbolic
+linkの作り方です．リンク名と同名のdirectoryがすでに存在すると，意図せずそのdirectoryの内部にリンクが作られることがあります．期待する形は次です．
+
+#+begin_src sh
+ln -s /path/to/repo-b/shared /path/to/repo-a/shared
+#+end_src
+
+結論として，共有対象がdirectory全体ならdirectory単位のsymbolic
+linkで問題ありません．一部のファイルだけを共有したい場合に限って，ファイル単位のsymbolic
+linkを使うのが適切です．
+
+** turn 5
+*** user
+ああ，そうか．directory丸ごとlink先にしろということか．cpではなく．それもsymbolic linkで．ls -latした時にゴチャになりますね．それならいっそdirectoryごとそこに置けというのがgitの正しい運用法か．．もう少し考えます．
+***** reply
+その理解で合っています．Gitの観点では，*実体を一つのrepository内にまとめ，必要な場所からdirectoryごとsymbolic
+linkする*のが自然です．=cp=で複製すると，どちらが正本か分からなくなり，差分や競合の管理が増えます．
+
+一方，おっしゃるとおり，symbolic
+linkが増えると=ls -lat=やパス構造が見づらくなります．その場合は，
+
+- 実体を本来使うdirectoryへ置く
+- そのdirectoryを所有するrepositoryでGit管理する
+- 他のrepositoryからは直接参照する
+- どうしても必要な場所だけsymbolic linkする
+
+という設計がすっきりします．
+
+要するに，Gitでは「複数箇所へ同じファイルを置く」より，「正本の場所を一つ決め，参照経路だけ用意する」と考えるのが安定します．急いで決めず，どのrepositoryがそのファイルの所有者なのかから整理すると決めやすいと思います．

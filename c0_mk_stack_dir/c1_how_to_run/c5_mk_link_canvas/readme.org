@@ -1,0 +1,20 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+#+TITLE: mk canvas.html
+#+AUTHOR: Shigeto R. Nishitani
+#+EMAIL:     (concat "shigeto_nishitani@mac.com")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style_w_link_button.css" />
+#+MACRO: dummy_link @@html:<a href="#">$1</a>@@
+
+# for style.css, never move from here
+[[../c0_github/readme_by_emacs.html][prev_button]]
+[[../pattern_language_26s.html][up_button]]
+[[../c1_sq3r/readme.html][next_button]]
+# for a real link rewrite usual [[\url][]]
+
+* コマンドメモ
+
+| [[file:./mk_canvas/mk_canvas.002.png]] | [[file:./mk_canvas/mk_canvas.003.png]] | [[file:./mk_canvas/mk_canvas.004.png]]
+

@@ -1,0 +1,62 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+#+TITLE: github commands for maintain pattern language
+#+AUTHOR: Shigeto R. Nishitani
+#+EMAIL:     (concat "shigeto_nishitani@mac.com")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/html-theme-readtheorg.setup
+
+* 不要branchの削除<2026-07-05 Sun>
+- git branch -d akito282828-main
+- git push origin --delete akito282828-main
+
+* 混乱したので，一つ戻す．<2026-07-05 Sun>
+$+begin_src bash
+> git merge --abort
+> git rebase --abort
+fatal: no rebase in progress
+> git reset --hard HEAD
+HEAD is now at e0814cd hoge
+> git checkout main
+Already on 'main'
+> git reset --hard e0814cd1ada78d549cda969968906bed58484718
+HEAD is now at e0814cd hoge
+#+end_src
+
+* ディレクトリ名変更の自動追跡（Directory Rename Detection）off<2026-07-05 Sun>
+ディレクトリ名変更の自動追跡で変なところに移そうとする．
+offして，明示的にdirectoryをaddして，
+#+begin_src bash
+> git checkout main
+> git merge akito282828-main --no-ff -m "Merge branch 'akito282828-main' into main"
+CONFLICT (file location): c106_positive_outdoor_space/pdf_to_png.app/Contents/Info.plist added in akito282828-main inside a directory that was renamed in HEAD, suggesting it should perhaps be moved to c0_mk_stack_dir/c0_github/pdf_to_png.app/Contents/Info.plist.
+...
+
+> git merge --abort
+> git -c merge.directoryRenames=false merge akito282828-main --no-ff -m "Merge branch 'akito282828-main' into main"
+
+CONFLICT (modify/delete): c106_positive_outdoor_space/106_positive_outdoor_space.pdf deleted in HEAD and modified in akito282828-main.  Version akito282828-main of c106_positive_outdoor_space/106_positive_outdoor_space.pdf left in tree.
+Automatic merge failed; fix conflicts and then commit the result.
+
+> git add c106_positive_outdoor_space/
+> git commit -m "Merge branch 'akito282828-main' into main"
+[main d2380f5] Merge branch 'akito282828-main' into main
+> git log --oneline -n 3
+d2380f5 (HEAD -> main) Merge branch 'akito282828-main' into main
+45cc5bd (akito282828-main) hoge
+54a9f1a add .gitignore~default
+#+end_src
+* decline pull request
+#+begin_src github
+> git checkout -b akito282828-main main
+> git branch
+ (no branch, rebasing akito282828-main)
+  akito282828-main
+  main
+> git rebase --abort
+> git switch main
+> git branch -D akito282828-main
+#+end_src
+
+

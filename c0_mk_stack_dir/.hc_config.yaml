@@ -1,0 +1,11 @@
+---
+:year: 2026
+:lecture: pattern_language
+:source_html: pattern_language_26s.html
+:glob_extensions: c*/**/*.html
+:public_repository_dir: ''
+:server_info:
+  :local_sites: "~/Sites/new_ist/Lectures"
+  :ruby_code_dir: './bin'
+  :server_ssh_path: nishitani@ist.ksc.kwansei.ac.jp:~/public_html
+  :server_url: https://ist.ksc.kwansei.ac.jp/~nishitani/Lectures

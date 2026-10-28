@@ -1,0 +1,120 @@
+---
+:nodes:
+- :id: 1
+  :name: hyper_card/
+  :type: dir
+  :file_path: "."
+  :icon_path:
+  :x: 222
+  :y: 282
+  :color: green
+  :fixed: true
+- :id: 2
+  :name: c1_sq3r
+  :type: icon
+  :file_path: c0_concept/c1_sq3r/readme.html
+  :icon_path: c0_concept/c1_sq3r/sq3r/sq3r.002.png
+  :x: 533
+  :y: 60
+  :color: green
+  :fixed: true
+- :id: 3
+  :name: c2_semi_lattice
+  :type: icon
+  :file_path: c0_concept/c2_semi_lattice/readme.html
+  :icon_path: c0_concept/c2_semi_lattice/semi_lattice/semi_lattice.004.png
+  :x: 604
+  :y: 150
+  :color: green
+  :fixed: true
+- :id: 4
+  :name: c3_chunk
+  :type: icon
+  :file_path: c0_concept/c3_chunk/readme.html
+  :icon_path: c0_concept/c3_chunk/chunking/chunking.003.png
+  :x: 537
+  :y: 232
+  :color: green
+  :fixed: true
+- :id: 5
+  :name: c4_Umesao
+  :type: icon
+  :file_path: c0_concept/c4_Umesao/readme.html
+  :icon_path: c0_concept/c4_Umesao/hyper_card_system-81.jpg
+  :x: 407
+  :y: 277
+  :color: green
+  :fixed: true
+- :id: 6
+  :name: c0_concept
+  :type: dir
+  :file_path: c0_concept/readme.html
+  :icon_path:
+  :x: 392
+  :y: 147
+  :color: green
+  :fixed: true
+- :id: 8
+  :name: c0_github
+  :type: icon
+  :file_path: c1_how_to_run/c0_github/readme_by_emacs.html
+  :icon_path: c1_how_to_run/c0_github/hyper_card_system.png
+  :x: 609
+  :y: 380
+  :color: green
+  :fixed: true
+- :id: 9
+  :name: c4_how_to
+  :type: icon
+  :file_path: c1_how_to_run/c4_how_to/readme.html
+  :icon_path: c1_how_to_run/c4_how_to/mk_stack_dir/mk_stack_dir.005.png
+  :x: 619
+  :y: 496
+  :color: green
+  :fixed: true
+- :id: 10
+  :name: c5_mk_link_canvas
+  :type: icon
+  :file_path: c1_how_to_run/c5_mk_link_canvas/readme.html
+  :icon_path: c1_how_to_run/c5_mk_link_canvas/mk_canvas/mk_canvas.004.png
+  :x: 437
+  :y: 523
+  :color: green
+  :fixed: true
+- :id: 11
+  :name: c1_how_to_run
+  :type: dir
+  :file_path: c1_how_to_run/readme.html
+  :icon_path:
+  :x: 397
+  :y: 404
+  :color: green
+  :fixed: true
+:edges:
+- :from: 6
+  # from: c0_concept, to: c1_sq3r
+  :to: 2
+- :from: 6
+  # from: c0_concept, to: c2_semi_lattice
+  :to: 3
+- :from: 6
+  # from: c0_concept, to: c3_chunk
+  :to: 4
+- :from: 6
+  # from: c0_concept, to: c4_Umesao
+  :to: 5
+- :from: 1
+  # from: hyper_card/, to: c0_concept
+  :to: 6
+- :from: 11
+  # from: c1_how_to_run, to: c0_github
+  :to: 8
+- :from: 11
+  # from: c1_how_to_run, to: c4_how_to
+  :to: 9
+- :from: 11
+  # from: c1_how_to_run, to: c5_mk_link_canvas
+  :to: 10
+- :from: 1
+  # from: hyper_card/, to: c1_how_to_run
+  :to: 11

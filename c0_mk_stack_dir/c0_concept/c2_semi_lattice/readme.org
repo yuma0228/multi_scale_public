@@ -1,0 +1,23 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+#+TITLE: セミラティス
+#+AUTHOR: Shigeto R. Nishitani
+#+EMAIL:     (concat "shigeto_nishitani@mac.com")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style_w_link_button.css" />
+#+MACRO: dummy_link @@html:<a href="#">$1</a>@@
+
+# for style.css, never move from here
+[[../c1_sq3r/readme.html][prev_button]]
+[[../pattern_language_26s.html][up_button]]
+[[../c3_chunk/readme.html][next_button]]
+# for a real link rewrite usual [[\url][]]
+
+* image
+| [[file:./semi_lattice/semi_lattice.003.png]]
+| [[file:./semi_lattice/semi_lattice.002.png]]
+| [[file:./semi_lattice/semi_lattice.004.png]]
+
+* link
+- [[https://qiita.com/daddygongon/items/dcf50940f04fb34c5c53][知識の構造(ツリーではない) on qiita]]

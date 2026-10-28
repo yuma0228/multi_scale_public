@@ -1,0 +1,22 @@
+---
+- :up:
+  - :href: intro_info_26s.html
+    :title: 卓上スパコン(西谷) / 情報工学概論
+- :id: section-0
+  :title: 知識の構造
+  :items:
+  - :href: c0_mk_stack_dir/readme.html
+    :src: c0_mk_stack_dir/mk_stack_dir/mk_stack_dir.001.png
+    :title: mk_stack_dir
+  - :href: c1_outline/readme.html
+    :src: c1_outline/intro_info/intro_info.002.png
+    :title: LLM, GFlop/s
+- :id: section-1
+  :title: イメージ
+  :items:
+  - :href: c2_solar_system/readme.html
+    :src: c2_solar_system/kepler_harmonic/kepler_harmonic.002.png
+    :title: ケプラーの法則イメージ
+  - :href: c3_linear_algebra_core/readme.html
+    :src: c3_linear_algebra_core/linear_algebra_core/linear_algebra_core.003.png
+    :title: 線形代数イメージ

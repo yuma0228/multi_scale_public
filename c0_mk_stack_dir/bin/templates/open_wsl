@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+require 'open3'
+
+targets = ARGV.empty? ? ['.'] : ARGV
+
+targets.each do |target|
+  # Expand special directories
+  path =
+    case target
+    when '.', '..'
+      File.expand_path(target)
+    when '~'
+      ENV['HOME'] # WSL上のホームディレクトリ
+    else
+      target
+    end
+  p path
+  if path =~ /^http/
+    system "explorer.exe #{path}"
+  else #if path =~ /\.(html|pdf|jpg|jpeg|png|pptx|xls|docx)$/i
+    out, _, _ = Open3.capture3("wslpath -m #{path}")
+    system "explorer.exe file:#{out.strip}"
+ # else
+ #   system "explorer.exe #{path}"
+  end
+end

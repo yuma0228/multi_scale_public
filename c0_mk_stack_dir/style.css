@@ -1,0 +1,256 @@
+@import url("theme.css");
+
+/* これ以降に style.css の独自のスタイルを記述します */
+/* 全体レイアウト */
+body {
+    font-family: var(--font-family-base);
+    background: var(--background);
+    color: var(--foreground);
+    margin: 0;
+    padding: 0;
+    font-size: var(--font-size-base);
+}
+
+/* 本文領域（Org-modeのルートコンテナ） */
+#content {
+    /* 左側の目次幅を確保（30vw、最大320px、最少200px） */
+    margin-left: clamp(200px, 30vw, 320px); 
+    padding: 1em 2em;
+    max-width: none !important; /* Orgのデフォルト指定を解除 */
+}
+
+/* 左ペイン（Table of Contents） */
+#table-of-contents {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--sidebar);
+    color: var(--sidebar-foreground);
+    width: clamp(200px, 30vw, 320px);
+    height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
+    border-right: 1px solid var(--sidebar-border);
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+#table-of-contents h2 {
+    background: var(--sidebar-primary);
+    color: var(--sidebar-primary-foreground);
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    padding: 1em 0;
+    margin: 0 0 0.5em 0;
+}
+
+#table-of-contents ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#table-of-contents li {
+    margin: 0;
+    padding: 0.3em 1.2em; 
+    font-size: 1.1em;
+    border-bottom: 1px solid var(--sidebar-border);
+    line-height: 1.2;     
+}
+
+#table-of-contents li:last-child {
+    border-bottom: none;
+}
+
+#table-of-contents a {
+    font-size: 1em;
+    color: var(--sidebar-foreground);
+    text-decoration: none;
+    display: block;
+    transition: background 0.2s, color 0.2s;
+}
+
+#table-of-contents a:hover {
+    color: var(--sidebar-primary);
+}
+
+/* タイトル */
+h1.title {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+h2 {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 1.5em;
+    margin-bottom: 0.7em;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3em;
+}
+
+h3 {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.7em;
+}
+
+/* リスト */
+.outline-text-2 ul, .outline-text-3 ul {
+    margin: 1em 0 2em 2em;
+    padding: 0;
+}
+
+.outline-text-2 li, .outline-text-3 li {
+    font-size: 0.9em;
+    line-height: 1.7;
+    margin-bottom: 0.5em;
+    color: var(--foreground);
+}
+
+/* テーブル自体の幅を画面いっぱいに広げる */
+.outline-text-2 table, .outline-text-3 table {
+    width: 100%;
+    margin-bottom: 1.5em;
+    display: block; /* テーブルの標準挙動をリセット */
+}
+
+.outline-text-2 tbody, .outline-text-3 tbody {
+    display: block;
+    width: 100%;
+}
+
+.outline-text-2 tr, .outline-text-3 tr {
+    display: flex; /* gridからflexに変更 */
+    flex-wrap: nowrap; /* 1行に収める */
+    width: 100%;
+}
+
+.outline-text-2 td, .outline-text-3 td {
+    padding: 5px; /* セル（画像）間の余白 */
+    vertical-align: top;
+    flex: 1 1 0; /* 均等に幅を広げる */
+    width: auto !important; /* インライン指定を無効化 */
+    max-width: 33.333% !important; /* どんなに要素が少なくても最大3列幅までに制限 */
+    box-sizing: border-box;
+    display: block;
+}
+
+/* 画像ギャラリー風の表示（テーブル内の画像にも適用） */
+#content img, .outline-text-2 img, .outline-text-3 img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    border-radius: var(--radius);
+}
+
+/* ナビゲーションボタン (up, prev, next) */
+#content > p > a {
+    display: inline-block;
+    padding: 5px 15px;
+    margin-right: 0.5em;
+    margin-bottom: 1em;
+    background-color: var(--background);
+    color: var(--foreground);
+    text-decoration: none;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 11px;
+    font-family: var(--font-family-button);
+    box-shadow: 1px 1px 0px var(--border);
+    cursor: pointer;
+}
+
+#content > p > a:active {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    box-shadow: 0px 0px 0px var(--border);
+    transform: translate(1px, 1px);
+}
+
+/* 本文内の最初の段落にあるリンクの「順番（1番目、2番目、3番目）」で判別する */
+#content > p:first-of-type > a {
+    font-size: 0; /* 元のテキストを隠す */
+}
+
+/* 1番目: Prev (◀ prev) */
+#content > p:first-of-type > a:nth-child(1)::before {
+    content: "◀ prev";
+    font-size: 11px;
+}
+
+/* 2番目: Up (▲ up) */
+#content > p:first-of-type > a:nth-child(2)::before {
+    content: "▲ up";
+    font-size: 11px;
+}
+
+/* 3番目: Next (next ▶) */
+#content > p:first-of-type > a:nth-child(3)::before {
+    content: "next ▶";
+    font-size: 11px;
+}
+
+/* リンク先URLやアクセスキーに基づいて元テキストを非表示にし、アイコン＋テキストを再定義 */
+#content > p > a[accesskey], 
+#content > p > a[href*="prev"], 
+#content > p > a[href*="up"], 
+#content > p > a[href*="next"] {
+    font-size: 0; 
+}
+
+/* Prev (◀ prev) */
+#content > p > a[accesskey="p"]::before,
+#content > p > a[href*="prev"]::before {
+    content: "◀ prev";
+    font-size: 11px; 
+}
+
+/* Up (▲ up) */
+#content > p > a[accesskey="u"]::before,
+#content > p > a[href*="up_button"]::before,
+#content > p > a[href*="up.html"]::before {
+    content: "▲ up";
+    font-size: 11px;
+}
+
+/* Next (next ▶) */
+#content > p > a[accesskey="n"]::before,
+#content > p > a[href*="next"]::before {
+    content: "next ▶";
+    font-size: 11px;
+}
+
+/* スマホ対応（幅が狭い場合） */
+@media (max-width: 800px) {
+    #table-of-contents {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+    #content {
+        margin-left: 0;
+        padding: 1em;
+    }
+    /* スマホではテーブルをブロック要素にして縦並びにする */
+    .outline-text-2 table, .outline-text-3 table, 
+    .outline-text-2 tbody, .outline-text-3 tbody, 
+    .outline-text-2 tr, .outline-text-3 tr, 
+    .outline-text-2 td, .outline-text-3 td {
+        display: block;
+        width: 100%;
+    }
+    .outline-text-2 td, .outline-text-3 td {
+        margin-bottom: 1em;
+        padding: 0;
+        max-width: 100% !important; /* スマホ表示時は幅いっぱいに広げる */
+    }
+}

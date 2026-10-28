@@ -1,0 +1,19 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+#+TITLE: chunking
+#+AUTHOR: Shigeto R. Nishitani
+#+EMAIL:     (concat "shigeto_nishitani@mac.com")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style_w_link_button.css" />
+#+MACRO: dummy_link @@html:<a href="#">$1</a>@@
+
+# for style.css, never move from here
+[[../c2_semi_lattice/readme.html][prev_button]]
+[[../pattern_language_26s.html][up_button]]
+[[../c4_how_to/readme.html][next_button]]
+# for a real link rewrite usual [[\url][]]
+
+
+| [[file:./chunking/chunking.003.png]]
+

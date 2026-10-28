@@ -1,0 +1,1086 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
+<head>
+<!-- 2026-10-24 Sat 14:38 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>hardlink with git repositories</title>
+<meta name="author" content="Shigeto R. Nishitani" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/code-copy.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/vendor/stickytableheaders/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/code-copy.js"></script>
+<link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">hardlink with git repositories</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org0d756b1">1. 日常手順<span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-24 Sat&gt;</span></span></a>
+<ul>
+<li><a href="#org0352a29">1.1. 西谷の手順</a>
+<ul>
+<li><a href="#orgb5feda2">1.1.1. pattern_language or multi_scale</a></li>
+<li><a href="#org70b47b9">1.1.2. その他のdirにて</a></li>
+</ul>
+</li>
+<li><a href="#org0ae36a5">1.2. 共有者が新規clone</a></li>
+<li><a href="#org36dfaf5">1.3. 既存のcloneを更新</a></li>
+</ul>
+</li>
+<li><a href="#org1a2335f">2. 実施手順<span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-24 Sat&gt;</span></span></a>
+<ul>
+<li><a href="#orgf28b195">2.1. user</a></li>
+<li><a href="#org78ec4ce">2.2. reply</a>
+<ul>
+<li><a href="#1事前確認">2.2.1. 事前確認</a></li>
+<li><a href="#2履歴を保ったまま専用repositoryを作る">2.2.2. 履歴を保ったまま専用repositoryを作る</a></li>
+<li><a href="#3元のpattern_languageをsubmoduleへ置き換える">2.2.3. 元の=pattern_language= をsubmoduleへ置き換える</a></li>
+<li><a href="#4multi_scaleのsymbolic-linkをsubmoduleへ置き換える">2.2.4. <code>multi_scale</code> のsymbolic linkをsubmoduleへ置き換える</a></li>
+<li><a href="#5共有者のclone方法">2.2.5. 共有者のclone方法</a></li>
+<li><a href="#6共有ファイルを更新する手順">2.2.6. 共有ファイルを更新する手順</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org4cd3ebc">3. 予備調査</a>
+<ul>
+<li><a href="#orga510507">3.1. turn 1</a>
+<ul>
+<li><a href="#org5f43883">3.1.1. user</a></li>
+<li><a href="#orgaa99dc4">3.1.2. codex</a></li>
+</ul>
+</li>
+<li><a href="#org3164f66">3.2. turn 2</a>
+<ul>
+<li><a href="#org3670bd8">3.2.1. user</a></li>
+<li><a href="#org9cdbd8f">3.2.2. reply</a></li>
+</ul>
+</li>
+<li><a href="#orgc27a077">3.3. turn 3</a>
+<ul>
+<li><a href="#org46bb904">3.3.1. user</a></li>
+<li><a href="#orgc6703ad">3.3.2. reply</a></li>
+</ul>
+</li>
+<li><a href="#orgf6aaf9c">3.4. turn 4</a>
+<ul>
+<li><a href="#org431265f">3.4.1. user</a></li>
+<li><a href="#orgbfd32f2">3.4.2. reply</a></li>
+</ul>
+</li>
+<li><a href="#org52a4954">3.5. turn 5</a>
+<ul>
+<li><a href="#org12bea70">3.5.1. user</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../c3_linear_algebra_core/readme.html">prev_button</a>
+<a href="../intro_info_26s.html">up_button</a>
+<a href="../c1_outline/readme.html">next_button</a>
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="./dummy_icon.png" alt="dummy_icon.png" /></td>
+</tr>
+</tbody>
+</table>
+<div id="outline-container-org0d756b1" class="outline-2">
+<h2 id="org0d756b1"><span class="section-number-2">1.</span> 日常手順<span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-24 Sat&gt;</span></span></h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org0352a29" class="outline-3">
+<h3 id="org0352a29"><span class="section-number-3">1.1.</span> 西谷の手順</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-orgb5feda2" class="outline-4">
+<h4 id="orgb5feda2"><span class="section-number-4">1.1.1.</span> pattern_language or multi_scale</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+<code>c0_mk_stack_dir</code> を更新するときは，submodule内でcommit／pushした後，親repositoryでも参照commitをcommitします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code><span style="color: #8f0075;">cd</span> c0_mk_stack_dir
+git switch main
+git pull --ff-only
+<span style="color: #595959;">#</span><span style="color: #595959;">&#32232;&#38598;&#20316;&#26989;</span>
+git add .
+git commit -m <span style="color: #3548cf;">"Update c0_mk_stack_dir"</span>
+git push
+
+<span style="color: #8f0075;">cd</span> ..
+git add c0_mk_stack_dir
+git commit -m <span style="color: #3548cf;">"Update c0_mk_stack_dir revision"</span>
+git push
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org70b47b9" class="outline-4">
+<h4 id="org70b47b9"><span class="section-number-4">1.1.2.</span> その他のdirにて</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+<pre class="src src-sh"><code><span style="color: #8f0075;">cd</span> /path/to/other-parent-repository
+
+git submodule update --remote --merge c0_mk_stack_dir
+git add c0_mk_stack_dir
+git commit -m <span style="color: #3548cf;">"Update c0_mk_stack_dir revision"</span>
+git push
+</code></pre>
+</div>
+
+<ul class="org-ul">
+<li>localでしか使ってないdirectoryのsubmodule化は必要ない</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org0ae36a5" class="outline-3">
+<h3 id="org0ae36a5"><span class="section-number-3">1.2.</span> 共有者が新規clone</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-sh"><code>git clone --recurse-submodules <span style="color: #3548cf;">\</span>
+    git@github.com:TeamNishitani/pattern_language.git
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org36dfaf5" class="outline-3">
+<h3 id="org36dfaf5"><span class="section-number-3">1.3.</span> 既存のcloneを更新</h3>
+<div class="outline-text-3" id="text-1-3">
+<div class="org-src-container">
+<pre class="src src-sh"><code>git pull --ff-only
+git submodule update --init --recursive
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org1a2335f" class="outline-2">
+<h2 id="org1a2335f"><span class="section-number-2">2.</span> 実施手順<span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-24 Sat&gt;</span></span></h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgf28b195" class="outline-3">
+<h3 id="orgf28b195"><span class="section-number-3">2.1.</span> user</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+今は，
+まさに「正本repository＋symbolic link」で行っています．
+しかし，これだと他の共有者がちゃんと理解して
+symoblic linkを張る保証がないですね．
+「専用repository＋submodule」の運用に
+切り替えようと思います．
+</p>
+
+<p>
+このc0_mk_stack_dirだけを切り出して，
+submoduleとして管理しようと思います．
+こうすればいいということですね．
+その手順を教えてください．
+</p>
+</div>
+</div>
+<div id="outline-container-org78ec4ce" class="outline-3">
+<h3 id="org78ec4ce"><span class="section-number-3">2.2.</span> reply</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+はい，その用途なら「=c0_mk_stack_dir=専用repository＋各親repositoryからsubmoduleとして参照」が適しています．ただし，submoduleもclone後の初期化が必要なので，完全に利用者操作を不要にはできません．一方，リンク先の場所を各自に理解してもらう必要はなくなり，参照先とversionがGitに明示されます．
+</p>
+
+<p>
+以下では，専用repositoryを
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>git@github.com:TeamNishitani/c0_mk_stack_dir.git
+</code></pre>
+</div>
+
+<p>
+とし，default branchを=main=と仮定します．
+</p>
+</div>
+<div id="outline-container-1事前確認" class="outline-4">
+<h4 id="1事前確認"><span class="section-number-4">2.2.1.</span> 事前確認</h4>
+<div class="outline-text-4" id="text-1事前確認">
+<p>
+まず <code>pattern_language</code> を最新かつcleanな状態にします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code><span style="color: #8f0075;">cd</span> /Users/bob/git_hub/hyper_cards/pattern_language
+
+git status
+git pull --ff-only
+</code></pre>
+</div>
+
+<p>
+<code>c0_mk_stack_dir</code> 内にrepository外を指すsymbolic
+linkがないことも確認します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>find c0_mk_stack_dir -type l -print -exec readlink {} <span style="color: #3548cf;">\;</span>
+</code></pre>
+</div>
+
+<p>
+外部を指すlinkがあれば，
+それはsubmodule化しても自動的には解決されません．
+</p>
+
+<p>
+念のため，移行作業用branchを作ります．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git switch -c codex/extract-c0-mk-stack-dir
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-2履歴を保ったまま専用repositoryを作る" class="outline-4">
+<h4 id="2履歴を保ったまま専用repositoryを作る"><span class="section-number-4">2.2.2.</span> 履歴を保ったまま専用repositoryを作る</h4>
+<div class="outline-text-4" id="text-2履歴を保ったまま専用repositoryを作る">
+<p>
+GitHub上で=TeamNishitani/c0_mk_stack_dir=という空のrepositoryを作成します．README，LICENSE，=.gitignore=などは追加せず，完全に空で作成してください．公開範囲は，既存repositoryと同等にするのが安全です．
+</p>
+
+<p>
+次に，=pattern_language=の履歴から=c0_mk_stack_dir=に関係する履歴を切り出します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git subtree split <span style="color: #3548cf;">\</span>
+    --prefix=c0_mk_stack_dir <span style="color: #3548cf;">\</span>
+    -b split-c0-mk-stack-dir
+</code></pre>
+</div>
+
+<p>
+切り出したbranchを新repositoryの=main=としてpushします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git push <span style="color: #3548cf;">\</span>
+    git@github.com:TeamNishitani/c0_mk_stack_dir.git <span style="color: #3548cf;">\</span>
+    split-c0-mk-stack-dir:main
+</code></pre>
+</div>
+
+<p>
+内容を一度確認します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code><span style="color: #005e8b;">tmp_dir</span>=<span style="color: #3548cf;">"$(mktemp -d)"</span>
+git clone <span style="color: #3548cf;">\</span>
+    git@github.com:TeamNishitani/c0_mk_stack_dir.git <span style="color: #3548cf;">\</span>
+    <span style="color: #3548cf;">"$tmp_dir/c0_mk_stack_dir"</span>
+
+tree -L 2 <span style="color: #3548cf;">"$tmp_dir/c0_mk_stack_dir"</span>
+git -C <span style="color: #3548cf;">"$tmp_dir/c0_mk_stack_dir"</span> log --oneline -10
+</code></pre>
+</div>
+
+<p>
+新repositoryのroot直下が次のようになっていれば正解です．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>c0_mk_stack_dir/
+&#9500;&#9472;&#9472; bin
+&#9500;&#9472;&#9472; c0_concept
+&#9500;&#9472;&#9472; c1_how_to_run
+&#9492;&#9472;&#9472; c2_link
+</code></pre>
+</div>
+
+<p>
+ここでいう=c0_mk_stack_dir/=はclone先の名前であり，その中にさらに同名directoryが重複していないことを確認してください．
+</p>
+</div>
+</div>
+<div id="outline-container-3元のpattern_languageをsubmoduleへ置き換える" class="outline-4">
+<h4 id="3元のpattern_languageをsubmoduleへ置き換える"><span class="section-number-4">2.2.3.</span> 元の=pattern_language= をsubmoduleへ置き換える</h4>
+<div class="outline-text-4" id="text-3元のpattern_languageをsubmoduleへ置き換える">
+<p>
+=pattern_language=の作業branchへ戻ります．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code><span style="color: #8f0075;">cd</span> /Users/bob/git_hub/hyper_cards/pattern_language
+git switch codex/extract-c0-mk-stack-dir
+</code></pre>
+</div>
+
+<p>
+既存directoryをGitの管理対象から削除します．実体はすでに専用repositoryへpush済みですが，=git status=を確認しながら進めてください．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git rm -r c0_mk_stack_dir
+</code></pre>
+</div>
+
+<p>
+同じパスへsubmoduleを追加します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git submodule add <span style="color: #3548cf;">\</span>
+    -b main <span style="color: #3548cf;">\</span>
+    git@github.com:TeamNishitani/c0_mk_stack_dir.git <span style="color: #3548cf;">\</span>
+    c0_mk_stack_dir
+</code></pre>
+</div>
+
+<p>
+状態を確認します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git status
+git diff --cached --submodule
+cat .gitmodules
+</code></pre>
+</div>
+
+<p>
+=.gitmodules=は概ね次の内容になります．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ini"><code>[submodule "c0_mk_stack_dir"]
+    path = c0_mk_stack_dir
+    url = git@github.com:TeamNishitani/c0_mk_stack_dir.git
+    branch = main
+</code></pre>
+</div>
+
+<p>
+問題なければcommitしてpushします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git add .gitmodules c0_mk_stack_dir
+git commit -m <span style="color: #3548cf;">"Extract c0_mk_stack_dir into a submodule"</span>
+git push -u origin codex/extract-c0-mk-stack-dir
+</code></pre>
+</div>
+
+<p>
+その後，GitHub上で確認してからPRをmergeします．直接=main=へ反映する運用なら，通常の手順でmergeしてください．
+</p>
+</div>
+</div>
+<div id="outline-container-4multi_scaleのsymbolic-linkをsubmoduleへ置き換える" class="outline-4">
+<h4 id="4multi_scaleのsymbolic-linkをsubmoduleへ置き換える"><span class="section-number-4">2.2.4.</span> <code>multi_scale</code> のsymbolic linkをsubmoduleへ置き換える</h4>
+<div class="outline-text-4" id="text-4multi_scaleのsymbolic-linkをsubmoduleへ置き換える">
+<p>
+まず，現在のsymbolic linkがGitに登録されているか確認します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code><span style="color: #8f0075;">cd</span> /path/to/multi_scale
+
+git status
+git ls-files --stage c0_mk_stack_dir
+</code></pre>
+</div>
+
+<p>
+出力があり，先頭が=120000=なら，Git管理されたsymbolic linkです．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>120000 ... c0_mk_stack_dir
+</code></pre>
+</div>
+
+<p>
+この場合は次で削除します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git rm c0_mk_stack_dir
+</code></pre>
+</div>
+
+<p>
+=git ls-files=に出力がなく，単なるローカルsymbolic
+linkなら，リンクだけを削除します．リンク先のdirectoryは削除されません．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>unlink c0_mk_stack_dir
+</code></pre>
+</div>
+
+<p>
+続いて，同じパスへsubmoduleを追加します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git submodule add <span style="color: #3548cf;">\</span>
+    -b main <span style="color: #3548cf;">\</span>
+    git@github.com:TeamNishitani/c0_mk_stack_dir.git <span style="color: #3548cf;">\</span>
+    c0_mk_stack_dir
+</code></pre>
+</div>
+
+<p>
+確認してcommitします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git status
+git diff --cached --submodule
+
+git add .gitmodules c0_mk_stack_dir
+git commit -m <span style="color: #3548cf;">"Replace c0_mk_stack_dir symlink with submodule"</span>
+git push
+</code></pre>
+</div>
+
+<p>
+これで両方のrepositoryは，専用repositoryの特定commitを指すようになります．
+</p>
+</div>
+</div>
+<div id="outline-container-5共有者のclone方法" class="outline-4">
+<h4 id="5共有者のclone方法"><span class="section-number-4">2.2.5.</span> 共有者のclone方法</h4>
+<div class="outline-text-4" id="text-5共有者のclone方法">
+<p>
+新しくcloneする場合は，次のようにしてもらいます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git clone --recurse-submodules <span style="color: #3548cf;">\</span>
+    git@github.com:TeamNishitani/multi_scale_26f.git
+</code></pre>
+</div>
+
+<p>
+すでにclone済みのrepositoryでsubmodule化された変更をpullした場合は，次を実行します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git pull
+git submodule update --init --recursive
+</code></pre>
+</div>
+
+<p>
+日常的にsubmoduleを使う人には，次の設定も便利です．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git config --global submodule.recurse true
+git config --global status.submoduleSummary true
+git config --global diff.submodule log
+</code></pre>
+</div>
+
+<p>
+ただし，共有者全員のglobal設定を前提にはしない方が安全です．READMEに次の2行を明記しておくのがよいでしょう．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git clone --recurse-submodules &lt;repository-url&gt;
+git submodule update --init --recursive
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-6共有ファイルを更新する手順" class="outline-4">
+<h4 id="6共有ファイルを更新する手順"><span class="section-number-4">2.2.6.</span> 共有ファイルを更新する手順</h4>
+<div class="outline-text-4" id="text-6共有ファイルを更新する手順">
+<p>
+submoduleの内容を編集したときは，まず専用repository側でcommit／pushします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code><span style="color: #8f0075;">cd</span> c0_mk_stack_dir
+
+git switch main
+git pull --ff-only
+<span style="color: #595959;"># </span><span style="color: #595959;">&#12501;&#12449;&#12452;&#12523;&#12434;&#32232;&#38598;</span>
+git add .
+git commit -m <span style="color: #3548cf;">"Update stack directory tools"</span>
+git push
+</code></pre>
+</div>
+
+<p>
+その後，親repositoryへ戻ると，submoduleが指すcommitの変更として表示されます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code><span style="color: #8f0075;">cd</span> ..
+git status
+git diff --submodule
+</code></pre>
+</div>
+
+<p>
+親repositoryでも参照commitを記録してpushします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git add c0_mk_stack_dir
+git commit -m <span style="color: #3548cf;">"Update c0_mk_stack_dir submodule"</span>
+git push
+</code></pre>
+</div>
+
+<p>
+これは=pattern_language=と=multi_scale=のそれぞれで必要です．つまり，専用repositoryを更新しただけでは，親repositoryが参照するcommitは自動更新されません．この固定性がsubmoduleの長所でもあります．
+</p>
+
+<p>
+別の親repositoryを最新版へ進める場合は，次のようにします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git submodule update --remote --merge c0_mk_stack_dir
+git add c0_mk_stack_dir
+git commit -m <span style="color: #3548cf;">"Update c0_mk_stack_dir submodule"</span>
+git push
+</code></pre>
+</div>
+
+<p>
+要点は，次の二段階です．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>&#23554;&#29992;repository&#65306;
+    &#12501;&#12449;&#12452;&#12523;&#20869;&#23481;&#12398;commit&#12434;&#31649;&#29702;
+
+&#21508;&#35242;repository&#65306;
+    &#23554;&#29992;repository&#12398;&#12393;&#12398;commit&#12434;&#20351;&#12358;&#12363;&#12434;&#31649;&#29702;
+</code></pre>
+</div>
+
+<p>
+これにより，=pattern_language=と=multi_scale=で同時に常に最新版を使うことも，必要に応じて異なる安定版を使うこともできます．
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4cd3ebc" class="outline-2">
+<h2 id="org4cd3ebc"><span class="section-number-2">3.</span> 予備調査</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orga510507" class="outline-3">
+<h3 id="orga510507"><span class="section-number-3">3.1.</span> turn 1</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-org5f43883" class="outline-4">
+<h4 id="org5f43883"><span class="section-number-4">3.1.1.</span> user</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+symbolic linkでfile system全般に渡って同期させたいfilesがあります．これをgitでpush, pullするとsymbolic linkが切れてしまうことはないですか？　もしそうならそれを回避する方法はありますか？
+</p>
+</div>
+</div>
+<div id="outline-container-orgaa99dc4" class="outline-4">
+<h4 id="orgaa99dc4"><span class="section-number-4">3.1.2.</span> codex</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+Gitはsymbolic
+link自体を扱えます．ただし，Gitが保存するのはリンク先のファイル内容ではなく，*リンク先を示すパス文字列*です．したがって，=push=／=pull=だけでリンクが壊れるわけではありませんが，別環境でリンク先が存在しなければリンク切れになります．
+</p>
+
+<p>
+例えば，次のような絶対パスのリンクは壊れやすいです．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>project/config.yaml -&gt; /Users/bob/shared/config.yaml
+</code></pre>
+</div>
+
+<p>
+別PCではユーザー名や配置が異なるためです．可能ならリポジトリ内への相対リンクにします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>project/config.yaml -&gt; ../shared/config.yaml
+</code></pre>
+</div>
+
+<p>
+ただし，=../shared/config.yaml=がリポジトリ外なら，そのファイルはGitでは同期されません．各環境で同じ相対位置に別途配置する必要があります．
+</p>
+
+<p>
+安全な方法は目的によって変わります．
+</p>
+
+<ul class="org-ul">
+<li>リンク先もGitで管理できる場合<br />
+リンク先の実体を同じリポジトリに置き，相対symbolic
+linkを使うのが最も簡単です．</li>
+
+<li>複数リポジトリから共通ファイルを使う場合<br />
+共通ファイル専用リポジトリを作り，各環境の一定の場所へcloneします．必要ならGit
+submoduleやsubtreeも使えます．</li>
+
+<li>ホームディレクトリなど，filesystem全般へリンクを配置する場合<br />
+リポジトリには実体とセットアップスクリプトを保存し，clone後にリンクを生成する方法が堅牢です．</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code><span style="color: #595959;">#</span><span style="color: #595959;">!/bin/</span><span style="color: #531ab6;">sh</span>
+<span style="color: #005e8b;">repo_dir</span>=<span style="color: #3548cf;">"$(cd "$(dirname "$0")" &amp;&amp; pwd)"</span>
+ln -sfn <span style="color: #3548cf;">"$repo_dir/config/app.conf"</span> <span style="color: #3548cf;">"$HOME/.config/app.conf"</span>
+</code></pre>
+</div>
+
+<p>
+この方式なら，各PCでスクリプトを一度実行するだけで，環境に合った絶対リンクを作れます．GNU
+Stow，chezmoi，yadmなどのdotfiles管理ツールもこの用途に向いています．
+</p>
+
+<p>
+注意点もあります．
+</p>
+
+<ul class="org-ul">
+<li>Linux／macOSでは通常，Gitはsymbolic linkをそのまま復元します．</li>
+<li>WindowsではDeveloper
+Modeや権限，Gitの=core.symlinks=設定によって，リンクではなく通常ファイルとしてcheckoutされる場合があります．</li>
+<li>リンク先がリポジトリ外なら，Gitはその内容をpushしません．</li>
+<li>symbolic link内に <code>$HOME</code> や <code>~</code>
+を書いても展開されません．リンク先には文字どおり保存されます．</li>
+<li>filesystemをまたぐsymbolic
+link自体は問題ありませんが，マウント先や外付けディスクがないとリンク切れになります．</li>
+<li>機密情報をリンク先からリポジトリへ取り込まないよう注意が必要です．</li>
+</ul>
+
+<p>
+結論としては，*リポジトリ内では相対リンクを使い，リポジトリ外へのリンクはセットアップスクリプトで各環境に生成する*構成が最も扱いやすいです．Gitによる同期対象はリンクではなく，リンク先の実体を置いたリポジトリにするのが基本です．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3164f66" class="outline-3">
+<h3 id="org3164f66"><span class="section-number-3">3.2.</span> turn 2</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-org3670bd8" class="outline-4">
+<h4 id="org3670bd8"><span class="section-number-4">3.2.1.</span> user</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+では，同期させたいfilesをhard linkした時はどうですか？
+</p>
+</div>
+</div>
+<div id="outline-container-org9cdbd8f" class="outline-4">
+<h4 id="org9cdbd8f"><span class="section-number-4">3.2.2.</span> reply</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<p>
+hard linkは，Gitでの同期には向きません．Gitはhard
+linkの関係を記録せず，各パスを独立したファイルとして管理します．
+</p>
+
+<p>
+同じfilesystem上で次のように作ると，
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>ln original.conf linked.conf
+</code></pre>
+</div>
+
+<p>
+両者は同じinodeを共有するため，ローカルで一方を編集すると他方も即座に変わります．しかしGitでは，次のような問題があります．
+</p>
+
+<ul class="org-ul">
+<li>=clone=やcheckout後は，通常それぞれ独立したファイルになり，hard
+link関係は復元されません．</li>
+<li>=pull=，checkout，rebaseなどでGitがファイルを一時ファイルから置換すると，hard
+link関係が切れることがあります．</li>
+<li>hard linkは異なるfilesystemやボリュームをまたげません．</li>
+<li>ディレクトリには原則として作成できません．</li>
+<li>同じinodeを指す複数のパスを追跡すると，Gitには別々のファイルとして見えます．</li>
+</ul>
+
+<p>
+特に，リポジトリ内のファイルとリポジトリ外のファイルをhard
+linkした場合，
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>repository/config.conf &#9472;&#9472;&#21516;&#12376;inode&#9472;&#9472; ~/.config/app/config.conf
+</code></pre>
+</div>
+
+<p>
+ローカル編集は反映されますが，=git pull=がリポジトリ側を新しいファイルへ置換すると，次の状態になり得ます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>repository/config.conf &#9472;&#9472; &#26032;&#12375;&#12356;inode
+~/.config/app/config.conf &#9472;&#9472; &#21476;&#12356;inode
+</code></pre>
+</div>
+
+<p>
+この時点で同期は止まります．明確なエラーが出ないまま関係が切れる可能性があるため，運用上かなり危険です．
+</p>
+
+<p>
+したがって，おすすめは次の構成です．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>Git&#12522;&#12509;&#12472;&#12488;&#12522;&#20869;&#12398;&#23455;&#20307;&#12501;&#12449;&#12452;&#12523;
+          &#8593;
+          &#9474; symbolic link
+          &#9474;
+~/.config&#12394;&#12393;&#12391;&#20351;&#29992;&#12377;&#12427;&#22580;&#25152;
+</code></pre>
+</div>
+
+<p>
+そして，symbolic linkはclone後にセットアップスクリプトで作成します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code><span style="color: #595959;">#</span><span style="color: #595959;">!/bin/</span><span style="color: #531ab6;">sh</span>
+<span style="color: #005e8b;">repo_dir</span>=<span style="color: #3548cf;">"$(cd "$(dirname "$0")" &amp;&amp; pwd)"</span>
+
+mkdir -p <span style="color: #3548cf;">"$HOME/.config/app"</span>
+ln -sfn <span style="color: #3548cf;">"$repo_dir/config/app.conf"</span> <span style="color: #3548cf;">\</span>
+    <span style="color: #3548cf;">"$HOME/.config/app/config.conf"</span>
+</code></pre>
+</div>
+
+<p>
+まとめると，hard
+linkは「同じマシン内で一時的に同じ内容を共有する」用途には使えますが，Gitを介して複数環境で関係を維持する用途には不適切です．Gitで管理するなら，*実体をリポジトリに置き，利用箇所からsymbolic
+linkを張る方式*が最も安定します．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc27a077" class="outline-3">
+<h3 id="orgc27a077"><span class="section-number-3">3.3.</span> turn 3</h3>
+<div class="outline-text-3" id="text-3-3">
+</div>
+<div id="outline-container-org46bb904" class="outline-4">
+<h4 id="org46bb904"><span class="section-number-4">3.3.1.</span> user</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<p>
+hard link先のfilesが他のgit repositoryとして管理されている場合，current directoryが属するgit repositoryからその変更を反映させるにはどうすればいいでしょう？
+</p>
+</div>
+</div>
+<div id="outline-container-orgc6703ad" class="outline-4">
+<h4 id="orgc6703ad"><span class="section-number-4">3.3.2.</span> reply</h4>
+<div class="outline-text-4" id="text-3-3-2">
+<p>
+hard
+linkが維持されている間は，ファイル内容の変更は両方のrepositoryのworking
+treeへ即座に現れます．しかし，Gitの履歴・index・commitはrepositoryごとに独立しているため，*片方でcommitしても，もう片方にはcommitされません*．
+</p>
+
+<p>
+例えば，
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>repo-a/config.conf &#9472;&#9472; hard link &#9472;&#9472; repo-b/config.conf
+</code></pre>
+</div>
+
+<p>
+=repo-a/config.conf=を編集すると，=repo-b/config.conf=も変更済みになります．=repo-b=へ反映するには，別途そのrepositoryでcommitします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git -C /path/to/repo-b status
+git -C /path/to/repo-b add config.conf
+git -C /path/to/repo-b commit -m <span style="color: #3548cf;">"Update shared configuration"</span>
+git -C /path/to/repo-b push
+</code></pre>
+</div>
+
+<p>
+=repo-a=側にも同じ内容を履歴として残すなら，こちらでも独立してcommitします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git add config.conf
+git commit -m <span style="color: #3548cf;">"Update shared configuration"</span>
+git push
+</code></pre>
+</div>
+
+<p>
+つまり，ファイル内容はhard
+linkによって共有されても，Git上では次のようになります．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>&#20849;&#26377;&#12373;&#12428;&#12427;&#12418;&#12398;&#65306;&#12501;&#12449;&#12452;&#12523;&#20869;&#23481;&#12392;inode
+&#20849;&#26377;&#12373;&#12428;&#12394;&#12356;&#12418;&#12398;&#65306;index&#65292;commit&#65292;branch&#65292;&#23653;&#27508;&#65292;remote
+</code></pre>
+</div>
+
+<p>
+ただし，この構成には大きな問題があります．どちらかのrepositoryで次を実行すると，Gitによるファイル置換でhard
+linkが切れる可能性があります．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git pull
+git checkout other-branch
+git switch other-branch
+git restore config.conf
+git rebase
+</code></pre>
+</div>
+
+<p>
+そのため，2つのrepository間でhard linkを長期維持するのは推奨しません．
+</p>
+
+<p>
+より安全な構成
+</p>
+
+<p>
+最も安定するのは，共有ファイルの「正本」を一方だけに決める方法です．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>repo-b/config.conf       &#8592; &#27491;&#26412;&#12392;&#12375;&#12390;Git&#31649;&#29702;
+repo-a/config.conf       &#8592; repo-b&#12408;&#12398;symbolic link
+</code></pre>
+</div>
+
+<p>
+=repo-a=ではsymbolic
+linkだけをGit管理するか，clone後のセットアップスクリプトでリンクを作成します．
+</p>
+
+<p>
+両repositoryに実体ファイルが必要なら，同期スクリプトでコピーし，それぞれcommitします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code><span style="color: #595959;">#</span><span style="color: #595959;">!/bin/</span><span style="color: #531ab6;">sh</span>
+<span style="color: #8f0075;">set</span> -eu
+
+<span style="color: #005e8b;">source_file</span>=<span style="color: #3548cf;">"/path/to/repo-b/config.conf"</span>
+<span style="color: #005e8b;">destination_file</span>=<span style="color: #3548cf;">"/path/to/repo-a/config.conf"</span>
+
+cp <span style="color: #3548cf;">"$source_file"</span> <span style="color: #3548cf;">"$destination_file"</span>
+git -C /path/to/repo-a add config.conf
+git -C /path/to/repo-a diff --cached --exit-code ||
+    git -C /path/to/repo-a commit -m <span style="color: #3548cf;">"Sync shared configuration"</span>
+</code></pre>
+</div>
+
+<p>
+共有ファイル群そのものに独立した履歴が必要なら，専用repositoryを作り，各repositoryからGit
+submoduleとして参照する構成も適しています．
+</p>
+
+<p>
+結論として，現在のhard
+linkを使い続ける場合は，変更後に対象repositoryごとに=git add=と=git commit=が必要です．ただし=pull=などでリンクが静かに切れる可能性があるため，長期運用では「正本repository＋symbolic
+link」または「専用repository＋submodule」が安全です．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf6aaf9c" class="outline-3">
+<h3 id="orgf6aaf9c"><span class="section-number-3">3.4.</span> turn 4</h3>
+<div class="outline-text-3" id="text-3-4">
+</div>
+<div id="outline-container-org431265f" class="outline-4">
+<h4 id="org431265f"><span class="section-number-4">3.4.1.</span> user</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<p>
+この運用では，symbolic linkするのはtarget_fileでないとダメですね．[symbolic linked dir]/target_fileではtarget_fileに行った編集は他のところに反映されないでしょうから．
+</p>
+</div>
+</div>
+<div id="outline-container-orgbfd32f2" class="outline-4">
+<h4 id="orgbfd32f2"><span class="section-number-4">3.4.2.</span> reply</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<p>
+いいえ，*directory自体がsymbolic
+linkなら，=[symbolic linked dir]/target_file=への編集もリンク先の実体ファイルへ反映されます*．
+</p>
+
+<p>
+例えば，
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>repo-a/shared -&gt; ../repo-b/shared
+repo-b/shared/target_file
+</code></pre>
+</div>
+
+<p>
+というdirectory symbolic linkがある場合，
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>vim repo-a/shared/target_file
+</code></pre>
+</div>
+
+<p>
+で編集している実体は，
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>repo-b/shared/target_file
+</code></pre>
+</div>
+
+<p>
+です．したがって，=repo-b=側にも変更が現れます．個々のファイルをsymbolic
+linkにする必要はありません．
+</p>
+
+<p>
+ただし，Git上の見え方には重要な違いがあります．
+</p>
+
+<ul class="org-ul">
+<li>=repo-a=は=shared=というsymbolic linkだけを管理する</li>
+<li>=repo-a=は=shared/target_file=を追跡しない</li>
+<li>=target_file=の変更は=repo-b=のworking tree上の変更になる</li>
+<li>=repo-b=で=git add=／=commit=する必要がある</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>git -C /path/to/repo-b status
+git -C /path/to/repo-b add shared/target_file
+git -C /path/to/repo-b commit -m <span style="color: #3548cf;">"Update target file"</span>
+</code></pre>
+</div>
+
+<p>
+確認するなら，次のコマンドが分かりやすいです．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>readlink repo-a/shared
+realpath repo-a/shared/target_file
+realpath repo-b/shared/target_file
+</code></pre>
+</div>
+
+<p>
+後ろ2つが同じ実体パスを示せば，どちらの経路から編集しても同じファイルが更新されます．
+</p>
+
+<p>
+注意すべきなのは，directory symbolic
+linkの作り方です．リンク名と同名のdirectoryがすでに存在すると，意図せずそのdirectoryの内部にリンクが作られることがあります．期待する形は次です．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>ln -s /path/to/repo-b/shared /path/to/repo-a/shared
+</code></pre>
+</div>
+
+<p>
+結論として，共有対象がdirectory全体ならdirectory単位のsymbolic
+linkで問題ありません．一部のファイルだけを共有したい場合に限って，ファイル単位のsymbolic
+linkを使うのが適切です．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org52a4954" class="outline-3">
+<h3 id="org52a4954"><span class="section-number-3">3.5.</span> turn 5</h3>
+<div class="outline-text-3" id="text-3-5">
+</div>
+<div id="outline-container-org12bea70" class="outline-4">
+<h4 id="org12bea70"><span class="section-number-4">3.5.1.</span> user</h4>
+<div class="outline-text-4" id="text-3-5-1">
+<p>
+ああ，そうか．directory丸ごとlink先にしろということか．cpではなく．それもsymbolic linkで．ls -latした時にゴチャになりますね．それならいっそdirectoryごとそこに置けというのがgitの正しい運用法か．．もう少し考えます．
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org2949c66"></a>reply<br />
+<div class="outline-text-6" id="text-org2949c66">
+<p>
+その理解で合っています．Gitの観点では，*実体を一つのrepository内にまとめ，必要な場所からdirectoryごとsymbolic
+linkする*のが自然です．=cp=で複製すると，どちらが正本か分からなくなり，差分や競合の管理が増えます．
+</p>
+
+<p>
+一方，おっしゃるとおり，symbolic
+linkが増えると=ls -lat=やパス構造が見づらくなります．その場合は，
+</p>
+
+<ul class="org-ul">
+<li>実体を本来使うdirectoryへ置く</li>
+<li>そのdirectoryを所有するrepositoryでGit管理する</li>
+<li>他のrepositoryからは直接参照する</li>
+<li>どうしても必要な場所だけsymbolic linkする</li>
+</ul>
+
+<p>
+という設計がすっきりします．
+</p>
+
+<p>
+要するに，Gitでは「複数箇所へ同じファイルを置く」より，「正本の場所を一つ決め，参照経路だけ用意する」と考えるのが安定します．急いで決めず，どのrepositoryがそのファイルの所有者なのかから整理すると決めやすいと思います．
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Shigeto R. Nishitani</p>
+<p class="date">Created: 2026-10-24 Sat 14:38</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
