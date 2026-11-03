@@ -1,12 +1,7 @@
-/* Wildflower Meadow
-   System definition: /systems/morphous-wildflower-meadow/system.json
-   Prompt records: /systems/morphous-wildflower-meadow/prompts.json
-   Design-system references:
-   light: /systems/morphous-wildflower-meadow/design-system-light.png
-   dark: /systems/morphous-wildflower-meadow/design-system-dark.png
-*/
+/* Wildflower Meadow */
 
 :root {
+  color-scheme: light;
   --background: oklch(0.982 0.006 137.8);
   --foreground: oklch(0.292 0.046 164.9);
   --card: oklch(1.000 0.000 89.9);
@@ -46,6 +41,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    color-scheme: dark;
     --background: oklch(0.292 0.046 164.9);
     --foreground: oklch(0.982 0.006 137.8);
     --card: oklch(0.292 0.046 164.9);
@@ -77,14 +73,12 @@
     --sidebar-accent-foreground: oklch(0.982 0.006 137.8);
     --sidebar-border: oklch(1 0 0 / 12%);
     --sidebar-ring: oklch(0.876 0.171 91.7);
-    --radius: 0.5rem;
   }
-}
 
-@media (prefers-color-scheme: dark) {
   a {
     color: #8ab4f8;
   }
+
   a:visited {
     color: #c58af9;
   }

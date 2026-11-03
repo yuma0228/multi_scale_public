@@ -10,13 +10,14 @@
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
 # for style.css, never move from here
-[[../../d1-3_stack/d3_ppt_pdf/readme.html][prev_button]]
-[[../../canvas.html][up_button]]
-[[../../d4-6_ruby/junior_seminar/readme_junior.html][next_button]]
+[[../d1-3_stack/d3_ppt_pdf/readme.html][prev_button]]
+[[../canvas.html][up_button]]
+[[../junior_seminar/readme_junior.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
 | [[file:./ruby_title.png]]
 
+* d7- <2026-11-04 Wed>
 - yaml ?
 - mk grad research templates from scratch with Rakefile
   - automation...
@@ -28,7 +29,7 @@
 - read Pragmatic -> ruby and Rakefile
 ** rake with argument
 
-#+begin_src
+#+begin_src ruby
  cat Rakefile
 # -*- coding: utf-8 -*-
 require "colorize"
@@ -63,11 +64,11 @@ end
 
 ここでいう基本原則は，次のように理解しました．
 
-- =code/=，=data/=，=analysis/=のような機能別の横断分割はしない．
+- =code/=, =data/=, =analysis/= のような機能別の横断分割はしない．
 - 人間が理解する研究上のまとまりを単位として，関連する説明，計算コード，入力，結果，図を近接配置する．
-- 各まとまりが自己完結した縦割りのstackとなり，それらを=canvas.html=から一覧・接続する．
+- 各まとまりが自己完結した縦割りのstackとなり，それらを =canvas.html= から一覧・接続する．
 - このtight-binding型の構成原理を，今後の全directoryに適用する．
-- =Desktop/lecture_26f/symbolic_math=および=multi_scale=は参照例だが，指示があるまで分析・適用しない．
+- =Desktop/lecture_26f/symbolic_math= および =multi_scale= は参照例だが，指示があるまで分析・適用しない．
 
 ** pipe and redirection
 '|', '>', '>>' append

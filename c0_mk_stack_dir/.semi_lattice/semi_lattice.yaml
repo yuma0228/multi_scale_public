@@ -2,7 +2,7 @@
 :nodes:
 - :id: 1
   :name: hyper_card/
-  :type: dir
+  :type: stack
   :file_path: "."
   :icon_path:
   :x: 222

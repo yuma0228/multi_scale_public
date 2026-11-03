@@ -1,0 +1,52 @@
+@import url("./.style.css");
+
+/*
+ * .style.cssとの差分は，先頭段落のprev，up，nextボタンだけである．
+ * Orgが出力するprev_button等の文字列は，リンクの並び順で置き換える．
+ */
+#content > p:first-of-type > a,
+#content > p > a[accesskey="p"],
+#content > p > a[accesskey="u"],
+#content > p > a[accesskey="n"] {
+    display: inline-block;
+    padding: 5px 15px;
+    margin-right: 0.5em;
+    margin-bottom: 1em;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-family: var(--font-family-button);
+    font-size: 0;
+    box-shadow: 1px 1px 0 #000;
+    cursor: pointer;
+}
+
+#content > p:first-of-type > a:active,
+#content > p > a[accesskey="p"]:active,
+#content > p > a[accesskey="u"]:active,
+#content > p > a[accesskey="n"]:active {
+    background-color: #000;
+    color: #fff;
+    box-shadow: none;
+    transform: translate(1px, 1px);
+}
+
+#content > p:first-of-type > a:nth-child(1)::before,
+#content > p > a[accesskey="p"]::before {
+    content: "\25C0  prev";
+    font-size: 14px;
+}
+
+#content > p:first-of-type > a:nth-child(2)::before,
+#content > p > a[accesskey="u"]::before {
+    content: "\25B2  up";
+    font-size: 14px;
+}
+
+#content > p:first-of-type > a:nth-child(3)::before,
+#content > p > a[accesskey="n"]::before {
+    content: "next \25B6";
+    font-size: 14px;
+}

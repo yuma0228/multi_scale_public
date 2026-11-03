@@ -140,6 +140,7 @@ task :mkdir do
   ["mkdir #{dir_name}",
    "cp #{File.join(hp,'readme.org')} #{dir_name}",
    "cp #{File.join(hp,'dummy_icon.png')} #{dir_name}",
+   "cp #{File.join(hp,'.style.css')} #{dir_name}",
    "cp #{File.join(hp,'.style_w_link_button.css')} #{dir_name}",
    "cp #{File.join(hp,'.theme.css')} #{dir_name}",
    "cp #{File.join(hp,'.rsync_filter')} #{dir_name}"

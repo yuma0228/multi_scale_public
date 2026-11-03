@@ -1,42 +1,35 @@
 require 'yaml'
 
-layer_str = File.read("light_table.yaml")
-data = YAML.load(layer_str)
+semi_lattice_file = '.semi_lattice/semi_lattice.yaml'
+data = YAML.load_file(semi_lattice_file)
 
-# upをYAMLから取得
+# up には canvas.html を使う．
 canvas_file = 'canvas.html'
 if File.exist?(canvas_file)
   up = canvas_file
 else
-  up_node = data.find { |node| node.key?(:up) }
-  up = up_node ? up_node[:up].first[:href] : $source_html
+  up = $source_html
 end
 p up
 
-# 'items' を持つ要素のみを対象にし、up を取り除く
-hrefs = data.select { |node| node.key?(:items) }.flat_map.with_index do |sec, section_i|
-  sec[:items].map.with_index do |item, item_i|
-    href = item[:href]
-
-    unless href.is_a?(String)
-      warn "href異常: section=#{section_i}, item=#{item_i}"
-      warn "section title: #{sec[:title].inspect}"
-      warn "item: #{item.inspect}"
-    end
-
-    href
+# nodes の掲載順に，HTML と対応する Org ファイルを抽出する．
+hrefs = data.fetch(:nodes).filter_map.with_index do |node, node_i|
+  href = node[:file_path]
+  unless href.is_a?(String)
+    warn "file_path異常: node=#{node_i}, name=#{node[:name].inspect}"
+    next
   end
+
+  next unless href.end_with?('.html')
+  next unless File.exist?(href.sub(/\.html\z/, '.org'))
+
+  href
 end
 
 div = hrefs.size
 
 hrefs.each_with_index do |f, i|
-  p [i, f] unless f.is_a?(String)
-  # 画像ファイルなどが直リンクされている場合はスキップ
-  next unless f.end_with?('.html')
-  
-  p org_file = f.sub(".html", ".org")
-  next unless File.exist?(org_file) # orgファイルが存在しない場合はスキップ
+  p org_file = f.sub(/\.html\z/, '.org')
   
   layers = f.split('/').size-1
   up_move= '../'*layers

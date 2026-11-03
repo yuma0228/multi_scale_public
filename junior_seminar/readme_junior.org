@@ -10,23 +10,26 @@
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
 # for style.css, never move from here
-[[../../d4-6_ruby/graduated_school/readme_multi.html][prev_button]]
-[[../../canvas.html][up_button]]
-[[../../d1-3_stack/d1_mock/readme.html][next_button]]
+[[../d4-6_ruby/readme_multi.html][prev_button]]
+[[../canvas.html][up_button]]
+[[../d7-9_bundler_tdd/d7_bundle/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
 | [[file:./ruby_title.png]]
 * for 領域実習
 - [[https://kwanseio365-my.sharepoint.com/:f:/g/personal/cru32369_kwansei_ac_jp/IgDDsVu4tF6xT4bChileGjFcARGm6bKoAjdfoFp_3C3urcs?e=hwaL32][資料，動画置き場]]
 
-
-* d6 <2026-10-28 Wed>
+* d7 <2026-11-04 Wed>
 - command :: ssh, github # for open?
 - Rakefie
 
+* d6 <2026-10-28 Wed>
+- file_regular_expression.rb
+- chunk, deja vu
+- my_help installした，todoを書いてくる
 * d5 <2026-10-21 Wed> RE
 - file, readlines
-- sname(file_name), camel(FileName)
+- snake(file_name), camel(FileName)
 - Regular Expression , 正規表現
 - if m = line.match(/\b[a-z0-9]+(?:_[a-z0-9]+)+\b/)
     p m[0] # snake_case

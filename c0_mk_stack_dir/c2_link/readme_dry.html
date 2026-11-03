@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
+<head>
+<!-- 2026-11-02 Mon 15:44 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>for DRY</title>
+<meta name="author" content="Shigeto R. Nishitani" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/code-copy.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/vendor/stickytableheaders/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/code-copy.js"></script>
+<link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">for DRY</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6a5b491">1. DRY原則を守るためのdir構成</a>
+<ul>
+<li><a href="#org92d1511">1.1. 発想</a></li>
+<li><a href="#org5fee297">1.2. Manual by Codex</a></li>
+</ul>
+</li>
+<li><a href="#org018d2cd">2. pre-search</a>
+<ul>
+<li><a href="#org06dec61">2.1. turn 1</a>
+<ul>
+<li><a href="#orgad15e4b">user</a></li>
+<li><a href="#orgdf89a4a">reply</a></li>
+</ul>
+</li>
+<li><a href="#orgfbb8ce5">2.2. turn 2</a>
+<ul>
+<li><a href="#orge2a5478">user</a></li>
+<li><a href="#org7e99c59">reply</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../c3_linear_algebra_core/readme.html">prev_button</a>
+<a href="../intro_info_26s.html">up_button</a>
+<a href="../c1_outline/readme.html">next_button</a>
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="./dummy_icon.png" alt="dummy_icon.png" /></td>
+</tr>
+</tbody>
+</table>
+<div id="outline-container-org6a5b491" class="outline-2">
+<h2 id="org6a5b491"><span class="section-number-2">1.</span> DRY原則を守るためのdir構成</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org92d1511" class="outline-3">
+<h3 id="org92d1511"><span class="section-number-3">1.1.</span> 発想</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+いくつものStackで何度も同じことを説明する必要が出てきます．
+ですが，それをそれぞれのStackで書き直すとDRY原則が破綻します．
+documentのDRY原則を一人のPC内で実現しようというのが
+ここでの設定です．
+</p>
+
+<p>
+実装方法の議論は下につけたpre-search項を参照．
+</p>
+</div>
+</div>
+<div id="outline-container-org5fee297" class="outline-3">
+<h3 id="org5fee297"><span class="section-number-3">1.2.</span> Manual by Codex</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+共有したいディレクトリへのsymlinkをStack内に置き，
+​<code>.hc_config.yaml</code>​ に相対位置を登録します．
+</p>
+<div class="org-src-container">
+<pre class="src src-yaml"><code><span style="color: #005e8b;">:shared_dirs</span>:
+  - c6_fukumori/hc_vs_others
+</code></pre>
+</div>
+<p>
+メイン同期でsymlinkを扱わず，public側の共有先を保護するため，
+​<code>.rsync_filter</code>​ にも登録します．
+</p>
+<div class="org-src-container">
+<pre class="src src-text"><code>- /c6_fukumori/hc_vs_others
+</code></pre>
+</div>
+<p>
+Rakefileは通常同期から登録パスを除外し，
+続けてリンク先の内容だけをpublicへ同期します．
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby"><code>shared_paths = shared_directories(config[<span style="color: #0000b0;">:shared_dirs</span>])
+exclude_options = shared_paths.map <span style="color: #531ab6;">do</span> |path|
+  <span style="color: #3548cf;">"--exclude=/</span><span style="color: #005e8b;">#{path}</span><span style="color: #3548cf;">"</span>
+<span style="color: #531ab6;">end</span>
+rsync_directory(
+  <span style="color: #0000b0;">source_dir:</span> <span style="color: #005f5f;">PROJECT_ROOT</span>,
+  <span style="color: #0000b0;">target_dir:</span> <span style="color: #005e8b;">$public_repository_dir</span>,
+  <span style="color: #0000b0;">extra_options:</span> exclude_options
+)
+shared_paths.each <span style="color: #531ab6;">do</span> |path|
+  rsync_directory(
+    <span style="color: #0000b0;">source_dir:</span> <span style="color: #005f5f;">File</span>.join(<span style="color: #005f5f;">PROJECT_ROOT</span>, path),
+    <span style="color: #0000b0;">target_dir:</span> <span style="color: #005f5f;">File</span>.join(<span style="color: #005e8b;">$public_repository_dir</span>, path)
+  )
+<span style="color: #531ab6;">end</span>
+</code></pre>
+</div>
+<p>
+​<code>rake rsync_public dry_run</code>​ で変更予定を確認し，
+​<code>rake rsync_public</code>​ で実同期します．
+</p>
+
+<p>
+public側にはsymlinkではなく実ファイルが作られ，
+未登録または ​<code>:shared_dirs: []</code>​ なら通常同期だけを実行します．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org018d2cd" class="outline-2">
+<h2 id="org018d2cd"><span class="section-number-2">2.</span> pre-search</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org06dec61" class="outline-3">
+<h3 id="org06dec61"><span class="section-number-3">2.1.</span> turn 1</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-orgad15e4b" class="outline-4">
+<h4 id="orgad15e4b">user</h4>
+<div class="outline-text-4" id="text-orgad15e4b">
+<p>
+c0_mk_stack_dir/c4_hc_vs_others/を他のStackでも共有しようと思います．
+StackあるいはHyperCardを説明する基本的な事項が書かれているからです．
+今は，c0_mk_stack_dirはそれだけでgit管理されています．
+できるだけDRY原則を守りたいのでsym linkしようと考えています．
+その場合にsym link先でrake rsync_publicをした時に，
+public側にrsyncするように設定することは可能ですか？
+</p>
+</div>
+</div>
+<div id="outline-container-orgdf89a4a" class="outline-4">
+<h4 id="orgdf89a4a">reply</h4>
+<div class="outline-text-4" id="text-orgdf89a4a">
+<p>
+可能です．ただし，現在の
+<a href="file:///Users/bob/Desktop/lecture_26f/multi_scale/Rakefile:9">​<code>Rakefile</code>​</a> は
+​<code>--no-links</code>​ を指定しているため，symlinkは明示的に無視されます．
+</p>
+
+<p>
+単純に ​<code>--no-links</code>​ を ​<code>--copy-links</code>​
+に変える方法もありますが，このStackには ​<code>pattern_language</code>​
+など別のsymlinkもあるため，すべて追跡してpublicへコピーしてしまいます．これは避けた方がよいです．
+</p>
+
+<p>
+おすすめは次の構成です．
+</p>
+
+<ol class="org-ol">
+<li>​<code>--no-links</code>​ は維持する．</li>
+<li>共有対象を設定ファイルに明記する．</li>
+<li>通常の同期後，そのディレクトリだけ別途rsyncする．</li>
+<li>public側にはsymlinkではなく，通常のディレクトリとして配置する．</li>
+</ol>
+
+<p>
+設定例です．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><code><span style="color: #005e8b;">:shared_directories</span>:
+  - c4_hc_vs_others
+</code></pre>
+</div>
+
+<p>
+​<code>rsync_public</code>​ では概念的に次の処理を追加します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><code><span style="color: #8f0075;">Array</span>(config[<span style="color: #0000b0;">:shared_directories</span>]).each <span style="color: #531ab6;">do</span> |relative_path|
+  source = <span style="color: #005f5f;">File</span>.join(<span style="color: #005f5f;">PROJECT_ROOT</span>, relative_path)
+  target = <span style="color: #005f5f;">File</span>.join(<span style="color: #005e8b;">$public_repository_dir</span>, relative_path)
+
+  rsync_directory(
+    <span style="color: #0000b0;">source_dir:</span> source,
+    <span style="color: #0000b0;">target_dir:</span> target
+  )
+<span style="color: #531ab6;">end</span>
+</code></pre>
+</div>
+
+<p>
+現在の ​<code>rsync_directory</code>​ はいったん ​<code>source_dir</code>​ へ ​<code>chdir</code>​ してから
+​<code>./</code>​ を同期するため，​<code>source_dir</code>​
+がディレクトリsymlinkでも，リンク先の中身をpublicへコピーできます．
+</p>
+
+<p>
+ただし，メイン同期の ​<code>--delete</code>​
+が共有先を一度削除しないよう，メイン同期では共有パスを除外・保護する必要があります．例えば
+​<code>.rsync_filter</code>​ に次を加えます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>- /c4_hc_vs_others/
+</code></pre>
+</div>
+
+<p>
+そのうえで，上記の個別rsyncを実行します．最終的な構成は次のようになります．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>&#20182;&#12398;Stack/c4_hc_vs_others
+    &#9492;&#9472;&#9472; symlink &#8594; c0_mk_stack_dir/c4_hc_vs_others
+
+&#20182;&#12398;Stack_public/c4_hc_vs_others
+    &#9492;&#9472;&#9472; &#23455;&#12501;&#12449;&#12452;&#12523;&#19968;&#24335;
+</code></pre>
+</div>
+
+<p>
+この方式なら，編集元は ​<code>c0_mk_stack_dir/c4_hc_vs_others</code>​
+の1か所だけになり，DRYを保ちながら，各Stackのpublicには独立した実ファイルを配布できます．なお，symlinkはユーザー固有の絶対パスではなく，相対パスで作るのが安全です．
+</p>
+
+<p>
+現在，​<code>c0_mk_stack_dir</code>​ リポジトリでは ​<code>c4_hc_vs_others/</code>​
+が未追跡なので，共有元として使う前に同リポジトリへcommitする必要があります．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfbb8ce5" class="outline-3">
+<h3 id="orgfbb8ce5"><span class="section-number-3">2.2.</span> turn 2</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-orge2a5478" class="outline-4">
+<h4 id="orge2a5478">user</h4>
+<div class="outline-text-4" id="text-orge2a5478">
+<p>
+面白い発想ですね．この場合，Rakefileは書き換えずに，.rsync_filterに足すだけでできそうですが，Rakefileも書き換えてこれらの一連の操作を自動化するべき，あるいはできるということですか？
+</p>
+</div>
+</div>
+<div id="outline-container-org7e99c59" class="outline-4">
+<h4 id="org7e99c59">reply</h4>
+<div class="outline-text-4" id="text-org7e99c59">
+<p>
+はい，自動化できます．そして重要な点として，​<code>.rsync_filter</code>​
+に除外設定を足すだけではコピーされません．
+</p>
+
+<p>
+現在はRakefileに ​<code>--no-links</code>​ があるため，動作は次のようになります．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>.rsync_filter&#12391;&#38500;&#22806;
+    &#8594; &#12513;&#12452;&#12531;&#21516;&#26399;&#12398;&#23550;&#35937;&#22806;&#12395;&#12394;&#12427;
+    &#8594; public&#20596;&#12391;&#12399;&#20445;&#35703;&#12373;&#12428;&#12427;
+    &#8594; &#12375;&#12363;&#12375;&#12522;&#12531;&#12463;&#20808;&#12398;&#20869;&#23481;&#12399;&#12467;&#12500;&#12540;&#12373;&#12428;&#12394;&#12356;
+</code></pre>
+</div>
+
+<p>
+したがって，選択したsymlinkだけをpublicへ展開するには，別途rsyncを実行する処理が必要です．それを毎回手動で実行することもできますが，​<code>rake rsync_public</code>​
+の一部として自動化するのがよいと思います．
+</p>
+
+<p>
+おすすめは，​<code>.hc_config.yaml</code>​ に共有ディレクトリだけを宣言する方式です．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><code><span style="color: #005e8b;">:shared_directories</span>:
+  - c4_hc_vs_others
+</code></pre>
+</div>
+
+<p>
+Rakefile側では，この設定を読んで次の2段階を自動実行します．
+</p>
+
+<ol class="org-ol">
+<li>通常のStack全体をrsyncする．共有ディレクトリは除外して，public側を削除から保護する．</li>
+<li>共有ディレクトリのsymlink先を解決し，public内の同名ディレクトリへ別途rsyncする．</li>
+</ol>
+
+<p>
+つまり，利用時の操作は従来どおりです．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>rake rsync_public dry_run
+rake rsync_public
+</code></pre>
+</div>
+
+<p>
+各Stackで必要なのは，次の2点だけになります．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>c4_hc_vs_others &#12392;&#12356;&#12358;&#30456;&#23550;symlink&#12434;&#32622;&#12367;
+.hc_config.yaml &#12398; shared_directories &#12395;&#21517;&#21069;&#12434;&#26360;&#12367;
+</code></pre>
+</div>
+
+<p>
+​<code>.rsync_filter</code>​
+への除外追加もRakefile側で動的に行えるため，手で両方へ同じディレクトリ名を書く必要はありません．設定を二重管理しない点でも，この方がDRYです．
+</p>
+
+<p>
+なお，単純に ​<code>--copy-links</code>​
+を使えばRakefileの変更は小さくできますが，対象外のsymlinkまで追跡してしまいます．「設定された共有ディレクトリだけを2回目のrsyncで展開する」方式が安全です．
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Shigeto R. Nishitani</p>
+<p class="date">Created: 2026-11-02 Mon 15:44</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

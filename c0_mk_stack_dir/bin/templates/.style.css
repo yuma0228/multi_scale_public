@@ -17,6 +17,8 @@ body {
     margin-left: clamp(200px, 30vw, 320px); 
     padding: 1em 2em;
     max-width: none !important; /* Orgのデフォルト指定を解除 */
+    background: var(--background);
+    color: var(--foreground);
 }
 
 /* 左ペイン（Table of Contents） */
@@ -27,7 +29,8 @@ body {
     background: var(--sidebar);
     color: var(--sidebar-foreground);
     width: clamp(200px, 30vw, 320px);
-    height: 100vh;
+    /* ReadTheOrgの著作権表示を隠さないよう，下部に領域を残す */
+    height: calc(100vh - 6rem);
     padding: 0;
     box-sizing: border-box;
     border-right: 1px solid var(--sidebar-border);
@@ -35,7 +38,8 @@ body {
     z-index: 1000;
 }
 
-#table-of-contents h2 {
+#table-of-contents h2,
+.wy-side-nav-search {
     background: var(--sidebar-primary);
     color: var(--sidebar-primary-foreground);
     font-size: 1.1em;
@@ -75,6 +79,57 @@ body {
     color: var(--sidebar-primary);
 }
 
+#table-of-contents a:visited,
+#table-of-contents li ul li a,
+#table-of-contents ul.nav > li > a {
+    color: var(--sidebar-foreground);
+}
+
+#table-of-contents li.current > a,
+#table-of-contents ul.nav > li.active > a {
+    background-color: var(--sidebar-accent) !important;
+    color: var(--sidebar-primary) !important;
+    border-color: var(--sidebar-border) !important;
+}
+
+#table-of-contents a:focus {
+    background-color: var(--sidebar-primary) !important;
+    color: var(--sidebar-primary-foreground) !important;
+}
+
+/* ReadTheOrg search.cssの固定色をローカルテーマ色へ置き換える */
+#search-container {
+    background-color: var(--sidebar-primary);
+}
+
+#search-input {
+    border-color: var(--sidebar-border);
+    background-color: var(--background);
+    color: var(--foreground);
+    box-shadow: inset 0 1px 3px var(--border);
+}
+
+#search-input:focus {
+    border-color: var(--sidebar-ring);
+    box-shadow: 0 0 0 2px var(--sidebar-ring);
+}
+
+#search-results li {
+    background-color: var(--sidebar-accent);
+    color: var(--sidebar-accent-foreground);
+}
+
+#search-results li:hover,
+#search-results li[aria-selected="true"] {
+    background-color: var(--sidebar-primary);
+    color: var(--sidebar-primary-foreground);
+}
+
+mark {
+    background-color: var(--ring);
+    color: var(--foreground);
+}
+
 /* タイトル */
 h1.title {
     font-size: 1.8em;
@@ -100,6 +155,99 @@ h3 {
     font-weight: bold;
     margin-top: 1em;
     margin-bottom: 0.7em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--foreground);
+}
+
+pre {
+    background-color: var(--muted) !important;
+    color: var(--muted-foreground) !important;
+    border-color: var(--border) !important;
+}
+
+/* ReadTheOrgの固定された日付色を，Dark modeでも読めるテーマ色へ置き換える */
+#postamble p.date,
+.timestamp {
+    color: var(--muted-foreground);
+}
+
+/* Codex風のソースコード表示 */
+.org-src-container {
+    margin: 1.25em 0;
+}
+
+.org-src-container pre.src {
+    margin: 0;
+    padding: 1em 1.15em;
+    overflow-x: auto;
+    background: #171717 !important;
+    color: #f5f5f5 !important;
+    border: 1px solid #404040 !important;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 18%);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    font-size: 0.9em;
+    line-height: 1.6;
+    tab-size: 4;
+    white-space: pre;
+}
+
+.org-src-container pre.src code {
+    padding: 0;
+    background: transparent !important;
+    color: inherit;
+    border: 0;
+    border-radius: 0;
+    font: inherit;
+}
+
+/* htmlizeの暗いインライン色を，暗色コード面でも読める色にする */
+.org-src-container pre.src span {
+    color: #93c5fd !important;
+    background: transparent !important;
+}
+
+/* Orgでは~code~または=code=がこの要素へ変換される */
+p code,
+li code,
+td code {
+    padding: 0.12em 0.38em;
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    font-size: 0.9em;
+}
+
+/* ReadTheOrgの固定色をテーマ変数へ置き換え，Dark modeでも可読性を保つ */
+blockquote {
+    background-color: var(--muted) !important;
+    color: var(--muted-foreground) !important;
+    border-left-color: var(--primary) !important;
+}
+
+blockquote p,
+blockquote li {
+    color: inherit;
+}
+
+/* ReadTheOrgの固定された図キャプション色を，Dark mode対応色へ置き換える */
+.figure {
+    color: var(--foreground);
+}
+
+.figure > p:last-child {
+    color: var(--muted-foreground) !important;
+}
+
+.figure-number {
+    color: var(--foreground) !important;
+    font-weight: bold;
 }
 
 /* リスト */
@@ -143,6 +291,20 @@ h3 {
     display: block;
 }
 
+/* Org tableの固定色をローカルテーマ色へ置き換える */
+table,
+table th,
+table td {
+    background-color: var(--card) !important;
+    color: var(--card-foreground) !important;
+    border-color: var(--border) !important;
+}
+
+table tbody tr:nth-child(even) td {
+    background-color: var(--secondary) !important;
+    color: var(--secondary-foreground) !important;
+}
+
 /* 画像ギャラリー風の表示（テーブル内の画像にも適用） */
 #content img, .outline-text-2 img, .outline-text-3 img {
     max-width: 100%;
@@ -150,84 +312,6 @@ h3 {
     display: block;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
     border-radius: var(--radius);
-}
-
-/* ナビゲーションボタン (up, prev, next) */
-#content > p > a {
-    display: inline-block;
-    padding: 5px 15px;
-    margin-right: 0.5em;
-    margin-bottom: 1em;
-    background-color: #FFFFFF;
-    color: #000000;
-    text-decoration: none;
-    border: 2px solid #000000;
-    border-radius: 8px; /* 丸みを帯びた長方形ボタン */
-    font-size: 14px;
-    font-family: 'Chicago', 'Geneva', sans-serif; /* クラシックMac風フォント */
-    box-shadow: 1px 1px 0px #000000;
-    cursor: pointer;
-}
-
-#content > p > a:active {
-    background-color: #000000;
-    color: #FFFFFF;
-    box-shadow: 0px 0px 0px #000000;
-    transform: translate(1px, 1px);
-}
-
-/* 本文内の最初の段落にあるリンクの「順番（1番目、2番目、3番目）」で判別する */
-#content > p:first-of-type > a {
-    font-size: 0; /* 元の「prev_button」などのテキストを隠す */
-}
-
-/* 1番目: Prev (◀ prev) */
-#content > p:first-of-type > a:nth-child(1)::before {
-    content: "◀ prev";
-    font-size: 14px; /* フォントサイズを戻す */
-}
-
-/* 2番目: Up (▲ up) */
-#content > p:first-of-type > a:nth-child(2)::before {
-    content: "▲ up";
-    font-size: 14px;
-}
-
-/* 3番目: Next (next ▶) */
-#content > p:first-of-type > a:nth-child(3)::before {
-    content: "next ▶";
-    font-size: 14px;
-}
-
-/* リンク先URLやアクセスキーに基づいて元テキストを非表示にし、アイコン＋テキストを再定義 */
-/* 不要な誤爆を防ぐため index の条件を外し、_button や正確なファイル名で判定します */
-#content > p > a[accesskey], 
-#content > p > a[href*="prev"], 
-#content > p > a[href*="up"], 
-#content > p > a[href*="next"] {
-    font-size: 0; 
-}
-
-/* Prev (◀ prev) */
-#content > p > a[accesskey="p"]::before,
-#content > p > a[href*="prev"]::before {
-    content: "◀ prev";
-    font-size: 14px; /* ここでフォントサイズを戻す */
-}
-
-/* Up (▲ up) */
-#content > p > a[accesskey="u"]::before,
-#content > p > a[href*="up_button"]::before,
-#content > p > a[href*="up.html"]::before {
-    content: "▲ up";
-    font-size: 14px;
-}
-
-/* Next (next ▶) */
-#content > p > a[accesskey="n"]::before,
-#content > p > a[href*="next"]::before {
-    content: "next ▶";
-    font-size: 14px;
 }
 
 /* スマホ対応（幅が狭い場合） */

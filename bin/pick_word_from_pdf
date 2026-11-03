@@ -1,0 +1,92 @@
+#!/usr/bin/env python3
+import glob
+import os
+import sys
+import pdfplumber
+from PyPDF2 import PdfReader, PdfWriter
+import argparse
+
+GREEN = "\033[32m"
+RESET = "\033[0m"
+
+
+def extract_matched_pages(file_patterns, target_word, output_dir="pdfplumber_outputs"):
+    print(f"Search word: {target_word}")
+    print(f"Output directory: {output_dir}")
+
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+        print(f"Created output directory: {output_dir}")
+
+    # Expand all patterns in file_patterns
+    pdf_files = []
+    for pattern in file_patterns:
+        pdf_files.extend(
+            glob.glob(pattern, recursive=True) if "*" in pattern else [pattern]
+        )
+    pdf_files = list(dict.fromkeys(pdf_files))  # Remove duplicates
+
+    print(f"Number of target PDF files: {len(pdf_files)}")
+    for file_path in pdf_files:
+        print(f"Processing: {file_path}")
+        hit_pages = []
+        with pdfplumber.open(file_path) as pdf:
+            for i, page in enumerate(pdf.pages):
+                text = page.extract_text()
+                if text and target_word in text:
+                    hit_pages.append(i)
+        if hit_pages:
+            print(f"{GREEN}  Matched pages: {[p+1 for p in hit_pages]}{RESET}")
+            reader = PdfReader(file_path)
+            writer = PdfWriter()
+            for p_num in hit_pages:
+                writer.add_page(reader.pages[p_num])
+            base_name = os.path.basename(file_path)
+            output_path = os.path.join(output_dir, f"found_{base_name}")
+            with open(output_path, "wb") as f:
+                writer.write(f)
+            print(
+                f"  Done: {file_path} (pages: {[p+1 for p in hit_pages]}) -> {output_path}"
+            )
+        else:
+            print("  No match found")
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Extract pages containing a specific word from PDF files and save them as a new PDF."
+    )
+    parser.add_argument("word", help="Word to search for")
+    parser.add_argument(
+        "files",
+        nargs="+",
+        help="Target PDF files or patterns (e.g. '**/*.pdf' or file1.pdf file2.pdf ...)",
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        default="pdfplumber_outputs",
+        help="Directory to save extracted PDFs (default: pdfplumber_outputs)",
+    )
+    parser.add_argument("-w", "--word_opt", help="Word to search for (optional)")
+    parser.add_argument(
+        "-f",
+        "--file_opt",
+        action="append",
+        help="Target PDF files or patterns (optional, can be specified multiple times)",
+    )
+    args = parser.parse_args()
+
+    # Priority: option > positional argument
+    word = args.word_opt or args.word
+    file_patterns = args.file_opt if args.file_opt else args.files
+
+    if not word or not file_patterns:
+        parser.print_help()
+        sys.exit(1)
+
+    extract_matched_pages(file_patterns, word, args.output)
+
+
+if __name__ == "__main__":
+    main()

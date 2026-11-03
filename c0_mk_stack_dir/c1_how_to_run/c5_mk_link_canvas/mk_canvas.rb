@@ -13,11 +13,15 @@ yaml_file = '.semi_lattice/semi_lattice.yaml'
 data = YAML.load_file(yaml_file)
 
 # 2. ノードとエッジのデータを準備
+default_icon_paths = {
+  'dir' => '.semi_lattice/icons/folder.png',
+  'stack' => '.semi_lattice/icons/stack.png'
+}.freeze
+
 nodes = data[:nodes].map do |node|
-  # typeが'dir'のノードにフォルダアイコンを指定
-  if node[:type] == 'dir' && node[:icon_path].nil?
-    # .semi_lattice/icons/folder.png は'docs'からの相対パスとして正しい
-    node[:icon_path] = '.semi_lattice/icons/folder.png'
+  # typeに対応する既定アイコンを，icon_pathが未指定の場合だけ補う
+  if node[:icon_path].nil?
+    node[:icon_path] = default_icon_paths[node[:type]]
   end
 
   # --- デバッグコード ---
@@ -56,7 +60,11 @@ template = <<~'HTML'
 <script>
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
-const computedStyle = getComputedStyle(document.documentElement);
+
+function themeColor(propertyName, fallback) {
+  return getComputedStyle(document.documentElement)
+    .getPropertyValue(propertyName).trim() || fallback;
+}
 
 // --- 高DPI対応 ---
 const dpr = window.devicePixelRatio || 1;
@@ -95,11 +103,11 @@ function drawAll() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   // 背景色を設定
-  ctx.fillStyle = computedStyle.getPropertyValue('--background').trim();
+  ctx.fillStyle = themeColor('--background', '#ffffff');
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   // 2. エッジ（線）を描画
-  ctx.strokeStyle = computedStyle.getPropertyValue('--foreground').trim();
+  ctx.strokeStyle = themeColor('--foreground', '#263f35');
   ctx.lineWidth = 1;
   edges.forEach(edge => {
     const fromNode = nodeMap.get(edge.from);
@@ -122,20 +130,20 @@ function drawAll() {
       ctx.drawImage(node.img, drawX, drawY, node.width, node.height);
     } else {
       // 画像がない場合や読み込みに失敗した場合はプレースホルダーを表示
-      ctx.fillStyle = computedStyle.getPropertyValue('--muted').trim() || '#cccccc';
-      ctx.strokeStyle = computedStyle.getPropertyValue('--muted-foreground').trim() || '#666666';
+      ctx.fillStyle = themeColor('--muted', '#f4f7f3');
+      ctx.strokeStyle = themeColor('--muted-foreground', '#52665d');
       ctx.fillRect(drawX, drawY, node.width, node.height);
       ctx.strokeRect(drawX, drawY, node.width, node.height);
 
-      ctx.fillStyle = computedStyle.getPropertyValue('--muted-foreground').trim() || '#666666';
+      ctx.fillStyle = themeColor('--muted-foreground', '#52665d');
       ctx.font = '12px sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('image not found', node.x, node.y);
     }
     
     // 画像の読み込み結果にかかわらずタイトルを表示
-    ctx.fillStyle = computedStyle.getPropertyValue('--muted-foreground').trim();
-    ctx.font = `12px ${computedStyle.getPropertyValue('--font-family-base').trim()}`;
+    ctx.fillStyle = themeColor('--muted-foreground', '#52665d');
+    ctx.font = `12px ${themeColor('--font-family-base', 'Arial, sans-serif')}`;
     ctx.textAlign = 'center';
     ctx.fillText(node.name, node.x, drawY + node.height + 15);
   });
@@ -169,6 +177,10 @@ function loadNodeImage(node) {
 
 // 一部の画像が読み込めなくても，全ノードの描画を継続する
 Promise.all(nodesWithIcons.map(loadNodeImage)).then(drawAll);
+
+// OSの自動appearance切替にも追従してCanvasを再描画する．
+const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+darkModeQuery.addEventListener('change', drawAll);
 
 // 4. クリックイベントの設定
 canvas.addEventListener('click', (event) => {

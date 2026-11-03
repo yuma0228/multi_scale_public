@@ -31,16 +31,29 @@ def directory_path(path)
   "#{path.to_s.sub(%r{/+\z}, '')}/"
 end
 
-def rsync_options(source_dir:, remote:)
+def shared_directories(paths)
+  Array(paths).map do |path|
+    relative_path = path.to_s.sub(%r{/+\z}, '')
+    invalid_path = relative_path.empty? ||
+                   relative_path.start_with?('/') ||
+                   relative_path.split('/').include?('..')
+    raise "Invalid shared directory path: #{relative_path}" if invalid_path
+
+    relative_path
+  end.uniq
+end
+
+def rsync_options(source_dir:, remote:, extra_options: [])
   options = RSYNC_OPTIONS.dup
   options << '--dry-run' if dry_run?
+  options.concat(extra_options)
   options << '--filter=merge .rsync_filter' if File.file?(File.join(source_dir, '.rsync_filter'))
   options.concat(RSYNC_EXCLUDES.map { |pattern| "--exclude=#{pattern}" })
   options.concat(%w[-z --rsh=ssh]) if remote
   options
 end
 
-def rsync_directory(source_dir:, target_dir:, remote: false)
+def rsync_directory(source_dir:, target_dir:, remote: false, extra_options: [])
   source = File.expand_path(source_dir, Rake.application.original_dir)
   raise "Source directory does not exist: #{source}" unless File.directory?(source)
 
@@ -50,7 +63,11 @@ def rsync_directory(source_dir:, target_dir:, remote: false)
   Dir.chdir(source) do
     sh(
       'rsync',
-      *rsync_options(source_dir: source, remote: remote),
+      *rsync_options(
+        source_dir: source,
+        remote: remote,
+        extra_options: extra_options
+      ),
       './',
       directory_path(target)
     )
@@ -111,10 +128,23 @@ task :dry_run
 
 desc 'rsync to public repository (first try: rake rsync_public dry_run)'
 task :rsync_public do
+  shared_paths = shared_directories(config[:shared_dirs])
   rsync_directory(
     source_dir: PROJECT_ROOT,
-    target_dir: $public_repository_dir
+    target_dir: $public_repository_dir,
+    extra_options: shared_paths.map { |path| "--exclude=/#{path}" }
   )
+
+  shared_paths.each do |relative_path|
+    source = File.join(PROJECT_ROOT, relative_path)
+    unless File.symlink?(source) && File.directory?(source)
+      raise "Shared directory must be a valid directory symlink: #{source}"
+    end
+
+    target = File.join($public_repository_dir, relative_path)
+    puts "Sync shared directory: #{source} -> #{target}".cyan
+    rsync_directory(source_dir: source, target_dir: target)
+  end
 end
 
 desc "kick off hyper card"
@@ -140,6 +170,7 @@ task :mkdir do
   ["mkdir #{dir_name}",
    "cp #{File.join(hp,'readme.org')} #{dir_name}",
    "cp #{File.join(hp,'dummy_icon.png')} #{dir_name}",
+   "cp #{File.join(hp,'.style.css')} #{dir_name}",
    "cp #{File.join(hp,'.style_w_link_button.css')} #{dir_name}",
    "cp #{File.join(hp,'.theme.css')} #{dir_name}",
    "cp #{File.join(hp,'.rsync_filter')} #{dir_name}"
@@ -166,7 +197,8 @@ end
 desc "push public repository to web server (first try: rake push dry_run)"
 task :push do
   https_path = File.join($server_url,
-                         $year, $lecture, $source_html)
+                         $year, $lecture,
+                         'canvas.html')#$source_html)
   puts "rsync from #{$public_repository_dir}\n to #{remote_lecture_dir}\n".blue
   rsync_directory(
     source_dir: $public_repository_dir,

@@ -1,0 +1,190 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+#+TITLE: for DRY
+#+AUTHOR: Shigeto R. Nishitani
+#+EMAIL:     (concat "shigeto_nishitani@mac.com")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/setup/html-theme-readtheorg.setup
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+#+MACRO: dummy_link @@html:<a href="#">$1</a>@@
+
+# for style.css, never move from here
+[[../c3_linear_algebra_core/readme.html][prev_button]]
+[[../intro_info_26s.html][up_button]]
+[[../c1_outline/readme.html][next_button]]
+# for a real link rewrite usual [[\url][]]
+
+
+| [[file:./dummy_icon.png]]
+
+* DRY原則を守るためのdir構成
+** 発想
+いくつものStackで何度も同じことを説明する必要が出てきます．
+ですが，それをそれぞれのStackで書き直すとDRY原則が破綻します．
+documentのDRY原則を一人のPC内で実現しようというのが
+ここでの設定です．
+
+実装方法の議論は下につけたpre-search項を参照．
+
+** Manual by Codex
+共有したいディレクトリへのsymlinkをStack内に置き，
+​=.hc_config.yaml=​ に相対位置を登録します．
+#+begin_src yaml
+:shared_dirs:
+  - c6_fukumori/hc_vs_others
+#+end_src
+メイン同期でsymlinkを扱わず，public側の共有先を保護するため，
+​=.rsync_filter=​ にも登録します．
+#+begin_src text
+- /c6_fukumori/hc_vs_others
+#+end_src
+Rakefileは通常同期から登録パスを除外し，
+続けてリンク先の内容だけをpublicへ同期します．
+#+begin_src ruby
+shared_paths = shared_directories(config[:shared_dirs])
+exclude_options = shared_paths.map do |path|
+  "--exclude=/#{path}"
+end
+rsync_directory(
+  source_dir: PROJECT_ROOT,
+  target_dir: $public_repository_dir,
+  extra_options: exclude_options
+)
+shared_paths.each do |path|
+  rsync_directory(
+    source_dir: File.join(PROJECT_ROOT, path),
+    target_dir: File.join($public_repository_dir, path)
+  )
+end
+#+end_src
+​=rake rsync_public dry_run=​ で変更予定を確認し，
+​=rake rsync_public=​ で実同期します．
+
+public側にはsymlinkではなく実ファイルが作られ，
+未登録または ​=:shared_dirs: []=​ なら通常同期だけを実行します．
+
+* pre-search
+** turn 1
+*** user
+c0_mk_stack_dir/c4_hc_vs_others/を他のStackでも共有しようと思います．
+StackあるいはHyperCardを説明する基本的な事項が書かれているからです．
+今は，c0_mk_stack_dirはそれだけでgit管理されています．
+できるだけDRY原則を守りたいのでsym linkしようと考えています．
+その場合にsym link先でrake rsync_publicをした時に，
+public側にrsyncするように設定することは可能ですか？
+*** reply
+可能です．ただし，現在の
+[[/Users/bob/Desktop/lecture_26f/multi_scale/Rakefile:9][​=Rakefile=​]] は
+​=--no-links=​ を指定しているため，symlinkは明示的に無視されます．
+
+単純に ​=--no-links=​ を ​=--copy-links=​
+に変える方法もありますが，このStackには ​=pattern_language=​
+など別のsymlinkもあるため，すべて追跡してpublicへコピーしてしまいます．これは避けた方がよいです．
+
+おすすめは次の構成です．
+
+1. ​=--no-links=​ は維持する．
+2. 共有対象を設定ファイルに明記する．
+3. 通常の同期後，そのディレクトリだけ別途rsyncする．
+4. public側にはsymlinkではなく，通常のディレクトリとして配置する．
+
+設定例です．
+
+#+begin_src yaml
+:shared_directories:
+  - c4_hc_vs_others
+#+end_src
+
+​=rsync_public=​ では概念的に次の処理を追加します．
+
+#+begin_src ruby
+Array(config[:shared_directories]).each do |relative_path|
+  source = File.join(PROJECT_ROOT, relative_path)
+  target = File.join($public_repository_dir, relative_path)
+
+  rsync_directory(
+    source_dir: source,
+    target_dir: target
+  )
+end
+#+end_src
+
+現在の ​=rsync_directory=​ はいったん ​=source_dir=​ へ ​=chdir=​ してから
+​=./=​ を同期するため，​=source_dir=​
+がディレクトリsymlinkでも，リンク先の中身をpublicへコピーできます．
+
+ただし，メイン同期の ​=--delete=​
+が共有先を一度削除しないよう，メイン同期では共有パスを除外・保護する必要があります．例えば
+​=.rsync_filter=​ に次を加えます．
+
+#+begin_src text
+- /c4_hc_vs_others/
+#+end_src
+
+そのうえで，上記の個別rsyncを実行します．最終的な構成は次のようになります．
+
+#+begin_src text
+他のStack/c4_hc_vs_others
+    └── symlink → c0_mk_stack_dir/c4_hc_vs_others
+
+他のStack_public/c4_hc_vs_others
+    └── 実ファイル一式
+#+end_src
+
+この方式なら，編集元は ​=c0_mk_stack_dir/c4_hc_vs_others=​
+の1か所だけになり，DRYを保ちながら，各Stackのpublicには独立した実ファイルを配布できます．なお，symlinkはユーザー固有の絶対パスではなく，相対パスで作るのが安全です．
+
+現在，​=c0_mk_stack_dir=​ リポジトリでは ​=c4_hc_vs_others/=​
+が未追跡なので，共有元として使う前に同リポジトリへcommitする必要があります．
+ 
+** turn 2
+*** user
+面白い発想ですね．この場合，Rakefileは書き換えずに，.rsync_filterに足すだけでできそうですが，Rakefileも書き換えてこれらの一連の操作を自動化するべき，あるいはできるということですか？
+*** reply
+はい，自動化できます．そして重要な点として，​=.rsync_filter=​
+に除外設定を足すだけではコピーされません．
+
+現在はRakefileに ​=--no-links=​ があるため，動作は次のようになります．
+
+#+begin_src text
+.rsync_filterで除外
+    → メイン同期の対象外になる
+    → public側では保護される
+    → しかしリンク先の内容はコピーされない
+#+end_src
+
+したがって，選択したsymlinkだけをpublicへ展開するには，別途rsyncを実行する処理が必要です．それを毎回手動で実行することもできますが，​=rake rsync_public=​
+の一部として自動化するのがよいと思います．
+
+おすすめは，​=.hc_config.yaml=​ に共有ディレクトリだけを宣言する方式です．
+
+#+begin_src yaml
+:shared_directories:
+  - c4_hc_vs_others
+#+end_src
+
+Rakefile側では，この設定を読んで次の2段階を自動実行します．
+
+1. 通常のStack全体をrsyncする．共有ディレクトリは除外して，public側を削除から保護する．
+2. 共有ディレクトリのsymlink先を解決し，public内の同名ディレクトリへ別途rsyncする．
+
+つまり，利用時の操作は従来どおりです．
+
+#+begin_src sh
+rake rsync_public dry_run
+rake rsync_public
+#+end_src
+
+各Stackで必要なのは，次の2点だけになります．
+
+#+begin_src text
+c4_hc_vs_others という相対symlinkを置く
+.hc_config.yaml の shared_directories に名前を書く
+#+end_src
+
+​=.rsync_filter=​
+への除外追加もRakefile側で動的に行えるため，手で両方へ同じディレクトリ名を書く必要はありません．設定を二重管理しない点でも，この方がDRYです．
+
+なお，単純に ​=--copy-links=​
+を使えばRakefileの変更は小さくできますが，対象外のsymlinkまで追跡してしまいます．「設定された共有ディレクトリだけを2回目のrsyncで展開する」方式が安全です．

@@ -1,0 +1,20 @@
+source_dir: bin/templates
+
+targets:
+  - path: ~/Desktop/lecture_26f/multi_scale/**
+    layout: hidden
+
+  - path: ~/Desktop/lecture_26f/symbolic_math
+    layout: hidden
+
+  - path: ~/current_research/phase_diagram_26f/**
+    layout: hidden
+
+  - path: ~/al_110_ortho/docs
+    layout: docs
+    wrapper_dirs:
+      - s0_abstract
+      - s1_intro
+      - s2_method
+      - s3_results_discuss
+      - s4_conclusions
