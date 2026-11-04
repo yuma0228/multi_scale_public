@@ -18,6 +18,15 @@
 
 | [[file:./dummy_icon.png]]
 
+* HyperCardって何？
+- [[https://ist.ksc.kwansei.ac.jp/~nishitani/Research/2026/phase_diagram_26f/canvas.html]]
+
+- Markup言語
+  - markdown on code, jupyter notebook(.md), 
+  - org-mode on emacs (.org)
+  - handoc (latex, docs, )
+
+
 * bundle
 : gem install bundler
 : bundle gem my_hello --exe --test=minitest
