@@ -19,9 +19,17 @@
 * for 領域実習
 - [[https://kwanseio365-my.sharepoint.com/:f:/g/personal/cru32369_kwansei_ac_jp/IgDDsVu4tF6xT4bChileGjFcARGm6bKoAjdfoFp_3C3urcs?e=hwaL32][資料，動画置き場]]
 
+* d8 <2026-11-11 Wed>
+- TDD, FSM, 
+  - recursion, 
+- Rakefie
+- Thor,
+
 * d7 <2026-11-04 Wed>
 - command :: ssh, github # for open?
-- Rakefie
+- bin, path
+  - set PATH . $HOME/bin $PATH
+- open, 
 
 * d6 <2026-10-28 Wed>
 - file_regular_expression.rb

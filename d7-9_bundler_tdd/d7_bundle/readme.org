@@ -18,17 +18,8 @@
 
 | [[file:./dummy_icon.png]]
 
-* HyperCardって何？
-- [[https://ist.ksc.kwansei.ac.jp/~nishitani/Research/2026/phase_diagram_26f/canvas.html]]
-
-- Markup言語
-  - markdown on code, jupyter notebook(.md), 
-  - org-mode on emacs (.org)
-  - handoc (latex, docs, )
-
-
 * bundle
-: gem install bundler
+: sudo gem install bundler
 : bundle gem my_hello --exe --test=minitest
 
 : env BUNDLE_IGNORE_CONFIG=1 bundle gem my_hello --exe
@@ -39,6 +30,7 @@ Do you want to generate tests with your gem?
 Future `bundle gem` calls will use your choice. This setting can be changed anytime with `bundle config gem.test`.
 Enter a test framework. rspec/minitest/test-unit/(none): minitest
 Enter a CI service. github/gitlab/circle/(none): github
+Do you want to license your code permissively under the MIT license? y/(n): y
 Do you want to include a code of conduct in gems you generate? y/(n): y
 Do you want to include a changelog? y/(n): y
 Enter a linter. rubocop/standard/(none): none
@@ -86,61 +78,15 @@ task :default do
 end
 #+end_src
 
-: edit my_help.gemspec # TODO => ???
+: edit my_help.gemspec # TODO => 適当に修正
 : git add -A
 : git commit -m 'first commit'
-: rake install:local
-: rbenv rehash
+  : githubでnew repositoryして，それをgit remote add ...
+: sudo rake install:local
+(: rbenv rehash)
 
-* for wsl
-apt版Rubyではrbenvのshimがないため，​=rbenv rehash=​に相当する操作は不要です．RubyGemsが作成した実行ファイルが​=PATH=​上にあるかどうかだけで決まります．
+: my_hello       # installが無事終わっていることを確認
+: which my_hello # でinstall先を確認
 
-一般ユーザーでインストールする場合，gemはユーザーディレクトリへ入ります．実行ファイルは通常，次のどちらかです．
-
-#+begin_src text
-~/.local/share/gem/ruby/<ABIバージョン>/bin
-~/.gem/ruby/<ABIバージョン>/bin
-#+end_src
-
-正確な場所は次で確認できます．
-
-#+begin_src shell
-ruby -e 'puts Gem.user_dir'
-#+end_src
-
-実行ファイルがあるか確認します．
-
-#+begin_src shell
-ls "$(ruby -e 'puts Gem.user_dir')/bin/my_hello"
-#+end_src
-
-この​=bin=​は通常​=PATH=​に入っていないため，bashを使うWSLでは​=~/.bashrc=​へ追加します．
-
-#+begin_src shell
-echo 'export PATH="$(ruby -e '\''puts Gem.user_dir'\'')/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-#+end_src
-
-その後は直接実行できます．
-
-#+begin_src shell
-my_hello
-#+end_src
-
-ユーザー領域へ明示的にインストールする場合は，次の手順が確実です．
-
-#+begin_src shell
-rake build
-gem install --user-install pkg/my_hello-0.1.0.gem
-#+end_src
-
-一方，​=sudo gem install=​や​=sudo rake install:local=​ではsystem領域へ入り，実行ファイルは通常​=/usr/local/bin=​などへ作成されます．ここは最初から​=PATH=​に入っているため，インストール直後から実行できます．ただし，apt管理のRubyと手動インストールしたgemが混在するため，RubyGems公式は​=sudo gem install=​より​=--user-install=​を推奨しています．[[https://guides.rubygems.org/gem-installation-and-loading/][RubyGems公式ガイド]]
-
-つまり，apt版Rubyでの違いは次のとおりです．
-
-- rbenv版：実行ファイルをインストール後，shim生成のため​=rbenv rehash=​が必要になる場合がある．
-- apt版のsystem install：​=PATH=​上へwrapperが作られれば即座に実行できる．
-- apt版のuser
-  install：rehashは不要だが，​=Gem.user_dir/bin=​を​=PATH=​へ追加する必要がある．
 
 

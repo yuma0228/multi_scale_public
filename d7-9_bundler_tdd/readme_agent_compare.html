@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
+<head>
+<!-- 2026-11-06 Fri 13:26 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agentic application comparison</title>
+<meta name="author" content="Shigeto R. Nishitani" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/code-copy.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/vendor/stickytableheaders/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/code-copy.js"></script>
+<link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Agentic application comparison</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd28980f">1. turn 1 web or desktop appli for chatgpt</a>
+<ul>
+<li><a href="#org9342406">1.1. user</a></li>
+<li><a href="#orgf5da386">1.2. reply</a>
+<ul>
+<li><a href="#basicライセンスについて">「Basicライセンス」について</a></li>
+<li><a href="#乗り換え時の設定">乗り換え時の設定</a></li>
+<li><a href="#授業用として推奨する初期設定">授業用として推奨する初期設定</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org6019720">2. turn 2 codex, gemini, claude comparison</a>
+<ul>
+<li><a href="#org049e9da">2.1. user</a></li>
+<li><a href="#org79d2684">2.2. codex reply</a>
+<ul>
+<li><a href="#ローカル開発エージェントの比較">ローカル開発エージェントの比較</a></li>
+<li><a href="#大学向け契約の比較">大学向け契約の比較</a></li>
+<li><a href="#googleの教育契約で注意する点">Googleの教育契約で注意する点</a></li>
+<li><a href="#授業での費用イメージ">授業での費用イメージ</a></li>
+<li><a href="#関西学院大学での授業用途なら">関西学院大学での授業用途なら</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../c3_linear_algebra_core/readme.html">prev_button</a>
+<a href="../intro_info_26s.html">up_button</a>
+<a href="../c1_outline/readme.html">next_button</a>
+</p>
+<div id="outline-container-orgd28980f" class="outline-2">
+<h2 id="orgd28980f"><span class="section-number-2">1.</span> turn 1 web or desktop appli for chatgpt</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org9342406" class="outline-3">
+<h3 id="org9342406"><span class="section-number-3">1.1.</span> user</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+学生がweb版のChatGPTをbasicライセンスで使っています．これはcodexのようにlocal pcのsource dirsを参照してagenticに動かすことは可能ですか？　乗り換えた場合は，何を設定する必要がありますか？
+</p>
+</div>
+</div>
+<div id="outline-container-orgf5da386" class="outline-3">
+<h3 id="orgf5da386"><span class="section-number-3">1.2.</span> reply</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+結論として，*通常のWebブラウザ版ChatGPTだけでは，学生PC上のソースディレクトリを直接参照・編集したり，ローカルコマンドを実行したりすることはできません*．Web版のChatGPT
+Projectも，ローカルフォルダへ直接アクセスするものではなく，ファイルのアップロードや外部ソース接続が基本です．
+</p>
+
+<p>
+Codexのようにローカルでagenticに動かすには，学生PCに次のいずれかが必要です．
+</p>
+
+<ul class="org-ul">
+<li>ChatGPTデスクトップアプリのCodex機能</li>
+<li>Codex CLI</li>
+<li>VS Code等のCodex IDE拡張</li>
+</ul>
+
+<p>
+これらは，指定したフォルダを読み，ファイルを編集し，テストやビルドなどのコマンドを実行できます．<a href="https://learn.chatgpt.com/docs/projects?surface=app">OpenAI Docs：Projects and chats</a>
+</p>
+</div>
+<div id="outline-container-basicライセンスについて" class="outline-4">
+<h4 id="basicライセンスについて">「Basicライセンス」について</h4>
+<div class="outline-text-4" id="text-basicライセンスについて">
+<p>
+OpenAIの現在の公式プラン名には，少なくとも公開価格表上は「Basic」という名称がありません．学生が使っているものが次のどれかを確認する必要があります．
+</p>
+
+<ul class="org-ul">
+<li>ChatGPT Free</li>
+<li>ChatGPT Go</li>
+<li>ChatGPT Plus</li>
+<li>大学が提供するChatGPT Edu／Enterprise</li>
+<li>大学独自サービス上でChatGPTを利用できる「Basic」契約</li>
+</ul>
+
+<p>
+現在の公式説明では，Codex自体はFree，Go，Plus，Pro，Business，Edu，Enterpriseに含まれます．ただし，利用できるクライアント，モデル，回数，管理者設定はプランによって異なります．Free／Goではデスクトップアプリ上の限定的な利用が段階提供され，PlusではWeb，CLI，IDE拡張などが明示的に提供されています．授業で全員に同じ環境を保証するなら，*Plus以上または大学管理のEdu契約*のほうが確実です．<a href="https://learn.chatgpt.com/docs/pricing">OpenAI Docs：Pricing</a>
+</p>
+
+<p>
+「Basic」が大学管理ワークスペースの契約名なら，大学の管理者に以下を確認してください．
+</p>
+
+<ul class="org-ul">
+<li>CodexまたはローカルCodexの利用が許可されているか</li>
+<li>学生ロールにローカルクライアントへのサインイン権限があるか</li>
+<li>利用可能なモデルと使用量制限</li>
+<li>ソースコードのデータ保持・学習利用ポリシー</li>
+<li>ローカルコンピュータアクセスが管理者によって無効化されていないか</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-乗り換え時の設定" class="outline-4">
+<h4 id="乗り換え時の設定">乗り換え時の設定</h4>
+<div class="outline-text-4" id="text-乗り換え時の設定">
+<p>
+最も簡単なのはChatGPTデスクトップアプリです．
+</p>
+
+<ol class="org-ol">
+<li>学生PCにChatGPTデスクトップアプリをインストールする．</li>
+<li>Web版と同じChatGPTアカウントでサインインする．</li>
+<li>アプリ上でCodexを選択する．</li>
+<li>プロジェクトを作成し，対象のソースフォルダを追加する．</li>
+<li>複数フォルダがある場合は，Git操作や設定探索の基準にするフォルダをPrimaryに指定する．</li>
+<li>権限モードは，授業ではまず「Ask for approval」を選ぶ．</li>
+<li>Gitリポジトリを作成し，作業前の状態をコミットしておく．</li>
+</ol>
+
+<p>
+CLIの場合は，対象ディレクトリでCodexを起動します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code><span style="color: #8f0075;">cd</span> path/to/project
+codex
+</code></pre>
+</div>
+
+<p>
+初回起動時に「Sign in with
+ChatGPT」を選びます．別のディレクトリから起動する場合は，次のようにも指定できます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>codex --cd path/to/project
+</code></pre>
+</div>
+
+<p>
+公式のCLI導入手順は<a href="https://learn.chatgpt.com/docs/cli">OpenAI Docs：Codex CLI</a>にあります．
+</p>
+</div>
+</div>
+<div id="outline-container-授業用として推奨する初期設定" class="outline-4">
+<h4 id="授業用として推奨する初期設定">授業用として推奨する初期設定</h4>
+<div class="outline-text-4" id="text-授業用として推奨する初期設定">
+<p>
+プロジェクト直下に​<code>AGENTS.md</code>​を置くと，学生ごとの指示のばらつきを抑えられます．例えば次のような内容です．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-md"><code># Course instructions
+
+- 変更前に既存コードを確認すること
+- 指定されたファイル以外を不必要に変更しないこと
+- 変更後にテストを実行すること
+- テストが失敗した場合は，失敗内容を報告すること
+- パスワード，APIキー，個人情報をファイルへ書き込まないこと
+- 使用したAI支援と主な変更点を提出物に記載すること
+</code></pre>
+</div>
+
+<p>
+さらに，次を揃えておくと安全です．
+</p>
+
+<ul class="org-ul">
+<li>​<code>.gitignore</code>​に​<code>.env</code>​，認証情報，生成物を登録する．</li>
+<li>作業開始前にGitの初期コミットを作る．</li>
+<li>Python，Node.js，コンパイラ等のバージョンを統一する．</li>
+<li>​<code>README.md</code>​にセットアップ，テスト，提出方法を書く．</li>
+<li>最初はネットワークアクセスを承認制にする．</li>
+<li>Full accessは原則使用しない．</li>
+</ul>
+
+<p>
+「Ask for
+approval」では，Codexは通常，指定ワークスペース内を読み書きできますが，その外側へのアクセスやインターネット利用時に承認を求めます．授業用途ではこのモードが妥当です．<a href="https://learn.chatgpt.com/docs/permission-modes">OpenAI Docs：Permissions</a>
+</p>
+
+<p>
+なお，ChatGPT契約でCodexが使えない場合でもAPIキー認証は可能ですが，これはサブスクリプションとは別の従量課金です．学生個人にAPIキーを作らせる運用は，費用管理やキー流出の問題があるため，授業ではChatGPTサインイン方式または大学管理のEdu環境を推奨します．<a href="https://learn.chatgpt.com/docs/auth?surface=cli">OpenAI Docs：Authentication</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org6019720" class="outline-2">
+<h2 id="org6019720"><span class="section-number-2">2.</span> turn 2 codex, gemini, claude comparison</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org049e9da" class="outline-3">
+<h3 id="org049e9da"><span class="section-number-3">2.1.</span> user</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Codex, Gemini, Claudeの同等の形態と，費用に関する一覧表を作成してください．
+</p>
+</div>
+</div>
+<div id="outline-container-org79d2684" class="outline-3">
+<h3 id="org79d2684"><span class="section-number-3">2.2.</span> codex reply</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+2026年11月5日時点の公式情報に基づく比較です．ここでは，製品を次の3層に分けています．
+</p>
+
+<ul class="org-ul">
+<li>一般的なWebチャット：ChatGPT，Gemini，Claude</li>
+<li>ローカルPC上のソースを扱うエージェント：Codex，Google
+Antigravity，Claude Code</li>
+<li>大学向け契約：ChatGPT Edu，Gemini for Education，Claude for Education</li>
+</ul>
+
+<p>
+料金は米国向け税別価格です．日本での実際の請求額，消費税，為替，教育機関向け割引は契約画面または見積りで確認する必要があります．
+</p>
+</div>
+<div id="outline-container-ローカル開発エージェントの比較" class="outline-4">
+<h4 id="ローカル開発エージェントの比較">ローカル開発エージェントの比較</h4>
+<div class="outline-text-4" id="text-ローカル開発エージェントの比較">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">項目</th>
+<th scope="col" class="org-left">OpenAI</th>
+<th scope="col" class="org-left">Google</th>
+<th scope="col" class="org-left">Anthropic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">現行製品名</td>
+<td class="org-left">Codex</td>
+<td class="org-left">Google Antigravity</td>
+<td class="org-left">Claude Code</td>
+</tr>
+
+<tr>
+<td class="org-left">利用形態</td>
+<td class="org-left">ChatGPTデスクトップアプリ，CLI，IDE拡張，クラウド</td>
+<td class="org-left">デスクトップアプリ，Antigravity CLI，IDE拡張</td>
+<td class="org-left">主にCLI，IDE連携</td>
+</tr>
+
+<tr>
+<td class="org-left">ローカルソースの読取り・編集</td>
+<td class="org-left">可能</td>
+<td class="org-left">可能</td>
+<td class="org-left">可能</td>
+</tr>
+
+<tr>
+<td class="org-left">ローカルコマンド実行</td>
+<td class="org-left">可能</td>
+<td class="org-left">可能</td>
+<td class="org-left">可能</td>
+</tr>
+
+<tr>
+<td class="org-left">複数ファイルにまたがる自律作業</td>
+<td class="org-left">可能</td>
+<td class="org-left">可能</td>
+<td class="org-left">可能</td>
+</tr>
+
+<tr>
+<td class="org-left">Git連携</td>
+<td class="org-left">組込みGit操作，diff，worktree，レビュー</td>
+<td class="org-left">worktree，diffレビュー，IDE連携</td>
+<td class="org-left">Git操作，diff，コミット支援</td>
+</tr>
+
+<tr>
+<td class="org-left">無料利用</td>
+<td class="org-left">Free：$0．デスクトップ版の限定利用で，段階提供</td>
+<td class="org-left">Individual：$0．週単位の基本上限あり</td>
+<td class="org-left">Claude Codeを含む恒常的な無料サブスクリプションは明記されていない．API従量課金は可能</td>
+</tr>
+
+<tr>
+<td class="org-left">標準的な個人向け料金</td>
+<td class="org-left">Plus：$20／月</td>
+<td class="org-left">Google AI Pro：$20／月</td>
+<td class="org-left">Pro：$20／月，または年払い実質$17／月</td>
+</tr>
+
+<tr>
+<td class="org-left">多用する個人向け</td>
+<td class="org-left">Pro：$100，$200，$500／月</td>
+<td class="org-left">Google AI Ultra：$100または$200／月</td>
+<td class="org-left">Max：$100または$200／月</td>
+</tr>
+
+<tr>
+<td class="org-left">超過利用</td>
+<td class="org-left">ChatGPT creditsまたはAPIキーによる従量課金</td>
+<td class="org-left">AI creditsによる従量課金</td>
+<td class="org-left">Anthropic ConsoleのAPI従量課金</td>
+</tr>
+
+<tr>
+<td class="org-left">学生の導入容易性</td>
+<td class="org-left">デスクトップアプリが最も容易．PlusならCLI・IDEも明示的に利用可能</td>
+<td class="org-left">無料のAntigravityから試しやすい</td>
+<td class="org-left">Pro契約後にCLIを導入するのが基本</td>
+</tr>
+
+<tr>
+<td class="org-left">授業での管理性</td>
+<td class="org-left">Eduでは管理者がCodex利用，権限，モデル等を制御可能</td>
+<td class="org-left">個人版と大学向けWorkspaceは別．大学向けGemini契約だけではAntigravity権利が保証されない</td>
+<td class="org-left">Education契約でClaude Codeまで含まれるかは個別契約の確認が必要</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+料金と機能の根拠は，<a href="https://learn.chatgpt.com/docs/pricing?codex-pricing-plans=individual">OpenAI DocsのCodex料金</a>，<a href="https://antigravity.google/pricing">Google Antigravity料金</a>，<a href="https://www.anthropic.com/pricing?subjects=claude&amp;type=product">Anthropic料金</a>です．
+</p>
+
+<p>
+なお，Googleでは，従来の個人向けGemini Code AssistとGemini
+CLIのGoogleログインが2026年6月18日に終了しています．現在，Codexに直接対応するGoogle製品は，実質的にGoogle
+Antigravityです．<a href="https://developers.google.com/gemini-code-assist/docs/deprecations/code-assist-individuals">Google公式：Gemini Code Assist個人版の廃止</a>
+</p>
+</div>
+</div>
+<div id="outline-container-大学向け契約の比較" class="outline-4">
+<h4 id="大学向け契約の比較">大学向け契約の比較</h4>
+<div class="outline-text-4" id="text-大学向け契約の比較">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">項目</th>
+<th scope="col" class="org-left">ChatGPT Edu</th>
+<th scope="col" class="org-left">Gemini for Education</th>
+<th scope="col" class="org-left">Claude for Education</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">提供会社</td>
+<td class="org-left">OpenAI</td>
+<td class="org-left">Google</td>
+<td class="org-left">Anthropic</td>
+</tr>
+
+<tr>
+<td class="org-left">対象</td>
+<td class="org-left">学生，教職員，研究者，大学業務</td>
+<td class="org-left">学生，教職員，大学業務</td>
+<td class="org-left">学生，教職員，大学業務</td>
+</tr>
+
+<tr>
+<td class="org-left">基本Webチャット</td>
+<td class="org-left">ChatGPT</td>
+<td class="org-left">Gemini</td>
+<td class="org-left">Claude</td>
+</tr>
+
+<tr>
+<td class="org-left">大学向け基本料金</td>
+<td class="org-left">非公開，営業見積り</td>
+<td class="org-left">Gemini for Educationは適格機関なら$0</td>
+<td class="org-left">非公開，営業見積り</td>
+</tr>
+
+<tr>
+<td class="org-left">上位教育プラン</td>
+<td class="org-left">Edu Plus，Edu Pro，いずれも見積り</td>
+<td class="org-left">Google AI Pro for Education</td>
+<td class="org-left">個別見積り</td>
+</tr>
+
+<tr>
+<td class="org-left">上位教育プランの公開価格</td>
+<td class="org-left">非公開</td>
+<td class="org-left">年契約$20／人・月，月契約$24／人・月</td>
+<td class="org-left">非公開</td>
+</tr>
+
+<tr>
+<td class="org-left">教育機関向け割引</td>
+<td class="org-left">個別契約</td>
+<td class="org-left">Education Plus契約者が50～999ライセンスを年契約する場合，条件付きで$15／人・月</td>
+<td class="org-left">「割引料金」と記載されているが金額非公開</td>
+</tr>
+
+<tr>
+<td class="org-left">SSO・ユーザー管理</td>
+<td class="org-left">あり</td>
+<td class="org-left">Google Workspace管理コンソール</td>
+<td class="org-left">あり</td>
+</tr>
+
+<tr>
+<td class="org-left">データのモデル学習への使用</td>
+<td class="org-left">組織データはデフォルトで学習に使用されない</td>
+<td class="org-left">教育向けCore Serviceでは学習に使用されない</td>
+<td class="org-left">組織向け契約条件に従う</td>
+</tr>
+
+<tr>
+<td class="org-left">ローカル開発エージェント</td>
+<td class="org-left">CodexをEduワークスペースで管理可能</td>
+<td class="org-left">Gemini for Education／AI Pro for EducationだけでAntigravityが付属するとは公式に明記されていない</td>
+<td class="org-left">Claude Codeの包含範囲は契約確認が必要</td>
+</tr>
+
+<tr>
+<td class="org-left">プログラミング授業への適合</td>
+<td class="org-left">高い．Edu管理下でローカルCodexを学生に許可可能</td>
+<td class="org-left">Web上の学習支援は導入しやすい．ローカルエージェントは別途Gemini Enterprise等の確認が必要</td>
+<td class="org-left">Claude Codeを含む契約条件が得られれば利用可能</td>
+</tr>
+
+<tr>
+<td class="org-left">調達方法</td>
+<td class="org-left">OpenAI営業窓口</td>
+<td class="org-left">Googleまたは販売パートナー</td>
+<td class="org-left">Anthropic営業窓口</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+教育プランの公式情報は以下です．
+</p>
+
+<ul class="org-ul">
+<li><a href="https://learn.chatgpt.com/docs/enterprise/education-plans">OpenAI Docs：ChatGPT教育プラン</a></li>
+<li><a href="https://edu.google.com/intl/ALL_us/ai/gemini-for-education/">Google：Gemini for Education</a></li>
+<li><a href="https://www.anthropic.com/news/introducing-claude-for-education">Anthropic：Claude for Education</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-googleの教育契約で注意する点" class="outline-4">
+<h4 id="googleの教育契約で注意する点">Googleの教育契約で注意する点</h4>
+<div class="outline-text-4" id="text-googleの教育契約で注意する点">
+<p>
+Googleは名称が似ていますが，次を分けて考える必要があります．
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Google製品</th>
+<th scope="col" class="org-left">主目的</th>
+<th scope="col" class="org-left">ローカルソースへのagenticアクセス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Gemini for Education</td>
+<td class="org-left">教育向けWebチャット</td>
+<td class="org-left">基本的にはなし</td>
+</tr>
+
+<tr>
+<td class="org-left">Google AI Pro for Education</td>
+<td class="org-left">Gemini，Notebook，Gmail，Docs等の上位機能</td>
+<td class="org-left">Antigravity付属は公式ページ上で明記されていない</td>
+</tr>
+
+<tr>
+<td class="org-left">Google Antigravity個人版</td>
+<td class="org-left">ローカル開発エージェント</td>
+<td class="org-left">あり</td>
+</tr>
+
+<tr>
+<td class="org-left">Gemini Enterprise＋Antigravity</td>
+<td class="org-left">組織管理された開発エージェント</td>
+<td class="org-left">あり</td>
+</tr>
+
+<tr>
+<td class="org-left">Gemini API</td>
+<td class="org-left">アプリや独自ツールへの組込み</td>
+<td class="org-left">実装次第</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Googleの組織管理下でAntigravityを使う場合は，現時点では有料のGemini
+Enterprise
+Standard，Plus，または従量課金版が対象として明記されています．教育向けGemini
+Enterprise
+EDUは存在しますが，Antigravityの対象エディション一覧にはEduが明記されていません．したがって，大学向けGoogle契約を検討する場合は，​<b>「Geminiが使えるか」ではなく「学生にAntigravityのローカル開発機能を割り当てられるか」</b>​を販売窓口に確認する必要があります．<a href="https://docs.cloud.google.com/gemini/enterprise/docs/ai-developer-tools-overview">Google Cloud：AI developer tools</a>
+</p>
+</div>
+</div>
+<div id="outline-container-授業での費用イメージ" class="outline-4">
+<h4 id="授業での費用イメージ">授業での費用イメージ</h4>
+<div class="outline-text-4" id="text-授業での費用イメージ">
+<p>
+学生100人が1学期利用する単純な月額換算例です．税，割引，超過料金は含みません．
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">構成</th>
+<th scope="col" class="org-left">1人あたり月額</th>
+<th scope="col" class="org-left">100人・1か月</th>
+<th scope="col" class="org-left">特記事項</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Codex Plus</td>
+<td class="org-left">$20</td>
+<td class="org-left">$2,000</td>
+<td class="org-left">CLI・IDE・デスクトップを利用可能</td>
+</tr>
+
+<tr>
+<td class="org-left">Antigravity Free</td>
+<td class="org-left">$0</td>
+<td class="org-left">$0</td>
+<td class="org-left">上限があり，授業中の安定利用を保証しにくい</td>
+</tr>
+
+<tr>
+<td class="org-left">Google AI Pro個人版</td>
+<td class="org-left">$20</td>
+<td class="org-left">$2,000</td>
+<td class="org-left">個人Googleアカウント契約</td>
+</tr>
+
+<tr>
+<td class="org-left">Google AI Pro for Education・年契約</td>
+<td class="org-left">$20</td>
+<td class="org-left">$2,000</td>
+<td class="org-left">Workspaceの教育向け上位機能．Antigravityは要確認</td>
+</tr>
+
+<tr>
+<td class="org-left">Claude Pro</td>
+<td class="org-left">$20</td>
+<td class="org-left">$2,000</td>
+<td class="org-left">Claude Codeを含む</td>
+</tr>
+
+<tr>
+<td class="org-left">Codex／ChatGPT Edu</td>
+<td class="org-left">見積り</td>
+<td class="org-left">見積り</td>
+<td class="org-left">大学管理，SSO，監査，権限制御</td>
+</tr>
+
+<tr>
+<td class="org-left">Claude for Education</td>
+<td class="org-left">見積り</td>
+<td class="org-left">見積り</td>
+<td class="org-left">Claude Codeの包含条件も見積り時に確認</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-関西学院大学での授業用途なら" class="outline-4">
+<h4 id="関西学院大学での授業用途なら">関西学院大学での授業用途なら</h4>
+<div class="outline-text-4" id="text-関西学院大学での授業用途なら">
+<p>
+目的が「学生PCのソースディレクトリを参照し，コード編集，テスト，実行まで行わせること」であれば，比較対象は次の3製品です．
+</p>
+
+<ol class="org-ol">
+<li>Codex PlusまたはChatGPT Edu＋Codex</li>
+<li>Google Antigravity</li>
+<li>Claude Pro＋Claude Code，またはClaude for Education＋Claude Code権利</li>
+</ol>
+
+<p>
+全学管理，SSO，データ保護，学生アカウントの一括発行まで必要なら，公開価格だけで選ぶことはできません．OpenAIとAnthropicには大学向け見積りを依頼し，Googleには「Gemini
+for
+Education」ではなく「Antigravityを学生に提供できる契約」を指定して問い合わせる必要があります．
+</p>
+
+<p>
+少人数の試行授業であれば，費用と導入容易性のバランスからは，​<b>Codex
+Plus，Google Antigravity Free／Pro，Claude
+Proを各数名で比較する</b>​のが現実的です．本格導入では，管理機能が明確で，EduワークスペースからローカルCodexの権限を制御できるChatGPT
+Eduが比較しやすい構成です．
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Shigeto R. Nishitani</p>
+<p class="date">Created: 2026-11-06 Fri 13:26</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

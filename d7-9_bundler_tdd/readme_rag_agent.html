@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
+<head>
+<!-- 2026-11-06 Fri 13:21 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agentic application comparison</title>
+<meta name="author" content="Shigeto R. Nishitani" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/code-copy.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/vendor/stickytableheaders/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/code-copy.js"></script>
+<link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Agentic application comparison</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgef217ea">1. turn 1 : RAGでの構成</a>
+<ul>
+<li><a href="#org2cf5f33">1.1. user</a></li>
+<li><a href="#org4db4d5e">1.2. codex</a>
+<ul>
+<li><a href="#必要な構成">必要な構成</a>
+<ul>
+<li><a href="#検索可能な知識基盤">1．検索可能な知識基盤</a></li>
+<li><a href="#retrieval-tool">2．Retrieval tool</a></li>
+<li><a href="#orchestrator-agent">3．Orchestrator agent</a></li>
+<li><a href="#agent間の役割と入出力契約">4．Agent間の役割と入出力契約</a></li>
+<li><a href="#状態とコンテキストの管理">5．状態とコンテキストの管理</a></li>
+<li><a href="#品質管理と安全制御">6．品質管理と安全制御</a></li>
+</ul>
+</li>
+<li><a href="#推奨する実装順序">推奨する実装順序</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../c3_linear_algebra_core/readme.html">prev_button</a>
+<a href="../intro_info_26s.html">up_button</a>
+<a href="../c1_outline/readme.html">next_button</a>
+</p>
+<div id="outline-container-orgef217ea" class="outline-2">
+<h2 id="orgef217ea"><span class="section-number-2">1.</span> turn 1 : RAGでの構成</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org2cf5f33" class="outline-3">
+<h3 id="org2cf5f33"><span class="section-number-3">1.1.</span> user</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+そうすると，LLMに役割を与えて別のagent機能を持たせ，作業を組み立てることが可能なのですね．これからRAGを作ろうとしているのですが，orchestartionを実行するには何が必要ですか？
+</p>
+</div>
+</div>
+<div id="outline-container-org4db4d5e" class="outline-3">
+<h3 id="org4db4d5e"><span class="section-number-3">1.2.</span> codex</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+はい，可能です．ただし，RAGでは最初からすべてをagentにする必要はありません．検索処理は通常のツールとして実装し，LLM
+agentが「いつ，何を，どの条件で検索するか」を判断する構成が扱いやすいです．
+</p>
+</div>
+<div id="outline-container-必要な構成" class="outline-4">
+<h4 id="必要な構成">必要な構成</h4>
+<div class="outline-text-4" id="text-必要な構成">
+<div class="org-src-container">
+<pre class="src src-text"><code>&#12518;&#12540;&#12470;&#12540;
+   &#8595;
+Orchestrator agent
+   &#9500;&#9472; &#36074;&#21839;&#12398;&#20998;&#39006;&#12539;&#26908;&#32034;&#26041;&#37341;&#12398;&#27770;&#23450;
+   &#9500;&#9472; Retrieval tool &#9472;&#8594; Vector DB&#65295;&#25991;&#26360;DB
+   &#9500;&#9472; &#22238;&#31572;&#29983;&#25104;
+   &#9492;&#9472; &#26681;&#25312;&#30906;&#35469;&#12539;&#21697;&#36074;&#35413;&#20385;
+   &#8595;
+&#20986;&#20856;&#20184;&#12365;&#22238;&#31572;
+</code></pre>
+</div>
+</div>
+<div id="outline-container-検索可能な知識基盤" class="outline-5">
+<h5 id="検索可能な知識基盤">1．検索可能な知識基盤</h5>
+<div class="outline-text-5" id="text-検索可能な知識基盤">
+<p>
+まず，RAGそのものに必要なデータ基盤を用意します．
+</p>
+
+<ul class="org-ul">
+<li>文書の収集と前処理</li>
+<li>適切な単位へのchunk分割</li>
+<li>embeddingの生成</li>
+<li>vector databaseへの登録</li>
+<li>文書名，日付，著者，権限などのmetadata</li>
+<li>semantic search，キーワード検索，metadata filtering</li>
+<li>必要に応じたreranking</li>
+</ul>
+
+<p>
+OpenAIを使う場合は，Vector StoreとFile
+Searchを利用すると，chunking，embedding，indexingをマネージドで実行できます．<a href="https://developers.openai.com/api/docs/guides/retrieval">OpenAI Docs：Retrieval</a>
+</p>
+</div>
+</div>
+<div id="outline-container-retrieval-tool" class="outline-5">
+<h5 id="retrieval-tool">2．Retrieval tool</h5>
+<div class="outline-text-5" id="text-retrieval-tool">
+<p>
+agentから呼び出せる検索インターフェースが必要です．たとえば，次のような入出力を持たせます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>&#20837;&#21147;&#65306;
+  query
+  document_type
+  date_range
+  top_k
+
+&#20986;&#21147;&#65306;
+  document_id
+  passage
+  score
+  source
+  metadata
+</code></pre>
+</div>
+
+<p>
+検索結果を構造化して返すことが重要です．これにより，agentは取得した文書を比較し，回答の根拠を明示できます．
+</p>
+</div>
+</div>
+<div id="outline-container-orchestrator-agent" class="outline-5">
+<h5 id="orchestrator-agent">3．Orchestrator agent</h5>
+<div class="outline-text-5" id="text-orchestrator-agent">
+<p>
+Orchestratorは，ユーザーの質問を受け取り，次の処理を決定します．
+</p>
+
+<ul class="org-ul">
+<li>RAG検索が必要か</li>
+<li>質問をどのような検索クエリへ変換するか</li>
+<li>検索を何回行うか</li>
+<li>追加検索が必要か</li>
+<li>どの専門agentへ処理を渡すか</li>
+<li>十分な根拠が得られたか</li>
+<li>最終回答を生成してよいか</li>
+</ul>
+
+<p>
+このagentには，LLMだけでなく，指示，利用可能なツール，状態，停止条件を与えます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>Orchestrator agent
+&#65309; LLM
+&#65291; system instructions
+&#65291; retrieval tools
+&#65291; conversation state
+&#65291; routing rules
+&#65291; stopping conditions
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-agent間の役割と入出力契約" class="outline-5">
+<h5 id="agent間の役割と入出力契約">4．Agent間の役割と入出力契約</h5>
+<div class="outline-text-5" id="text-agent間の役割と入出力契約">
+<p>
+複数agentにする場合は，たとえば次のように分担できます．
+</p>
+
+<ul class="org-ul">
+<li>​<b>Orchestrator agent</b>​：全体の判断と最終回答を担当する．</li>
+<li>​<b>Search agent</b>​：検索クエリを作り，文書を収集する．</li>
+<li>​<b>Synthesis agent</b>​：複数の文書を統合する．</li>
+<li>​<b>Reviewer agent</b>​：回答が根拠に基づいているか確認する．</li>
+</ul>
+
+<p>
+各agentについて，役割だけでなく，入力形式，出力形式，利用可能なツール，終了条件を明示する必要があります．
+</p>
+
+<p>
+RAGでは，Orchestratorが最終回答の所有権を持ち，専門agentをツールとして呼び出す構成が比較的管理しやすいです．専門agentへ会話そのものを引き渡す​<code>handoff</code>​方式もありますが，最終回答の担当が切り替わります．<a href="https://developers.openai.com/api/docs/guides/agents/orchestration">OpenAI Docs：Orchestration and handoffs</a>
+</p>
+</div>
+</div>
+<div id="outline-container-状態とコンテキストの管理" class="outline-5">
+<h5 id="状態とコンテキストの管理">5．状態とコンテキストの管理</h5>
+<div class="outline-text-5" id="text-状態とコンテキストの管理">
+<p>
+Orchestratorは，次の状態を保持する必要があります．
+</p>
+
+<ul class="org-ul">
+<li>元の質問</li>
+<li>作成済みの検索クエリ</li>
+<li>取得した文書と出典</li>
+<li>不足している情報</li>
+<li>agentの実行履歴</li>
+<li>残りの検索回数</li>
+<li>最終回答の生成可否</li>
+</ul>
+
+<p>
+ただし，全履歴をすべてのagentへ渡すと，コストが増え，判断も不安定になります．各agentには，その役割に必要な情報だけを渡すのが基本です．
+</p>
+</div>
+</div>
+<div id="outline-container-品質管理と安全制御" class="outline-5">
+<h5 id="品質管理と安全制御">6．品質管理と安全制御</h5>
+<div class="outline-text-5" id="text-品質管理と安全制御">
+<p>
+最低限，次の制御が必要です．
+</p>
+
+<ul class="org-ul">
+<li>最大検索回数と最大実行時間</li>
+<li>根拠がない場合に「不明」と回答する規則</li>
+<li>出典のない主張の検出</li>
+<li>文書アクセス権限の確認</li>
+<li>prompt injectionへの対策</li>
+<li>agentごとのログとtrace</li>
+<li>コスト，遅延，失敗回数の監視</li>
+<li>評価用質問セットによる継続的なテスト</li>
+</ul>
+
+<p>
+評価指標としては，検索のRecall@k，回答の正確性，根拠との整合性，引用の正しさ，応答時間，実行コストなどを使用します．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-推奨する実装順序" class="outline-4">
+<h4 id="推奨する実装順序">推奨する実装順序</h4>
+<div class="outline-text-4" id="text-推奨する実装順序">
+<p>
+最初は，次の単純な構成から始めるのがよいでしょう．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>&#36074;&#21839;
+&#8594; &#21336;&#19968;agent
+&#8594; Retrieval tool
+&#8594; &#20986;&#20856;&#20184;&#12365;&#22238;&#31572;
+</code></pre>
+</div>
+
+<p>
+次に，必要性が確認できた段階で，以下を順に追加します．
+</p>
+
+<ol class="org-ol">
+<li>質問の分類とquery rewriting</li>
+<li>複数回検索とreranking</li>
+<li>回答を検証するReviewer agent</li>
+<li>分野別の専門Search agent</li>
+<li>並列検索と結果統合</li>
+</ol>
+
+<p>
+OpenAIを使う場合，単純なRAGは​<code>Responses API ＋ File Search</code>​で構成できます．複数agent，handoff，guardrail，context管理が必要になった段階でAgents
+SDKを導入できます．公式ドキュメントでも，Responses
+APIではアプリケーション側で制御でき，複雑なオーケストレーションにはAgents
+SDKが選択肢として示されています．<a href="https://developers.openai.com/tracks/building-agents">OpenAI Docs：Building agents</a>
+</p>
+
+<p>
+要点は，​<b>「検索」「生成」「検証」のすべてをagent化するのではなく，判断が必要な部分だけをagentにし，確定的に実行できる処理はtoolとして実装すること</b>​です．これにより，RAGの動作をテストしやすくし，コストと予測不能性を抑えられます．
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Shigeto R. Nishitani</p>
+<p class="date">Created: 2026-11-06 Fri 13:21</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

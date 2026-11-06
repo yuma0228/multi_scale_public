@@ -13,8 +13,8 @@ body {
 
 /* 本文領域（Org-modeのルートコンテナ） */
 #content {
-    /* 左側の目次幅を確保（30vw、最大320px、最少200px） */
-    margin-left: clamp(200px, 30vw, 320px); 
+    /* 長い見出しも読める幅を左側の目次に確保する */
+    margin-left: clamp(300px, 32vw, 380px);
     padding: 1em 2em;
     max-width: none !important; /* Orgのデフォルト指定を解除 */
     background: var(--background);
@@ -28,7 +28,7 @@ body {
     left: 0;
     background: var(--sidebar);
     color: var(--sidebar-foreground);
-    width: clamp(200px, 30vw, 320px);
+    width: clamp(300px, 32vw, 380px);
     /* ReadTheOrgの著作権表示を隠さないよう，下部に領域を残す */
     height: calc(100vh - 6rem);
     padding: 0;
@@ -57,10 +57,11 @@ body {
 
 #table-of-contents li {
     margin: 0;
-    padding: 0.3em 1.2em; 
+    /* 横余白はリンク側だけで管理し，親子で重複させない */
+    padding: 0;
     font-size: 1.1em;
     border-bottom: 1px solid var(--sidebar-border);
-    line-height: 1.2;     
+    line-height: 1.25;
 }
 
 #table-of-contents li:last-child {
@@ -72,7 +73,33 @@ body {
     color: var(--sidebar-foreground);
     text-decoration: none;
     display: block;
+    width: 100%;
+    padding: 0.45em 0.85em;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
     transition: background 0.2s, color 0.2s;
+}
+
+/*
+ * ReadTheOrgの既定値は階層が深くなるたびに左右余白が大きくなる．
+ * 左だけを小刻みに下げ，右側の文字領域を確保する．
+ */
+#table-of-contents ul.nav > li > a {
+    padding: 0.45em 0.85em !important;
+}
+
+#table-of-contents ul.nav > li > ul > li > a,
+#table-of-contents li.current > ul > li > a {
+    padding: 0.45em 0.85em 0.45em 1.35em !important;
+}
+
+#table-of-contents ul.nav > li > ul > li > ul > li > a,
+#table-of-contents li.current > ul > li > ul > li > a {
+    padding: 0.45em 0.85em 0.45em 1.85em !important;
+}
+
+#table-of-contents ul.nav > li > ul > li > ul > li > ul > li > a {
+    padding: 0.45em 0.85em 0.45em 2.35em !important;
 }
 
 #table-of-contents a:hover {
@@ -159,6 +186,8 @@ h3 {
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--foreground);
+    margin-left: 0;
+    padding-left: 0;
 }
 
 pre {

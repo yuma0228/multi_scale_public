@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
 <head>
-<!-- 2026-11-04 Wed 11:04 -->
+<!-- 2026-11-04 Wed 12:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>d7 1104 bundle</title>
@@ -28,11 +28,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga1dae16">1. HyperCardって何？</a></li>
-<li><a href="#orge72b98c">2. bundle</a></li>
-<li><a href="#orgc39c07f">3. edit lib/my_hello.rb</a></li>
-<li><a href="#orga0c67c4">4. rake install:local</a></li>
-<li><a href="#org7c18060">5. for wsl</a></li>
+<li><a href="#org3aa3b64">1. HyperCardって何？</a></li>
+<li><a href="#org25dfd6f">2. bundle</a></li>
+<li><a href="#orgf8828b4">3. edit lib/my_hello.rb</a></li>
+<li><a href="#org5948241">4. rake install:local</a></li>
+<li><a href="#org11d9aaa">5. for wsl</a></li>
 </ul>
 </div>
 </div>
@@ -55,8 +55,8 @@
 </tr>
 </tbody>
 </table>
-<div id="outline-container-orga1dae16" class="outline-2">
-<h2 id="orga1dae16"><span class="section-number-2">1.</span> HyperCardって何？</h2>
+<div id="outline-container-org3aa3b64" class="outline-2">
+<h2 id="org3aa3b64"><span class="section-number-2">1.</span> HyperCardって何？</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><a href="https://ist.ksc.kwansei.ac.jp/~nishitani/Research/2026/phase_diagram_26f/canvas.html">https://ist.ksc.kwansei.ac.jp/~nishitani/Research/2026/phase_diagram_26f/canvas.html</a></li>
@@ -70,8 +70,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orge72b98c" class="outline-2">
-<h2 id="orge72b98c"><span class="section-number-2">2.</span> bundle</h2>
+<div id="outline-container-org25dfd6f" class="outline-2">
+<h2 id="org25dfd6f"><span class="section-number-2">2.</span> bundle</h2>
 <div class="outline-text-2" id="text-2">
 <pre class="example">
 gem install bundler
@@ -120,8 +120,8 @@ Gem <span style="color: #3548cf;">'my_hello'</span> was successfully created. Fo
 </p>
 </div>
 </div>
-<div id="outline-container-orgc39c07f" class="outline-2">
-<h2 id="orgc39c07f"><span class="section-number-2">3.</span> edit lib/my_hello.rb</h2>
+<div id="outline-container-orgf8828b4" class="outline-2">
+<h2 id="orgf8828b4"><span class="section-number-2">3.</span> edit lib/my_hello.rb</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 puts "hello."
@@ -129,8 +129,8 @@ puts "hello."
 </p>
 </div>
 </div>
-<div id="outline-container-orga0c67c4" class="outline-2">
-<h2 id="orga0c67c4"><span class="section-number-2">4.</span> rake install:local</h2>
+<div id="outline-container-org5948241" class="outline-2">
+<h2 id="org5948241"><span class="section-number-2">4.</span> rake install:local</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-ruby"><code><span style="color: #595959;"># </span><span style="color: #595959;">Rakefile</span>
@@ -149,16 +149,24 @@ task <span style="color: #0000b0;">:default</span> <span style="color: #531ab6;"
 </div>
 
 <pre class="example">
-edit my_help.gemspec # TODO =&gt; ???
+edit my_help.gemspec # TODO =&gt; 適当に修正
 git add -A
 git commit -m 'first commit'
+githubでnew repositoryして，それをgit remote add ...
 rake install:local
-rbenv rehash
+</pre>
+<p>
+(: rbenv rehash)
+</p>
+
+<pre class="example">
+my_hello       # installが無事終わっていることを確認
+which my_hello # でinstall先を確認
 </pre>
 </div>
 </div>
-<div id="outline-container-org7c18060" class="outline-2">
-<h2 id="org7c18060"><span class="section-number-2">5.</span> for wsl</h2>
+<div id="outline-container-org11d9aaa" class="outline-2">
+<h2 id="org11d9aaa"><span class="section-number-2">5.</span> for wsl</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 apt版Rubyではrbenvのshimがないため，​<code>rbenv rehash</code>​に相当する操作は不要です．RubyGemsが作成した実行ファイルが​<code>PATH</code>​上にあるかどうかだけで決まります．
@@ -240,7 +248,7 @@ install：rehashは不要だが，​<code>Gem.user_dir/bin</code>​を​<code
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Shigeto R. Nishitani</p>
-<p class="date">Created: 2026-11-04 Wed 11:04</p>
+<p class="date">Created: 2026-11-04 Wed 12:19</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
