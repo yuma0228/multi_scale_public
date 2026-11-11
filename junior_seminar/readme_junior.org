@@ -19,12 +19,14 @@
 * for 領域実習
 - [[https://kwanseio365-my.sharepoint.com/:f:/g/personal/cru32369_kwansei_ac_jp/IgDDsVu4tF6xT4bChileGjFcARGm6bKoAjdfoFp_3C3urcs?e=hwaL32][資料，動画置き場]]
 
-* d8 <2026-11-11 Wed>
+* d9 <2026-11-18 Wed> put_rake rev by Codex
+- put_rakeのreviseをcodexで．
+- codexなんかのagentの説明
 - TDD, FSM, 
   - recursion, 
+* d8 <2026-11-11 Wed>
 - Rakefie
-- Thor,
-
+- put_rake
 * d7 <2026-11-04 Wed>
 - command :: ssh, github # for open?
 - bin, path

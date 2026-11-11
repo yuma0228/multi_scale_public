@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas Links</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href=".theme.css">
+</head>
+<body style="background-color: var(--background);">
+
+<canvas id="myCanvas" width="1200" height="800" style="border:1px solid var(--border); cursor:pointer;"></canvas>
+
+<script>
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+function themeColor(propertyName, fallback) {
+  return getComputedStyle(document.documentElement)
+    .getPropertyValue(propertyName).trim() || fallback;
+}
+
+// --- 高DPI対応 ---
+const dpr = window.devicePixelRatio || 1;
+const rect = canvas.getBoundingClientRect();
+canvas.width = rect.width * dpr;
+canvas.height = rect.height * dpr;
+ctx.scale(dpr, dpr);
+canvas.style.width = rect.width + 'px';
+canvas.style.height = rect.height + 'px';
+// --- ここまで ---
+
+ctx.imageSmoothingQuality = 'high'; // 画像の描画品質を最高に設定
+
+// 1. データ定義（Rubyで生成）
+const nodes = [
+  {
+    "id": 13,
+    "name": "Agentic application comparison",
+    "type": "icon",
+    "file_path": "readme_rag_agent.html",
+    "icon_path": null,
+    "x": 393.1228241078208,
+    "y": 378.11758051277104,
+    "color": "orange",
+    "fixed": false
+  },
+  {
+    "id": 12,
+    "name": "Agentic application comparison",
+    "type": "icon",
+    "file_path": "readme_agent_compare.html",
+    "icon_path": null,
+    "x": 350.0771904156569,
+    "y": 345.6623247409098,
+    "color": "orange",
+    "fixed": false
+  },
+  {
+    "id": 11,
+    "name": "d7-9 bundle, thor, minitest",
+    "type": "icon",
+    "file_path": "readme.html",
+    "icon_path": "dummy_icon.png",
+    "x": 458.11763686479264,
+    "y": 221.5529163987179,
+    "color": "orange",
+    "fixed": false
+  },
+  {
+    "id": 10,
+    "name": "Org保存書式とスキルの更新",
+    "type": "icon",
+    "file_path": "d8_tdd/readme_save_chat_to_org.html",
+    "icon_path": "d8_tdd/dummy_icon.png",
+    "x": 289.7028440089281,
+    "y": 155.82239954190126,
+    "color": "orange",
+    "fixed": false
+  },
+  {
+    "id": 9,
+    "name": "d7-9 bundle, thor, minitest",
+    "type": "icon",
+    "file_path": "d8_tdd/readme_my_hello_tdd_live.html",
+    "icon_path": "d8_tdd/dummy_icon.png",
+    "x": 252.18710889923472,
+    "y": 212.71591228272433,
+    "color": "orange",
+    "fixed": false
+  },
+  {
+    "id": 8,
+    "name": "d7-9 bundle, thor, minitest",
+    "type": "icon",
+    "file_path": "d8_tdd/readme_mk_stack_directory_conf.html",
+    "icon_path": "d8_tdd/dummy_icon.png",
+    "x": 266.2603864025157,
+    "y": 275.7402578284726,
+    "color": "orange",
+    "fixed": false
+  },
+  {
+    "id": 7,
+    "name": "TDD",
+    "type": "icon",
+    "file_path": "d8_tdd/readme.html",
+    "icon_path": "d8_tdd/dummy_icon.png",
+    "x": 360.9449872486737,
+    "y": 145.8925642793794,
+    "color": "orange",
+    "fixed": false
+  },
+  {
+    "id": 6,
+    "name": "d7 1104 bundle",
+    "type": "icon",
+    "file_path": "d7_bundle/readme.html",
+    "icon_path": "d7_bundle/dummy_icon.png",
+    "x": 592.4281591908884,
+    "y": 253.64270285359606,
+    "color": "orange",
+    "fixed": false
+  },
+  {
+    "id": 5,
+    "name": "mk_stack_dir",
+    "type": "icon",
+    "file_path": "copy_as_org/readme_copy_as_org.html",
+    "icon_path": "copy_as_org/dummy_icon.png",
+    "x": 495.25205167284923,
+    "y": 460.14672319669165,
+    "color": "orange",
+    "fixed": false
+  },
+  {
+    "id": 4,
+    "name": "d8 tdd",
+    "type": "dir",
+    "file_path": "d8_tdd",
+    "icon_path": ".semi_lattice/icons/folder.png",
+    "x": 336.95136498089505,
+    "y": 226.7813468674131,
+    "color": "orange",
+    "fixed": false
+  },
+  {
+    "id": 3,
+    "name": "d7 bundle",
+    "type": "dir",
+    "file_path": "d7_bundle",
+    "icon_path": ".semi_lattice/icons/folder.png",
+    "x": 511.73863851409567,
+    "y": 276.92891738424953,
+    "color": "orange",
+    "fixed": false
+  },
+  {
+    "id": 2,
+    "name": "copy as org",
+    "type": "dir",
+    "file_path": "copy_as_org",
+    "icon_path": ".semi_lattice/icons/folder.png",
+    "x": 463.82909510895155,
+    "y": 381.3848713452914,
+    "color": "orange",
+    "fixed": false
+  },
+  {
+    "id": 1,
+    "name": "Bundler and TDD",
+    "type": "stack",
+    "file_path": ".",
+    "icon_path": ".semi_lattice/icons/stack.png",
+    "x": 421.15134655123114,
+    "y": 297.29664866628144,
+    "color": "orange",
+    "fixed": false
+  }
+];
+const edges = [
+  {
+    "from": 1,
+    "to": 2
+  },
+  {
+    "from": 1,
+    "to": 3
+  },
+  {
+    "from": 1,
+    "to": 4
+  },
+  {
+    "from": 2,
+    "to": 5
+  },
+  {
+    "from": 3,
+    "to": 6
+  },
+  {
+    "from": 4,
+    "to": 7
+  },
+  {
+    "from": 4,
+    "to": 8
+  },
+  {
+    "from": 4,
+    "to": 9
+  },
+  {
+    "from": 4,
+    "to": 10
+  },
+  {
+    "from": 1,
+    "to": 11
+  },
+  {
+    "from": 1,
+    "to": 12
+  },
+  {
+    "from": 1,
+    "to": 13
+  }
+];
+
+// ノードIDをキーにしたノード情報のマップを作成
+const nodeMap = new Map(nodes.map(node => [node.id, node]));
+
+const nodesWithIcons = nodes.filter(node => node.icon_path);
+const defaultIconWidth = 120;
+const defaultIconHeight = 90;
+
+// 画像を読み込めない場合にもラベルとクリック領域を残す
+nodes.forEach(node => {
+  node.width = defaultIconWidth;
+  node.height = defaultIconHeight;
+  node.img = null;
+  node.imageLoadError = false;
+});
+
+// 描画関数
+function drawAll() {
+  // Canvasをクリア
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // 背景色を設定
+  ctx.fillStyle = themeColor('--background', '#ffffff');
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // 2. エッジ（線）を描画
+  ctx.strokeStyle = themeColor('--foreground', '#263f35');
+  ctx.lineWidth = 1;
+  edges.forEach(edge => {
+    const fromNode = nodeMap.get(edge.from);
+    const toNode = nodeMap.get(edge.to);
+    if (fromNode && toNode) {
+      ctx.beginPath();
+      ctx.moveTo(fromNode.x, fromNode.y);
+      ctx.lineTo(toNode.x, toNode.y);
+      ctx.stroke();
+    }
+  });
+
+  // 3. ノード（アイコンとテキスト）を描画
+  nodes.forEach(node => {
+    // 描画位置を画像の中心に補正
+    const drawX = node.x - node.width / 2;
+    const drawY = node.y - node.height / 2;
+
+    if (node.img && node.img.naturalWidth > 0) {
+      ctx.drawImage(node.img, drawX, drawY, node.width, node.height);
+    } else {
+      // 画像がない場合や読み込みに失敗した場合はプレースホルダーを表示
+      ctx.fillStyle = themeColor('--muted', '#f4f7f3');
+      ctx.strokeStyle = themeColor('--muted-foreground', '#52665d');
+      ctx.fillRect(drawX, drawY, node.width, node.height);
+      ctx.strokeRect(drawX, drawY, node.width, node.height);
+
+      ctx.fillStyle = themeColor('--muted-foreground', '#52665d');
+      ctx.font = '12px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('image not found', node.x, node.y);
+    }
+    
+    // 画像の読み込み結果にかかわらずタイトルを表示
+    ctx.fillStyle = themeColor('--muted-foreground', '#52665d');
+    ctx.font = `12px ${themeColor('--font-family-base', 'Arial, sans-serif')}`;
+    ctx.textAlign = 'center';
+    ctx.fillText(node.name, node.x, drawY + node.height + 15);
+  });
+}
+
+// 画像の読み込み処理
+function loadNodeImage(node) {
+  return new Promise(resolve => {
+    const img = new Image();
+
+    img.onload = () => {
+      // 元画像の縦横比を維持して高さを計算
+      const aspectRatio = img.naturalHeight / img.naturalWidth;
+      node.width = defaultIconWidth;
+      node.height = defaultIconWidth * aspectRatio;
+      node.img = img;
+      resolve();
+    };
+
+    img.onerror = () => {
+      node.img = null;
+      node.imageLoadError = true;
+      console.warn(`Icon image could not be loaded: ${node.icon_path}`, node);
+      resolve();
+    };
+
+    // ハンドラを登録してから読み込みを開始する
+    img.src = node.icon_path;
+  });
+}
+
+// 一部の画像が読み込めなくても，全ノードの描画を継続する
+Promise.all(nodesWithIcons.map(loadNodeImage)).then(drawAll);
+
+// OSの自動appearance切替にも追従してCanvasを再描画する．
+const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+darkModeQuery.addEventListener('change', drawAll);
+
+// 4. クリックイベントの設定
+canvas.addEventListener('click', (event) => {
+  const rect = canvas.getBoundingClientRect();
+  const clickX = event.clientX - rect.left;
+  const clickY = event.clientY - rect.top;
+
+  // クリックされたノードを逆順で探す（上に描画されたものが優先される）
+  const clickedNode = nodes.slice().reverse().find(node => {
+    if (!node.height || !node.file_path) return false;
+    const drawX = node.x - node.width / 2;
+    const drawY = node.y - node.height / 2;
+    return (
+      clickX >= drawX &&
+      clickX <= drawX + node.width &&
+      clickY >= drawY &&
+      clickY <= drawY + node.height
+    );
+  });
+
+  if (clickedNode) {
+    window.open(clickedNode.file_path, '_blank');
+  }
+});
+</script>
+
+</body>
+</html>

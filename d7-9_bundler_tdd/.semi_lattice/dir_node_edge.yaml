@@ -1,0 +1,88 @@
+---
+:nodes:
+- :id: 1
+  :name: Bundler and TDD
+  :type: stack
+  :file_path: "."
+- :id: 2
+  :name: copy as org
+  :type: dir
+  :file_path: copy_as_org
+- :id: 3
+  :name: d7 bundle
+  :type: dir
+  :file_path: d7_bundle
+- :id: 4
+  :name: d8 tdd
+  :type: dir
+  :file_path: d8_tdd
+- :id: 5
+  :name: mk_stack_dir
+  :type: icon
+  :file_path: copy_as_org/readme_copy_as_org.html
+  :icon_path: copy_as_org/dummy_icon.png
+- :id: 6
+  :name: d7 1104 bundle
+  :type: icon
+  :file_path: d7_bundle/readme.html
+  :icon_path: d7_bundle/dummy_icon.png
+- :id: 7
+  :name: TDD
+  :type: icon
+  :file_path: d8_tdd/readme.html
+  :icon_path: d8_tdd/dummy_icon.png
+- :id: 8
+  :name: d7-9 bundle, thor, minitest
+  :type: icon
+  :file_path: d8_tdd/readme_mk_stack_directory_conf.html
+  :icon_path: d8_tdd/dummy_icon.png
+- :id: 9
+  :name: d7-9 bundle, thor, minitest
+  :type: icon
+  :file_path: d8_tdd/readme_my_hello_tdd_live.html
+  :icon_path: d8_tdd/dummy_icon.png
+- :id: 10
+  :name: Org保存書式とスキルの更新
+  :type: icon
+  :file_path: d8_tdd/readme_save_chat_to_org.html
+  :icon_path: d8_tdd/dummy_icon.png
+- :id: 11
+  :name: d7-9 bundle, thor, minitest
+  :type: icon
+  :file_path: readme.html
+  :icon_path: dummy_icon.png
+- :id: 12
+  :name: Agentic application comparison
+  :type: icon
+  :file_path: readme_agent_compare.html
+  :icon_path:
+- :id: 13
+  :name: Agentic application comparison
+  :type: icon
+  :file_path: readme_rag_agent.html
+  :icon_path:
+:edges:
+- :from: 1
+  :to: 2
+- :from: 1
+  :to: 3
+- :from: 1
+  :to: 4
+- :from: 2
+  :to: 5
+- :from: 3
+  :to: 6
+- :from: 4
+  :to: 7
+- :from: 4
+  :to: 8
+- :from: 4
+  :to: 9
+- :from: 4
+  :to: 10
+- :from: 1
+  :to: 11
+- :from: 1
+  :to: 12
+- :from: 1
+  :to: 13

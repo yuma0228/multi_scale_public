@@ -1,0 +1,156 @@
+---
+:nodes:
+- :id: 1
+  :name: Bundler and TDD
+  :type: stack
+  :file_path: "."
+  :icon_path:
+  :x: 443.62530953846647
+  :y: 297.7543243354211
+  :color: orange
+  :fixed: false
+- :id: 2
+  :name: copy as org
+  :type: dir
+  :file_path: copy_as_org
+  :icon_path:
+  :x: 489.0078383971686
+  :y: 379.69363286093585
+  :color: orange
+  :fixed: false
+- :id: 3
+  :name: d7 bundle
+  :type: dir
+  :file_path: d7_bundle
+  :icon_path:
+  :x: 530.8490386105916
+  :y: 278.8255632954859
+  :color: orange
+  :fixed: false
+- :id: 4
+  :name: d8 tdd
+  :type: dir
+  :file_path: d8_tdd
+  :icon_path:
+  :x: 368.3860913757348
+  :y: 220.05183234633128
+  :color: orange
+  :fixed: false
+- :id: 5
+  :name: mk_stack_dir
+  :type: icon
+  :file_path: copy_as_org/readme_copy_as_org.html
+  :icon_path: copy_as_org/dummy_icon.png
+  :x: 527.6039282308312
+  :y: 454.708865507547
+  :color: orange
+  :fixed: false
+- :id: 6
+  :name: d7 1104 bundle
+  :type: icon
+  :file_path: d7_bundle/readme.html
+  :icon_path: d7_bundle/dummy_icon.png
+  :x: 600
+  :y: 237.86057469286968
+  :color: orange
+  :fixed: false
+- :id: 7
+  :name: TDD
+  :type: icon
+  :file_path: d8_tdd/readme.html
+  :icon_path: d8_tdd/dummy_icon.png
+  :x: 393.3360548582085
+  :y: 139.2826495293325
+  :color: orange
+  :fixed: false
+- :id: 8
+  :name: d7-9 bundle, thor, minitest
+  :type: icon
+  :file_path: d8_tdd/readme_mk_stack_directory_conf.html
+  :icon_path: d8_tdd/dummy_icon.png
+  :x: 295.77496589417314
+  :y: 266.0874876339171
+  :color: orange
+  :fixed: false
+- :id: 9
+  :name: d7-9 bundle, thor, minitest
+  :type: icon
+  :file_path: d8_tdd/readme_my_hello_tdd_live.html
+  :icon_path: d8_tdd/dummy_icon.png
+  :x: 283.8580065443127
+  :y: 203.8503086742266
+  :color: orange
+  :fixed: false
+- :id: 10
+  :name: Org保存書式とスキルの更新
+  :type: icon
+  :file_path: d8_tdd/readme_save_chat_to_org.html
+  :icon_path: d8_tdd/dummy_icon.png
+  :x: 321.7132246159841
+  :y: 148.43897184193955
+  :color: orange
+  :fixed: false
+- :id: 11
+  :name: d7-9 bundle, thor, minitest
+  :type: icon
+  :file_path: readme.html
+  :icon_path: dummy_icon.png
+  :x: 483.1091769462816
+  :y: 222.5208283775015
+  :color: orange
+  :fixed: false
+- :id: 12
+  :name: Agentic application comparison
+  :type: icon
+  :file_path: readme_agent_compare.html
+  :icon_path:
+  :x: 369.46912868544115
+  :y: 340.18325794478335
+  :color: orange
+  :fixed: false
+- :id: 13
+  :name: Agentic application comparison
+  :type: icon
+  :file_path: readme_rag_agent.html
+  :icon_path:
+  :x: 413.9797297122111
+  :y: 377.29058236412766
+  :color: orange
+  :fixed: false
+:edges:
+- :from: 1
+  # from: Bundler and TDD, to: copy as org
+  :to: 2
+- :from: 1
+  # from: Bundler and TDD, to: d7 bundle
+  :to: 3
+- :from: 1
+  # from: Bundler and TDD, to: d8 tdd
+  :to: 4
+- :from: 2
+  # from: copy as org, to: mk_stack_dir
+  :to: 5
+- :from: 3
+  # from: d7 bundle, to: d7 1104 bundle
+  :to: 6
+- :from: 4
+  # from: d8 tdd, to: TDD
+  :to: 7
+- :from: 4
+  # from: d8 tdd, to: d7-9 bundle, thor, minitest
+  :to: 8
+- :from: 4
+  # from: d8 tdd, to: d7-9 bundle, thor, minitest
+  :to: 9
+- :from: 4
+  # from: d8 tdd, to: Org保存書式とスキルの更新
+  :to: 10
+- :from: 1
+  # from: Bundler and TDD, to: d7-9 bundle, thor, minitest
+  :to: 11
+- :from: 1
+  # from: Bundler and TDD, to: Agentic application comparison
+  :to: 12
+- :from: 1
+  # from: Bundler and TDD, to: Agentic application comparison
+  :to: 13

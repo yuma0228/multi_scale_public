@@ -16,8 +16,19 @@
 [[../c1_outline/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
+* sub_orgs
+- [[file:./readme_mk_stack_directory_conf.org][授業段取りのアイデア]]
+- [[file:./readme_my_hello_tdd_live.org][授業でのライブcode]]
+- [[file:./readme_save_chat_to_org.org][save-chat-to-orgの作成依頼]]
 
 | [[file:./dummy_icon.png]]
+
+* scaffold(足場)
+- gem my_hello --exe --test=minitest
+- defaultで作るmy_helloは.git管理されているが，
+  multi_scaleの.gitとconflictするので，
+  .gitを削除している
+
 
 * introとして
 - testの書き方とagent 仕様書md化の一致

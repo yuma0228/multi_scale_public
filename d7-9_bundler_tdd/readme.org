@@ -18,19 +18,23 @@
 
 | [[file:./dummy_icon.png]]
 
-* HyperCardって何？
-- [[https://ist.ksc.kwansei.ac.jp/~nishitani/Research/2026/phase_diagram_26f/canvas.html]]
-
+* d7 HyperCardって何？
+- [[https://ist.ksc.kwansei.ac.jp/~nishitani/Research/2026/phase_diagram_26f/canvas.html][合金状態図26f]]
+- [[file:../c0_mk_stack_dir/c4_hc_vs_others/readme_hc_vs_wiki.org][HyperCard vs others]]
 - Markup言語
   - markdown on code, jupyter notebook(.md), 
   - org-mode on emacs (.org)
   - handoc (latex, docs, )
 
 
-* bundle
-
-* minitest
-
-* Thor ~= Rakefile
-
+* d8 bundle, minitest, Thor ~= Rakefile
+* d9 gemの完成，
+- claの置き場所 :: 
+  - ./cla, 
+  - ~/bin/cla, 
+  - Rakefile, claの格納庫
+  - /usr/local/bin/cla, 
+- RubyGems
+  - gem release
+- docs
 

@@ -36,7 +36,7 @@ testを含めたbundle gemの作成をデモしていきます．配下に一度
 
 * Turn 2 : bundle gemにおけるテスト配置
 ** user => Bob
-Raphaelさんに聞きたいのですが，bundle でgemのscafoldを作ると，testがまとまっています.
+Raphaelさんに聞きたいのですが，bundle でgemのscaffoldを作ると，testがまとまっています.
 ** codex => Raphael
 はい．​=bundle gem=​でscaffoldを作る際に，
 
