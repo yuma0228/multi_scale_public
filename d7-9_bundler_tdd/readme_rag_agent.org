@@ -10,10 +10,12 @@
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
 # for style.css, never move from here
-[[../c3_linear_algebra_core/readme.html][prev_button]]
-[[../intro_info_26s.html][up_button]]
-[[../c1_outline/readme.html][next_button]]
+[[file:./readme_mk_canvas_rake.html][prev_button]]
+[[file:./canvas.html][up_button]]
+[[file:copy_as_org/readme.html][next_button]]
 # for a real link rewrite usual [[\url][]]
+
+| [[file:./figs/codex.png]]
 
 * turn 1 : RAGでの構成
 ** user

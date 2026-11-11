@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
 <head>
-<!-- 2026-11-04 Wed 12:19 -->
+<!-- 2026-11-11 Wed 21:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>d7 1104 bundle</title>
@@ -28,18 +28,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3aa3b64">1. HyperCardって何？</a></li>
-<li><a href="#org25dfd6f">2. bundle</a></li>
-<li><a href="#orgf8828b4">3. edit lib/my_hello.rb</a></li>
-<li><a href="#org5948241">4. rake install:local</a></li>
-<li><a href="#org11d9aaa">5. for wsl</a></li>
+<li><a href="#org3e9021a">1. bundle</a></li>
+<li><a href="#org7339099">2. edit lib/my_hello.rb</a></li>
+<li><a href="#org4f11c99">3. rake install:local</a></li>
 </ul>
 </div>
 </div>
 <p>
-<a href="../../junior_seminar/readme_junior.html">prev_button</a>
-<a href="../../canvas.html">up_button</a>
-<a href="../../d1-3_stack/d1_mock/readme.html">next_button</a>
+<a href="../copy_as_org/readme.html">prev_button</a>
+<a href="../canvas.html">up_button</a>
+<a href="./readme_rehash.html">next_button</a>
 </p>
 
 
@@ -55,26 +53,11 @@
 </tr>
 </tbody>
 </table>
-<div id="outline-container-org3aa3b64" class="outline-2">
-<h2 id="org3aa3b64"><span class="section-number-2">1.</span> HyperCardって何？</h2>
+<div id="outline-container-org3e9021a" class="outline-2">
+<h2 id="org3e9021a"><span class="section-number-2">1.</span> bundle</h2>
 <div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li><a href="https://ist.ksc.kwansei.ac.jp/~nishitani/Research/2026/phase_diagram_26f/canvas.html">https://ist.ksc.kwansei.ac.jp/~nishitani/Research/2026/phase_diagram_26f/canvas.html</a></li>
-
-<li>Markup言語
-<ul class="org-ul">
-<li>markdown on code, jupyter notebook(.md),</li>
-<li>org-mode on emacs (.org)</li>
-<li>handoc (latex, docs, )</li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org25dfd6f" class="outline-2">
-<h2 id="org25dfd6f"><span class="section-number-2">2.</span> bundle</h2>
-<div class="outline-text-2" id="text-2">
 <pre class="example">
-gem install bundler
+sudo gem install bundler
 bundle gem my_hello --exe --test=minitest
 </pre>
 
@@ -82,17 +65,18 @@ bundle gem my_hello --exe --test=minitest
 env BUNDLE_IGNORE_CONFIG=1 bundle gem my_hello --exe
 </pre>
 <div class="org-src-container">
-<pre class="src src-zsh"><code>Creating gem <span style="color: #3548cf;">'my_hello'</span>...
+<pre class="src src-zsh"><code>Creating gem <span style="font-style: italic;">'my_hello'</span>...
 
 Do you want to generate tests with your gem?
-Future <span style="color: #8f0075;">`bundle gem`</span> calls will use your choice. This setting can be changed anytime with <span style="color: #8f0075;">`bundle config gem.test`</span>.
+Future <span style="font-weight: bold;">`bundle gem`</span> calls will use your choice. This setting can be changed anytime with <span style="font-weight: bold;">`bundle config gem.test`</span>.
 Enter a test framework. rspec/minitest/test-unit/(none): minitest
 Enter a CI service. github/gitlab/circle/(none): github
-Do you want to include a code of conduct<span style="color: #531ab6;"> in</span> gems you generate? y/(n): y
+Do you want to license your code permissively under the MIT license? y/(n): y
+Do you want to include a code of conduct<span style="font-weight: bold;"> in</span> gems you generate? y/(n): y
 Do you want to include a changelog? y/(n): y
 Enter a linter. rubocop/standard/(none): none
 
-Initializing git repo<span style="color: #531ab6;"> in</span> /Users/bob/Desktop/lecture_26f/my_hello
+Initializing git repo<span style="font-weight: bold;"> in</span> /Users/bob/Desktop/lecture_26f/my_hello
       create  my_hello/Gemfile
       create  my_hello/lib/my_hello.rb
       create  my_hello/lib/my_hello/version.rb
@@ -111,7 +95,7 @@ Initializing git repo<span style="color: #531ab6;"> in</span> /Users/bob/Desktop
       create  my_hello/CHANGELOG.md
       create  my_hello/exe/my_hello
 
-Gem <span style="color: #3548cf;">'my_hello'</span> was successfully created. For more information on making a RubyGem visit https://guides.rubygems.org/make-your-own-gem/
+Gem <span style="font-style: italic;">'my_hello'</span> was successfully created. For more information on making a RubyGem visit https://guides.rubygems.org/make-your-own-gem/
 </code></pre>
 </div>
 
@@ -120,135 +104,51 @@ Gem <span style="color: #3548cf;">'my_hello'</span> was successfully created. Fo
 </p>
 </div>
 </div>
-<div id="outline-container-orgf8828b4" class="outline-2">
-<h2 id="orgf8828b4"><span class="section-number-2">3.</span> edit lib/my_hello.rb</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org7339099" class="outline-2">
+<h2 id="org7339099"><span class="section-number-2">2.</span> edit lib/my_hello.rb</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 puts "hello."
 &gt; bundle exec exe/my_hello
 </p>
 </div>
 </div>
-<div id="outline-container-org5948241" class="outline-2">
-<h2 id="org5948241"><span class="section-number-2">4.</span> rake install:local</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-org4f11c99" class="outline-2">
+<h2 id="org4f11c99"><span class="section-number-2">3.</span> rake install:local</h2>
+<div class="outline-text-2" id="text-3">
 <div class="org-src-container">
-<pre class="src src-ruby"><code><span style="color: #595959;"># </span><span style="color: #595959;">Rakefile</span>
-<span style="color: #595959;"># </span><span style="color: #595959;">frozen_string_literal: true</span>
+<pre class="src src-ruby"><code><span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">Rakefile</span>
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">frozen_string_literal: true</span>
 
-<span style="color: #8f0075;">require</span> <span style="color: #3548cf;">"bundler/gem_tasks"</span>
-<span style="color: #8f0075;">require</span> <span style="color: #3548cf;">"minitest/test_task"</span>
+<span style="font-weight: bold;">require</span> <span style="font-style: italic;">"bundler/gem_tasks"</span>
+<span style="font-weight: bold;">require</span> <span style="font-style: italic;">"minitest/test_task"</span>
 
-<span style="color: #005f5f;">Minitest</span>::<span style="color: #005f5f;">TestTask</span>.create
+<span style="font-weight: bold; text-decoration: underline;">Minitest</span>::<span style="font-weight: bold; text-decoration: underline;">TestTask</span>.create
 
-<span style="color: #595959;">#</span><span style="color: #595959;">task default: :test</span>
-task <span style="color: #0000b0;">:default</span> <span style="color: #531ab6;">do</span>
-  sh <span style="color: #3548cf;">"rake"</span>, <span style="color: #3548cf;">"-T"</span>
-<span style="color: #531ab6;">end</span>
+<span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">task default: :test</span>
+task <span style="font-weight: bold; text-decoration: underline;">:default</span> <span style="font-weight: bold;">do</span>
+  sh <span style="font-style: italic;">"rake"</span>, <span style="font-style: italic;">"-T"</span>
+<span style="font-weight: bold;">end</span>
 </code></pre>
 </div>
 
-<pre class="example">
-edit my_help.gemspec # TODO =&gt; 適当に修正
-git add -A
-git commit -m 'first commit'
-githubでnew repositoryして，それをgit remote add ...
-rake install:local
-</pre>
-<p>
-(: rbenv rehash)
-</p>
-
-<pre class="example">
-my_hello       # installが無事終わっていることを確認
-which my_hello # でinstall先を確認
-</pre>
-</div>
-</div>
-<div id="outline-container-org11d9aaa" class="outline-2">
-<h2 id="org11d9aaa"><span class="section-number-2">5.</span> for wsl</h2>
-<div class="outline-text-2" id="text-5">
-<p>
-apt版Rubyではrbenvのshimがないため，​<code>rbenv rehash</code>​に相当する操作は不要です．RubyGemsが作成した実行ファイルが​<code>PATH</code>​上にあるかどうかだけで決まります．
-</p>
-
-<p>
-一般ユーザーでインストールする場合，gemはユーザーディレクトリへ入ります．実行ファイルは通常，次のどちらかです．
-</p>
-
 <div class="org-src-container">
-<pre class="src src-text"><code>~/.local/share/gem/ruby/&lt;ABI&#12496;&#12540;&#12472;&#12519;&#12531;&gt;/bin
-~/.gem/ruby/&lt;ABI&#12496;&#12540;&#12472;&#12519;&#12531;&gt;/bin
+<pre class="src src-sh"><code>&gt; edit my_help.gemspec <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">TODO =&gt; &#36969;&#24403;&#12395;&#20462;&#27491;</span>
+&gt; git add -A
+&gt; git commit -m <span style="font-style: italic;">'first commit'</span>
+ <span style="font-weight: bold; font-style: italic;">#</span><span style="font-weight: bold; font-style: italic;">github&#12391;new repository&#12375;&#12390;&#65292;&#12381;&#12428;&#12434;git remote add ...</span>
+&gt; sudo rake install:local
+<span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">(rbenv rehash)</span>
+&gt; my_hello       <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">install&#12364;&#28961;&#20107;&#32066;&#12431;&#12387;&#12390;&#12356;&#12427;&#12371;&#12392;&#12434;&#30906;&#35469;</span>
+&gt; which my_hello <span style="font-weight: bold; font-style: italic;"># </span><span style="font-weight: bold; font-style: italic;">&#12391;install&#20808;&#12434;&#30906;&#35469;</span>
 </code></pre>
 </div>
-
-<p>
-正確な場所は次で確認できます．
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell"><code>ruby -e <span style="color: #3548cf;">'puts Gem.user_dir'</span>
-</code></pre>
-</div>
-
-<p>
-実行ファイルがあるか確認します．
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell"><code>ls <span style="color: #3548cf;">"$(ruby -e 'puts Gem.user_dir')/bin/my_hello"</span>
-</code></pre>
-</div>
-
-<p>
-この​<code>bin</code>​は通常​<code>PATH</code>​に入っていないため，bashを使うWSLでは​<code>~/.bashrc</code>​へ追加します．
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell"><code><span style="color: #8f0075;">echo</span> <span style="color: #3548cf;">'export PATH="$(ruby -e '\''puts Gem.user_dir'\'')/bin:$PATH"'</span> &gt;&gt; ~/.bashrc
-source ~/.bashrc
-</code></pre>
-</div>
-
-<p>
-その後は直接実行できます．
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell"><code>my_hello
-</code></pre>
-</div>
-
-<p>
-ユーザー領域へ明示的にインストールする場合は，次の手順が確実です．
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell"><code>rake build
-gem install --user-install pkg/my_hello-0.1.0.gem
-</code></pre>
-</div>
-
-<p>
-一方，​<code>sudo gem install</code>​や​<code>sudo rake install:local</code>​ではsystem領域へ入り，実行ファイルは通常​<code>/usr/local/bin</code>​などへ作成されます．ここは最初から​<code>PATH</code>​に入っているため，インストール直後から実行できます．ただし，apt管理のRubyと手動インストールしたgemが混在するため，RubyGems公式は​<code>sudo gem install</code>​より​<code>--user-install</code>​を推奨しています．<a href="https://guides.rubygems.org/gem-installation-and-loading/">RubyGems公式ガイド</a>
-</p>
-
-<p>
-つまり，apt版Rubyでの違いは次のとおりです．
-</p>
-
-<ul class="org-ul">
-<li>rbenv版：実行ファイルをインストール後，shim生成のため​<code>rbenv rehash</code>​が必要になる場合がある．</li>
-<li>apt版のsystem install：​<code>PATH</code>​上へwrapperが作られれば即座に実行できる．</li>
-<li>apt版のuser
-install：rehashは不要だが，​<code>Gem.user_dir/bin</code>​を​<code>PATH</code>​へ追加する必要がある．</li>
-</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Shigeto R. Nishitani</p>
-<p class="date">Created: 2026-11-04 Wed 12:19</p>
+<p class="date">Created: 2026-11-11 Wed 21:35</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

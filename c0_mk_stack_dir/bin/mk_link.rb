@@ -27,9 +27,11 @@ hrefs = data.fetch(:nodes).filter_map.with_index do |node, node_i|
 end
 
 div = hrefs.size
+org_files = []
 
 hrefs.each_with_index do |f, i|
   p org_file = f.sub(/\.html\z/, '.org')
+  org_files << org_file
   
   layers = f.split('/').size-1
   up_move= '../'*layers
@@ -44,5 +46,12 @@ hrefs.each_with_index do |f, i|
 [[#{up_move}#{hrefs[(i+1)%div]}][next_button]]
 "
   File.write(org_file, lines.join(""))
-  system "emacs #{org_file} --batch -l ~/.emacs.d/init.el -f org-html-export-to-html --kill"
 end
+
+emacs_args = [
+  '--batch', '-l', File.expand_path('~/.emacs.d/init.el'),
+  '--eval', '(setq inhibit-message t message-log-max nil)'
+]
+org_files.each { |org_file| emacs_args.concat [org_file, '-f', 'org-html-export-to-html'] }
+emacs_args << '--kill'
+abort 'OrgからHTMLへの変換に失敗しました．' unless system('emacs', *emacs_args)

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
+<head>
+<!-- 2026-11-11 Wed 20:37 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>d7 1104 bundle</title>
+<meta name="author" content="Shigeto R. Nishitani" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/code-copy.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/vendor/stickytableheaders/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/code-copy.js"></script>
+<link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">d7 1104 bundle</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org5253c8c">1. bundle</a></li>
+<li><a href="#org7c2f6c0">2. edit lib/my_hello.rb</a></li>
+<li><a href="#org92df00b">3. rake install:local</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../../junior_seminar/readme_junior.html">prev_button</a>
+<a href="../../canvas.html">up_button</a>
+<a href="../../d1-3_stack/d1_mock/readme.html">next_button</a>
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="./dummy_icon.png" alt="dummy_icon.png" /></td>
+</tr>
+</tbody>
+</table>
+<div id="outline-container-org5253c8c" class="outline-2">
+<h2 id="org5253c8c"><span class="section-number-2">1.</span> bundle</h2>
+<div class="outline-text-2" id="text-1">
+<pre class="example">
+sudo gem install bundler
+bundle gem my_hello --exe --test=minitest
+</pre>
+
+<pre class="example">
+env BUNDLE_IGNORE_CONFIG=1 bundle gem my_hello --exe
+</pre>
+<div class="org-src-container">
+<pre class="src src-zsh"><code>Creating gem <span style="color: #79a8ff;">'my_hello'</span>...
+
+Do you want to generate tests with your gem?
+Future <span style="color: #f78fe7;">`bundle gem`</span> calls will use your choice. This setting can be changed anytime with <span style="color: #f78fe7;">`bundle config gem.test`</span>.
+Enter a test framework. rspec/minitest/test-unit/(none): minitest
+Enter a CI service. github/gitlab/circle/(none): github
+Do you want to license your code permissively under the MIT license? y/(n): y
+Do you want to include a code of conduct<span style="color: #b6a0ff;"> in</span> gems you generate? y/(n): y
+Do you want to include a changelog? y/(n): y
+Enter a linter. rubocop/standard/(none): none
+
+Initializing git repo<span style="color: #b6a0ff;"> in</span> /Users/bob/Desktop/lecture_26f/my_hello
+      create  my_hello/Gemfile
+      create  my_hello/lib/my_hello.rb
+      create  my_hello/lib/my_hello/version.rb
+      create  my_hello/sig/my_hello.rbs
+      create  my_hello/my_hello.gemspec
+      create  my_hello/Rakefile
+      create  my_hello/README.md
+      create  my_hello/bin/console
+      create  my_hello/bin/setup
+      create  my_hello/.gitignore
+      create  my_hello/test/test_helper.rb
+      create  my_hello/test/test_my_hello.rb
+      create  my_hello/.github/workflows/main.yml
+      create  my_hello/LICENSE.txt
+      create  my_hello/CODE_OF_CONDUCT.md
+      create  my_hello/CHANGELOG.md
+      create  my_hello/exe/my_hello
+
+Gem <span style="color: #79a8ff;">'my_hello'</span> was successfully created. For more information on making a RubyGem visit https://guides.rubygems.org/make-your-own-gem/
+</code></pre>
+</div>
+
+<p>
+&gt; bundle exec exe/my_hello
+</p>
+</div>
+</div>
+<div id="outline-container-org7c2f6c0" class="outline-2">
+<h2 id="org7c2f6c0"><span class="section-number-2">2.</span> edit lib/my_hello.rb</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+puts "hello."
+&gt; bundle exec exe/my_hello
+</p>
+</div>
+</div>
+<div id="outline-container-org92df00b" class="outline-2">
+<h2 id="org92df00b"><span class="section-number-2">3.</span> rake install:local</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-ruby"><code><span style="color: #989898;"># </span><span style="color: #989898;">Rakefile</span>
+<span style="color: #989898;"># </span><span style="color: #989898;">frozen_string_literal: true</span>
+
+<span style="color: #f78fe7;">require</span> <span style="color: #79a8ff;">"bundler/gem_tasks"</span>
+<span style="color: #f78fe7;">require</span> <span style="color: #79a8ff;">"minitest/test_task"</span>
+
+<span style="color: #6ae4b9;">Minitest</span>::<span style="color: #6ae4b9;">TestTask</span>.create
+
+<span style="color: #989898;">#</span><span style="color: #989898;">task default: :test</span>
+task <span style="color: #00bcff;">:default</span> <span style="color: #b6a0ff;">do</span>
+  sh <span style="color: #79a8ff;">"rake"</span>, <span style="color: #79a8ff;">"-T"</span>
+<span style="color: #b6a0ff;">end</span>
+</code></pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh"><code>&gt; edit my_help.gemspec <span style="color: #989898;"># </span><span style="color: #989898;">TODO =&gt; &#36969;&#24403;&#12395;&#20462;&#27491;</span>
+&gt; git add -A
+&gt; git commit -m <span style="color: #79a8ff;">'first commit'</span>
+ <span style="color: #989898;">#</span><span style="color: #989898;">github&#12391;new repository&#12375;&#12390;&#65292;&#12381;&#12428;&#12434;git remote add ...</span>
+&gt; sudo rake install:local
+<span style="color: #989898;"># </span><span style="color: #989898;">(rbenv rehash)</span>
+&gt; my_hello       <span style="color: #989898;"># </span><span style="color: #989898;">install&#12364;&#28961;&#20107;&#32066;&#12431;&#12387;&#12390;&#12356;&#12427;&#12371;&#12392;&#12434;&#30906;&#35469;</span>
+&gt; which my_hello <span style="color: #989898;"># </span><span style="color: #989898;">&#12391;install&#20808;&#12434;&#30906;&#35469;</span>
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Shigeto R. Nishitani</p>
+<p class="date">Created: 2026-11-11 Wed 20:37</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

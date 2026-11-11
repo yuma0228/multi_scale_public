@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
 <head>
-<!-- 2026-11-03 Tue 20:49 -->
+<!-- 2026-11-11 Wed 21:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ruby basics</title>
@@ -28,26 +28,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgac4b8ac">1. d7- <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-11-04 Wed&gt;</span></span></a></li>
-<li><a href="#org0d27876">2. d6 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-28 Wed&gt;</span></span> Rakefile</a>
+<li><a href="#orgdbd4470">1. d7- <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-11-04 Wed&gt;</span></span></a></li>
+<li><a href="#orgafd6aee">2. d6 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-28 Wed&gt;</span></span> Rakefile</a>
 <ul>
-<li><a href="#org27956b7">2.1. rake with argument</a></li>
-<li><a href="#org7c16908">2.2. CodexによるStackの解説</a>
+<li><a href="#orgc905c4f">2.1. rake with argument</a></li>
+<li><a href="#org98dda37">2.2. CodexによるStackの解説</a>
 <ul>
-<li><a href="#orgd80da42">2.2.1. user</a></li>
-<li><a href="#org48284cc">2.2.2. codex</a></li>
+<li><a href="#orgb24d5f1">2.2.1. user</a></li>
+<li><a href="#org0ffae95">2.2.2. codex</a></li>
 </ul>
 </li>
-<li><a href="#orgb0084ed">2.3. pipe and redirection</a></li>
+<li><a href="#org888e4bf">2.3. pipe and redirection</a></li>
 </ul>
 </li>
-<li><a href="#org7f86736">3. d5 for senior</a></li>
-<li><a href="#org9db363c">4. d5 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-21 Wed&gt;</span></span> command and direnv</a>
+<li><a href="#org742af2c">3. d5 for senior</a></li>
+<li><a href="#org7ba35c9">4. d5 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-21 Wed&gt;</span></span> command and direnv</a>
 <ul>
-<li><a href="#orgab1922f">4.1. command line application</a></li>
-<li><a href="#orgf16bf53">4.2. misc cla on wsl</a>
+<li><a href="#org190d58d">4.1. command line application</a></li>
+<li><a href="#orgfa5ed31">4.2. misc cla on wsl</a>
 <ul>
-<li><a href="#org115b1b8">4.2.1. copy-as-org on fish on wsl</a>
+<li><a href="#org83c0056">4.2.1. copy-as-org on fish on wsl</a>
 <ul>
 <li><a href="#1wslへpandocをインストール">WSLへPandocをインストール</a></li>
 <li><a href="#2fish関数を作成">Fish関数を作成</a></li>
@@ -56,16 +56,16 @@
 <li><a href="#日本語が文字化けする場合">日本語が文字化けする場合</a></li>
 </ul>
 </li>
-<li><a href="#org4593954">4.2.2. direnv install</a></li>
+<li><a href="#org0432fa2">4.2.2. direnv install</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org2a972fb">5. d4 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-14 Wed&gt;</span></span> Array Hash</a>
+<li><a href="#org5e7a93b">5. d4 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-14 Wed&gt;</span></span> Array Hash</a>
 <ul>
-<li><a href="#org9d4e35f">5.1. path</a></li>
-<li><a href="#org7982188">5.2. Ruby code</a></li>
-<li><a href="#orgf360428">5.3. references</a></li>
+<li><a href="#orgb129aa6">5.1. path</a></li>
+<li><a href="#orgedba887">5.2. Ruby code</a></li>
+<li><a href="#orgd1c134d">5.3. references</a></li>
 </ul>
 </li>
 </ul>
@@ -89,8 +89,8 @@
 </tr>
 </tbody>
 </table>
-<div id="outline-container-orgac4b8ac" class="outline-2">
-<h2 id="orgac4b8ac"><span class="section-number-2">1.</span> d7- <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-11-04 Wed&gt;</span></span></h2>
+<div id="outline-container-orgdbd4470" class="outline-2">
+<h2 id="orgdbd4470"><span class="section-number-2">1.</span> d7- <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-11-04 Wed&gt;</span></span></h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>yaml ?</li>
@@ -101,8 +101,8 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-org0d27876" class="outline-2">
-<h2 id="org0d27876"><span class="section-number-2">2.</span> d6 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-28 Wed&gt;</span></span> Rakefile</h2>
+<div id="outline-container-orgafd6aee" class="outline-2">
+<h2 id="orgafd6aee"><span class="section-number-2">2.</span> d6 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-28 Wed&gt;</span></span> Rakefile</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>rake, &lt;- make, DSL(domain specific language, ドメイン特化言語), flavor</li>
@@ -111,8 +111,8 @@
 <li>read Pragmatic -&gt; ruby and Rakefile</li>
 </ul>
 </div>
-<div id="outline-container-org27956b7" class="outline-3">
-<h3 id="org27956b7"><span class="section-number-3">2.1.</span> rake with argument</h3>
+<div id="outline-container-orgc905c4f" class="outline-3">
+<h3 id="orgc905c4f"><span class="section-number-3">2.1.</span> rake with argument</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 <pre class="src src-ruby"><code> cat <span style="font-weight: bold; text-decoration: underline;">Rakefile</span>
@@ -144,20 +144,20 @@ task <span style="font-weight: bold; text-decoration: underline;">:auto_mk_dir</
 </div>
 </div>
 </div>
-<div id="outline-container-org7c16908" class="outline-3">
-<h3 id="org7c16908"><span class="section-number-3">2.2.</span> CodexによるStackの解説</h3>
+<div id="outline-container-org98dda37" class="outline-3">
+<h3 id="org98dda37"><span class="section-number-3">2.2.</span> CodexによるStackの解説</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-orgd80da42" class="outline-4">
-<h4 id="orgd80da42"><span class="section-number-4">2.2.1.</span> user</h4>
+<div id="outline-container-orgb24d5f1" class="outline-4">
+<h4 id="orgb24d5f1"><span class="section-number-4">2.2.1.</span> user</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 そのdirectory構成最悪ですね．ちょっと前にお話ししましたが，人間はtight bindingが基本で，code, data, analysisなどに分けては理解できません．縦割りと言った方がいいでしょうか？　その方向でdirectoryを作っていきますので，観察して，覚えてください．この考え方が全てのdirectoryに適用されますから．現在存在するstack構造は，Desktop/lecture_26f/symbolic_mathあるいはmulti_scaleです．その分析と適用はこちらで指示するまでやらなくていいです．このdirectoryで作っていきましょう．
 </p>
 </div>
 </div>
-<div id="outline-container-org48284cc" class="outline-4">
-<h4 id="org48284cc"><span class="section-number-4">2.2.2.</span> codex</h4>
+<div id="outline-container-org0ffae95" class="outline-4">
+<h4 id="org0ffae95"><span class="section-number-4">2.2.2.</span> codex</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 了解しました．先ほどの提案は撤回します．
@@ -177,8 +177,8 @@ task <span style="font-weight: bold; text-decoration: underline;">:auto_mk_dir</
 </div>
 </div>
 </div>
-<div id="outline-container-orgb0084ed" class="outline-3">
-<h3 id="orgb0084ed"><span class="section-number-3">2.3.</span> pipe and redirection</h3>
+<div id="outline-container-org888e4bf" class="outline-3">
+<h3 id="org888e4bf"><span class="section-number-3">2.3.</span> pipe and redirection</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 '|', '&gt;', '&gt;&gt;' append
@@ -186,8 +186,8 @@ task <span style="font-weight: bold; text-decoration: underline;">:auto_mk_dir</
 </div>
 </div>
 </div>
-<div id="outline-container-org7f86736" class="outline-2">
-<h2 id="org7f86736"><span class="section-number-2">3.</span> d5 for senior</h2>
+<div id="outline-container-org742af2c" class="outline-2">
+<h2 id="org742af2c"><span class="section-number-2">3.</span> d5 for senior</h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>object指向
@@ -202,12 +202,12 @@ task <span style="font-weight: bold; text-decoration: underline;">:auto_mk_dir</
 </ul>
 </div>
 </div>
-<div id="outline-container-org9db363c" class="outline-2">
-<h2 id="org9db363c"><span class="section-number-2">4.</span> d5 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-21 Wed&gt;</span></span> command and direnv</h2>
+<div id="outline-container-org7ba35c9" class="outline-2">
+<h2 id="org7ba35c9"><span class="section-number-2">4.</span> d5 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-21 Wed&gt;</span></span> command and direnv</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgab1922f" class="outline-3">
-<h3 id="orgab1922f"><span class="section-number-3">4.1.</span> command line application</h3>
+<div id="outline-container-org190d58d" class="outline-3">
+<h3 id="org190d58d"><span class="section-number-3">4.1.</span> command line application</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>TDD == 現場合わせ =&gt; 一般化，切り分け</li>
@@ -256,12 +256,12 @@ task <span style="font-weight: bold; text-decoration: underline;">:auto_mk_dir</
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf16bf53" class="outline-3">
-<h3 id="orgf16bf53"><span class="section-number-3">4.2.</span> misc cla on wsl</h3>
+<div id="outline-container-orgfa5ed31" class="outline-3">
+<h3 id="orgfa5ed31"><span class="section-number-3">4.2.</span> misc cla on wsl</h3>
 <div class="outline-text-3" id="text-4-2">
 </div>
-<div id="outline-container-org115b1b8" class="outline-4">
-<h4 id="org115b1b8"><span class="section-number-4">4.2.1.</span> copy-as-org on fish on wsl</h4>
+<div id="outline-container-org83c0056" class="outline-4">
+<h4 id="org83c0056"><span class="section-number-4">4.2.1.</span> copy-as-org on fish on wsl</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <p>
 はい．Windows上のCodexアプリと，WSL内のFishを組み合わせても作れます．WindowsのクリップボードをWSLから読み取り，PandocでOrgへ変換し，再びWindowsのクリップボードへ戻します．
@@ -410,8 +410,8 @@ funcsave copy-as-org
 </div>
 </div>
 </div>
-<div id="outline-container-org4593954" class="outline-4">
-<h4 id="org4593954"><span class="section-number-4">4.2.2.</span> direnv install</h4>
+<div id="outline-container-org0432fa2" class="outline-4">
+<h4 id="org0432fa2"><span class="section-number-4">4.2.2.</span> direnv install</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <p>
 Fishなら，WSL内で次のように設定します．
@@ -452,12 +452,12 @@ Fish用のフックは，<a href="https://direnv.net/docs/hook.html">direnv公�
 </div>
 </div>
 </div>
-<div id="outline-container-org2a972fb" class="outline-2">
-<h2 id="org2a972fb"><span class="section-number-2">5.</span> d4 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-14 Wed&gt;</span></span> Array Hash</h2>
+<div id="outline-container-org5e7a93b" class="outline-2">
+<h2 id="org5e7a93b"><span class="section-number-2">5.</span> d4 <span class="timestamp-wrapper"><span class="timestamp">&lt;2026-10-14 Wed&gt;</span></span> Array Hash</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org9d4e35f" class="outline-3">
-<h3 id="org9d4e35f"><span class="section-number-3">5.1.</span> path</h3>
+<div id="outline-container-orgb129aa6" class="outline-3">
+<h3 id="orgb129aa6"><span class="section-number-3">5.1.</span> path</h3>
 <div class="outline-text-3" id="text-5-1">
 <div class="org-src-container">
 <pre class="src src-bash"><code>
@@ -470,8 +470,8 @@ Fish用のフックは，<a href="https://direnv.net/docs/hook.html">direnv公�
 </div>
 </div>
 </div>
-<div id="outline-container-org7982188" class="outline-3">
-<h3 id="org7982188"><span class="section-number-3">5.2.</span> Ruby code</h3>
+<div id="outline-container-orgedba887" class="outline-3">
+<h3 id="orgedba887"><span class="section-number-3">5.2.</span> Ruby code</h3>
 <div class="outline-text-3" id="text-5-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -490,8 +490,8 @@ Fish用のフックは，<a href="https://direnv.net/docs/hook.html">direnv公�
 </table>
 </div>
 </div>
-<div id="outline-container-orgf360428" class="outline-3">
-<h3 id="orgf360428"><span class="section-number-3">5.3.</span> references</h3>
+<div id="outline-container-orgd1c134d" class="outline-3">
+<h3 id="orgd1c134d"><span class="section-number-3">5.3.</span> references</h3>
 <div class="outline-text-3" id="text-5-3">
 <ul class="org-ul">
 <li><a href="https://kwanseio365-my.sharepoint.com/:b:/g/personal/cru32369_kwansei_ac_jp/IQCCwCZq45rcTb4x2s0UW_GVAWf6TTj6jwKrKoPoXbi5ABw?e=92E0W4">c1_はじめてのRuby.pdf</a></li>
@@ -504,7 +504,7 @@ Fish用のフックは，<a href="https://direnv.net/docs/hook.html">direnv公�
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Shigeto R. Nishitani</p>
-<p class="date">Created: 2026-11-03 Tue 20:49</p>
+<p class="date">Created: 2026-11-11 Wed 21:38</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -10,13 +10,13 @@
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
 # for style.css, never move from here
-[[../c3_linear_algebra_core/readme.html][prev_button]]
-[[../intro_info_26s.html][up_button]]
-[[../c1_outline/readme.html][next_button]]
+[[file:./readme_my_hello_tdd_live.html][prev_button]]
+[[file:../canvas.html][up_button]]
+[[file:../d9_gem_release/readme.html][next_button]]
 # for a real link rewrite usual [[url][]]
 
 
-| [[file:./dummy_icon.png]]
+| [[file:./figs/save_chat_to_org.png]]
 
 * Turn 6 : Org保存書式とスキルの更新
 ** user => Bob

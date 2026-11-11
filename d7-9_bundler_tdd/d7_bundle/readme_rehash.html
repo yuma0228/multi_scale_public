@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
+<head>
+<!-- 2026-11-11 Wed 21:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>d7 1104 rehash?</title>
+<meta name="author" content="Shigeto R. Nishitani" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/code-copy.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/vendor/stickytableheaders/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/code-copy.js"></script>
+<link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">d7 1104 rehash?</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge54ffe6">1. for wsl</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="./readme.html">prev_button</a>
+<a href="../canvas.html">up_button</a>
+<a href="../d8_tdd/readme.html">next_button</a>
+</p>
+<div id="outline-container-orge54ffe6" class="outline-2">
+<h2 id="orge54ffe6"><span class="section-number-2">1.</span> for wsl</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+apt版Rubyではrbenvのshimがないため，​<code>rbenv rehash</code>​に相当する操作は不要です．RubyGemsが作成した実行ファイルが​<code>PATH</code>​上にあるかどうかだけで決まります．
+</p>
+
+<p>
+一般ユーザーでインストールする場合，gemはユーザーディレクトリへ入ります．実行ファイルは通常，次のどちらかです．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>~/.local/share/gem/ruby/&lt;ABI&#12496;&#12540;&#12472;&#12519;&#12531;&gt;/bin
+~/.gem/ruby/&lt;ABI&#12496;&#12540;&#12472;&#12519;&#12531;&gt;/bin
+</code></pre>
+</div>
+
+<p>
+正確な場所は次で確認できます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><code>ruby -e <span style="font-style: italic;">'puts Gem.user_dir'</span>
+</code></pre>
+</div>
+
+<p>
+実行ファイルがあるか確認します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><code>ls <span style="font-style: italic;">"$(ruby -e 'puts Gem.user_dir')/bin/my_hello"</span>
+</code></pre>
+</div>
+
+<p>
+この​<code>bin</code>​は通常​<code>PATH</code>​に入っていないため，bashを使うWSLでは​<code>~/.bashrc</code>​へ追加します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><code><span style="font-weight: bold;">echo</span> <span style="font-style: italic;">'export PATH="$(ruby -e '\''puts Gem.user_dir'\'')/bin:$PATH"'</span> &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+</div>
+
+<p>
+その後は直接実行できます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><code>my_hello
+</code></pre>
+</div>
+
+<p>
+ユーザー領域へ明示的にインストールする場合は，次の手順が確実です．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><code>rake build
+gem install --user-install pkg/my_hello-0.1.0.gem
+</code></pre>
+</div>
+
+<p>
+一方，​<code>sudo gem install</code>​や​<code>sudo rake install:local</code>​ではsystem領域へ入り，実行ファイルは通常​<code>/usr/local/bin</code>​などへ作成されます．ここは最初から​<code>PATH</code>​に入っているため，インストール直後から実行できます．ただし，apt管理のRubyと手動インストールしたgemが混在するため，RubyGems公式は​<code>sudo gem install</code>​より​<code>--user-install</code>​を推奨しています．<a href="https://guides.rubygems.org/gem-installation-and-loading/">RubyGems公式ガイド</a>
+</p>
+
+<p>
+つまり，apt版Rubyでの違いは次のとおりです．
+</p>
+
+<ul class="org-ul">
+<li>rbenv版：実行ファイルをインストール後，shim生成のため​<code>rbenv rehash</code>​が必要になる場合がある．</li>
+<li>apt版のsystem install：​<code>PATH</code>​上へwrapperが作られれば即座に実行できる．</li>
+<li>apt版のuser
+install：rehashは不要だが，​<code>Gem.user_dir/bin</code>​を​<code>PATH</code>​へ追加する必要がある．</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Shigeto R. Nishitani</p>
+<p class="date">Created: 2026-11-11 Wed 21:35</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

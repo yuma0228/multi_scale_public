@@ -10,9 +10,9 @@
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
 # for style.css, never move from here
-[[../../junior_seminar/readme_junior.html][prev_button]]
-[[../../canvas.html][up_button]]
-[[../../d1-3_stack/d1_mock/readme.html][next_button]]
+[[file:../copy_as_org/readme.html][prev_button]]
+[[file:../canvas.html][up_button]]
+[[file:./readme_rehash.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
 
@@ -78,15 +78,15 @@ task :default do
 end
 #+end_src
 
-: edit my_help.gemspec # TODO => 適当に修正
-: git add -A
-: git commit -m 'first commit'
-  : githubでnew repositoryして，それをgit remote add ...
-: sudo rake install:local
-(: rbenv rehash)
-
-: my_hello       # installが無事終わっていることを確認
-: which my_hello # でinstall先を確認
-
+#+begin_src sh
+> edit my_help.gemspec # TODO => 適当に修正
+> git add -A
+> git commit -m 'first commit'
+ #githubでnew repositoryして，それをgit remote add ...
+> sudo rake install:local
+# (rbenv rehash)
+> my_hello       # installが無事終わっていることを確認
+> which my_hello # でinstall先を確認
+#+end_src
 
 

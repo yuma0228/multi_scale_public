@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
+<head>
+<!-- 2026-11-11 Wed 20:40 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>d8 my_hello Live coding</title>
+<meta name="author" content="Shigeto R. Nishitani" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/code-copy.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/vendor/stickytableheaders/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/code-copy.js"></script>
+<link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">d8 my_hello Live coding</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc316d14">1. Turn 1 : Hello出力のテストを追加</a>
+<ul>
+<li><a href="#org834cadb">1.1. user =&gt; Bob</a></li>
+<li><a href="#org43fee86">1.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+<li><a href="#org27cee6a">2. Turn 2 : Minitestのカラー表示を相談</a>
+<ul>
+<li><a href="#org2ed5b40">2.1. user =&gt; Bob</a></li>
+<li><a href="#orgdfd7b2c">2.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+<li><a href="#org17debff">3. Turn 3 : gemspecへの依存追記を提示</a>
+<ul>
+<li><a href="#org1ac1e96">3.1. user =&gt; Bob</a></li>
+<li><a href="#org669daf7">3.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+<li><a href="#org056217f">4. Turn 4 : greetingのNameErrorを診断</a>
+<ul>
+<li><a href="#org22d87b8">4.1. user =&gt; Bob</a></li>
+<li><a href="#org60d7df2">4.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+<li><a href="#org2c60a06">5. Turn 5 : greetingをモジュールメソッドへ修正</a>
+<ul>
+<li><a href="#org0db7482">5.1. user =&gt; Bob</a></li>
+<li><a href="#org7877095">5.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+<li><a href="#org36b3c22">6. Turn 6 : 名前付き挨拶へ変更</a>
+<ul>
+<li><a href="#org2401899">6.1. user =&gt; Bob</a></li>
+<li><a href="#orgcfbcc7e">6.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+<li><a href="#orgb475226">7. Turn 7 : Greetingオブジェクトのテストを追加</a>
+<ul>
+<li><a href="#org144b1be">7.1. user =&gt; Bob</a></li>
+<li><a href="#org83c9601">7.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+<li><a href="#orga1d5748">8. Turn 8 : Greetingオブジェクトを実装</a>
+<ul>
+<li><a href="#org61c7e68">8.1. user =&gt; Bob</a></li>
+<li><a href="#org63088c5">8.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+<li><a href="#orgac60174">9. Turn 9 : ThorでCLIオプションを解析</a>
+<ul>
+<li><a href="#org7f69a9d">9.1. user =&gt; Bob</a></li>
+<li><a href="#org9a06772">9.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+<li><a href="#org3e61b68">10. Turn 10 : Thor CLIのテストを拡充</a>
+<ul>
+<li><a href="#orgdf3cba7">10.1. user =&gt; Bob</a></li>
+<li><a href="#org4292cc9">10.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+<li><a href="#orgb142867">11. Turn 11 : チャットをOrgファイルへ保存</a>
+<ul>
+<li><a href="#org319097c">11.1. user =&gt; Bob</a></li>
+<li><a href="#org52ff81a">11.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../c3_linear_algebra_core/readme.html">prev_button</a>
+<a href="../intro_info_26s.html">up_button</a>
+<a href="../c1_outline/readme.html">next_button</a>
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="./dummy_icon.png" alt="dummy_icon.png" /></td>
+</tr>
+</tbody>
+</table>
+<div id="outline-container-orgc316d14" class="outline-2">
+<h2 id="orgc316d14"><span class="section-number-2">1.</span> Turn 1 : Hello出力のテストを追加</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org834cadb" class="outline-3">
+<h3 id="org834cadb"><span class="section-number-3">1.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+multi_scale/d7-9_bundler_tdd/d8_tdd/my_helloを作成しました．
+Helloがちゃんと返っているかをtestするのを，test/test_my_hello.rbに追記してください．
+</p>
+</div>
+</div>
+<div id="outline-container-org43fee86" class="outline-3">
+<h3 id="org43fee86"><span class="section-number-3">1.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+<a href="file:///Users/bob/Desktop/lecture_26f/multi_scale/d7-9_bundler_tdd/d8_tdd/my_hello/test/test_my_hello.rb">test/test_my_hello.rb</a>
+に，​<code>Hello.</code>​ の標準出力を確認するテストを追加しました．
+</p>
+
+<p>
+テスト結果：3件すべて成功，エラーなしです．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org27cee6a" class="outline-2">
+<h2 id="org27cee6a"><span class="section-number-2">2.</span> Turn 2 : Minitestのカラー表示を相談</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org2ed5b40" class="outline-3">
+<h3 id="org2ed5b40"><span class="section-number-3">2.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+green とかredを実感するために，minitestをcolorfulにするlibはありますか？
+</p>
+</div>
+</div>
+<div id="outline-container-orgdfd7b2c" class="outline-3">
+<h3 id="orgdfd7b2c"><span class="section-number-3">2.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+あります．おすすめは ​<code>minitest-reporters</code>​
+です．成功を緑，失敗を赤で表示でき，テスト名も見やすくなります．
+</p>
+
+<p>
+​<code>Gemfile</code>​ に追加します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><code>gem <span style="color: #79a8ff;">"minitest-reporters"</span>, <span style="color: #00bcff;">group:</span> <span style="color: #00bcff;">:test</span>
+</code></pre>
+</div>
+
+<p>
+インストールします．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-console"><code>bundle install
+</code></pre>
+</div>
+
+<p>
+​<code>test/test_helper.rb</code>​ の末尾に追加します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><code><span style="color: #f78fe7;">require</span> <span style="color: #79a8ff;">"minitest/reporters"</span>
+
+<span style="color: #6ae4b9;">Minitest</span>::<span style="color: #6ae4b9;">Reporters</span>.use!(
+  <span style="color: #6ae4b9;">Minitest</span>::<span style="color: #6ae4b9;">Reporters</span>::<span style="color: #6ae4b9;">DefaultReporter</span>.new(<span style="color: #00bcff;">color:</span> <span style="color: #00bcff;">true</span>)
+)
+</code></pre>
+</div>
+
+<p>
+実行はこれまでどおりです．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-console"><code>bundle exec rake test
+</code></pre>
+</div>
+
+<p>
+もっと簡単な選択肢として，赤・緑表示に特化した ​<code>minitest-rg</code>​
+もあります．ただ，表示形式を後から変更できるため，授業用には
+<a href="https://github.com/minitest-reporters/minitest-reporters">​<code>minitest-reporters</code>​</a>
+が使いやすいと思います．<a href="https://github.com/minitest/minitest-rg">​<code>minitest-rg</code>​</a>
+は，より小さく単純な選択肢です．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org17debff" class="outline-2">
+<h2 id="org17debff"><span class="section-number-2">3.</span> Turn 3 : gemspecへの依存追記を提示</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org1ac1e96" class="outline-3">
+<h3 id="org1ac1e96"><span class="section-number-3">3.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+gemspecに追記するtextを表示してください．
+</p>
+</div>
+</div>
+<div id="outline-container-org669daf7" class="outline-3">
+<h3 id="org669daf7"><span class="section-number-3">3.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+​<code>my_hello.gemspec</code>​ の ​<code>Gem::Specification.new</code>​ ブロック内に追記します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><code>spec.add_development_dependency <span style="color: #79a8ff;">"minitest-reporters"</span>
+</code></pre>
+</div>
+
+<p>
+既存の ​<code>minitest</code>​
+依存関係の近くに置くと分かりやすいです．追記後は次を実行します．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-console"><code>bundle install
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org056217f" class="outline-2">
+<h2 id="org056217f"><span class="section-number-2">4.</span> Turn 4 : greetingのNameErrorを診断</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org22d87b8" class="outline-3">
+<h3 id="org22d87b8"><span class="section-number-3">4.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-text"><code>&#57520; bundle exec exe/my_hello
+bundler: failed to load command: exe/my_hello (exe/my_hello)
+/Users/bob/Desktop/lecture_26f/multi_scale/d7-9_bundler_tdd/d8_tdd/my_hello/lib/my_hello.rb:12:in '&lt;module:MyHello&gt;': undefined local variable or method 'greeting' for module MyHello (NameError)
+
+  greeting
+  ^^^^^^^^
+</code></pre>
+</div>
+
+<p>
+とのエラーが出ます．なぜ？
+</p>
+</div>
+</div>
+<div id="outline-container-org60d7df2" class="outline-3">
+<h3 id="org60d7df2"><span class="section-number-3">4.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+原因は，次の ​<code>def greeting</code>​ が ​<code>MyHello</code>​
+モジュールのインスタンスメソッドとして定義されるためです．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><code><span style="color: #b6a0ff;">module</span> <span style="color: #6ae4b9;">MyHello</span>
+  <span style="color: #b6a0ff;">def</span> <span style="color: #feacd0;">greeting</span>
+    <span style="color: #f78fe7;">puts</span> <span style="color: #79a8ff;">"Hello."</span>
+  <span style="color: #b6a0ff;">end</span>
+
+  greeting <span style="color: #989898;"># </span><span style="color: #989898;">MyHello&#33258;&#36523;&#12395;&#12399;&#12371;&#12398;&#12513;&#12477;&#12483;&#12489;&#12364;&#12394;&#12356;</span>
+<span style="color: #b6a0ff;">end</span>
+</code></pre>
+</div>
+
+<p>
+​<code>MyHello.greeting</code>​
+として使えるモジュールメソッドにするには，次の形が分かりやすいです．
+</p>
+
+<p>
+​<code>lib/my_hello.rb</code>​：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><code><span style="color: #b6a0ff;">module</span> <span style="color: #6ae4b9;">MyHello</span>
+  <span style="color: #b6a0ff;">class</span> <span style="color: #6ae4b9;">Error</span> &lt; <span style="color: #6ae4b9;">StandardError</span>; <span style="color: #b6a0ff;">end</span>
+
+  <span style="color: #b6a0ff;">def</span> <span style="color: #b6a0ff;">self</span>.<span style="color: #feacd0;">greeting</span>
+    <span style="color: #f78fe7;">puts</span> <span style="color: #79a8ff;">"Hello."</span>
+  <span style="color: #b6a0ff;">end</span>
+<span style="color: #b6a0ff;">end</span>
+</code></pre>
+</div>
+
+<p>
+​<code>exe/my_hello</code>​：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><code><span style="color: #989898;">#</span><span style="color: #989898;">!/usr/bin/env ruby</span>
+
+<span style="color: #f78fe7;">require</span> <span style="color: #79a8ff;">"my_hello"</span>
+
+<span style="color: #6ae4b9;">MyHello</span>.greeting
+</code></pre>
+</div>
+
+<p>
+テストも，ファイルの再読み込みではなくメソッドを直接検証できます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><code><span style="color: #b6a0ff;">def</span> <span style="color: #feacd0;">test_it_outputs_hello</span>
+  assert_output(<span style="color: #79a8ff;">"Hello.\n"</span>) <span style="color: #b6a0ff;">do</span>
+    <span style="color: #6ae4b9;">MyHello</span>.greeting
+  <span style="color: #b6a0ff;">end</span>
+<span style="color: #b6a0ff;">end</span>
+</code></pre>
+</div>
+
+<p>
+この構成なら，​<code>require "my_hello"</code>​
+しただけでは表示されず，​<code>MyHello.greeting</code>​ を呼んだときだけ ​<code>Hello.</code>​
+が表示されます．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org2c60a06" class="outline-2">
+<h2 id="org2c60a06"><span class="section-number-2">5.</span> Turn 5 : greetingをモジュールメソッドへ修正</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org0db7482" class="outline-3">
+<h3 id="org0db7482"><span class="section-number-3">5.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+では，そのように修正ください．
+</p>
+</div>
+</div>
+<div id="outline-container-org7877095" class="outline-3">
+<h3 id="org7877095"><span class="section-number-3">5.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+修正しました．
+</p>
+
+<ul class="org-ul">
+<li>​<code>greeting</code>​ を ​<code>MyHello.greeting</code>​ として定義</li>
+<li>​<code>exe/my_hello</code>​ から明示的に呼び出すよう変更</li>
+<li>テストも ​<code>MyHello.greeting</code>​ を直接検証する形へ変更</li>
+</ul>
+
+<p>
+確認結果：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>3 tests, 3 assertions, 0 failures, 0 errors
+</code></pre>
+</div>
+
+<p>
+実行結果：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>Hello.
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org36b3c22" class="outline-2">
+<h2 id="org36b3c22"><span class="section-number-2">6.</span> Turn 6 : 名前付き挨拶へ変更</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org2401899" class="outline-3">
+<h3 id="org2401899"><span class="section-number-3">6.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+bundle exec exe/my_hello bob とした時に， Hello, bob.
+と返るようにlibとtestを修正してください．
+</p>
+</div>
+</div>
+<div id="outline-container-orgcfbcc7e" class="outline-3">
+<h3 id="orgcfbcc7e"><span class="section-number-3">6.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+修正しました．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-console"><code>bundle exec exe/my_hello bob
+</code></pre>
+</div>
+
+<p>
+実行結果：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>Hello, bob.
+</code></pre>
+</div>
+
+<p>
+テストも成功しています．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>3 tests, 3 assertions, 0 failures, 0 errors
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb475226" class="outline-2">
+<h2 id="orgb475226"><span class="section-number-2">7.</span> Turn 7 : Greetingオブジェクトのテストを追加</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org144b1be" class="outline-3">
+<h3 id="org144b1be"><span class="section-number-3">7.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+今作ったgreeting関数をobjectにしたとして，そのテストをtest/test_my_hello.rbに作ってください．
+</p>
+</div>
+</div>
+<div id="outline-container-org83c9601" class="outline-3">
+<h3 id="org83c9601"><span class="section-number-3">7.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+​<code>test/test_my_hello.rb</code>​ に，次のテストを追加しました．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><code><span style="color: #b6a0ff;">def</span> <span style="color: #feacd0;">test_greeting_object_outputs_hello_with_name</span>
+  greeting = <span style="color: #6ae4b9;">MyHello</span>::<span style="color: #6ae4b9;">Greeting</span>.new(<span style="color: #79a8ff;">"bob"</span>)
+
+  assert_output(<span style="color: #79a8ff;">"Hello, bob.\n"</span>) <span style="color: #b6a0ff;">do</span>
+    greeting.call
+  <span style="color: #b6a0ff;">end</span>
+<span style="color: #b6a0ff;">end</span>
+</code></pre>
+</div>
+
+<p>
+現在は ​<code>MyHello::Greeting</code>​ が未実装なので，意図どおり RED になります．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>NameError: uninitialized constant MyHello::Greeting
+4 tests, 3 assertions, 0 failures, 1 errors
+</code></pre>
+</div>
+
+<p>
+想定する使い方は次の形です．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><code>greeting = <span style="color: #6ae4b9;">MyHello</span>::<span style="color: #6ae4b9;">Greeting</span>.new(<span style="color: #79a8ff;">"bob"</span>)
+greeting.call
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orga1d5748" class="outline-2">
+<h2 id="orga1d5748"><span class="section-number-2">8.</span> Turn 8 : Greetingオブジェクトを実装</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org61c7e68" class="outline-3">
+<h3 id="org61c7e68"><span class="section-number-3">8.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+MyHello::Greetingをlib/my_hello.rbに作成してください．
+</p>
+</div>
+</div>
+<div id="outline-container-org63088c5" class="outline-3">
+<h3 id="org63088c5"><span class="section-number-3">8.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+​<code>lib/my_hello.rb</code>​ に ​<code>MyHello::Greeting</code>​ を実装しました．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><code><span style="color: #b6a0ff;">class</span> <span style="color: #6ae4b9;">Greeting</span>
+  <span style="color: #b6a0ff;">def</span> <span style="color: #feacd0;">initialize</span>(name)
+    <span style="color: #00d3d0;">@name</span> = name
+  <span style="color: #b6a0ff;">end</span>
+
+  <span style="color: #b6a0ff;">def</span> <span style="color: #feacd0;">call</span>
+    <span style="color: #f78fe7;">puts</span> <span style="color: #79a8ff;">"Hello, </span><span style="color: #00d3d0;">#{@name}</span><span style="color: #79a8ff;">."</span>
+  <span style="color: #b6a0ff;">end</span>
+<span style="color: #b6a0ff;">end</span>
+</code></pre>
+</div>
+
+<p>
+既存の ​<code>MyHello.greeting</code>​ も，このオブジェクトへ処理を委譲します．
+</p>
+
+<p>
+テスト結果：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>4 tests, 4 assertions, 0 failures, 0 errors
+</code></pre>
+</div>
+
+<p>
+実行結果：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>Hello, bob.
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgac60174" class="outline-2">
+<h2 id="orgac60174"><span class="section-number-2">9.</span> Turn 9 : ThorでCLIオプションを解析</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-org7f69a9d" class="outline-3">
+<h3 id="org7f69a9d"><span class="section-number-3">9.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+libraryのthorを使って，command
+optionをparseするようにlib/my_help.rbを変更してください．
+</p>
+</div>
+</div>
+<div id="outline-container-org9a06772" class="outline-3">
+<h3 id="org9a06772"><span class="section-number-3">9.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+Thor を使ってコマンドオプションを解析するように変更しました．
+</p>
+
+<p>
+実行方法：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-console"><code>bundle exec exe/my_hello greeting --name bob
+</code></pre>
+</div>
+
+<p>
+短縮オプションも利用できます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-console"><code>bundle exec exe/my_hello greeting -n bob
+</code></pre>
+</div>
+
+<p>
+出力：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>Hello, bob.
+</code></pre>
+</div>
+
+<p>
+あわせて以下も変更しました．
+</p>
+
+<ul class="org-ul">
+<li>​<code>lib/my_hello.rb</code>​ に ​<code>MyHello::CLI &lt; Thor</code>​ を追加</li>
+<li>​<code>exe/my_hello</code>​ から ​<code>MyHello::CLI.start(ARGV)</code>​ を実行</li>
+<li>gemspec に ​<code>thor</code>​ の通常依存を追加</li>
+<li>CLIのオプション解析テストを追加</li>
+<li>​<code>Gemfile.lock</code>​ を更新</li>
+</ul>
+
+<p>
+テスト結果は ​<code>5 tests, 5 assertions, 0 failures, 0 errors</code>​ です．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3e61b68" class="outline-2">
+<h2 id="org3e61b68"><span class="section-number-2">10.</span> Turn 10 : Thor CLIのテストを拡充</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-orgdf3cba7" class="outline-3">
+<h3 id="orgdf3cba7"><span class="section-number-3">10.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+では，このthorのテストを作ってください．
+</p>
+</div>
+</div>
+<div id="outline-container-org4292cc9" class="outline-3">
+<h3 id="org4292cc9"><span class="section-number-3">10.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+Thor CLI用のテストを ​<code>TestMyHelloCLI</code>​ クラスとして追加しました．
+</p>
+
+<p>
+検証内容は次の3点です．
+</p>
+
+<ul class="org-ul">
+<li>​<code>--name bob</code>​ を解析できる</li>
+<li>短縮形の ​<code>-n bob</code>​ を解析できる</li>
+<li>​<code>--name</code>​ が未指定の場合にエラーを表示する</li>
+</ul>
+
+<p>
+テスト結果：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text"><code>7 tests, 8 assertions, 0 failures, 0 errors
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb142867" class="outline-2">
+<h2 id="orgb142867"><span class="section-number-2">11.</span> Turn 11 : チャットをOrgファイルへ保存</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org319097c" class="outline-3">
+<h3 id="org319097c"><span class="section-number-3">11.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+save-chat-to-orgしてください．
+</p>
+</div>
+</div>
+<div id="outline-container-org52ff81a" class="outline-3">
+<h3 id="org52ff81a"><span class="section-number-3">11.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-11-2">
+<p>
+このチャット全体を ​<code>readme_chat.org</code>​
+に保存し，ターン順序，話者ペア，Org見出し構造を検証しました．
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Shigeto R. Nishitani</p>
+<p class="date">Created: 2026-11-11 Wed 20:40</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,66 +1,65 @@
 ---
 :nodes:
 - :id: 1
-  :name: Bundler and TDD
-  :type: stack
-  :file_path: "."
-- :id: 2
-  :name: copy as org
-  :type: dir
-  :file_path: copy_as_org
-- :id: 3
-  :name: d7 bundle
-  :type: dir
-  :file_path: d7_bundle
-- :id: 4
-  :name: d8 tdd
-  :type: dir
-  :file_path: d8_tdd
-- :id: 5
-  :name: mk_stack_dir
+  :name: d7-9 bundle, thor, minitest, gems
   :type: icon
-  :file_path: copy_as_org/readme_copy_as_org.html
+  :file_path: readme.html
+  :icon_path: ".semi_lattice/icons/stack.png"
+- :id: 2
+  :name: chat for copy-as-org
+  :type: icon
+  :file_path: copy_as_org/readme.html
   :icon_path: copy_as_org/dummy_icon.png
-- :id: 6
+- :id: 3
   :name: d7 1104 bundle
   :type: icon
   :file_path: d7_bundle/readme.html
   :icon_path: d7_bundle/dummy_icon.png
-- :id: 7
-  :name: TDD
+- :id: 4
+  :name: d8 11/11 TDD
   :type: icon
   :file_path: d8_tdd/readme.html
   :icon_path: d8_tdd/dummy_icon.png
-- :id: 8
-  :name: d7-9 bundle, thor, minitest
+- :id: 5
+  :name: d9 gem release
   :type: icon
-  :file_path: d8_tdd/readme_mk_stack_directory_conf.html
-  :icon_path: d8_tdd/dummy_icon.png
-- :id: 9
-  :name: d7-9 bundle, thor, minitest
+  :file_path: d9_gem_release/readme.html
+  :icon_path: ".semi_lattice/icons/folder.png"
+- :id: 6
+  :name: d7 1104 rehash?
+  :type: icon
+  :file_path: d7_bundle/readme_rehash.html
+  :icon_path: ".semi_lattice/icons/folder.png"
+- :id: 7
+  :name: mkstack directory構成のchat
+  :type: icon
+  :file_path: d8_tdd/readme_mkstack_dir_conf.html
+  :icon_path: d8_tdd/figs/mk_stack_dir.png
+- :id: 8
+  :name: d8 my_hello Live coding with Codex
   :type: icon
   :file_path: d8_tdd/readme_my_hello_tdd_live.html
   :icon_path: d8_tdd/dummy_icon.png
-- :id: 10
+- :id: 9
   :name: Org保存書式とスキルの更新
   :type: icon
   :file_path: d8_tdd/readme_save_chat_to_org.html
-  :icon_path: d8_tdd/dummy_icon.png
+  :icon_path: d8_tdd/figs/save_chat_to_org.png
+- :id: 10
+  :name: Agent application comparison
+  :type: icon
+  :file_path: readme_agent_compare.html
+  :icon_path: figs/agent_compare.png
 - :id: 11
   :name: d7-9 bundle, thor, minitest
   :type: icon
-  :file_path: readme.html
-  :icon_path: dummy_icon.png
+  :file_path: readme_mk_canvas_rake.html
+  :icon_path: ".semi_lattice/icons/folder.png"
 - :id: 12
   :name: Agentic application comparison
   :type: icon
-  :file_path: readme_agent_compare.html
-  :icon_path:
-- :id: 13
-  :name: Agentic application comparison
-  :type: icon
   :file_path: readme_rag_agent.html
-  :icon_path:
+  :icon_path: figs/codex.png
 :edges:
 - :from: 1
   :to: 2
@@ -68,7 +67,7 @@
   :to: 3
 - :from: 1
   :to: 4
-- :from: 2
+- :from: 1
   :to: 5
 - :from: 3
   :to: 6
@@ -78,11 +77,9 @@
   :to: 8
 - :from: 4
   :to: 9
-- :from: 4
+- :from: 1
   :to: 10
 - :from: 1
   :to: 11
 - :from: 1
   :to: 12
-- :from: 1
-  :to: 13

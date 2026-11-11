@@ -1,6 +1,6 @@
 #+OPTIONS: ^:{}
 #+STARTUP: indent nolineimages overview num
-#+TITLE: d7-9 bundle, thor, minitest
+#+TITLE: mkstack directory構成のchat
 #+AUTHOR: Shigeto R. Nishitani
 #+EMAIL:     (concat "shigeto_nishitani@mac.com")
 #+LANGUAGE:  jp
@@ -16,7 +16,7 @@
 # for a real link rewrite usual [[url][]]
 
 
-| [[file:./dummy_icon.png]]
+| [[file:./figs/mk_stack_dir.png]]
 
 * Turn 1 : bundle gemとmkstackの開発方針
 ** user => Bob

@@ -1,6 +1,6 @@
 #+OPTIONS: ^:{}
 #+STARTUP: indent nolineimages overview num
-#+TITLE: Agentic application comparison
+#+TITLE: Agent application comparison
 #+AUTHOR: Shigeto R. Nishitani
 #+EMAIL:     (concat "shigeto_nishitani@mac.com")
 #+LANGUAGE:  jp
@@ -10,10 +10,12 @@
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
 # for style.css, never move from here
-[[../c3_linear_algebra_core/readme.html][prev_button]]
-[[../intro_info_26s.html][up_button]]
-[[../c1_outline/readme.html][next_button]]
+[[file:./readme.html][prev_button]]
+[[file:./canvas.html][up_button]]
+[[file:./readme_mk_canvas_rake.html][next_button]]
 # for a real link rewrite usual [[\url][]]
+
+| [[file:./figs/agent_compare.png]]
 
 * turn 1 web or desktop appli for chatgpt
 ** user

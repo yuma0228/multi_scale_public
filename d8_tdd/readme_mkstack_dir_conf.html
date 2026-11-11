@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
 <head>
-<!-- 2026-11-11 Wed 14:46 -->
+<!-- 2026-11-11 Wed 20:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>d7-9 bundle, thor, minitest</title>
+<title>mkstack directory構成のchat</title>
 <meta name="author" content="Shigeto R. Nishitani" />
 <meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/htmlize.css"/>
@@ -23,44 +23,44 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">d7-9 bundle, thor, minitest</h1>
+<h1 class="title">mkstack directory構成のchat</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc6c7a7e">1. Turn 1 : bundle gemとmkstackの開発方針</a>
+<li><a href="#orgaa14d59">1. Turn 1 : bundle gemとmkstackの開発方針</a>
 <ul>
-<li><a href="#org8616f38">1.1. user =&gt; Bob</a></li>
-<li><a href="#orge44aee3">1.2. codex =&gt; Raphael</a></li>
+<li><a href="#org0a6c91a">1.1. user =&gt; Bob</a></li>
+<li><a href="#orgf8f4096">1.2. codex =&gt; Raphael</a></li>
 </ul>
 </li>
-<li><a href="#org1d01ba2">2. Turn 2 : bundle gemにおけるテスト配置</a>
+<li><a href="#orga2a0da3">2. Turn 2 : bundle gemにおけるテスト配置</a>
 <ul>
-<li><a href="#org266d186">2.1. user =&gt; Bob</a></li>
-<li><a href="#org9b58026">2.2. codex =&gt; Raphael</a></li>
+<li><a href="#orge92e3f4">2.1. user =&gt; Bob</a></li>
+<li><a href="#org4d5661d">2.2. codex =&gt; Raphael</a></li>
 </ul>
 </li>
-<li><a href="#org4ee2747">3. Turn 3 : 巨大プロジェクトのサブコマンド構成</a>
+<li><a href="#orgf6f4024">3. Turn 3 : 巨大プロジェクトのサブコマンド構成</a>
 <ul>
-<li><a href="#org45ba458">3.1. user =&gt; Bob</a></li>
-<li><a href="#orga7b286a">3.2. codex =&gt; Raphael</a>
+<li><a href="#org3ebd9f7">3.1. user =&gt; Bob</a></li>
+<li><a href="#org00e64e1">3.2. codex =&gt; Raphael</a>
 <ul>
-<li><a href="#org6d319f6">独立gemのまま組み込む</a></li>
-<li><a href="#org3b1dc07">​<code>hc</code>​本体へ完全統合する</a></li>
+<li><a href="#org3ef19e6">独立gemのまま組み込む</a></li>
+<li><a href="#org4572bb3">​<code>hc</code>​本体へ完全統合する</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgb9df8d3">4. Turn 4 : 粒度に応じた配置の切り替え</a>
+<li><a href="#org990a97d">4. Turn 4 : 粒度に応じた配置の切り替え</a>
 <ul>
-<li><a href="#org0a9a455">4.1. user =&gt; Bob</a></li>
-<li><a href="#orgbabc4ec">4.2. codex =&gt; Raphael</a></li>
+<li><a href="#org240e73a">4.1. user =&gt; Bob</a></li>
+<li><a href="#org1fa8dab">4.2. codex =&gt; Raphael</a></li>
 </ul>
 </li>
-<li><a href="#org1f76a95">5. Turn 5 : RailsのMVC規約と探索性</a>
+<li><a href="#org206b9d7">5. Turn 5 : RailsのMVC規約と探索性</a>
 <ul>
-<li><a href="#orgf672b24">5.1. user =&gt; Bob</a></li>
-<li><a href="#org8d02d88">5.2. codex =&gt; Raphael</a></li>
+<li><a href="#orgb155cb9">5.1. user =&gt; Bob</a></li>
+<li><a href="#org075962c">5.2. codex =&gt; Raphael</a></li>
 </ul>
 </li>
 </ul>
@@ -81,24 +81,24 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="org-left"><img src="./dummy_icon.png" alt="dummy_icon.png" /></td>
+<td class="org-left"><img src="./figs/mk_stack_dir.png" alt="mk_stack_dir.png" /></td>
 </tr>
 </tbody>
 </table>
-<div id="outline-container-orgc6c7a7e" class="outline-2">
-<h2 id="orgc6c7a7e"><span class="section-number-2">1.</span> Turn 1 : bundle gemとmkstackの開発方針</h2>
+<div id="outline-container-orgaa14d59" class="outline-2">
+<h2 id="orgaa14d59"><span class="section-number-2">1.</span> Turn 1 : bundle gemとmkstackの開発方針</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org8616f38" class="outline-3">
-<h3 id="org8616f38"><span class="section-number-3">1.1.</span> user =&gt; Bob</h3>
+<div id="outline-container-org0a6c91a" class="outline-3">
+<h3 id="org0a6c91a"><span class="section-number-3">1.1.</span> user =&gt; Bob</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 testを含めたbundle gemの作成をデモしていきます．配下に一度，デモ用のmy_hello dirを作ってそこで，minitestを作成しましょう．その後，ここを離れて，c0_mk_stackを切り出して，これを一つのclaとして作り上げます．これは将来hcに組み込みたいので，subcommandとなるmkstackという命令で作り上げていきます．さて，ここからがラファエルさんとの相談です．あ，これからプライベートの時は，codexさんをやめてRaphaelさんとします．よろしいでしょうか？
 </p>
 </div>
 </div>
-<div id="outline-container-orge44aee3" class="outline-3">
-<h3 id="orge44aee3"><span class="section-number-3">1.2.</span> codex =&gt; Raphael</h3>
+<div id="outline-container-orgf8f4096" class="outline-3">
+<h3 id="orgf8f4096"><span class="section-number-3">1.2.</span> codex =&gt; Raphael</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 もちろんです．プライベートな場面では，Raphaelとお呼びください．
@@ -122,20 +122,20 @@ testを含めたbundle gemの作成をデモしていきます．配下に一度
 </div>
 </div>
 </div>
-<div id="outline-container-org1d01ba2" class="outline-2">
-<h2 id="org1d01ba2"><span class="section-number-2">2.</span> Turn 2 : bundle gemにおけるテスト配置</h2>
+<div id="outline-container-orga2a0da3" class="outline-2">
+<h2 id="orga2a0da3"><span class="section-number-2">2.</span> Turn 2 : bundle gemにおけるテスト配置</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org266d186" class="outline-3">
-<h3 id="org266d186"><span class="section-number-3">2.1.</span> user =&gt; Bob</h3>
+<div id="outline-container-orge92e3f4" class="outline-3">
+<h3 id="orge92e3f4"><span class="section-number-3">2.1.</span> user =&gt; Bob</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Raphaelさんに聞きたいのですが，bundle でgemのscaffoldを作ると，testがまとまっています.
 </p>
 </div>
 </div>
-<div id="outline-container-org9b58026" class="outline-3">
-<h3 id="org9b58026"><span class="section-number-3">2.2.</span> codex =&gt; Raphael</h3>
+<div id="outline-container-org4d5661d" class="outline-3">
+<h3 id="org4d5661d"><span class="section-number-3">2.2.</span> codex =&gt; Raphael</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 はい．​<code>bundle gem</code>​でscaffoldを作る際に，
@@ -150,7 +150,7 @@ Raphaelさんに聞きたいのですが，bundle でgemのscaffoldを作ると�
 と指定すると，Minitest用の雛形が​<code>test/</code>​以下にまとまって生成されます．概ね次の構成です．
 </p>
 
-<pre class="example" id="orgf8dc906">
+<pre class="example" id="orgc75d790">
 my_hello/
 ├── lib/
 │   ├── my_hello.rb
@@ -187,20 +187,20 @@ my_hello/
 </div>
 </div>
 </div>
-<div id="outline-container-org4ee2747" class="outline-2">
-<h2 id="org4ee2747"><span class="section-number-2">3.</span> Turn 3 : 巨大プロジェクトのサブコマンド構成</h2>
+<div id="outline-container-orgf6f4024" class="outline-2">
+<h2 id="orgf6f4024"><span class="section-number-2">3.</span> Turn 3 : 巨大プロジェクトのサブコマンド構成</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org45ba458" class="outline-3">
-<h3 id="org45ba458"><span class="section-number-3">3.1.</span> user =&gt; Bob</h3>
+<div id="outline-container-org3ebd9f7" class="outline-3">
+<h3 id="org3ebd9f7"><span class="section-number-3">3.1.</span> user =&gt; Bob</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 そうすると，gitなどのように巨大化したプロジェクトでは，subcommandを後で統合するような開発の仕方をしていますよね．そこでのtestも同じようにtest dirに統合されているのでしょうか？　切り分けを考えるとsubcommand毎でtest, lib, docがまとまっているのの方が管理とかしやすそうに思うのですが，これは間違い？
 </p>
 </div>
 </div>
-<div id="outline-container-orga7b286a" class="outline-3">
-<h3 id="orga7b286a"><span class="section-number-3">3.2.</span> codex =&gt; Raphael</h3>
+<div id="outline-container-org00e64e1" class="outline-3">
+<h3 id="org00e64e1"><span class="section-number-3">3.2.</span> codex =&gt; Raphael</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 その考え方は間違いではありません．ただし，「サブコマンドごとにまとめる」には，次の2段階があります．
@@ -219,7 +219,7 @@ Git本体は，完全な「サブコマンド単位の縦割り」ではあり�
 今回の​<code>hc mkstack</code>​では，まず独立gemとして次のように作るのが自然です．
 </p>
 
-<pre class="example" id="orge28aef2">
+<pre class="example" id="org10545e8">
 c0_mk_stack/
 ├── lib/
 │   ├── c0_mk_stack.rb
@@ -244,7 +244,7 @@ c0_mk_stack/
 この構成では，​<code>lib/</code>​と​<code>test/</code>​は分かれていますが，その下のパスを対応させます．
 </p>
 
-<pre class="example" id="org57e7e4e">
+<pre class="example" id="org36b5374">
 lib/c0_mk_stack/command.rb
 test/c0_mk_stack/command_test.rb
 </pre>
@@ -257,10 +257,10 @@ test/c0_mk_stack/command_test.rb
 将来​<code>hc</code>​へ組み込むときは，次のどちらかを選べます．
 </p>
 </div>
-<div id="outline-container-org6d319f6" class="outline-4">
-<h4 id="org6d319f6">独立gemのまま組み込む</h4>
-<div class="outline-text-4" id="text-org6d319f6">
-<pre class="example" id="org34ede55">
+<div id="outline-container-org3ef19e6" class="outline-4">
+<h4 id="org3ef19e6">独立gemのまま組み込む</h4>
+<div class="outline-text-4" id="text-org3ef19e6">
+<pre class="example" id="org5db527c">
 hc
  └─ depends on c0_mk_stack
 </pre>
@@ -270,16 +270,16 @@ hc
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ruby"><code><span style="color: #595959;"># </span><span style="color: #595959;">lib/hc/commands/mkstack.rb</span>
-<span style="color: #531ab6;">module</span> <span style="color: #005f5f;">Hc</span>
-  <span style="color: #531ab6;">module</span> <span style="color: #005f5f;">Commands</span>
-    <span style="color: #531ab6;">class</span> <span style="color: #005f5f;">Mkstack</span>
-      <span style="color: #531ab6;">def</span> <span style="color: #721045;">call</span>(...)
-        <span style="color: #005f5f;">C0MkStack</span>::<span style="color: #005f5f;">Command</span>.new.call(...)
-      <span style="color: #531ab6;">end</span>
-    <span style="color: #531ab6;">end</span>
-  <span style="color: #531ab6;">end</span>
-<span style="color: #531ab6;">end</span>
+<pre class="src src-ruby"><code><span style="color: #989898;"># </span><span style="color: #989898;">lib/hc/commands/mkstack.rb</span>
+<span style="color: #b6a0ff;">module</span> <span style="color: #6ae4b9;">Hc</span>
+  <span style="color: #b6a0ff;">module</span> <span style="color: #6ae4b9;">Commands</span>
+    <span style="color: #b6a0ff;">class</span> <span style="color: #6ae4b9;">Mkstack</span>
+      <span style="color: #b6a0ff;">def</span> <span style="color: #feacd0;">call</span>(...)
+        <span style="color: #6ae4b9;">C0MkStack</span>::<span style="color: #6ae4b9;">Command</span>.new.call(...)
+      <span style="color: #b6a0ff;">end</span>
+    <span style="color: #b6a0ff;">end</span>
+  <span style="color: #b6a0ff;">end</span>
+<span style="color: #b6a0ff;">end</span>
 </code></pre>
 </div>
 
@@ -288,10 +288,10 @@ hc
 </p>
 </div>
 </div>
-<div id="outline-container-org3b1dc07" class="outline-4">
-<h4 id="org3b1dc07">​<code>hc</code>​本体へ完全統合する</h4>
-<div class="outline-text-4" id="text-org3b1dc07">
-<pre class="example" id="orge7bd41b">
+<div id="outline-container-org4572bb3" class="outline-4">
+<h4 id="org4572bb3">​<code>hc</code>​本体へ完全統合する</h4>
+<div class="outline-text-4" id="text-org4572bb3">
+<pre class="example" id="orgdf474da">
 hc/
 ├── lib/hc/
 │   └── commands/
@@ -322,20 +322,20 @@ hc/
 </div>
 </div>
 </div>
-<div id="outline-container-orgb9df8d3" class="outline-2">
-<h2 id="orgb9df8d3"><span class="section-number-2">4.</span> Turn 4 : 粒度に応じた配置の切り替え</h2>
+<div id="outline-container-org990a97d" class="outline-2">
+<h2 id="org990a97d"><span class="section-number-2">4.</span> Turn 4 : 粒度に応じた配置の切り替え</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org0a9a455" class="outline-3">
-<h3 id="org0a9a455"><span class="section-number-3">4.1.</span> user =&gt; Bob</h3>
+<div id="outline-container-org240e73a" class="outline-3">
+<h3 id="org240e73a"><span class="section-number-3">4.1.</span> user =&gt; Bob</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 粒度が変わった時点で，それに合わせてdirectory配置からfile名配置へ切り替えるということですね．
 </p>
 </div>
 </div>
-<div id="outline-container-orgbabc4ec" class="outline-3">
-<h3 id="orgbabc4ec"><span class="section-number-3">4.2.</span> codex =&gt; Raphael</h3>
+<div id="outline-container-org1fa8dab" class="outline-3">
+<h3 id="org1fa8dab"><span class="section-number-3">4.2.</span> codex =&gt; Raphael</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 はい，その理解で合っています．粒度に応じて，境界の表現方法を切り替えます．
@@ -351,7 +351,7 @@ hc/
 例えば，最初は独立gemとして，
 </p>
 
-<pre class="example" id="org9cc0566">
+<pre class="example" id="org5355ee2">
 c0_mk_stack/
 ├── lib/
 ├── test/
@@ -362,7 +362,7 @@ c0_mk_stack/
 という大きな境界を作ります．​<code>hc</code>​へ完全統合した後は，
 </p>
 
-<pre class="example" id="org2aade41">
+<pre class="example" id="org62648cc">
 hc/
 ├── lib/hc/commands/mkstack.rb
 ├── test/hc/commands/mkstack_test.rb
@@ -373,7 +373,7 @@ hc/
 のように，​<code>mkstack</code>​を対応するファイル名で表現できます．さらに実装が成長すれば，
 </p>
 
-<pre class="example" id="org0083bc6">
+<pre class="example" id="org858faa6">
 lib/hc/commands/mkstack/
 ├── command.rb
 ├── options.rb
@@ -388,7 +388,7 @@ lib/hc/commands/mkstack/
 つまり，
 </p>
 
-<pre class="example" id="orgf17057b">
+<pre class="example" id="org5d68934">
 小さい機能 → 1ファイル
 成長した機能 → 専用ディレクトリ
 独立性を持つ機能 → gemやpackage
@@ -400,20 +400,20 @@ lib/hc/commands/mkstack/
 </div>
 </div>
 </div>
-<div id="outline-container-org1f76a95" class="outline-2">
-<h2 id="org1f76a95"><span class="section-number-2">5.</span> Turn 5 : RailsのMVC規約と探索性</h2>
+<div id="outline-container-org206b9d7" class="outline-2">
+<h2 id="org206b9d7"><span class="section-number-2">5.</span> Turn 5 : RailsのMVC規約と探索性</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgf672b24" class="outline-3">
-<h3 id="orgf672b24"><span class="section-number-3">5.1.</span> user =&gt; Bob</h3>
+<div id="outline-container-orgb155cb9" class="outline-3">
+<h3 id="orgb155cb9"><span class="section-number-3">5.1.</span> user =&gt; Bob</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 RoRで使われているMVCの命名規則もその思想に倣っているのですね．だから，万人が置き場所を探すのに苦労しなかった．今は，codexさんとか(Raphaelさんではなく公なのでこう呼びましょう)に聞けばすぐに探してくれますが．
 </p>
 </div>
 </div>
-<div id="outline-container-org8d02d88" class="outline-3">
-<h3 id="org8d02d88"><span class="section-number-3">5.2.</span> codex =&gt; Raphael</h3>
+<div id="outline-container-org075962c" class="outline-3">
+<h3 id="org075962c"><span class="section-number-3">5.2.</span> codex =&gt; Raphael</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 はい，まさにRailsの「Convention over Configuration（設定より規約）」の大きな効用です．
@@ -423,7 +423,7 @@ RoRで使われているMVCの命名規則もその思想に倣っているの�
 たとえば​<code>UsersController</code>​なら，
 </p>
 
-<pre class="example" id="org9a76664">
+<pre class="example" id="orgb69e0d1">
 app/controllers/users_controller.rb
 </pre>
 
@@ -431,7 +431,7 @@ app/controllers/users_controller.rb
 ​<code>User</code>​モデルなら，
 </p>
 
-<pre class="example" id="orgfc743aa">
+<pre class="example" id="org88ac225">
 app/models/user.rb
 </pre>
 
@@ -439,7 +439,7 @@ app/models/user.rb
 画面なら，
 </p>
 
-<pre class="example" id="org51eadb1">
+<pre class="example" id="org22a5673">
 app/views/users/
 </pre>
 
@@ -451,7 +451,7 @@ app/views/users/
 ただし，機能が巨大化すると，MVCによる横割りだけでは，ある機能に関係するModel，View，Controller，テストが離れすぎる問題も起きます．そこで名前空間やEngineを使い，機能単位の境界を再導入します．
 </p>
 
-<pre class="example" id="orgfdc5c1b">
+<pre class="example" id="orga2de653">
 app/controllers/admin/
 app/models/admin/
 app/views/admin/
@@ -461,7 +461,7 @@ app/views/admin/
 さらに独立性が高まれば，Rails Engineや別gemへ昇格させます．これも先ほどの，
 </p>
 
-<pre class="example" id="orgb8b3451">
+<pre class="example" id="org01466f2">
 ファイル → ディレクトリ → package／gem
 </pre>
 
@@ -482,7 +482,7 @@ app/views/admin/
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Shigeto R. Nishitani</p>
-<p class="date">Created: 2026-11-11 Wed 14:46</p>
+<p class="date">Created: 2026-11-11 Wed 20:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

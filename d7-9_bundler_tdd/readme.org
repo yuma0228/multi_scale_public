@@ -1,6 +1,6 @@
 #+OPTIONS: ^:{}
 #+STARTUP: indent nolineimages overview num
-#+TITLE: d7-9 bundle, thor, minitest
+#+TITLE: d7-9 bundle, thor, minitest, gems
 #+AUTHOR: Shigeto R. Nishitani
 #+EMAIL:     (concat "shigeto_nishitani@mac.com")
 #+LANGUAGE:  jp
@@ -10,13 +10,13 @@
 #+MACRO: dummy_link @@html:<a href="#">$1</a>@@
 
 # for style.css, never move from here
-[[../c3_linear_algebra_core/readme.html][prev_button]]
-[[../intro_info_26s.html][up_button]]
-[[../c1_outline/readme.html][next_button]]
+[[file:d9_gem_release/readme.html][prev_button]]
+[[file:./canvas.html][up_button]]
+[[file:./readme_agent_compare.html][next_button]]
 # for a real link rewrite usual [[\url][]]
 
 
-| [[file:./dummy_icon.png]]
+# | [[file:./dummy_icon.png]]
 
 * d7 HyperCardって何？
 - [[https://ist.ksc.kwansei.ac.jp/~nishitani/Research/2026/phase_diagram_26f/canvas.html][合金状態図26f]]

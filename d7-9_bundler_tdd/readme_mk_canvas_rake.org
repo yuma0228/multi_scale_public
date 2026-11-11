@@ -1,0 +1,202 @@
+#+OPTIONS: ^:{}
+#+STARTUP: indent nolineimages overview num
+#+TITLE: d7-9 bundle, thor, minitest
+#+AUTHOR: Shigeto R. Nishitani
+#+EMAIL:     (concat "shigeto_nishitani@mac.com")
+#+LANGUAGE:  jp
+#+OPTIONS:   H:4 toc:t num:2
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/setup/html-theme-readtheorg.setup
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+#+MACRO: dummy_link @@html:<a href="#">$1</a>@@
+
+# for style.css, never move from here
+[[file:./readme_agent_compare.html][prev_button]]
+[[file:./canvas.html][up_button]]
+[[file:./readme_rag_agent.html][next_button]]
+# for a real link rewrite usual [[url][]]
+
+* Turn 1 : HTMLツリーからCanvasを生成するRakeタスクの作成
+** user => Bob
+/Users/bob/Desktop/lecture_26f/multi_scale/d7-9_bundler_tddにて
+
+#+begin_example
+ tree -P '*.html' --prune -L 2
+.
+├── copy_as_org
+│   └── readme_copy_as_org.html
+├── d7_bundle
+│   └── readme.html
+├── d8_tdd
+│   ├── readme_mk_stack_directory_conf.html
+│   ├── readme_my_hello_tdd_live.html
+│   ├── readme_save_chat_to_org.html
+│   └── readme.html
+├── readme_agent_compare.html
+├── readme_rag_agent.html
+└── readme.html
+
+4 directories, 9 files
+#+end_example
+
+で形成されるtree構造をcanvas.htmlに作り出そうと思います．
+ひとつ上の.semi_lattice/semi_lattice.yamlからmulti_scale/canvas.htmlを作成しているのですが，このような変換を行なってくれるmk_canvas.rakeを作れますか？
+
+** codex => Raphael
+作成しました．
+
+- [[/Users/bob/Desktop/lecture_26f/multi_scale/d7-9_bundler_tdd/mk_canvas.rake][mk_canvas.rake]]
+- 生成確認済みの
+  [[/Users/bob/Desktop/lecture_26f/multi_scale/d7-9_bundler_tdd/.semi_lattice/dir_node_edge.yaml][dir_node_edge.yaml]]
+
+実行方法は次のとおりです．
+
+#+begin_src sh
+cd /Users/bob/Desktop/lecture_26f/multi_scale/d7-9_bundler_tdd
+rake -f mk_canvas.rake mk_canvas
+#+end_src
+
+処理内容は次の順序です．
+
+1. 深さ2までのHTMLを探索する
+2. ディレクトリ階層を保持したYAMLを生成する
+3. ​=hc view=​でノード配置を編集する
+4. ​=.semi_lattice/semi_lattice.yaml=​から​=canvas.html=​を生成する
+5. 完成したCanvasを表示する
+
+現在の構成について，1ルート，3ディレクトリ，9
+HTML，12エッジになることを検証済みです．最後の表示を省略する場合は次を使用できます．
+
+#+begin_src sh
+OPEN=0 rake -f mk_canvas.rake mk_canvas
+#+end_src
+
+探索階層は，例えば​=LEVEL=3=​のように変更できます．
+
+* Turn 2 : fishでの実行例
+** user => Bob
+fishでのcommand例を示してください．
+
+** codex => Raphael
+fishでは次のように実行できます．
+
+#+begin_src fish
+cd /Users/bob/Desktop/lecture_26f/multi_scale/d7-9_bundler_tdd
+rake -f mk_canvas.rake mk_canvas
+#+end_src
+
+最後のCanvas表示を省略する場合：
+
+#+begin_src fish
+env OPEN=0 rake -f mk_canvas.rake mk_canvas
+#+end_src
+
+探索階層を3階層へ変更する場合：
+
+#+begin_src fish
+env LEVEL=3 rake -f mk_canvas.rake mk_canvas
+#+end_src
+
+両方を指定する場合：
+
+#+begin_src fish
+env LEVEL=3 OPEN=0 rake -f mk_canvas.rake mk_canvas
+#+end_src
+
+YAML生成だけを確認する場合：
+
+#+begin_src fish
+rake -f mk_canvas.rake prepare
+#+end_src
+
+* Turn 3 : readme.htmlをディレクトリの中心ノードに変更
+** user => Bob
+directoryの直下にreadme.htmlが存在する場合は，それをFolderの代わりに中心に置いて，そこから配下へlinkを張るように修正．
+
+** codex => Raphael
+修正しました．[[/Users/bob/Desktop/lecture_26f/multi_scale/d7-9_bundler_tdd/mk_canvas.rake][mk_canvas.rake]]は次の構造を生成します．
+
+- ルートの​=readme.html=​を中心ノードにする
+- ​=d7_bundle/readme.html=​を同ディレクトリの中心ノードにする
+- ​=d8_tdd/readme.html=​を中心にし，ほかのHTMLをそこへ接続する
+- ​=copy_as_org=​には​=readme.html=​がないため，Folderノードを維持する
+
+fishで再生成するには次を実行してください．
+
+#+begin_src fish
+cd /Users/bob/Desktop/lecture_26f/multi_scale/d7-9_bundler_tdd
+rake -f mk_canvas.rake mk_canvas
+#+end_src
+
+入力YAMLの生成と接続関係は検証済みです．
+
+* Turn 4 : Org画像とbuttonsを用いたHTML生成工程の統合
+** user => Bob
+dir nodeもfolder iconではなく，readme.org内のtop
+figをアイコン化するように修正．さらに../c0_mk_stack_dir/bin/mk_link.rbを参照して，org内のbuttonsのリンクを適切に修正して，htmlをorgから生成する操作も組み込む．
+
+** codex => Raphael
+[[/Users/bob/Desktop/lecture_26f/multi_scale/d7-9_bundler_tdd/mk_canvas.rake][mk_canvas.rake]]を修正しました．
+
+変更内容：
+
+- 各ディレクトリの​=readme.org=​を代表ノードとして使用
+- ​=readme.org=​内の最初のローカル画像をアイコンに設定
+- Folderアイコンを使用しない構成へ変更
+- ​=prev_button=​，​=up_button=​，​=next_button=​を相対パスで再設定
+- Orgリンクを明示的な​=file:=​形式にして，Emacsの曖昧リンク判定を回避
+- Emacsで全OrgをHTMLへexportしてからYAMLを生成
+- Orgを正本とし，旧名称のHTMLには依存しない
+
+11個のOrgについて，HTML生成とYAML生成を実行・検証済みです．5個の​=readme.html=​が中心ノードとなり，Folderノードは残っていません．
+
+fishで全工程を実行する場合：
+
+#+begin_src fish
+cd /Users/bob/Desktop/lecture_26f/multi_scale/d7-9_bundler_tdd
+rake -f mk_canvas.rake mk_canvas
+#+end_src
+
+Orgのbuttons修正とHTML生成だけを行う場合：
+
+#+begin_src fish
+rake -f mk_canvas.rake refresh_html
+#+end_src
+
+HTML生成とCanvas入力YAML生成まで行う場合：
+
+#+begin_src fish
+rake -f mk_canvas.rake prepare
+#+end_src
+
+最終Canvas表示を省略する場合：
+
+#+begin_src fish
+env OPEN=0 rake -f mk_canvas.rake mk_canvas
+#+end_src
+
+​=mk_canvas=​では，​=refresh_html → prepare → hc viewによる配置 → canvas.html生成=​の順に処理されます．
+
+* Turn 5 : 画像がないノードの既定アイコン設定
+** user => Bob
+画像がない場合はtop dirではstack iconを，配下ではfolder
+iconを表示するように修正．
+
+** codex => Raphael
+[[/Users/bob/Desktop/lecture_26f/multi_scale/d7-9_bundler_tdd/mk_canvas.rake][mk_canvas.rake]]を修正しました．
+
+画像がない場合の規則は次のとおりです．
+
+- 最上位ノード：​=.semi_lattice/icons/stack.png=​
+- それ以外のノード：​=.semi_lattice/icons/folder.png=​
+- 実画像があるノード：​=readme.org=​内の最初の実画像を使用
+- コメント行やソースブロック内の画像例：アイコンとして扱わない
+
+生成YAMLにも反映済みです．全11ノードに実在するアイコンが設定されていることを検証しました．
+
+* Turn 6 : チャット全体をOrg形式で保存
+** user => Bob
+save_chat_to_orgを実行
+
+** codex => Raphael
+このチャットの全6
+Turnをcopy-as-orgの現行変換規則で再構築し，プロジェクトrootのreadme_chat.orgへ保存しました．Turn順序，話者の組，Org見出し構造を検証済みです．
