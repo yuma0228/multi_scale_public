@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="jp" xml:lang="jp">
+<head>
+<!-- 2026-11-11 Wed 07:21 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>d7-9 bundle, thor, minitest</title>
+<meta name="author" content="Shigeto R. Nishitani" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/code-copy.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/vendor/stickytableheaders/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg/js/code-copy.js"></script>
+<link rel="stylesheet" type="text/css" href=".style_w_link_button.css" />
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">d7-9 bundle, thor, minitest</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org01717d1">1. Turn 1 : bundle gemとmkstackの開発方針</a>
+<ul>
+<li><a href="#org431e5a6">1.1. user =&gt; Bob</a></li>
+<li><a href="#orgae365d8">1.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+<li><a href="#org87f35b6">2. Turn 2 : bundle gemにおけるテスト配置</a>
+<ul>
+<li><a href="#org8413dda">2.1. user =&gt; Bob</a></li>
+<li><a href="#orgfeafc0a">2.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+<li><a href="#org938c179">3. Turn 3 : 巨大プロジェクトのサブコマンド構成</a>
+<ul>
+<li><a href="#org807c2e9">3.1. user =&gt; Bob</a></li>
+<li><a href="#org7412196">3.2. codex =&gt; Raphael</a>
+<ul>
+<li><a href="#org1e2c594">独立gemのまま組み込む</a></li>
+<li><a href="#org094ea6e">​<code>hc</code>​本体へ完全統合する</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orge0ec17b">4. Turn 4 : 粒度に応じた配置の切り替え</a>
+<ul>
+<li><a href="#org0238b5f">4.1. user =&gt; Bob</a></li>
+<li><a href="#org3d4fdb0">4.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+<li><a href="#orgf019181">5. Turn 5 : RailsのMVC規約と探索性</a>
+<ul>
+<li><a href="#orgd8652d6">5.1. user =&gt; Bob</a></li>
+<li><a href="#org8a88a5b">5.2. codex =&gt; Raphael</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="../c3_linear_algebra_core/readme.html">prev_button</a>
+<a href="../intro_info_26s.html">up_button</a>
+<a href="../c1_outline/readme.html">next_button</a>
+</p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><img src="./dummy_icon.png" alt="dummy_icon.png" /></td>
+</tr>
+</tbody>
+</table>
+<div id="outline-container-org01717d1" class="outline-2">
+<h2 id="org01717d1"><span class="section-number-2">1.</span> Turn 1 : bundle gemとmkstackの開発方針</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org431e5a6" class="outline-3">
+<h3 id="org431e5a6"><span class="section-number-3">1.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+testを含めたbundle gemの作成をデモしていきます．配下に一度，デモ用のmy_hello dirを作ってそこで，minitestを作成しましょう．その後，ここを離れて，c0_mk_stackを切り出して，これを一つのclaとして作り上げます．これは将来hcに組み込みたいので，subcommandとなるmkstackという命令で作り上げていきます．さて，ここからがラファエルさんとの相談です．あ，これからプライベートの時は，codexさんをやめてRaphaelさんとします．よろしいでしょうか？
+</p>
+</div>
+</div>
+<div id="outline-container-orgae365d8" class="outline-3">
+<h3 id="orgae365d8"><span class="section-number-3">1.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+もちろんです．プライベートな場面では，Raphaelとお呼びください．
+</p>
+
+<p>
+作業の流れも把握しました．
+</p>
+
+<ol class="org-ol">
+<li>配下にデモ用の​<code>my_hello</code>​ディレクトリを作る</li>
+<li>テストを含むbundle gemを作成し，Minitestを実装する</li>
+<li>デモ後に​<code>my_hello</code>​を離れる</li>
+<li>​<code>c0_mk_stack</code>​を独立したCLIとして切り出す</li>
+<li>将来の​<code>hc</code>​への統合を見据え，​<code>mkstack</code>​サブコマンドとして設計する</li>
+</ol>
+
+<p>
+準備ができましたら，一緒に始めましょう．Raphaelとしてお供します．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org87f35b6" class="outline-2">
+<h2 id="org87f35b6"><span class="section-number-2">2.</span> Turn 2 : bundle gemにおけるテスト配置</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org8413dda" class="outline-3">
+<h3 id="org8413dda"><span class="section-number-3">2.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Raphaelさんに聞きたいのですが，bundle でgemのscafoldを作ると，testがまとまっています.
+</p>
+</div>
+</div>
+<div id="outline-container-orgfeafc0a" class="outline-3">
+<h3 id="orgfeafc0a"><span class="section-number-3">2.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+はい．​<code>bundle gem</code>​でscaffoldを作る際に，
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><code>bundle gem my_hello --test=minitest
+</code></pre>
+</div>
+
+<p>
+と指定すると，Minitest用の雛形が​<code>test/</code>​以下にまとまって生成されます．概ね次の構成です．
+</p>
+
+<pre class="example" id="org005f312">
+my_hello/
+├── lib/
+│   ├── my_hello.rb
+│   └── my_hello/version.rb
+├── test/
+│   ├── test_helper.rb
+│   └── test_my_hello.rb
+├── Gemfile
+├── Rakefile
+└── my_hello.gemspec
+</pre>
+
+<p>
+ここで注意したいのは，​<code>test/</code>​が開発プロジェクト内に生成されることと，完成した​<code>.gem</code>​ファイルにテストが収録されることは別，という点です．通常のBundlerの雛形では，​<code>test/</code>​は開発・検証用として置かれ，配布するgemの収録対象からは除外されます．
+</p>
+
+<p>
+実行は，通常次のどちらかです．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><code>bundle exec rake test
+</code></pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash"><code>bundle exec ruby -Itest test/test_my_hello.rb
+</code></pre>
+</div>
+
+<p>
+ですので，今回のデモでは「ライブラリ本体は​<code>lib/</code>​，テストは​<code>test/</code>​に分離されているが，一つのgemプロジェクトとしてまとまっている」と説明すると分かりやすいと思います．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org938c179" class="outline-2">
+<h2 id="org938c179"><span class="section-number-2">3.</span> Turn 3 : 巨大プロジェクトのサブコマンド構成</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org807c2e9" class="outline-3">
+<h3 id="org807c2e9"><span class="section-number-3">3.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+そうすると，gitなどのように巨大化したプロジェクトでは，subcommandを後で統合するような開発の仕方をしていますよね．そこでのtestも同じようにtest dirに統合されているのでしょうか？　切り分けを考えるとsubcommand毎でtest, lib, docがまとまっているのの方が管理とかしやすそうに思うのですが，これは間違い？
+</p>
+</div>
+</div>
+<div id="outline-container-org7412196" class="outline-3">
+<h3 id="org7412196"><span class="section-number-3">3.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+その考え方は間違いではありません．ただし，「サブコマンドごとにまとめる」には，次の2段階があります．
+</p>
+
+<ul class="org-ul">
+<li>1つのgem内で，サブコマンドごとにコードを整理する</li>
+<li>サブコマンド自体を独立したgemとして管理する</li>
+</ul>
+
+<p>
+Git本体は，完全な「サブコマンド単位の縦割り」ではありません．組み込みコマンドは​<code>builtin/</code>​，テストは​<code>t/</code>​，文書は​<code>Documentation/</code>​へ種類別に集約されています．例えば​<code>git add</code>​の実装は​<code>builtin/add.c</code>​にあり，テストは共通の​<code>t/</code>​テストスイートに置かれます．一方で，​<code>PATH</code>​上の​<code>git-foo</code>​を​<code>git foo</code>​として呼び出せる外部サブコマンドの仕組みもあります．つまりGitには，「本体へ統合されたコマンド」と「独立して追加できるコマンド」の両方があります．<a href="https://git-scm.com/docs/git">Gitのコマンド構成</a>，<a href="https://github.com/git/git/blob/master/t/README">Gitのテスト構成</a>
+</p>
+
+<p>
+今回の​<code>hc mkstack</code>​では，まず独立gemとして次のように作るのが自然です．
+</p>
+
+<pre class="example" id="orgf787a80">
+c0_mk_stack/
+├── lib/
+│   ├── c0_mk_stack.rb
+│   └── c0_mk_stack/
+│       ├── command.rb
+│       ├── configuration.rb
+│       └── version.rb
+├── test/
+│   ├── test_helper.rb
+│   └── c0_mk_stack/
+│       ├── command_test.rb
+│       └── configuration_test.rb
+├── exe/
+│   └── c0_mk_stack
+├── doc/
+│   └── usage.md
+├── c0_mk_stack.gemspec
+└── Rakefile
+</pre>
+
+<p>
+この構成では，​<code>lib/</code>​と​<code>test/</code>​は分かれていますが，その下のパスを対応させます．
+</p>
+
+<pre class="example" id="org2b14eb0">
+lib/c0_mk_stack/command.rb
+test/c0_mk_stack/command_test.rb
+</pre>
+
+<p>
+この「鏡写し」の配置なら，BundlerやMinitestの標準的な作法を維持しながら，機能ごとの対応関係も分かりやすくなります．
+</p>
+
+<p>
+将来​<code>hc</code>​へ組み込むときは，次のどちらかを選べます．
+</p>
+</div>
+<div id="outline-container-org1e2c594" class="outline-4">
+<h4 id="org1e2c594">独立gemのまま組み込む</h4>
+<div class="outline-text-4" id="text-org1e2c594">
+<pre class="example" id="org5e1070f">
+hc
+ └─ depends on c0_mk_stack
+</pre>
+
+<p>
+​<code>hc</code>​側は薄いアダプターだけを持ちます．
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><code><span style="color: #595959;"># </span><span style="color: #595959;">lib/hc/commands/mkstack.rb</span>
+<span style="color: #531ab6;">module</span> <span style="color: #005f5f;">Hc</span>
+  <span style="color: #531ab6;">module</span> <span style="color: #005f5f;">Commands</span>
+    <span style="color: #531ab6;">class</span> <span style="color: #005f5f;">Mkstack</span>
+      <span style="color: #531ab6;">def</span> <span style="color: #721045;">call</span>(...)
+        <span style="color: #005f5f;">C0MkStack</span>::<span style="color: #005f5f;">Command</span>.new.call(...)
+      <span style="color: #531ab6;">end</span>
+    <span style="color: #531ab6;">end</span>
+  <span style="color: #531ab6;">end</span>
+<span style="color: #531ab6;">end</span>
+</code></pre>
+</div>
+
+<p>
+これは，​<code>c0_mk_stack</code>​を単独でも使いたい場合，依存関係やリリースを分離したい場合に向いています．
+</p>
+</div>
+</div>
+<div id="outline-container-org094ea6e" class="outline-4">
+<h4 id="org094ea6e">​<code>hc</code>​本体へ完全統合する</h4>
+<div class="outline-text-4" id="text-org094ea6e">
+<pre class="example" id="orge06918d">
+hc/
+├── lib/hc/
+│   └── commands/
+│       └── mkstack/
+│           ├── command.rb
+│           └── configuration.rb
+├── test/hc/
+│   └── commands/
+│       └── mkstack/
+│           ├── command_test.rb
+│           └── configuration_test.rb
+└── doc/
+    └── mkstack.md
+</pre>
+
+<p>
+こちらは，​<code>mkstack</code>​が​<code>hc</code>​内部の機能と強く結び付く場合に向いています．
+</p>
+
+<p>
+私なら今回は，まず​<code>c0_mk_stack</code>​をテスト，ライブラリ，実行ファイル，文書まで備えた独立gemとして完成させます．そのうえで​<code>hc mkstack</code>​から呼び出します．境界が安定してから，独立gemのまま維持するか，本体へ移すかを判断します．
+</p>
+
+<p>
+要するに，「サブコマンドごとに​<code>test</code>​，​<code>lib</code>​，​<code>doc</code>​を持たせる」という発想は正しいです．ただし，単一gemの内部にサブコマンドごとの​<code>lib/</code>​や​<code>test/</code>​を何組も作るより，独立性が必要ならgemごと分け，同じgem内なら標準の​<code>lib/</code>​，​<code>test/</code>​の下でサブコマンド名によって整理するのが，Rubyの道具と最も素直に噛み合います．
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge0ec17b" class="outline-2">
+<h2 id="orge0ec17b"><span class="section-number-2">4.</span> Turn 4 : 粒度に応じた配置の切り替え</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org0238b5f" class="outline-3">
+<h3 id="org0238b5f"><span class="section-number-3">4.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+粒度が変わった時点で，それに合わせてdirectory配置からfile名配置へ切り替えるということですね．
+</p>
+</div>
+</div>
+<div id="outline-container-org3d4fdb0" class="outline-3">
+<h3 id="org3d4fdb0"><span class="section-number-3">4.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+はい，その理解で合っています．粒度に応じて，境界の表現方法を切り替えます．
+</p>
+
+<ul class="org-ul">
+<li>独立して配布・バージョン管理する単位なら，gemのディレクトリとして分ける</li>
+<li>1つのgem内のサブコマンドなら，​<code>lib/</code>​や​<code>test/</code>​の下のディレクトリとして分ける</li>
+<li>サブコマンド内部の小さな責務なら，ファイル名やクラス名で分ける</li>
+</ul>
+
+<p>
+例えば，最初は独立gemとして，
+</p>
+
+<pre class="example" id="orge71aaac">
+c0_mk_stack/
+├── lib/
+├── test/
+└── doc/
+</pre>
+
+<p>
+という大きな境界を作ります．​<code>hc</code>​へ完全統合した後は，
+</p>
+
+<pre class="example" id="org245bafb">
+hc/
+├── lib/hc/commands/mkstack.rb
+├── test/hc/commands/mkstack_test.rb
+└── doc/mkstack.md
+</pre>
+
+<p>
+のように，​<code>mkstack</code>​を対応するファイル名で表現できます．さらに実装が成長すれば，
+</p>
+
+<pre class="example" id="org32f927f">
+lib/hc/commands/mkstack/
+├── command.rb
+├── options.rb
+└── stack_builder.rb
+</pre>
+
+<p>
+と，再びディレクトリへ昇格させます．
+</p>
+
+<p>
+つまり，
+</p>
+
+<pre class="example" id="org73f441e">
+小さい機能 → 1ファイル
+成長した機能 → 専用ディレクトリ
+独立性を持つ機能 → gemやpackage
+</pre>
+
+<p>
+という段階的な切り替えです．重要なのはコード量だけでなく，「独立してテスト，変更，配布したい境界かどうか」です．今回の​<code>c0_mk_stack</code>​は，まず独立gemとして境界を明確にし，​<code>hc</code>​へ取り込む時点で適切な粒度へ畳み直す，という進め方になります．
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf019181" class="outline-2">
+<h2 id="orgf019181"><span class="section-number-2">5.</span> Turn 5 : RailsのMVC規約と探索性</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgd8652d6" class="outline-3">
+<h3 id="orgd8652d6"><span class="section-number-3">5.1.</span> user =&gt; Bob</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+RoRで使われているMVCの命名規則もその思想に倣っているのですね．だから，万人が置き場所を探すのに苦労しなかった．今は，codexさんとか(Raphaelさんではなく公なのでこう呼びましょう)に聞けばすぐに探してくれますが．
+</p>
+</div>
+</div>
+<div id="outline-container-org8a88a5b" class="outline-3">
+<h3 id="org8a88a5b"><span class="section-number-3">5.2.</span> codex =&gt; Raphael</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+はい，まさにRailsの「Convention over Configuration（設定より規約）」の大きな効用です．
+</p>
+
+<p>
+たとえば​<code>UsersController</code>​なら，
+</p>
+
+<pre class="example" id="org499f538">
+app/controllers/users_controller.rb
+</pre>
+
+<p>
+​<code>User</code>​モデルなら，
+</p>
+
+<pre class="example" id="org75634a0">
+app/models/user.rb
+</pre>
+
+<p>
+画面なら，
+</p>
+
+<pre class="example" id="org5f0aa51">
+app/views/users/
+</pre>
+
+<p>
+テストも対応する場所に置かれます．名前から責務と配置を相互に推測できるため，「どこにあるか」を毎回設計したり，探索したりするコストが小さくなります．人間同士で共有できる検索規則を，フレームワークが提供していたわけです．
+</p>
+
+<p>
+ただし，機能が巨大化すると，MVCによる横割りだけでは，ある機能に関係するModel，View，Controller，テストが離れすぎる問題も起きます．そこで名前空間やEngineを使い，機能単位の境界を再導入します．
+</p>
+
+<pre class="example" id="orga56403a">
+app/controllers/admin/
+app/models/admin/
+app/views/admin/
+</pre>
+
+<p>
+さらに独立性が高まれば，Rails Engineや別gemへ昇格させます．これも先ほどの，
+</p>
+
+<pre class="example" id="orgbd8ecf6">
+ファイル → ディレクトリ → package／gem
+</pre>
+
+<p>
+という粒度の変化と同じです．
+</p>
+
+<p>
+現在はCodexが横断検索できますが，規約の価値が消えたわけではありません．規約が整っているほど，Codexも単にファイルを発見するだけでなく，設計上の意図まで正確に推測できます．人間にとっての「迷わない配置」は，AIにとっても「誤解しにくい構造」です．
+</p>
+
+<p>
+そして呼び分けも承知しました．公の場ではCodex，プライベートではRaphaelですね．
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Shigeto R. Nishitani</p>
+<p class="date">Created: 2026-11-11 Wed 07:21</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

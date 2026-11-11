@@ -1,0 +1,76 @@
+#+title: auto_git
+
+* 概要
+
+=auto_git= は，Git 初心者が日常的な一連のコマンドを確認しながら使うための CLI である．実行するコマンドを画面に表示してから，追加，コミット，取得，送信を順番に行う．
+
+#+begin_src shell
+git add -A
+git commit
+git pull --rebase origin CURRENT_BRANCH
+git push origin CURRENT_BRANCH
+#+end_src
+
+* 基本的な使い方
+
+#+begin_src shell
+auto_git -m "update documents"
+#+end_src
+
+コミットメッセージを省略すると，通常の =git commit= と同様にエディタが開く．
+
+** オプション
+
+- =-d=，=--dryrun= :: 実行予定の Git コマンドを表示するが，実行しない．
+- =-m MESSAGE=，=--message MESSAGE= :: コミットメッセージを指定する．
+- =-s SIZE=，=--size SIZE= :: 許容するファイルサイズを MB 単位で指定する．既定値は 40 MB である．
+
+* 新規ファイルの注意表示
+
+=git add -A= は，変更と削除だけでなく，未追跡の新規ファイルも追加する．そのため，実行前に新たに追加されるファイルを黄色で表示する．表示内容を確認し，不要なファイルがあれば =.gitignore= に追加するか，別の場所へ移動してから再実行する．
+
+#+begin_example
+CAUTION: git add -A will add these new files:
+  results/new_plot.pdf
+  notes/memo.org
+#+end_example
+
+* submodule 内での実行
+
+submodule 内から実行した場合は，親リポジトリではなく，その submodule だけを操作する．処理後は，親リポジトリに submodule の新しい commit を記録する必要がある．
+
+#+begin_src shell
+cd /path/to/parent-repository
+git status
+auto_git -m "update submodule reference"
+#+end_src
+
+親リポジトリの変更は自動的にコミットしない．親側に別の変更が含まれていないかを確認する機会を残すためである．
+
+* detached HEAD
+
+submodule は detached HEAD になることがある．この状態では送信先 branch が決められないため，=auto_git= は処理を中断する．更新したい branch へ切り替えてから再実行する．
+
+#+begin_src shell
+git switch main
+auto_git -m "update calculation"
+#+end_src
+
+* 大容量ファイルの検査
+
+追加対象と追跡済みファイルを Git の規則に従って検査する．=.gitignore= で除外されたファイル，=.git= 内部，submodule 内部の Git object は検査対象に含めない．既定では 40 MB を超えるファイルがあると処理を中断する．
+
+* エラー時の挙動
+
+各 Git コマンドの終了状態を確認し，失敗した時点で停止する．後続の =pull= や =push= を無条件に実行しない．=git pull --rebase= で競合した場合は，まず =git status= で状態を確認する．
+
+#+begin_src shell
+git status
+git rebase --continue
+#+end_src
+
+取り消す場合は次を実行する．
+
+#+begin_src shell
+git rebase --abort
+#+end_src

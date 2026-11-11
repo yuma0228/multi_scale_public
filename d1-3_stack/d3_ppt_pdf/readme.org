@@ -54,7 +54,7 @@ Pragmatic programmar (v2)にある
 
 * Why Ruby?
 さて，では，これらがどうやって実現されているか？
-そしてeverday usersの手によってどのように
+そしてeveryday usersの手によってどのように
 構築されるかを示すのが次の目的になります．
 
 以下のテキストにはその必要性が書かれています．
